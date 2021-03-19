@@ -13,7 +13,7 @@ namespace sen381_t7_premier_service_solutions
         private string package_decription;
 
         //Properties 
-        public int ID1 { get => ID; set => ID = value; }
+        public int ID1 { get => ID; }
         public string Package_name { get => package_name; set => package_name = value; }
         public string Package_decription { get => package_decription; set => package_decription = value; }
         internal List<Service> Services { get => services; set => services = value; }
@@ -21,7 +21,7 @@ namespace sen381_t7_premier_service_solutions
         //Custom Constructor 
         public Package(int ID , string Package_Name,string Package_Description, List<Service> Services1)
         {
-            this.ID1 = ID;
+            this.ID = ID;
             this.Services = Services1;
             this.Package_name = Package_Name;
             this.Package_decription = Package_Description;

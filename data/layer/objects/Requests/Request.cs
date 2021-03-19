@@ -17,7 +17,7 @@ namespace sen381_t7_premier_service_solutions
 
         public RequestStatus status;
 
-        public int ID;
+        public int ID { get; }
 
         public Request(int ID, DateTime dtCreated, DateTime dtResolved) {
             this.dtCreated = dtCreated;

@@ -11,7 +11,7 @@ namespace sen381_t7_premier_service_solutions
         public DateTime dtCallEnded;
         public bool incoming;
         public Agent reperasentative;
-        public int ID;
+        public int ID { get; }
 
         public Call_Log(int ID, DateTime dtCallStarted, DateTime dtCallEnded, Agent reperasentative, bool incoming) {
             this.dtCallStarted   = dtCallStarted;

@@ -16,7 +16,7 @@ namespace sen381_t7_premier_service_solutions
         private string indended_for;
 
         //Properties
-        public int ID1 { get => ID; set => ID = value; }
+        public int ID1 { get => ID; }
         public string Sc_description { get => sc_description; set => sc_description = value; }
         public double Cost { get => cost; set => cost = value; }
         public DateTime Date_valid_start { get => date_valid_start; set => date_valid_start = value; }
@@ -25,9 +25,9 @@ namespace sen381_t7_premier_service_solutions
         internal List<Tuple<Package, Service_Level_Agreement>> Service_list { get => service_list; set => service_list = value; }
          
         //Custom Constructor
-        public Service_Contract(int iD1, string sc_description, double cost, DateTime date_valid_start, DateTime date_valid_end, string indended_for, List<Tuple<Package, Service_Level_Agreement>> service_list)
+        public Service_Contract(int ID, string sc_description, double cost, DateTime date_valid_start, DateTime date_valid_end, string indended_for, List<Tuple<Package, Service_Level_Agreement>> service_list)
         {
-            ID1 = iD1;
+            this.ID = ID;
             Sc_description = sc_description;
             Cost = cost;
             Date_valid_start = date_valid_start;

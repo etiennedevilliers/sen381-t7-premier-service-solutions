@@ -12,14 +12,14 @@ namespace sen381_t7_premier_service_solutions
         private string level_extent;
 
         //Properties
-        public int ID1 { get => ID; set => ID = value; }
+        public int ID1 { get => ID; }
         public string SlaDescription { get => slaDescription; set => slaDescription = value; }
         public string Level_extent { get => level_extent; set => level_extent = value; }
 
         //Custom COnstructor
-        public Service_Level_Agreement(int iD1, string slaDescription, string level_extent)
+        public Service_Level_Agreement(int ID, string slaDescription, string level_extent)
         {
-            ID1 = iD1;
+            this.ID = ID;
             SlaDescription = slaDescription;
             Level_extent = level_extent;
         }
