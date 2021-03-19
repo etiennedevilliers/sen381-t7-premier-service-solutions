@@ -58,5 +58,10 @@ namespace sen381_t7_premier_service_solutions
             return this.ID;
         }
 
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
     }
 }

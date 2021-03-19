@@ -9,7 +9,8 @@ namespace sen381_t7_premier_service_solutions
     {
         public List<Service_Contract> serviceContracts;
 
-        public Sales_Request(DateTime dtCreated, DateTime dtResolved, List<Service_Contract> serviceContracts) : base(dtCreated, dtResolved) {
+        public Sales_Request(int ID, DateTime dtCreated, DateTime dtResolved, List<Service_Contract> serviceContracts) 
+                                                                                     : base(ID, dtCreated, dtResolved) {
             this.serviceContracts = serviceContracts;
         }
 

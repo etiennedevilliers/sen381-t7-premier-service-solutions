@@ -17,11 +17,13 @@ namespace sen381_t7_premier_service_solutions
 
         public RequestStatus status;
 
-        public Request(DateTime dtCreated, DateTime dtResolved) {
+        public int ID;
+
+        public Request(int ID, DateTime dtCreated, DateTime dtResolved) {
             this.dtCreated = dtCreated;
             this.dtResolved = dtResolved;
-            
             this.status = RequestStatus.unresolved;
+            this.ID = ID;
         }
 
     }

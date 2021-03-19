@@ -9,15 +9,16 @@ namespace sen381_t7_premier_service_solutions
     {
         public DateTime dtCallStarted;
         public DateTime dtCallEnded;
-
-        public Boolean incoming;
-
+        public bool incoming;
         public Agent reperasentative;
+        public int ID;
 
-        public Call_Log(DateTime dtCallStarted, DateTime dtCallEnded, Agent agent) {
+        public Call_Log(int ID, DateTime dtCallStarted, DateTime dtCallEnded, Agent reperasentative, bool incoming) {
             this.dtCallStarted   = dtCallStarted;
             this.dtCallEnded     = dtCallEnded;
-            this.reperasentative = agent;
+            this.reperasentative = reperasentative;
+            this.ID = ID;
+            this.incoming = incoming;
         }
     }
 }

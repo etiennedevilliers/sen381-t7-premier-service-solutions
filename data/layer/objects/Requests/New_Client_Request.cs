@@ -9,7 +9,7 @@ namespace sen381_t7_premier_service_solutions
     {
         public Client client;
 
-        public New_Client_Request(DateTime dtCreated, DateTime dtResolved, Client client) : base(dtCreated, dtResolved) {
+        public New_Client_Request(int ID, DateTime dtCreated, DateTime dtResolved, Client client) : base(ID, dtCreated, dtResolved) {
             this.client = client;
         }
 

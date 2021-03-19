@@ -11,7 +11,8 @@ namespace sen381_t7_premier_service_solutions
         public string serviceDescription;
 
         public List<Job> jobList;
-        public Service_Request(DateTime dtCreated, DateTime dtResolved, string desc, List<Job> jobList, Service_Contract serviceContract) : base(dtCreated, dtResolved) {
+        public Service_Request(int ID, DateTime dtCreated, DateTime dtResolved, string desc, List<Job> jobList, Service_Contract serviceContract) 
+                                                              : base(ID, dtCreated, dtResolved) {
             serviceDescription = desc;
             this.jobList = jobList;
             this.serviceContract = serviceContract;
