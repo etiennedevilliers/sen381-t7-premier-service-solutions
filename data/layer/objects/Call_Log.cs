@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace sen381_t7_premier_service_solutions.data.layer.objects
+namespace sen381_t7_premier_service_solutions
 {
     
     public class Call_Log
