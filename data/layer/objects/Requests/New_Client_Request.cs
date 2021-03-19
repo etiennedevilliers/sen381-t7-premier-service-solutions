@@ -7,10 +7,10 @@ namespace sen381_t7_premier_service_solutions
     
     public abstract class New_Client_Request : Request
     {
-        // public Client client
+        public Client client;
 
-        public New_Client_Request(DateTime dtCreated, DateTime dtResolved) : base(dtCreated, dtResolved) {
-            
+        public New_Client_Request(DateTime dtCreated, DateTime dtResolved, Client client) : base(dtCreated, dtResolved) {
+            this.client = client;
         }
 
     }

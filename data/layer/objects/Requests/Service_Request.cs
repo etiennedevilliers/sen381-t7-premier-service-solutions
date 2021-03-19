@@ -7,13 +7,14 @@ namespace sen381_t7_premier_service_solutions
     
     public class Service_Request : Request
     {
-        // public Service_Contract serviceContract;
-        public String serviceDescription;
+        public Service_Contract serviceContract;
+        public string serviceDescription;
 
         public List<Job> jobList;
-        public Service_Request(DateTime dtCreated, DateTime dtResolved, String desc, List<Job> jobList) : base(dtCreated, dtResolved) {
-            this.serviceDescription = desc;
+        public Service_Request(DateTime dtCreated, DateTime dtResolved, string desc, List<Job> jobList, Service_Contract serviceContract) : base(dtCreated, dtResolved) {
+            serviceDescription = desc;
             this.jobList = jobList;
+            this.serviceContract = serviceContract;
         }
 
     }
