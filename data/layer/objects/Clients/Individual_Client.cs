@@ -7,18 +7,18 @@ namespace sen381_t7_premier_service_solutions
     public class Individual_Client : Client
     {
         //Fields
-        private int ID;
         private string name;
         private string surname;
 
         //Properties
-        public int ID1 { get => ID; set => ID = value; }
         public string Name { get => name; set => name = value; }
         public string Surname { get => surname; set => surname = value; }
 
-        public override object client()
-        {
-            throw new NotImplementedException();
+        public Individual_Client(List<Service_Contract> agreement, string address, string primary_contact_cell_number, string Name, string Surname)
+                                : base(agreement, address, primary_contact_cell_number) {
+            surname = Surname;
+            name = Name;
+            
         }
 
         public override bool Equals(object obj)

@@ -8,15 +8,14 @@ namespace sen381_t7_premier_service_solutions
     {
         //Fields
         private string business_name;
-        private int ID;
 
         //Properties
         public string Business_name { get => business_name; set => business_name = value; }
-        public int ID1 { get => ID; set => ID = value; }
 
-        public override object client()
+        public Business_Client(List<Service_Contract> agreement, string address, string primary_contact_cell_number, string Business_name) 
+                        : base(agreement, address, primary_contact_cell_number)
         {
-            throw new NotImplementedException();
+            business_name = Business_name;
         }
 
         public override bool Equals(object obj)
