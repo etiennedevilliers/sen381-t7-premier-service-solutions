@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace sen381_t7_premier_service_solutions
+namespace Data.Layer.Objects
 {
     
     public class Agent 
