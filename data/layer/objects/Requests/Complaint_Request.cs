@@ -7,7 +7,8 @@ namespace sen381_t7_premier_service_solutions
     
     public class Complaint_Request : Request
     {
-        // public Service_Contract serviceContract;
+        public Service_Contract serviceContract;
+
         public String complaintDescription;
         public Complaint_Request(DateTime dtCreated, DateTime dtResolved, String desc) : base(dtCreated, dtResolved) {
             this.complaintDescription = desc;

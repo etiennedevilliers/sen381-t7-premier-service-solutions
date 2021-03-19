@@ -4,7 +4,7 @@ using System.Text;
 
 namespace sen381_t7_premier_service_solutions
 {
-    class Business_Client : Client
+    public class Business_Client : Client
     {
         //Fields
         private string business_name;

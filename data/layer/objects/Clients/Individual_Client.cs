@@ -4,7 +4,7 @@ using System.Text;
 
 namespace sen381_t7_premier_service_solutions
 {
-    class Individual_Client : Client
+    public class Individual_Client : Client
     {
         //Fields
         private int ID;

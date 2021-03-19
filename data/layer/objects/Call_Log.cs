@@ -12,11 +12,12 @@ namespace sen381_t7_premier_service_solutions
 
         public Boolean incoming;
 
-        // public Agent reperasentative;
+        public Agent reperasentative;
 
-        public Call_Log(DateTime dtCallStarted, DateTime dtCallEnded) {
-            this.dtCallStarted = dtCallStarted;
-            this.dtCallEnded   = dtCallEnded;
+        public Call_Log(DateTime dtCallStarted, DateTime dtCallEnded, Agent agent) {
+            this.dtCallStarted   = dtCallStarted;
+            this.dtCallEnded     = dtCallEnded;
+            this.reperasentative = agent;
         }
     }
 }

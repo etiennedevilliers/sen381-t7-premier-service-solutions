@@ -4,7 +4,7 @@ using System.Text;
 
 namespace sen381_t7_premier_service_solutions
 {
-    abstract class Client
+    public abstract class Client
     {
         protected List<Service_Contract> agreement;
         protected string address;

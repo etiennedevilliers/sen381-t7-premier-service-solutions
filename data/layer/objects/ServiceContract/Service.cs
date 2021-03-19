@@ -4,7 +4,7 @@ using System.Text;
 
 namespace sen381_t7_premier_service_solutions
 {
-    class Service
+    public class Service
     {
         //Fields
         private int ID;
