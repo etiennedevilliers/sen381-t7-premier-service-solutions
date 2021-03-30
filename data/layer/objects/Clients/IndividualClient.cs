@@ -4,20 +4,16 @@ using System.Text;
 
 namespace Data.Layer.Objects
 {
-    public class Individual_Client : Client
+    public class IndividualClient : Client
     {
         //Fields
-        private string name;
-        private string surname;
+        public string name;
+        public string surname;
 
-        //Properties
-        public string Name { get => name; set => name = value; }
-        public string Surname { get => surname; set => surname = value; }
-
-        public Individual_Client(List<Service_Contract> agreement, string address, string primary_contact_cell_number, string Name, string Surname)
-                                : base(agreement, address, primary_contact_cell_number) {
-            surname = Surname;
-            name = Name;
+        public IndividualClient(int ID, List<Service_Contract> agreement, string address, string contactName, string name, string surname)
+                                : base(ID, agreement, address, contactName) {
+            this.surname = name;
+            this.name = surname;
             
         }
 
@@ -29,7 +25,7 @@ namespace Data.Layer.Objects
             }
             else
             {
-                Individual_Client p = (Individual_Client)obj;
+                IndividualClient p = (IndividualClient)obj;
                 return p.ID.Equals(this.ID);
             }
         }
