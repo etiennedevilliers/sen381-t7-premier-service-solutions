@@ -9,15 +9,16 @@ namespace Data.Layer.Objects
 
         public List<Service_Contract> agreement;
         public string address;
-        public string primary_contact_cell_number;
+        public string contactNum;
 
         public int ID { get; }
 
-        public Client(List<Service_Contract> agreement, string address, string primary_contact_cell_number)
+        public Client(int ID, List<Service_Contract> agreement, string address, string contactNum)
         {
-            this.agreement                   = agreement;
-            this.address                     = address;
-            this.primary_contact_cell_number = primary_contact_cell_number;
+            this.ID = ID;
+            this.agreement  = agreement;
+            this.address    = address;
+            this.contactNum = contactNum;
         }
     }
 }
