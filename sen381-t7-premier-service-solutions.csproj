@@ -6,4 +6,12 @@
     <RootNamespace>sen381_t7_premier_service_solutions</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="data\layer\controller\" />
+  </ItemGroup>
+
 </Project>
