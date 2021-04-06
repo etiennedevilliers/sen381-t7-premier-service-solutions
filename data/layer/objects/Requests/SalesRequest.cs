@@ -5,14 +5,16 @@ using System.Text;
 namespace Data.Layer.Objects
 {
     
-    public abstract class Sales_Request : Request
+    public abstract class SalesRequest : Request
     {
-        public List<Service_Contract> serviceContracts;
+        public List<ServiceContract> serviceContracts;
 
-        public Sales_Request(int ID, DateTime dtCreated, DateTime dtResolved, List<Service_Contract> serviceContracts) 
+        public SalesRequest(int ID, DateTime dtCreated, DateTime dtResolved, List<ServiceContract> serviceContracts) 
                                                                                      : base(ID, dtCreated, dtResolved) {
             this.serviceContracts = serviceContracts;
         }
+        //Ruben De Beer
 
     }
 }
+  

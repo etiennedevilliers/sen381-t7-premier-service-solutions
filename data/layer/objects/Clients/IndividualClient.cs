@@ -7,11 +7,18 @@ namespace Data.Layer.Objects
     public class IndividualClient : Client
     {
         //Fields
-        public string name;
-        public string surname;
+        private string _name;
+        private string _surname;
+        private int _id;
 
-        public IndividualClient(int ID, List<Service_Contract> agreement, string address, string contactName, string name, string surname)
-                                : base(ID, agreement, address, contactName) {
+        //Properties
+        public string name { get => _name; set => _name = value; }
+        public string surname { get => _surname; set => _surname = value; }
+        public int id { get => _id; set => _id = value; }
+
+        //Constructor
+        public IndividualClient(int id, List<ServiceContract> agreement, string address, string contactNum, string name, string surname)
+                                : base(agreement ,address,contactNum,id) {
             this.surname = name;
             this.name = surname;
             
@@ -26,19 +33,19 @@ namespace Data.Layer.Objects
             else
             {
                 IndividualClient p = (IndividualClient)obj;
-                return p.ID.Equals(this.ID);
+                return p.id.Equals(this._id);
             }
         }
 
         public override int GetHashCode()
         {
-            return this.ID;
+            return this.id;
         }
 
         public override string ToString()
         {
             return base.ToString();
         }
-
+        //Ruben De Beer
     }
 }
