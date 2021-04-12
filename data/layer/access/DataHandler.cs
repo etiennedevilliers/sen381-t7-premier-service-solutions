@@ -8,47 +8,72 @@ namespace Data.Layer.Objects
 {
     class DataHandler : IDisposable
     {
-        string conStr = "";
-        SqlConnection con;
+        string conStr = @"
+                            Data Source=34.123.158.111;
+                            Database=pss;
+                            Integrated Security=false;
+                            User ID=app;Password=dqMUSU^EutueusM!V*o9Yn;
+                        ";
+        static SqlConnection con;
         SqlDataReader read;
         SqlCommand query;
 
         public DataHandler()
         {
-            con = new SqlConnection(conStr);
-            con.Open();
+            if(con == null)
+            {
+                con = new SqlConnection(conStr);
+                con.Open();
+            }
         }
 
         public void Dispose()
         {            
             read.Close();
             query.Dispose();
-            con.Close();
+            //con.Close();
         }
 
-        public SqlDataReader Select(string table, string condition = "")
-        {                     
+        internal SqlDataReader select(string table, string condition = "")
+        {
             query = new SqlCommand("SELECT * FROM " + table + " " + condition, con);
             read = query.ExecuteReader();
 
             return read;
         }
 
-        public void Insert(string command)
+        internal SqlDataReader select(string command)
+        {
+            query = new SqlCommand(command, con);
+            read = query.ExecuteReader();
+
+            return read;
+        }
+
+        internal int insertID(string command)
+        {
+            query = new SqlCommand(command, con);
+            query.ExecuteNonQuery();
+
+            query = new SqlCommand("SELECT SCOPE_IDENTITY()", con);
+            return Convert.ToInt32(query.ExecuteScalar());
+        }
+
+        internal void insert(string command)
         {
             query = new SqlCommand(command, con);
             query.ExecuteNonQuery();
         }
 
-        public void Update(string command)
+        internal void update(string command)
         {
             query = new SqlCommand(command, con);
             query.ExecuteNonQuery();
         }
 
-        public void Delete(string table, string DeleteCondition)
+        internal void delete(string table, string DeleteCondition)
         {
-            query = new SqlCommand("DELETE FROM " + table + " " + DeleteCondition, con);
+            query = new SqlCommand("DELETE FROM " + table + " WHERE " + DeleteCondition, con);
             query.ExecuteNonQuery();
         }
     }

@@ -6,6 +6,6 @@ namespace data.layer.access
 {
     interface ICreate <T>
     {
-        void Create(T obj);
+        int Create(T obj);
     }
 }

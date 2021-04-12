@@ -17,7 +17,7 @@ namespace Data.Layer.Objects
         public string contactNum { get => _contactNum; set => _contactNum = value; }
         public int id { get => _id; set => _id = value; }
 
-        protected Client(List<ServiceContract> agreement, string address, string contactNum, int id)
+        protected Client(string contactNum)
         {
             this.agreement = agreement;
             this.address = address;

@@ -8,15 +8,13 @@ namespace Data.Layer.Objects
     {
         //Fields
         private string _businessName;
-        private int _id;
 
         //Properties
         public string businessName { get => _businessName; set => _businessName = value; }
-        public int id { get => _id; set => _id = value; }
 
         //Constructor
-        public BusinessClient(int id, List<ServiceContract> agreement, string address, string contactNum, string businessName) 
-                        : base(agreement ,address,contactNum,id)
+        public BusinessClient(string contactNum, string businessName) 
+                        : base(contactNum)
         {
             this.businessName = businessName;
         }

@@ -9,16 +9,14 @@ namespace Data.Layer.Objects
         //Fields
         private string _name;
         private string _surname;
-        private int _id;
 
         //Properties
         public string name { get => _name; set => _name = value; }
         public string surname { get => _surname; set => _surname = value; }
-        public int id { get => _id; set => _id = value; }
 
         //Constructor
-        public IndividualClient(int id, List<ServiceContract> agreement, string address, string contactNum, string name, string surname)
-                                : base(agreement ,address,contactNum,id) {
+        public IndividualClient(string contactNum, string name, string surname)
+                                : base(contactNum) {
             this.surname = name;
             this.name = surname;
             
@@ -44,7 +42,7 @@ namespace Data.Layer.Objects
 
         public override string ToString()
         {
-            return base.ToString();
+            return string.Format("IndividualClient({0}, {1}, {2}, {3})", id, name, surname, contactNum);
         }
         //Ruben De Beer
     }
