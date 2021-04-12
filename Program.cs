@@ -1,6 +1,7 @@
 ﻿using System;
 using Data.Layer.Objects;
 using data.layer.controller;
+using System.Collections.Generic;
 
 namespace sen381_t7_premier_service_solutions
 {
@@ -8,17 +9,24 @@ namespace sen381_t7_premier_service_solutions
     {
         static void Main(string[] args)
         {
-            IndividualClient ind = new IndividualClient("0829038430", "Piet", "Broos");
-            IndividualClientController cntr = new IndividualClientController();
-            ind.id = 17;
+            BusinessClient bus = new BusinessClient("078234825", "Busi");
+            BusinessClientController cntr = new BusinessClientController();
 
-            cntr.Delete(ind);
+            cntr.Create(bus);
+            Console.WriteLine("Business client created");
 
-            foreach (Client i in cntr.Read())
+            Employee emp = new Employee("Test", "Test", "Accountant", "0844353454");
+            bus.AddEmployee(emp);
+
+            Console.WriteLine("Employee created");
+
+            List<BusinessClient> clients = cntr.Read();
+
+            foreach (BusinessClient i in clients)
             {
-                Console.WriteLine(i.ToString());
+                Console.WriteLine(i.GetEmployees());
             }
-            
+
             Console.ReadLine();
         }
     }

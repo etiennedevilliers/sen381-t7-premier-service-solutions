@@ -28,13 +28,16 @@ namespace Data.Layer.Objects
         }
 
         public void Dispose()
-        {            
-            read.Close();
+        {
+            if (read != null)
+            {
+                read.Close();
+            }
             query.Dispose();
             //con.Close();
         }
 
-        internal SqlDataReader select(string table, string condition = "")
+        internal SqlDataReader Select(string table, string condition = "")
         {
             query = new SqlCommand("SELECT * FROM " + table + " " + condition, con);
             read = query.ExecuteReader();
@@ -42,7 +45,7 @@ namespace Data.Layer.Objects
             return read;
         }
 
-        internal SqlDataReader select(string command)
+        internal SqlDataReader Select(string command)
         {
             query = new SqlCommand(command, con);
             read = query.ExecuteReader();
@@ -50,7 +53,7 @@ namespace Data.Layer.Objects
             return read;
         }
 
-        internal int insertID(string command)
+        internal int InsertID(string command)
         {
             query = new SqlCommand(command, con);
             query.ExecuteNonQuery();
@@ -59,19 +62,19 @@ namespace Data.Layer.Objects
             return Convert.ToInt32(query.ExecuteScalar());
         }
 
-        internal void insert(string command)
+        internal void Insert(string command)
         {
             query = new SqlCommand(command, con);
             query.ExecuteNonQuery();
         }
 
-        internal void update(string command)
+        internal void Update(string command)
         {
             query = new SqlCommand(command, con);
             query.ExecuteNonQuery();
         }
 
-        internal void delete(string table, string DeleteCondition)
+        internal void Delete(string table, string DeleteCondition)
         {
             query = new SqlCommand("DELETE FROM " + table + " WHERE " + DeleteCondition, con);
             query.ExecuteNonQuery();

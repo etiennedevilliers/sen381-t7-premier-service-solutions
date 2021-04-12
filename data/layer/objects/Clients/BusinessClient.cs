@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using data.layer.controller;
 
 namespace Data.Layer.Objects
 {
@@ -8,6 +9,7 @@ namespace Data.Layer.Objects
     {
         //Fields
         private string _businessName;
+        public List<Employee> employees;
 
         //Properties
         public string businessName { get => _businessName; set => _businessName = value; }
@@ -18,7 +20,18 @@ namespace Data.Layer.Objects
         {
             this.businessName = businessName;
         }
-   
+
+        public void AddEmployee(Employee emp){
+            EmployeeController empContr = new EmployeeController(this);
+            empContr.Create(emp);
+        }
+
+        public List<Employee> GetEmployees()
+        {
+            EmployeeController empContr = new EmployeeController(this);
+            return empContr.Read();
+        }
+ 
         public override bool Equals(object obj)
         {
             if ((obj == null) || !this.GetType().Equals(obj.GetType()))
@@ -39,7 +52,7 @@ namespace Data.Layer.Objects
 
         public override string ToString()
         {
-            return base.ToString();
+            return string.Format("BusinessClient({0}, {1}, {2})", id, businessName, contactNum);
         }
         //Ruben De Beer
     }

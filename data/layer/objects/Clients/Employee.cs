@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace sen381_t7_premier_service_solutions.data.layer.objects.Clients
+namespace Data.Layer.Objects
 {
-    class Employee
+    public class Employee
     {
-
         private string _name;
         private string _surname;
         private string _role;
@@ -19,13 +18,12 @@ namespace sen381_t7_premier_service_solutions.data.layer.objects.Clients
         public string contactNum { get => _contactNum; set => _contactNum = value; }
         public int id { get => _id; set => _id = value; }
 
-        public Employee(string name, string surname, string role, string contactNum, int id)
+        public Employee(string name, string surname, string role, string contactNum)
         {
             this.name = name;
             this.surname = surname;
             this.role = role;
             this.contactNum = contactNum;
-            this.id = id;      
         }
 
         public override bool Equals(object obj)
@@ -48,10 +46,8 @@ namespace sen381_t7_premier_service_solutions.data.layer.objects.Clients
 
         public override string ToString()
         {
-            return base.ToString();
+            return string.Format("Employee({0}, {1}, {2}, {3})", id, name, surname, contactNum);
         }
         //Ruben De Beer
-
-
     }
 }

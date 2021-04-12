@@ -7,29 +7,35 @@ using System.Data.SqlClient;
 
 namespace data.layer.controller
 {
-    class IndividualClientController : DataHandler, ICreate<IndividualClient>, IRead<IndividualClient>, IUpdate<IndividualClient>, IDelete<IndividualClient>
+    class IndividualClientController : ICreate<IndividualClient>, IRead<IndividualClient>, IUpdate<IndividualClient>, IDelete<IndividualClient>
     {
         public int Create(IndividualClient obj)
         {
+            DataHandler dh = new DataHandler();
+
             ClientController cl = new ClientController();
             obj.id = cl.Create(obj);
 
-            insert("INSERT INTO IndividualClient(IndividualClientID, name, surname) VALUES (" + obj.id + ", '" + obj.name + "', '" + obj.surname + "')");
+            dh.Insert("INSERT INTO IndividualClient(IndividualClientID, name, surname) VALUES (" + obj.id + ", '" + obj.name + "', '" + obj.surname + "')");
 
             return obj.id;
         }
 
         public void Delete(IndividualClient obj)
         {
-            delete("IndividualClient", "IndividualClientID = " + obj.id.ToString());
+            DataHandler dh = new DataHandler();
+
+            dh.Delete("IndividualClient", "IndividualClientID = " + obj.id.ToString());
             ClientController cl = new ClientController();
             cl.Delete(obj);
         }
 
         public List<IndividualClient> Read()
         {
+            DataHandler dh = new DataHandler();
+
             List<IndividualClient> indList = new List<IndividualClient>();
-            SqlDataReader read = select("SELECT IC.IndividualClientID, name, surname, contactNum FROM dbo.IndividualClient AS IC LEFT JOIN dbo.Client AS C ON C.ClientID = IC.IndividualClientID");
+            SqlDataReader read = dh.Select("SELECT IC.IndividualClientID, name, surname, contactNum FROM dbo.IndividualClient AS IC LEFT JOIN dbo.Client AS C ON C.ClientID = IC.IndividualClientID");
             IndividualClient newCl;
 
             if (read.HasRows)
@@ -53,7 +59,9 @@ namespace data.layer.controller
 
         public void Update(IndividualClient obj)
         {
-            update(string.Format("UPDATE dbo.IndividualClient SET name = '{0}', surname = '{1}' WHERE IndividualClientID = {2}", obj.name, obj.surname, obj.id));
+            DataHandler dh = new DataHandler();
+
+            dh.Update(string.Format("UPDATE dbo.IndividualClient SET name = '{0}', surname = '{1}' WHERE IndividualClientID = {2}", obj.name, obj.surname, obj.id));
             ClientController cl = new ClientController();
             cl.Update(obj);
         }
