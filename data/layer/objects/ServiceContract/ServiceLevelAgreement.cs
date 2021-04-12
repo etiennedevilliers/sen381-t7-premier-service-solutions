@@ -4,39 +4,38 @@ using System.Text;
 
 namespace Data.Layer.Objects
 {
-    public class Service
+    public class ServiceLevelAgreement
     {
         //Fields
-        private int ID;
-        private string description;
-        private DateTime duration;
-
-
-        //Custom Contructor
-        public Service(int ID, string service_description, DateTime duration)
+        public int id;
+        public string description;
+ 
+        //Custom COnstructor
+        public ServiceLevelAgreement(int ID, string description)
         {
-            this.ID = ID;
-            this.description = service_description;
-            this.duration = duration;
+            this.id = ID;
+            this.description = description;
         }
-
+          
         public override bool Equals(object obj)
         {
+
             if ((obj == null) || !this.GetType().Equals(obj.GetType()))
             {
                 return false;
             }
             else
             {
-                Service p = (Service)obj;
-                return p.ID.Equals(this.ID);
+                ServiceLevelAgreement p = (ServiceLevelAgreement)obj;
+                return p.id.Equals(this.id);
             }
+
         }
 
         public override int GetHashCode()
         {
-            return this.ID;
-        }
+            return this.id;
+        } 
 
         public override string ToString()
         {

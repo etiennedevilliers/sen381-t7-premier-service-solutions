@@ -9,22 +9,18 @@ namespace Data.Layer.Objects
         //Fields 
         private int ID;
         private List<Service> services;
-        private string package_name;
-        private string package_decription;
+        private string name;
+        private string decription;
 
-        //Properties 
-        public int ID1 { get => ID; }
-        public string Package_name { get => package_name; set => package_name = value; }
-        public string Package_decription { get => package_decription; set => package_decription = value; }
-        internal List<Service> Services { get => services; set => services = value; }
+
 
         //Custom Constructor 
-        public Package(int ID , string Package_Name,string Package_Description, List<Service> Services1)
+        public Package(int ID , string Name,string Description, List<Service> Services)
         {
             this.ID = ID;
-            this.Services = Services1;
-            this.Package_name = Package_Name;
-            this.Package_decription = Package_Description;
+            this.services = Services;
+            this.name = Name;
+            this.decription = Description;
         }
 
         public override bool Equals(object obj)

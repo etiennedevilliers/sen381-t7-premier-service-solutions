@@ -4,18 +4,15 @@ using System.Text;
 
 namespace Data.Layer.Objects
 {
-    public class Business_Client : Client
+    public class BusinessClient : Client
     {
         //Fields
-        private string business_name;
+        public string businessName;
 
-        //Properties
-        public string Business_name { get => business_name; set => business_name = value; }
-
-        public Business_Client(List<Service_Contract> agreement, string address, string primary_contact_cell_number, string Business_name) 
-                        : base(agreement, address, primary_contact_cell_number)
+        public BusinessClient(int ID, List<Service_Contract> agreement, string address, string contactNum, string businessName) 
+                        : base(ID, agreement, address, contactNum)
         {
-            business_name = Business_name;
+            this.businessName = businessName;
         }
 
         public override bool Equals(object obj)
@@ -26,7 +23,7 @@ namespace Data.Layer.Objects
             }
             else
             {
-                Business_Client p = (Business_Client)obj;
+                BusinessClient p = (BusinessClient)obj;
                 return p.ID.Equals(this.ID);
             }
         }
