@@ -13,7 +13,11 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            return dh.InsertID("INSERT INTO Client(contactNum) VALUES ('" + obj.contactNum + "')");
+            int ID = dh.InsertID("INSERT INTO Client(contactNum) VALUES ('" + obj.contactNum + "')");
+
+            dh.Dispose();
+
+            return ID;
         }
 
         public void Delete(Client obj)
@@ -21,6 +25,8 @@ namespace data.layer.controller
             DataHandler dh = new DataHandler();
 
             dh.Delete("Client", "ClientID = " + obj.id.ToString());
+
+            dh.Dispose();
         }
 
         public void Update(Client obj)
@@ -28,6 +34,8 @@ namespace data.layer.controller
             DataHandler dh = new DataHandler();
 
             dh.Update(string.Format("UPDATE dbo.Client SET contactNum = '{0}' WHERE ClientID = {1}", obj.contactNum, obj.id));
+
+            dh.Dispose();
         }
     }
 }

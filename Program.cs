@@ -12,19 +12,16 @@ namespace sen381_t7_premier_service_solutions
             BusinessClient bus = new BusinessClient("078234825", "Busi");
             BusinessClientController cntr = new BusinessClientController();
 
-            cntr.Create(bus);
-            Console.WriteLine("Business client created");
-
-            Employee emp = new Employee("Test", "Test", "Accountant", "0844353454");
-            bus.AddEmployee(emp);
-
-            Console.WriteLine("Employee created");
-
             List<BusinessClient> clients = cntr.Read();
 
             foreach (BusinessClient i in clients)
             {
-                Console.WriteLine(i.GetEmployees());
+                Console.WriteLine(i);
+                foreach (Employee e in i.GetEmployees()) 
+                {
+                    Console.WriteLine(string.Format("\t-{0}", e));
+                }
+                
             }
 
             Console.ReadLine();

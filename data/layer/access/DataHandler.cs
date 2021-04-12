@@ -33,7 +33,11 @@ namespace Data.Layer.Objects
             {
                 read.Close();
             }
-            query.Dispose();
+            if (query != null)
+            {
+                query.Dispose();
+            }
+            
             //con.Close();
         }
 

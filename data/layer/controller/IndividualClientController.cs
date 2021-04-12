@@ -17,7 +17,9 @@ namespace data.layer.controller
             obj.id = cl.Create(obj);
 
             dh.Insert("INSERT INTO IndividualClient(IndividualClientID, name, surname) VALUES (" + obj.id + ", '" + obj.name + "', '" + obj.surname + "')");
-
+            
+            dh.Dispose();
+            
             return obj.id;
         }
 
@@ -28,6 +30,8 @@ namespace data.layer.controller
             dh.Delete("IndividualClient", "IndividualClientID = " + obj.id.ToString());
             ClientController cl = new ClientController();
             cl.Delete(obj);
+
+            dh.Dispose();
         }
 
         public List<IndividualClient> Read()
@@ -54,6 +58,8 @@ namespace data.layer.controller
                 }
             }
 
+            dh.Dispose();
+
             return indList;
         }
 
@@ -64,6 +70,8 @@ namespace data.layer.controller
             dh.Update(string.Format("UPDATE dbo.IndividualClient SET name = '{0}', surname = '{1}' WHERE IndividualClientID = {2}", obj.name, obj.surname, obj.id));
             ClientController cl = new ClientController();
             cl.Update(obj);
+
+            dh.Dispose();
         }
     }
 }

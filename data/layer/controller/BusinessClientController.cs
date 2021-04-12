@@ -18,6 +18,8 @@ namespace data.layer.controller
 
             dh.Insert("INSERT INTO BusinessClient(BusinessClientID, name) VALUES (" + obj.id + ", '" + obj.businessName + "')");
 
+            dh.Dispose();
+
             return obj.id;
         }
 
@@ -28,6 +30,8 @@ namespace data.layer.controller
             dh.Delete("BusinessClient", "BusinessClientID = " + obj.id.ToString());
             ClientController cl = new ClientController();
             cl.Delete(obj);
+
+            dh.Dispose();
         }
 
         public List<BusinessClient> Read()
@@ -52,7 +56,7 @@ namespace data.layer.controller
                     indList.Add(newCl);
                 }
             }
-
+            dh.Dispose();
             return indList;
         }
 
@@ -63,6 +67,8 @@ namespace data.layer.controller
             dh.Update(string.Format("UPDATE dbo.BusinessClient SET name = '{0}' WHERE BusinessClientID = {1}", obj.businessName, obj.id));
             ClientController cl = new ClientController();
             cl.Update(obj);
+
+            dh.Dispose();
         }
     }
 }
