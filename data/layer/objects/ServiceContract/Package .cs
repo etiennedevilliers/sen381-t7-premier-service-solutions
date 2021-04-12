@@ -7,22 +7,29 @@ namespace Data.Layer.Objects
     public class Package
     {
         //Fields 
-        private int ID;
-        private List<Service> services;
-        private string name;
-        private string decription;
+        private int _id;
+        private Service _service;
+        private string _name;
+        private string _decription;
+        private ServiceLevelAgreement _sla;
 
-
+        public int id { get => _id; set => _id = value; }
+        public Service service { get => _service; set => _service = value; }
+        public string name { get => _name; set => _name = value; }
+        public string decription { get => _decription; set => _decription = value; }
+        public ServiceLevelAgreement sla { get => _sla; set => _sla = value; }
 
         //Custom Constructor 
-        public Package(int ID , string Name,string Description, List<Service> Services)
+        public Package(int ID , string Name,string Description, Service Services,ServiceLevelAgreement sla)
         {
-            this.ID = ID;
-            this.services = Services;
+            this.id = ID;
+            this.service = Services;
             this.name = Name;
             this.decription = Description;
+            this.sla = sla;
         }
 
+       
         public override bool Equals(object obj)
         {
 
@@ -33,19 +40,20 @@ namespace Data.Layer.Objects
             else
             {
                 Package p = (Package)obj;
-                return p.ID.Equals(this.ID);
+                return p.id.Equals(this._id);
             }
         }
 
         public override int GetHashCode()
         {
-            return this.ID;
+            return this.id;
         }
 
         public override string ToString()
         {
             return base.ToString();
         }
+        //Ruben De Beer
 
     }
 }

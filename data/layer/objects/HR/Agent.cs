@@ -4,41 +4,28 @@ using System.Text;
 
 namespace Data.Layer.Objects
 {
-    
     public class Agent 
     {
-        public enum EmploymentStatus {
-            employed,
-            unemployed
-        }
+        private int _id;
+        private string _name;
+        private string _contactNum;
+        private string _employmentStatus;
+        private string _employeeType;
 
-        public enum EmployeeType {
-            Technician,
-            CallCentre,
-            ClientMaintenance,
-            ContractMaintenance,
-            ServiceDepartment,
-            ClientSatisfaction
-        }
+        public int id { get => _id; set => _id = value; }
+        public string name { get => _name; set => _name = value; }
+        public string contactNum { get => _contactNum; set => _contactNum = value; }
+        public string employmentStatus { get => _employmentStatus; set => _employmentStatus = value; }
+        public string employeeType { get => _employeeType; set => _employeeType = value; }
 
-        public int ID;
-
-        public String name;
-
-        public String surname;
-        public String primaryContact;
-
-        public EmployeeType employeeType;
-        public EmploymentStatus employmentStatus;
-
-        public Agent (int ID, String name, String surname, String primaryContact,EmployeeType employeeType, EmploymentStatus employmentStatus) {
-            this.ID = ID;
+        public Agent(int id, string name, string contactNum, string employmentStatus, string employeeType)
+        {
+            this.id = id;
             this.name = name;
-            this.surname = surname;
-            this.primaryContact = primaryContact;
-            this.employeeType = employeeType;
+            this.contactNum = contactNum;
             this.employmentStatus = employmentStatus;
-        }  
+            this.employeeType = employeeType;
+        }
 
         public override bool Equals(Object obj)
         {
@@ -49,19 +36,19 @@ namespace Data.Layer.Objects
             }
             else {
                 Agent p = (Agent) obj;
-                return p.ID.Equals(this.ID);
+                return p.id.Equals(this._id);
             }
         }
 
         public override int GetHashCode()
         {
-            return this.ID;
+            return this._id;
         }
 
         public override string ToString()
         {
             return base.ToString();
         }
-
+        //Ruben De Beer
     }
 }

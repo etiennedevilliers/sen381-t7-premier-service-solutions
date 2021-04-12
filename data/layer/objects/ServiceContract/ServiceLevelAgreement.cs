@@ -7,13 +7,16 @@ namespace Data.Layer.Objects
     public class ServiceLevelAgreement
     {
         //Fields
-        public int id;
-        public string description;
- 
+        private int _id;
+        private string _description;
+
+        public int id { get => id; set => id = value; }
+        public string description { get => description; set => description = value; }
+
         //Custom COnstructor
         public ServiceLevelAgreement(int ID, string description)
         {
-            this.id = ID;
+            this.id = ID; 
             this.description = description;
         }
           
@@ -27,7 +30,7 @@ namespace Data.Layer.Objects
             else
             {
                 ServiceLevelAgreement p = (ServiceLevelAgreement)obj;
-                return p.id.Equals(this.id);
+                return p.id.Equals(this._id);
             }
 
         }
@@ -41,6 +44,6 @@ namespace Data.Layer.Objects
         {
             return base.ToString();
         }
-
+        //Ruben De Beer
     }
 }

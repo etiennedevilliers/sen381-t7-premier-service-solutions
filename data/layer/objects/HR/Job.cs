@@ -7,7 +7,7 @@ namespace Data.Layer.Objects
     
     public class Job
     {
-        public Service_Request serviceRequest;
+        public ServiceRequest serviceRequest;
 
         public Client client;
 
@@ -18,7 +18,7 @@ namespace Data.Layer.Objects
         public int ID;
         
 
-        public Job (int ID, Technician technician, DateTime dtStarted, DateTime dtEnded, Client client, Service_Request serviceRequest) {
+        public Job (int ID, Technician technician, DateTime dtStarted, DateTime dtEnded, Client client, ServiceRequest serviceRequest) {
             this.technician = technician;
             this.dtStarted = dtStarted;
             this.dtEnded = dtEnded;
