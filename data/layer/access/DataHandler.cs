@@ -41,7 +41,7 @@ namespace Data.Layer.Objects
             //con.Close();
         }
 
-        internal SqlDataReader Select(string table, string condition = "")
+        internal SqlDataReader SelectSimple(string table, string condition = "")
         {
             query = new SqlCommand("SELECT * FROM " + table + " " + condition, con);
             read = query.ExecuteReader();

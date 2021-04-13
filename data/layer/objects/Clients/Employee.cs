@@ -6,18 +6,21 @@ namespace Data.Layer.Objects
 {
     public class Employee
     {
+        //Fields
+        private int _id;
         private string _name;
         private string _surname;
         private string _role;
         private string _contactNum;
-        private int _id;
 
+        //Properties
+        public int id { get => _id; set => _id = value; }
         public string name { get => _name; set => _name = value; }
         public string surname { get => _surname; set => _surname = value; }
         public string role { get => _role; set => _role = value; }
         public string contactNum { get => _contactNum; set => _contactNum = value; }
-        public int id { get => _id; set => _id = value; }
 
+        //Constructor
         public Employee(string name, string surname, string role, string contactNum)
         {
             this.name = name;
@@ -26,6 +29,7 @@ namespace Data.Layer.Objects
             this.contactNum = contactNum;
         }
 
+        //Standard Methods
         public override bool Equals(object obj)
         {
             if ((obj == null) || !this.GetType().Equals(obj.GetType()))
@@ -48,6 +52,5 @@ namespace Data.Layer.Objects
         {
             return string.Format("Employee({0}, {1}, {2}, {3})", id, name, surname, contactNum);
         }
-        //Ruben De Beer
     }
 }

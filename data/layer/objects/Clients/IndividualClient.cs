@@ -19,31 +19,12 @@ namespace Data.Layer.Objects
                                 : base(contactNum) {
             this.surname = name;
             this.name = surname;
-            
         }
 
-        public override bool Equals(object obj)
-        {
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
-            {
-                return false;
-            }
-            else
-            {
-                IndividualClient p = (IndividualClient)obj;
-                return p.id.Equals(this._id);
-            }
-        }
-
-        public override int GetHashCode()
-        {
-            return this.id;
-        }
-
+        //Standards Methods
         public override string ToString()
         {
             return string.Format("IndividualClient({0}, {1}, {2}, {3})", id, name, surname, contactNum);
         }
-        //Ruben De Beer
     }
 }

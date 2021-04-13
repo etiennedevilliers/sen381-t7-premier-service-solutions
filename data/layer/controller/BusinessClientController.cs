@@ -16,7 +16,7 @@ namespace data.layer.controller
             ClientController cl = new ClientController();
             obj.id = cl.Create(obj);
 
-            dh.Insert("INSERT INTO BusinessClient(BusinessClientID, name) VALUES (" + obj.id + ", '" + obj.businessName + "')");
+            dh.Insert("INSERT INTO BusinessClient(BusinessClientID, name) VALUES (" + obj.id + ", '" + obj.name + "')");
 
             dh.Dispose();
 
@@ -39,7 +39,9 @@ namespace data.layer.controller
             DataHandler dh = new DataHandler();
 
             List<BusinessClient> indList = new List<BusinessClient>();
-            SqlDataReader read = dh.Select("SELECT IC.BusinessClientID, name, contactNum FROM dbo.BusinessClient AS IC LEFT JOIN dbo.Client AS C ON C.ClientID = IC.BusinessClientID");
+            SqlDataReader read = dh.Select("SELECT BC.BusinessClientID, name, contactNum" +
+                "FROM dbo.BusinessClient AS BC" +
+                "LEFT JOIN dbo.Client AS C ON C.ClientID = BC.BusinessClientID");
             BusinessClient newCl;
 
             if (read.HasRows)
@@ -64,7 +66,7 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Update(string.Format("UPDATE dbo.BusinessClient SET name = '{0}' WHERE BusinessClientID = {1}", obj.businessName, obj.id));
+            dh.Update(string.Format("UPDATE dbo.BusinessClient SET name = '{0}' WHERE BusinessClientID = {1}", obj.name, obj.id));
             ClientController cl = new ClientController();
             cl.Update(obj);
 

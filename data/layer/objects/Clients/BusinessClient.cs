@@ -8,52 +8,36 @@ namespace Data.Layer.Objects
     public class BusinessClient : Client
     {
         //Fields
-        private string _businessName;
-        public List<Employee> employees;
+        private string _name;
 
         //Properties
-        public string businessName { get => _businessName; set => _businessName = value; }
-
-        //Constructor
-        public BusinessClient(string contactNum, string businessName) 
-                        : base(contactNum)
+        public string name { get => _name; set => _name = value; }
+        public List<Employee> employees
         {
-            this.businessName = businessName;
+            get
+            {
+                EmployeeController emp = new EmployeeController(this);
+                return emp.Read();
+            }
         }
 
+        //Constructor
+        public BusinessClient(string contactNum, string name)
+                        : base(contactNum)
+        {
+            this.name = name;
+        }
+
+        //Employee Methods
         public void AddEmployee(Employee emp){
             EmployeeController empContr = new EmployeeController(this);
             empContr.Create(emp);
         }
-
-        public List<Employee> GetEmployees()
-        {
-            EmployeeController empContr = new EmployeeController(this);
-            return empContr.Read();
-        }
  
-        public override bool Equals(object obj)
-        {
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
-            {
-                return false;
-            }
-            else
-            {
-                BusinessClient p = (BusinessClient)obj;
-                return p.id.Equals(this._id);
-            }
-        }
-
-        public override int GetHashCode()
-        {
-            return this.id;
-        }
-
+        //Standard Methods
         public override string ToString()
         {
-            return string.Format("BusinessClient({0}, {1}, {2})", id, businessName, contactNum);
+            return string.Format("BusinessClient({0}, {1}, {2})", id, name, contactNum);
         }
-        //Ruben De Beer
     }
 }
