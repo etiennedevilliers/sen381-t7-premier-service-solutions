@@ -43,7 +43,7 @@ namespace sen381_t7_premier_service_solutions
             foreach (BusinessClient i in clients)
             {
                 Console.WriteLine(i);
-                foreach (Employee e in i.GetEmployees())
+                foreach (Employee e in i.employees)
                 {
                     Console.WriteLine(string.Format("\t-{0}", e));
                 }
