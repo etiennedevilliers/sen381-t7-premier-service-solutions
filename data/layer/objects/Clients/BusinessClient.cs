@@ -1,48 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using data.layer.controller;
 
 namespace Data.Layer.Objects
 {
     public class BusinessClient : Client
     {
         //Fields
-        private string _businessName;
-        private int _id;
+        private string _name;
 
         //Properties
-        public string businessName { get => _businessName; set => _businessName = value; }
-        public int id { get => _id; set => _id = value; }
+        public string name { get => _name; set => _name = value; }
+        public List<Employee> employees
+        {
+            get
+            {
+                EmployeeController emp = new EmployeeController(this);
+                return emp.Read();
+            }
+        }
 
         //Constructor
-        public BusinessClient(int id, List<ServiceContract> agreement, string address, string contactNum, string businessName) 
-                        : base(agreement ,address,contactNum,id)
+        public BusinessClient(string contactNum, string name)
+                        : base(contactNum)
         {
-            this.businessName = businessName;
-        }
-   
-        public override bool Equals(object obj)
-        {
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
-            {
-                return false;
-            }
-            else
-            {
-                BusinessClient p = (BusinessClient)obj;
-                return p.id.Equals(this._id);
-            }
+            this.name = name;
         }
 
-        public override int GetHashCode()
-        {
-            return this.id;
+        //Employee Methods
+        public void AddEmployee(Employee emp){
+            EmployeeController empContr = new EmployeeController(this);
+            empContr.Create(emp);
         }
-
+ 
+        //Standard Methods
         public override string ToString()
         {
-            return base.ToString();
+            return string.Format("BusinessClient({0}, {1}, {2})", id, name, contactNum);
         }
-        //Ruben De Beer
     }
 }

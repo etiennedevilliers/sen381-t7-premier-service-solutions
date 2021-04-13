@@ -1,31 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using data.layer.controller;
 
 namespace Data.Layer.Objects
 {
     public abstract class Client
     {
-
-        protected List<ServiceContract> _agreement;
-        protected string _address;
-        protected string _contactNum;
+        //Fields
         protected int _id;
+        protected List<ServiceContract> _contracts;        
+        protected string _contactNum;
 
-        public List<ServiceContract> agreement { get => _agreement; set => _agreement = value; }
-        public string address { get => _address; set => _address = value; }
-        public string contactNum { get => _contactNum; set => _contactNum = value; }
+        //Properties
         public int id { get => _id; set => _id = value; }
-
-        protected Client(List<ServiceContract> agreement, string address, string contactNum, int id)
+        public List<ServiceContract> contracts { get => _contracts; set => _contracts = value; }
+        public List<Address> addresses
         {
-            this.agreement = agreement;
-            this.address = address;
+            get
+            {
+                AddressController adr = new AddressController(this);
+                return adr.Read();
+            }
+        }
+        public string contactNum { get => _contactNum; set => _contactNum = value; }
+
+        //Constructor
+        protected Client(string contactNum)
+        {
             this.contactNum = contactNum;
-            this.id = id;
         }
 
-        //Standard methods in a class
+        //Address Methods
+        public void AddAddress(Address adr)
+        {
+            AddressController adrContr = new AddressController(this);
+            adrContr.Create(adr);
+        }
+
+        //Standard Methods
         public override bool Equals(Object obj)
         {
             //Check for null and compare run-time types.
@@ -49,6 +62,5 @@ namespace Data.Layer.Objects
         {
             return base.ToString();
         }
-        //Ruben De Beer
     }
 }

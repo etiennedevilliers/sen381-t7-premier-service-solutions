@@ -9,8 +9,8 @@ namespace Data.Layer.Objects
     {
         public List<ServiceContract> serviceContracts;
 
-        public SalesRequest(int ID, DateTime dtCreated, DateTime dtResolved, List<ServiceContract> serviceContracts) 
-                                                                                     : base(ID, dtCreated, dtResolved) {
+        public SalesRequest(DateTime dtCreated, DateTime dtResolved, CallLog call, List<ServiceContract> serviceContracts) 
+                                                                                     : base(dtCreated, dtResolved, call) {
             this.serviceContracts = serviceContracts;
         }
         //Ruben De Beer
