@@ -10,7 +10,6 @@ namespace Data.Layer.Objects
         private ServiceContract _serviceContract;
         private string _description;
         private DateTime _jobStarted;
-        private int _id;
 
         public ServiceContract serviceContract { get => _serviceContract; set => _serviceContract = value; }
         public string description { get => _description; set => _description = value; }

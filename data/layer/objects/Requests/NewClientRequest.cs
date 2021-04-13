@@ -7,10 +7,9 @@ namespace Data.Layer.Objects
     
     public abstract class NewClientRequest : Request
     {
-        private Client client;
 
-        public NewClientRequest(int id, DateTime dateCreated, DateTime dateResolved, Client client) : base(id, dateCreated, dateResolved) {
-            this.client = client;
+        public NewClientRequest(int id, DateTime dateCreated, DateTime dateResolved) : base(id, dateCreated, dateResolved) {
+
         }
 
         public override string ToString()
