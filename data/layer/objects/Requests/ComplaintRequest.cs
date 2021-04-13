@@ -17,7 +17,7 @@ namespace Data.Layer.Objects
 
 
 
-        public ComplaintRequest(int ID, DateTime dtCreated, DateTime dtResolved, String desc) : base(ID, dtCreated, dtResolved) {
+        public ComplaintRequest(DateTime dtCreated, DateTime dtResolved, CallLog call, String desc) : base(dtCreated, dtResolved, call) {
             this.description = desc;
         }
 

@@ -25,14 +25,14 @@ namespace Data.Layer.Objects
         public string contactNum { get => _contactNum; set => _contactNum = value; }
         public Client client { get => _client; set => _client = value; }
         public List<Agent> handler { get => _handler; set => _handler = value; }
-        public int id { get => _id; }
+        public int id { get => _id; set => _id = value; }
 
         //Constrcuctor
-        protected Request(int id, DateTime dateCreated, DateTime dateResolved)
+        protected Request(DateTime dateCreated, DateTime dateResolved, CallLog call)
         {
-            this._id = id;
             this.dateCreated = dateCreated;
             this.dateResolved = dateResolved;
+            this.call = call;
         }
 
         //Standard methods in a class

@@ -15,8 +15,8 @@ namespace Data.Layer.Objects
         public string description { get => _description; set => _description = value; }
         public DateTime jobStarted { get => _jobStarted; set => _jobStarted = value; }
 
-        public ServiceRequest(int ID, DateTime dtCreated, DateTime dtResolved, string desc, DateTime Jobstarted, ServiceContract serviceContract) 
-                                                              : base(ID, dtCreated, dtResolved) {
+        public ServiceRequest(DateTime dtCreated, DateTime dtResolved, CallLog call, string desc, DateTime Jobstarted, ServiceContract serviceContract)
+                                                              : base(dtCreated, dtResolved, call) {
             description = desc;
             this.jobStarted = Jobstarted;
             this.serviceContract = serviceContract;

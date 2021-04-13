@@ -5,16 +5,21 @@ using System.Text;
 namespace Data.Layer.Objects
 {
     
-    public abstract class NewClientRequest : Request
+    public class NewClientRequest : Request
     {
 
-        public NewClientRequest(int id, DateTime dateCreated, DateTime dateResolved) : base(id, dateCreated, dateResolved) {
+        public NewClientRequest(DateTime dateCreated, DateTime dateResolved, CallLog call) : base(dateCreated, dateResolved, call) {
 
+        }
+
+        public override void Schedule()
+        {
+            throw new NotImplementedException();
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            return String.Format("NewClientRequest({0}, {1}, {2}, ...)", dateCreated, dateResolved, call);
         }
 
     }

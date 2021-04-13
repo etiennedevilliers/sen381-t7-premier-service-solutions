@@ -19,7 +19,7 @@ namespace Data.Layer.Objects
         public DateTime timeEnded { get => _timeEnded; set => _timeEnded = value; }
         public Agent representative { get => _representative; set => _representative = value; }
         public bool incoming { get => _incoming; set => _incoming = value; }
-        public int id { get => _id; }
+        public int id { get => _id; set => _id = value; }
 
         //Constrcutors
         public CallLog(DateTime timeStarted, DateTime timeEnded, bool incoming)

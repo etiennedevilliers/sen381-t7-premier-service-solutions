@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace data.layer.controller
 {
-    class CallLogController : ICreate<CallLog>, IRead<CallLog>, IUpdate<CallLog>, IDelete<CallLog>
+    class CallLogController : ICreate<CallLog>, IRead<CallLog>, IUpdate<CallLog>, IDelete<CallLog>, IReadSpecific<CallLog>
     {
         public int Create(CallLog obj)
         {
@@ -20,13 +20,11 @@ namespace data.layer.controller
                 obj.incoming ? 1 : 0
             );
 
-            Console.WriteLine(query);
-
-            int ID = dh.InsertID(query);
+            obj.id = dh.InsertID(query);
 
             dh.Dispose();
 
-            return ID;
+            return obj.id;
         }
 
         public void Delete(CallLog obj)
@@ -63,6 +61,34 @@ namespace data.layer.controller
             dh.Dispose();
             return callLogs;
         }
+
+        public CallLog ReadSpecific(int ID)
+        {
+            DataHandler dh = new DataHandler();
+
+            SqlDataReader read = dh.Select(string.Format(
+                "SELECT C.CallID, C.timeStarted, C.timeEnded, C.incoming FROM CallLog AS C  WHERE C.CallID = {0}",
+                ID
+            ));
+            CallLog callLog = null;
+
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+                    callLog = new CallLog(
+                        read.GetInt32(0),
+                        read.GetDateTime(1),
+                        read.GetDateTime(2),
+                        read.GetBoolean(3)
+                    );
+                }
+            }
+            dh.Dispose();
+
+            return callLog;
+        }
+
 
         public void Update(CallLog obj)
         {
