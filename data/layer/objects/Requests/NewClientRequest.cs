@@ -5,38 +5,21 @@ using System.Text;
 namespace Data.Layer.Objects
 {
     
-    public abstract class NewClientRequest : Request
+    public class NewClientRequest : Request
     {
-        private Client client;
-        private int _id;
 
-        public NewClientRequest(int _id, DateTime _dateCreated, DateTime _dateResolved, Client client) : base(_id, _dateCreated, _dateResolved) {
-            this.client = client;
+        public NewClientRequest(DateTime dateCreated, DateTime dateResolved, CallLog call) : base(dateCreated, dateResolved, call) {
+
         }
 
-        //Standard Classes
-        public override bool Equals(Object obj)
+        public override void Schedule()
         {
-            //Check for null and compare run-time types.
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
-            {
-                return false;
-            }
-            else
-            {
-                NewClientRequest p = (NewClientRequest)obj;
-                return p.id.Equals(this._id);
-            }
-        }
-
-        public override int GetHashCode()
-        {
-            return this._id;
+            throw new NotImplementedException();
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            return String.Format("NewClientRequest({0}, {1}, {2}, ...)", dateCreated, dateResolved, call);
         }
 
     }

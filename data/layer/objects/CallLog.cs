@@ -21,14 +21,22 @@ namespace Data.Layer.Objects
         public bool incoming { get => _incoming; set => _incoming = value; }
         public int id { get => _id; set => _id = value; }
 
-        //Constrcutor
-        public CallLog(DateTime timeStarted, DateTime timeEnded, Agent representative, bool incoming, int Id)
+        //Constrcutors
+        public CallLog(DateTime timeStarted, DateTime timeEnded, bool incoming)
         {
             this.timeStarted = timeStarted;
             this.timeEnded = timeEnded;
             this.representative = representative;
             this.incoming = incoming;
-            this.id = Id;
+        }
+
+        public CallLog(int ID, DateTime timeStarted, DateTime timeEnded, bool incoming)
+        {
+            this.timeStarted = timeStarted;
+            this.timeEnded = timeEnded;
+            this.representative = representative;
+            this.incoming = incoming;
+            this._id = ID;
         }
 
         //Standard Classes
@@ -53,19 +61,8 @@ namespace Data.Layer.Objects
 
         public override string ToString()
         {
-            return base.ToString();
+            return String.Format("CallLog({0}, {1}, {2}, {3}, {4})", id, timeStarted, timeEnded, representative, incoming);
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 }
  

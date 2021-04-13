@@ -28,11 +28,11 @@ namespace Data.Layer.Objects
         public int id { get => _id; set => _id = value; }
 
         //Constrcuctor
-        protected Request(int id, DateTime dateCreated, DateTime dateResolved)
+        protected Request(DateTime dateCreated, DateTime dateResolved, CallLog call)
         {
-            id = id;
-            dateCreated = dateCreated;
-            dateResolved = dateResolved;
+            this.dateCreated = dateCreated;
+            this.dateResolved = dateResolved;
+            this.call = call;
         }
 
         //Standard methods in a class
