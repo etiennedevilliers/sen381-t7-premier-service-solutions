@@ -26,8 +26,19 @@ namespace sen381_t7_premier_service_solutions
             Console.WriteLine("Creating newClientRequest");
             newClientRequestController.Create(newClientRequest);
 
-            Console.WriteLine("newClientRequestController.Read()");
-            foreach (NewClientRequest req in newClientRequestController.Read()) {
+            Console.WriteLine("Creating ComplaintRequest");
+            ComplaintRequestController complaintRequestController = new ComplaintRequestController();
+            ComplaintRequest complaintRequest = new ComplaintRequest(DateTime.Now, DateTime.Now, callLog, "description!!!");
+            complaintRequestController.Create(complaintRequest);
+
+
+            Console.WriteLine("Reading requests");
+            List<Request> requests = new List<Request>();
+            requests.AddRange(newClientRequestController.Read());
+            requests.AddRange(complaintRequestController.Read());
+
+
+            foreach (Request req in requests) {
                 Console.WriteLine(req);
             }
         
