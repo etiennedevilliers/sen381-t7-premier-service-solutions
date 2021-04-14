@@ -10,6 +10,7 @@ namespace data.layer.controller
 {
     class PackageController : ICreate<Package>, IDelete<Package>, IUpdate<Package>
     {
+
         //Create 
         public int Create(Package obj)
         {
@@ -18,13 +19,11 @@ namespace data.layer.controller
 
             //Call the InsertID Method to insert the new instance of the package to the database
             int ID = dh.InsertID(string.Format(
-                "INSERT INTO Package (PackageID, ServiceID, ServiceLevelAgreementID, pName, pDescription) VALUES ({0}, '{1}', '{2}', '{3}', '{4}')",
-                 (obj.id != null) ? obj.id.ToString() : "null",
+                "INSERT INTO Package(ServiceID, ServiceLevelAgreementID, pName, pDescription) VALUES ({0}, {1}, '{2}', '{3}')",        
                  obj.service.id,
                  obj.sla.id,
                  obj.name,
                  obj.decription
-
                 ));
 
             obj.id = ID;
@@ -45,7 +44,6 @@ namespace data.layer.controller
             dh.Dispose();
 
         }
-
         //Update 
 
         public void Update(Package obj)
