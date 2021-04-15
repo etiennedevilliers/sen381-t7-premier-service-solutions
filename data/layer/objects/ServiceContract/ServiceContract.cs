@@ -29,11 +29,9 @@ namespace Data.Layer.Objects
 
 
         //Custom Constructor
-        public ServiceContract(int id, string description, List<Package> packages, double cost, DateTime dateFinalised, DateTime dateTerminated, string status)
-        {
-            Id = id;
+        public ServiceContract(string description,double cost, DateTime dateFinalised, DateTime dateTerminated, string status)
+        {    
             Description = description;
-            Packages = packages;
             Cost = cost;
             DateFinalised = dateFinalised;
             DateTerminated = dateTerminated;

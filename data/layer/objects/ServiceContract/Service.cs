@@ -17,9 +17,9 @@ namespace Data.Layer.Objects
         public DateTime expectedDuration { get => _expectedDuration; set => _expectedDuration = value; }
 
         //Custom Contructor
-        public Service(int ID, DateTime duration, string Description)
+        public Service( DateTime duration, string Description)
         {
-            this.id = ID;
+         
             this.expectedDuration = duration;
             this.description = Description;
         }

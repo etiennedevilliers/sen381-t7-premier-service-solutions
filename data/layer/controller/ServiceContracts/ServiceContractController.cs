@@ -7,8 +7,10 @@ using System.Data.SqlClient;
 
 namespace data.layer.controller
 {
-    class ServiceContractController : ICreate<ServiceContract>, IDelete<ServiceContract>, IUpdate<ServiceContract>//,IRead<ServiceContract>
+    class ServiceContractController : ICreate<ServiceContract>, IDelete<ServiceContract>, IUpdate<ServiceContract>,IRead<ServiceContract>
     {
+
+
         public int Create(ServiceContract obj)
         {
 
@@ -47,18 +49,36 @@ namespace data.layer.controller
 
         }
 
-        //ServiceContract sc = new ServiceContract();
+        public List<ServiceContract> Read()
+        {
+            DataHandler dh = new DataHandler();
 
-        /*  public List<ServiceContract> Read()
-      {
+            List<ServiceContract> scrList = new List<ServiceContract>();
+            SqlDataReader read = dh.Select("SELECT ServiceContractID, description, dateFinalised, dateTerminated, cost, status FROM ServiceContract "); //Geen Fk Select nie 
+            ServiceContract newSc;
 
-          /*DataHandler dh = new DataHandler();
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+                    newSc = new ServiceContract(
+                            read.GetString(1),
+                            read.GetDouble(2),
+                            read.GetDateTime(3),
+                            read.GetDateTime(4),
+                            read.GetString(5)
+                        );
 
-          List<ServiceContract> Constracts = new List<ServiceContract>();
-          SqlDataReader read = dh.Select("SELECT ServiceContractID, description, dateFinalised, dateTerminated, cost, status FROM ServiceContract WHERE ServiceContractID = " + sc.id.ToString());
+                    newSc.Id = read.GetInt32(0);
 
-          return Constracts;
-      }*/
+                    scrList.Add(newSc);
+                }
+            }
+
+            dh.Dispose();
+
+            return scrList;
+        }
 
     }
 }

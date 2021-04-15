@@ -54,10 +54,12 @@ namespace data.layer.controller
                 while (read.Read())
                 {
                     newservice = new Service(
-                        read.GetInt32(0),
+                       // 
                         read.GetDateTime(1),
                         read.GetString(2)                                          
                         );
+
+                  newservice.id = read.GetInt32(0);
 
                     services.Add(newservice);
                 }

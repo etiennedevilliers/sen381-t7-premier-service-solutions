@@ -14,9 +14,9 @@ namespace Data.Layer.Objects
         public string description { get => _description; set => _description = value; }
 
         //Custom COnstructor
-        public ServiceLevelAgreement(int ID, string description)
+        public ServiceLevelAgreement( string description)
         {
-            this._id = ID; 
+      
             this.description = description;
         }
           

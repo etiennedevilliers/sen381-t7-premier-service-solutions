@@ -52,12 +52,15 @@ namespace data.layer.controller
                 while (read.Read())
                 {
                     newSLA = new ServiceLevelAgreement(
-                        read.GetInt32(0),
                         read.GetString(1)
                         );
-                    slas.Add(newSLA);
+                   newSLA.id = read.GetInt32(0);
+
+                   slas.Add(newSLA);
                 }
             }
+
+           
             dh.Dispose();
             return slas;
         }

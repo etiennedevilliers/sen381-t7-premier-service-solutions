@@ -8,8 +8,14 @@ using System.Data.SqlClient;
 
 namespace data.layer.controller
 {
-    class PackageController : ICreate<Package>, IDelete<Package>, IUpdate<Package>
+   class PackageController : ICreate<Package>, IDelete<Package>, IUpdate<Package>,//IRead<Package>
     {
+        /* ServiceContract SC;
+
+        public PackageController(ServiceContract sc)
+        {
+            this.SC = sc;
+        }*/
 
         //Create 
         public int Create(Package obj)
@@ -62,6 +68,38 @@ namespace data.layer.controller
 
             dh.Dispose();
         }
+
+        /*//Read 
+        public List<Package> Read()
+        {
+            DataHandler dh = new DataHandler();
+
+            List<Package> packageList = new List<Package>();
+
+            SqlDataReader read = dh.Select("SELECT PackageID, pDecription, pName FROM Package WHERE ServiceContractID = " + SC.Id.ToString());
+            ServiceContract newServiceContract;
+
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+                    NewPackage = new Package(
+                            read.GetString(1),
+                            read.GetString(2),
+                            read.GetString(3)
+                        );
+
+                    newPackage.Id = read.GetInt32(0);
+
+                    packageList.Add(newServiceContract);
+                }
+            }
+
+            dh.Dispose();
+
+            return empList;
+        }*/
+
 
     }
 }
