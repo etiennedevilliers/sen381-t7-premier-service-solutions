@@ -62,6 +62,5 @@ namespace Data.Layer.Objects
 
         //Shedule
         public abstract void Schedule();
-        //Ruben De Beer
     }
 }
