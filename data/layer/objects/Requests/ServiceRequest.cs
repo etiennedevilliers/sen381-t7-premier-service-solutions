@@ -15,7 +15,7 @@ namespace Data.Layer.Objects
         public string description { get => _description; set => _description = value; }
         public DateTime jobStarted { get => _jobStarted; set => _jobStarted = value; }
 
-        public ServiceRequest(DateTime dtCreated, DateTime dtResolved, CallLog call, string desc, DateTime Jobstarted, ServiceContract serviceContract)
+        public ServiceRequest(DateTime dtCreated, DateTime dtResolved, CallLog call, string desc, DateTime Jobstarted)
                                                               : base(dtCreated, dtResolved, call) {
             description = desc;
             this.jobStarted = Jobstarted;
@@ -24,7 +24,7 @@ namespace Data.Layer.Objects
 
         public override string ToString()
         {
-            return base.ToString();
+            return String.Format("ServiceRequest({0}, {1}, {2}, {3}, JobStarted={4} ...)", dateCreated, dateResolved, call, description, jobStarted);
         }
 
         //Shedule
@@ -32,7 +32,6 @@ namespace Data.Layer.Objects
         {
             throw new NotImplementedException();
         } 
-        //Ruben De Beer
     }
 }
               
