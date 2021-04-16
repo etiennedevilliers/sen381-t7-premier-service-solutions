@@ -6,7 +6,7 @@ using Data.Layer.Objects;
 
 namespace data.layer.controller 
 {
-    class NewContractRequestController : ICreate<NewContractRequest>, IDelete<NewContractRequest>, IRead<NewContractRequest>
+    class NewContractRequestController : ICreate<NewContractRequest>, IDelete<NewContractRequest>, IRead<NewContractRequest>, IUpdate<NewContractRequest>
     {
         public int Create(NewContractRequest obj)
         {
@@ -79,6 +79,12 @@ namespace data.layer.controller
             }
             dh.Dispose();
             return contractRequests;
+        }
+
+        public void Update(NewContractRequest obj)
+        {
+            RequestController requestController = new RequestController();
+            requestController.Update(obj);
         }
     }
 }
