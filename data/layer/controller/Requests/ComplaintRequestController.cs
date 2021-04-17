@@ -102,6 +102,7 @@ namespace data.layer.controller
     
         // IChild interface
         public void Set(ServiceContract child, ComplaintRequest parent) {
+            /* unimplemented
             DataHandler dh = new DataHandler();
 
             dh.Update(String.Format(
@@ -111,6 +112,7 @@ namespace data.layer.controller
             ));
 
             dh.Dispose();
+            */
         }
         public ServiceContract ReadChild(ComplaintRequest parent) {
             return null;
