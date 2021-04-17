@@ -6,7 +6,7 @@ using Data.Layer.Objects;
 
 namespace data.layer.controller 
 {
-    class ComplaintRequestController : ICreate<ComplaintRequest>, IDelete<ComplaintRequest>, IRead<ComplaintRequest>, IUpdate<ComplaintRequest>
+    class ComplaintRequestController : ICreate<ComplaintRequest>, IDelete<ComplaintRequest>, IRead<ComplaintRequest>, IUpdate<ComplaintRequest>, IChild<ServiceContract, ComplaintRequest>
     {
         public int Create(ComplaintRequest obj)
         {
@@ -98,6 +98,22 @@ namespace data.layer.controller
 
             RequestController requestController = new RequestController();
             requestController.Update(obj);
+        }
+    
+        // IChild interface
+        public void Set(ServiceContract child, ComplaintRequest parent) {
+            DataHandler dh = new DataHandler();
+
+            dh.Update(String.Format(
+                "UPDATE dbo.ComplaintRequest SET ServiceContractID={1} WHERE ComplaintRequestID={0}",
+                parent.id,
+                //child.
+            ));
+
+            dh.Dispose();
+        }
+        public ServiceContract ReadChild(ComplaintRequest parent) {
+            return null;
         }
     }
 }
