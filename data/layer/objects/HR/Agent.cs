@@ -27,6 +27,14 @@ namespace Data.Layer.Objects
             this.employeeType = employeeType;
         }
 
+        public Agent(string name, string contactNum, string employmentStatus, string employeeType)
+        {
+            this.name = name;
+            this.contactNum = contactNum;
+            this.employmentStatus = employmentStatus;
+            this.employeeType = employeeType;
+        }
+
         public override bool Equals(Object obj)
         {
             //Check for null and compare run-time types.
@@ -47,7 +55,7 @@ namespace Data.Layer.Objects
 
         public override string ToString()
         {
-            return base.ToString();
+            return String.Format("Agent({0}, {1}, {2}, {3})", name, contactNum, employeeType, employmentStatus);
         }
         //Ruben De Beer
     }
