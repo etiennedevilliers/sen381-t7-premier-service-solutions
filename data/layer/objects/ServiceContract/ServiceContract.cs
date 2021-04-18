@@ -48,14 +48,14 @@ namespace Data.Layer.Objects
             else
             {
                 ServiceContract p = (ServiceContract)obj;
-                return p.id.Equals(this._ID);
+                return p.Id.Equals(this._ID);
             }
 
         }
 
         public override int GetHashCode()
         {
-            return this.id;
+            return this._ID;
         }
 
         public override string ToString()
