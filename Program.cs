@@ -10,7 +10,7 @@ namespace sen381_t7_premier_service_solutions
         static void Main(string[] args)
         {
 
-            testPackage();
+            testServiceContractAndPackage();
 
         }
 
@@ -139,8 +139,9 @@ namespace sen381_t7_premier_service_solutions
             }
         }
 
-        static void testPackage()
+        static void testServiceContractAndPackage()
         {
+            ServiceContractController serviceContractController = new ServiceContractController();
             PackageController packagecontroler = new PackageController();
             ServiceLevelAgreementController serviceLevelAgreementController = new ServiceLevelAgreementController();
             ServiceController serviceController = new ServiceController();
@@ -149,29 +150,63 @@ namespace sen381_t7_premier_service_solutions
                   4,
                   "CPU related repairs"
               );
+            
+            Service gpuReplacement = new Service(
+                4,
+                "GPU replacements"
+            );
 
             ServiceLevelAgreement Sla = new ServiceLevelAgreement(
                 "50 char limit"
             );
 
-            Package package = new Package(
-                    "CPU Repairs",
-                    "Anny CPU maintenance , replacemnet , servicing",
-                    cpurepairs,
-                    Sla
-                );
+            Package cpuPackage = new Package(
+                "CPU Repairs",
+                "Anny CPU maintenance , replacemnet , servicing",
+                cpurepairs,
+                Sla
+            );
 
-            Console.WriteLine("Creating Service");
+            Package gpuPackage = new Package(
+                "GPU replacement",
+                "Anny gpu maintenance , replacemnet , servicing",
+                gpuReplacement,
+                Sla
+            );
+
+            ServiceContract serviceContract = new ServiceContract(
+                "PC Repair",
+                1000.00,
+                DateTime.Now,
+                DateTime.Now,
+                "normal"
+            );
+
+            Console.WriteLine("Creating CPU Service");
             serviceController.Create(cpurepairs);
+            Console.WriteLine("Creating GPU Service");
+            serviceController.Create(gpuReplacement);
+
             Console.WriteLine("Creating SLA");
             serviceLevelAgreementController.Create(Sla);
-            Console.WriteLine("Creating Package");
-            packagecontroler.Create(package);
 
-            Console.WriteLine("Reading packages");
-            foreach (Package pack in packagecontroler.Read())
+            Console.WriteLine("Creating CPU Package");
+            packagecontroler.Create(cpuPackage);
+            Console.WriteLine("Creating CPU Package");
+            packagecontroler.Create(gpuPackage);
+
+            Console.WriteLine("Creating serviceContract");
+            serviceContractController.Create(serviceContract);
+            Console.WriteLine("Adding CPU package to serviceContract");
+            serviceContractController.Add(cpuPackage, serviceContract);
+            Console.WriteLine("Adding GPU package to serviceContract");
+            serviceContractController.Add(gpuPackage, serviceContract);
+
+
+            Console.WriteLine("Reading Service contracts");
+            foreach (ServiceContract contract in serviceContractController.Read())
             {
-                Console.WriteLine(pack);
+                Console.WriteLine(contract);
             }
 
 
