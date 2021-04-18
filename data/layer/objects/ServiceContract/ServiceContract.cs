@@ -1,31 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Data.Layer.Objects;
+using data.layer.access;
+using System.Data.SqlClient;
+
 
 namespace Data.Layer.Objects
 {
     public class ServiceContract
     {
         //Fields
-        private int ID;
-        private string description;
-        private List<Package> packages;
-        private double cost;
-        private DateTime dateFinalised;
-        private DateTime dateTerminated; 
-        private string status;
+        private int _ID;
+        private string _description;
+        private List<Package> _packages;
+        private double _cost;
+        private DateTime _dateFinalised;
+        private DateTime _dateTerminated; 
+        private string _status;
 
-         
+        public int Id { get => _ID; set => _ID = value; }
+        public string Description { get => _description; set =>_description = value; }
+        public List<Package> Packages { get => _packages; set => _packages = value; }
+        public double Cost { get => _cost; set => _cost = value; }
+        public DateTime DateFinalised { get => _dateFinalised; set => _dateFinalised = value; }
+        public DateTime DateTerminated { get => _dateTerminated; set => _dateTerminated = value; }
+        public string Status { get => _status; set => _status = value; }
+
+
         //Custom Constructor
-        public ServiceContract(int ID, string sc_description, double cost, DateTime DateFinalised, DateTime DateTerminated, string Status, List<Package> Packages)
-        {
-            this.ID = ID;
-            this.description = sc_description;
-            this.cost = cost;
-            this.dateFinalised = DateFinalised;
-            this.dateTerminated = DateTerminated;
-            this.status = Status;
-            this.packages = Packages;
+        public ServiceContract(string description,double cost, DateTime dateFinalised, DateTime dateTerminated, string status)
+        {    
+            Description = description;
+            Cost = cost;
+            DateFinalised = dateFinalised;
+            DateTerminated = dateTerminated;
+            Status = status;
         }
 
         public override bool Equals(object obj)
@@ -38,14 +48,14 @@ namespace Data.Layer.Objects
             else
             {
                 ServiceContract p = (ServiceContract)obj;
-                return p.ID.Equals(this.ID);
+                return p.Id.Equals(this._ID);
             }
 
         }
 
         public override int GetHashCode()
         {
-            return this.ID;
+            return this._ID;
         }
 
         public override string ToString()

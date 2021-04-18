@@ -10,13 +10,13 @@ namespace Data.Layer.Objects
         private int _id;
         private string _description;
 
-        public int id { get => _id; }
+        public int id { get => _id; set => _id = value; }
         public string description { get => _description; set => _description = value; }
 
         //Custom COnstructor
-        public ServiceLevelAgreement(int ID, string description)
+        public ServiceLevelAgreement( string description)
         {
-            this._id = ID; 
+      
             this.description = description;
         }
           

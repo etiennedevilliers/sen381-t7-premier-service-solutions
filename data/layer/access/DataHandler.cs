@@ -8,12 +8,10 @@ namespace Data.Layer.Objects
 {
     class DataHandler : IDisposable
     {
-        string conStr = @"
-                            Data Source=45.220.29.247,25565;
-                            Database=pss;
-                            Integrated Security=false;
-                            User ID=app;Password=HAA4h5X$v^CHW5UeNucQf7;
-                        ";
+        string conStr = @"    Data Source=45.220.29.247,25565;
+                              Database=pss;
+                              Integrated Security=false;
+                              User ID=app;Password=HAA4h5X$v^CHW5UeNucQf7;";
         static SqlConnection con;
         SqlDataReader read;
         SqlCommand query;

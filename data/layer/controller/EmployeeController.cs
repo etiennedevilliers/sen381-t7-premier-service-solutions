@@ -72,7 +72,8 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Update(string.Format("UPDATE dbo.Employee SET name = '{0}', surname = '{1}', role = '{2}', contactNum = '{3}' WHERE EmployeeID = {4}", obj.name, obj.surname, obj.role, obj.contactNum, obj.id));
+            dh.Update(string.Format("UPDATE dbo.Employee SET name = '{0}', surname = '{1}', role = '{2}', contactNum = '{3}' WHERE EmployeeID = {4}", 
+                obj.name, obj.surname, obj.role, obj.contactNum, obj.id));
             
             dh.Dispose();
         }
