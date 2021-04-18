@@ -17,6 +17,8 @@ namespace sen381_t7_premier_service_solutions
 
             testSLA();
 
+            testPackage();
+
 
         }
 
