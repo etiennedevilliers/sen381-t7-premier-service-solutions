@@ -6,8 +6,10 @@ using Data.Layer.Objects;
 
 namespace data.layer.controller 
 {
-    class ServiceRequestController : ICreate<ServiceRequest>, IDelete<ServiceRequest>, IRead<ServiceRequest>, IUpdate<ServiceRequest>
+    class ServiceRequestController : RequestServiceContractHandler, ICreate<ServiceRequest>, IDelete<ServiceRequest>, IRead<ServiceRequest>, IUpdate<ServiceRequest>
     {
+        public ServiceRequestController() : base("ServiceRequest", "ServiceRequestID") {}
+
         public int Create(ServiceRequest obj)
         {
             DataHandler dh = new DataHandler();
@@ -21,8 +23,6 @@ namespace data.layer.controller
                 obj.description,
                 obj.jobStarted.ToString("yyyy-MM-dd HH:mm:ss.fff")
             );
-
-            Console.WriteLine(query);
 
             dh.Insert(query);
 
@@ -47,10 +47,12 @@ namespace data.layer.controller
 
             List<ServiceRequest> serviceRequests = new List<ServiceRequest>();
 
+
             String query = "SELECT S.ServiceRequestID, S.description, S.jobStarted, R.ClientID, R.contactNum, R.dateCreated, R.dateResolved, R.status, CL.CallID, CL.timeStarted, CL.timeEnded, CL.AgentID, CL.incoming " + 
                            "FROM dbo.ServiceRequest AS S " + 
 	                            "LEFT JOIN dbo.Request AS R ON R.RequestID = S.ServiceRequestID " +
                                 "LEFT JOIN dbo.CallLog AS CL ON CL.CallID = R.CallID";
+
 
             SqlDataReader read = dh.Select(query);
             ServiceRequest serviceRequest;
@@ -85,6 +87,7 @@ namespace data.layer.controller
                 }
             }
             dh.Dispose();
+
             return serviceRequests;
         }
 

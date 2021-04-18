@@ -113,13 +113,13 @@ namespace data.layer.controller
 
             List<Package> packageList = new List<Package>();
 
-            String query = "SELECT P.PackageID, P.pName, P.pDescription, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription FROM Package AS P " +
+            String query = String.Format("SELECT P.PackageID, P.pName, P.pDescription, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription FROM Package AS P " +
 	                            "LEFT JOIN Service AS S ON S.ServiceID = P.ServiceID " +
 	                            "LEFT JOIN ServiceLevelAgreement AS SLA ON SLA.ServiceLevelAgreementID = P.ServiceLevelAgreementID " +
 	                            "LEFT JOIN serviceContractPackages AS SCP ON SCP.PackageID = P.PackageID " +
-                            "WHERE SCP.ServiceContractID={0}";
+                            "WHERE SCP.ServiceContractID={0}", parent.id);
 
-            SqlDataReader read = dh.Select(String.Format(query, parent.id));
+            SqlDataReader read = dh.Select(query);
             Service service;
             ServiceLevelAgreement serviceLevelAgreement;
             Package package;

@@ -145,6 +145,8 @@ namespace sen381_t7_premier_service_solutions
             PackageController packagecontroler = new PackageController();
             ServiceLevelAgreementController serviceLevelAgreementController = new ServiceLevelAgreementController();
             ServiceController serviceController = new ServiceController();
+            ServiceRequestController serviceRequestController = new ServiceRequestController();
+            CallLogController callLogController = new CallLogController();
 
             Service cpurepairs = new Service(
                   4,
@@ -182,6 +184,16 @@ namespace sen381_t7_premier_service_solutions
                 "normal"
             );
 
+            CallLog callLog = new CallLog(DateTime.Now, DateTime.Now, false);
+
+            ServiceRequest serviceRequest = new ServiceRequest(
+                DateTime.Now,
+                DateTime.Now,
+                callLog,
+                "Repair for broken PC",
+                DateTime.Now
+            );
+
             Console.WriteLine("Creating CPU Service");
             serviceController.Create(cpurepairs);
             Console.WriteLine("Creating GPU Service");
@@ -202,6 +214,13 @@ namespace sen381_t7_premier_service_solutions
             Console.WriteLine("Adding GPU package to serviceContract");
             serviceContractController.Add(gpuPackage, serviceContract);
 
+            Console.WriteLine("Creating CallLog");
+            callLogController.Create(callLog);
+            Console.WriteLine("Creating ServiceRequest");
+            serviceRequestController.Create(serviceRequest);
+            Console.WriteLine("Setting service contract TO service request");
+            serviceRequestController.Set(serviceContract, serviceRequest);
+
 
             Console.WriteLine("Reading Service contracts");
             foreach (ServiceContract contract in serviceContractController.Read())
@@ -209,7 +228,11 @@ namespace sen381_t7_premier_service_solutions
                 Console.WriteLine(contract);
             }
 
+            Console.WriteLine("Reading Service Requests Controller");
 
+            foreach (Request req in serviceRequestController.Read()) {
+                Console.WriteLine(req);
+            }
         }
     }
 }
