@@ -13,7 +13,6 @@ namespace Data.Layer.Objects
         //Fields
         public int id;
         private string _description;
-        private List<Package> _packages;
         private double _cost;
         private DateTime _dateFinalised;
         private DateTime _dateTerminated; 
