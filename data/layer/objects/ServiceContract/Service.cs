@@ -17,7 +17,7 @@ namespace Data.Layer.Objects
         public int  expectedDuration { get => _expectedDuration; set => _expectedDuration = value; }
 
         //Custom Contructor
-        public Service( int duration, string Description)
+        public Service(int duration, string Description)
         {
          
             this.expectedDuration = duration;
@@ -47,7 +47,7 @@ namespace Data.Layer.Objects
 
         public override string ToString()
         {
-            return base.ToString();
+            return String.Format("Service({0}, {1}, {2})", id, description, expectedDuration);
         }
         //Ruben De Beer
     }

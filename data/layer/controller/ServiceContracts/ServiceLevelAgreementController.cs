@@ -14,10 +14,15 @@ namespace data.layer.controller
         public int Create(ServiceLevelAgreement obj)
         {
             DataHandler dh = new DataHandler();
-            int ID = dh.InsertID(string.Format(
-              "INSERT INTO ServiceLevelAgreement(slaDescription) VALUES ('{0}')",
-              obj.description
-              ));
+
+            String query = string.Format(
+                "INSERT INTO ServiceLevelAgreement(slaDescription) VALUES ('{0}')",
+                obj.description
+            );
+
+            Console.WriteLine(query);
+
+            int ID = dh.InsertID(query);
 
             obj.id = ID;
 

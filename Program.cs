@@ -9,15 +9,8 @@ namespace sen381_t7_premier_service_solutions
     {
         static void Main(string[] args)
         {
-            testAgents();
-            Console.ReadLine();
-
-            testService();
-
-            testSLA();
 
             testPackage();
-
 
         }
 
@@ -149,26 +142,36 @@ namespace sen381_t7_premier_service_solutions
         static void testPackage()
         {
             PackageController packagecontroler = new PackageController();
+            ServiceLevelAgreementController serviceLevelAgreementController = new ServiceLevelAgreementController();
+            ServiceController serviceController = new ServiceController();
 
             Service cpurepairs = new Service(
                   4,
                   "CPU related repairs"
               );
 
-            ServiceLevelAgreement Sla = new ServiceLevelAgreement("CPU Repair service agreement between customer and corperation");
+            ServiceLevelAgreement Sla = new ServiceLevelAgreement(
+                "50 char limit"
+            );
 
             Package package = new Package(
-                    2,
                     "CPU Repairs",
                     "Anny CPU maintenance , replacemnet , servicing",
                     cpurepairs,
                     Sla
                 );
 
+            Console.WriteLine("Creating Service");
+            serviceController.Create(cpurepairs);
+            Console.WriteLine("Creating SLA");
+            serviceLevelAgreementController.Create(Sla);
+            Console.WriteLine("Creating Package");
+            packagecontroler.Create(package);
 
+            Console.WriteLine("Reading packages");
             foreach (Package pack in packagecontroler.Read())
             {
-                Console.WriteLine();
+                Console.WriteLine(pack);
             }
 
 

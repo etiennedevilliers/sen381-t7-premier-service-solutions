@@ -7,22 +7,20 @@ namespace Data.Layer.Objects
     public class Package
     {
         //Fields 
-        private int _id;
+        public int id;
         private Service _service;
         private string _name;
         private string _decription;
         private ServiceLevelAgreement _sla;
 
-        public int id { get => _id; set => _id = value; }
         public Service service { get => _service; set => _service = value; }
         public string name { get => _name; set => _name = value; }
         public string decription { get => _decription; set => _decription = value; }
         public ServiceLevelAgreement sla { get => _sla; set => _sla = value; }
 
         //Custom Constructor 
-        public Package(int ID , string Name,string Description, Service Services,ServiceLevelAgreement sla)
+        public Package(string Name,string Description, Service Services,ServiceLevelAgreement sla)
         {
-            this.id = ID;
             this.service = Services;
             this.name = Name;
             this.decription = Description;
@@ -40,7 +38,7 @@ namespace Data.Layer.Objects
             else
             {
                 Package p = (Package)obj;
-                return p.id.Equals(this._id);
+                return p.id.Equals(this.id);
             }
         }
 
@@ -51,7 +49,7 @@ namespace Data.Layer.Objects
 
         public override string ToString()
         {
-            return base.ToString();
+            return String.Format("Package({0}, {1}, {2}, {3}, {4})", id, name, decription, service, sla);
         }
         //Ruben De Beer
 
