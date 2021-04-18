@@ -8,21 +8,23 @@ namespace Data.Layer.Objects
     {
         //Fields
         private int _id;
-        private DateTime _expectedDuration;
+        private int _expectedDuration;
         private string _description;
 
         //Properties
         public int id { get => _id; set => _id = value; }
         public string description { get => _description; set => _description = value; }
-        public DateTime expectedDuration { get => _expectedDuration; set => _expectedDuration = value; }
+        public int  expectedDuration { get => _expectedDuration; set => _expectedDuration = value; }
 
         //Custom Contructor
-        public Service( DateTime duration, string Description)
+        public Service( int duration, string Description)
         {
          
             this.expectedDuration = duration;
             this.description = Description;
         }
+
+    
      
 
         public override bool Equals(object obj)

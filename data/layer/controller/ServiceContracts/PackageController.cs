@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace data.layer.controller
 {
-   class PackageController : ICreate<Package>, IDelete<Package>, IUpdate<Package>,//IRead<Package>
+   class PackageController : ICreate<Package>, IDelete<Package>, IUpdate<Package>//IRead<Package>
     {
         /* ServiceContract SC;
 
