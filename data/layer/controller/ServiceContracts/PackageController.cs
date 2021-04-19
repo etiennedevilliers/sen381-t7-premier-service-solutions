@@ -8,22 +8,13 @@ using System.Data.SqlClient;
 
 namespace data.layer.controller
 {
-   class PackageController : ICreate<Package>, IDelete<Package>, IUpdate<Package>,//IRead<Package>
+   class PackageController : ICreate<Package>, IDelete<Package>, IUpdate<Package>//IRead<Package>
     {
-        /* ServiceContract SC;
-
-        public PackageController(ServiceContract sc)
-        {
-            this.SC = sc;
-        }*/
-
-        //Create 
         public int Create(Package obj)
         {
            
-            DataHandler dh = new DataHandler(); //Create a instance of Data handler to connect to make use of the Numerous Commands (Like stored procedures, but for the program)
+            DataHandler dh = new DataHandler();
 
-            //Call the InsertID Method to insert the new instance of the package to the database
             int ID = dh.InsertID(string.Format(
                 "INSERT INTO Package(ServiceID, ServiceLevelAgreementID, pName, pDescription) VALUES ({0}, {1}, '{2}', '{3}')",        
                  obj.service.id,
@@ -34,12 +25,10 @@ namespace data.layer.controller
 
             obj.id = ID;
 
-            dh.Dispose(); //Close the Data handler Which represents the InsertInto SQL Command (We close the DH because addo . net does not allow for more than one command to be utelized at a time)
+            dh.Dispose(); 
     
             return ID;
         }
-
-        //Delete 
 
         public void Delete(Package obj)
         {
@@ -50,7 +39,6 @@ namespace data.layer.controller
             dh.Dispose();
 
         }
-        //Update 
 
         public void Update(Package obj)
         {
@@ -69,36 +57,53 @@ namespace data.layer.controller
             dh.Dispose();
         }
 
-        /*//Read 
         public List<Package> Read()
-        {
+        {            
             DataHandler dh = new DataHandler();
 
             List<Package> packageList = new List<Package>();
 
-            SqlDataReader read = dh.Select("SELECT PackageID, pDecription, pName FROM Package WHERE ServiceContractID = " + SC.Id.ToString());
-            ServiceContract newServiceContract;
+            String query = "SELECT P.PackageID, P.pName, P.pDescription, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription FROM Package AS P " +
+	                            "LEFT JOIN Service AS S ON S.ServiceID = P.ServiceID " +
+	                            "LEFT JOIN ServiceLevelAgreement AS SLA ON SLA.ServiceLevelAgreementID = P.ServiceLevelAgreementID";
+
+            SqlDataReader read = dh.Select(query);
+            Service service;
+            ServiceLevelAgreement serviceLevelAgreement;
+            Package package;
 
             if (read.HasRows)
             {
                 while (read.Read())
                 {
-                    NewPackage = new Package(
-                            read.GetString(1),
-                            read.GetString(2),
-                            read.GetString(3)
-                        );
+                    service = new Service(
+                        read.GetInt32(4),
+                        read.GetString(5)
+                    );
+                    service.id = read.GetInt32(3);
+                    
+                    serviceLevelAgreement = new ServiceLevelAgreement(
+                        read.GetString(7)
+                    );
+                    serviceLevelAgreement.id = read.GetInt32(6);
 
-                    newPackage.Id = read.GetInt32(0);
+                    package = new Package(
+                        read.GetString(1),
+                        read.GetString(2),
+                        service,
+                        serviceLevelAgreement
+                    );
 
-                    packageList.Add(newServiceContract);
+                    package.id = read.GetInt32(0);
+
+                    packageList.Add(package);
                 }
             }
 
             dh.Dispose();
 
-            return empList;
-        }*/
+            return packageList;
+        }
 
 
     }

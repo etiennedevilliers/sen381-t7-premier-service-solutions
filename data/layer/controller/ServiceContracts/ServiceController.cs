@@ -55,11 +55,11 @@ namespace data.layer.controller
                 {
                     newservice = new Service(
                        // 
-                        read.GetDateTime(1),
-                        read.GetString(2)                                          
-                        );
+                        read.GetInt32(2),
+                        read.GetString(1)                                          
+                    );
 
-                  newservice.id = read.GetInt32(0);
+                    newservice.id = read.GetInt32(0);
 
                     services.Add(newservice);
                 }

@@ -6,8 +6,9 @@ using Data.Layer.Objects;
 
 namespace data.layer.controller 
 {
-    class ComplaintRequestController : ICreate<ComplaintRequest>, IDelete<ComplaintRequest>, IRead<ComplaintRequest>, IUpdate<ComplaintRequest>
+    class ComplaintRequestController : RequestServiceContractHandler, ICreate<ComplaintRequest>, IDelete<ComplaintRequest>, IRead<ComplaintRequest>, IUpdate<ComplaintRequest>
     {
+        public ComplaintRequestController() : base("ComplaintRequest", "ComplaintRequestID") {}
         public int Create(ComplaintRequest obj)
         {
             DataHandler dh = new DataHandler();

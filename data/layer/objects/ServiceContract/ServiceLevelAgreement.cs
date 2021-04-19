@@ -42,7 +42,7 @@ namespace Data.Layer.Objects
 
         public override string ToString()
         {
-            return base.ToString();
+            return String.Format("ServiceLevelAgreement({0}, {1})", id, description);
         }
         //Ruben De Beer
     }
