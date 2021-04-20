@@ -77,7 +77,8 @@ namespace data.layer.controller
                      
         }
 
-        public void Update(Technician obj)
+        /*
+         * public void Update(Technician obj)
         {
             DataHandler dh = new DataHandler();
 
@@ -93,5 +94,6 @@ namespace data.layer.controller
             agentController.Update(obj);
 
         }
+        */
     }
 }
