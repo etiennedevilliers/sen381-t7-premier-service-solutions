@@ -7,12 +7,14 @@ using Data.Layer.Objects;
 
 namespace data.layer.controller
 {
-    class RequestController : IChildren<Agent, Request>
+    class RequestController : IChildren<Agent, Request>, IChild<Client,Request>
     {
+        private String table_name;
+        private String table_identifier_name;
+
         internal int Create(Request obj)
         {
             DataHandler dh = new DataHandler();
-
 
             int ID = dh.InsertID(string.Format(
                 "INSERT INTO Request(ClientID, dateCreated, dateResolved, status, contactNum, CallID) VALUES ({0},'{1}','{2}','{3}','{4}', {5})",
@@ -30,6 +32,7 @@ namespace data.layer.controller
 
             return ID;
         }
+
         internal void Delete(Request obj)
         {
             DataHandler dh = new DataHandler();
@@ -38,6 +41,7 @@ namespace data.layer.controller
 
             dh.Dispose();
         }
+
         internal void Update(Request obj)
         {
             DataHandler dh = new DataHandler();
@@ -47,7 +51,7 @@ namespace data.layer.controller
                 obj.id,
                 obj.client.id,
                 obj.call.id,
-                obj.dateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.dateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"), 
                 obj.dateResolved.ToString("yyyy-MM-dd HH:mm:ss.fff"),
                 obj.status,
                 obj.contactNum
@@ -113,5 +117,57 @@ namespace data.layer.controller
             dh.Dispose();
             return agents;
         }
+
+
+        //IChild Implementation 
+    
+        public void Set(Client child , Request parent)
+        {
+
+            DataHandler dh = new DataHandler();
+
+
+            string query = string.Format(
+
+                    "UPDATE {0} SET ClientID = {1} WHERE {2} = {3}",
+                    table_name,
+                    child.id,
+                    table_identifier_name,
+                    parent.id
+                );
+
+            dh.Update(query);
+            dh.Dispose();
+
+        }
+ 
+        public Client ReadChild(Request parent)
+        {
+            DataHandler dh = new DataHandler();
+
+            string qry = string.Format("SELECT C.ClientID ,C.contactNumber, I.IndividualClientID,I.name,I.surname FROM Client as C"+
+                "LEFT JOIN IndividualClient AS I ON I.IndividualClientID = C.ClientID"+
+                "WHERE C.ClientID = {0}"
+                );
+
+            SqlDataReader read = dh.Select(qry);
+            Client newClient = null;
+
+            if (read.HasRows)
+            {
+                if (!read.IsDBNull(0))
+                {
+                    newClient = new IndividualClient(read.GetString(1),read.GetString(2),read.GetString(3));
+                }
+                else
+                {
+                    newClient = new BusinessClient(read.GetString(1),read.GetString(2));
+                }
+               
+            }
+            dh.Dispose();
+            return newClient;
+        }
+
     }
 }

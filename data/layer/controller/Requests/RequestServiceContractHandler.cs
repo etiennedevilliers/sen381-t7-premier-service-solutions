@@ -16,22 +16,29 @@ namespace data.layer.controller
             this.table_name = table_name;
             this.table_identifier_name = table_identifier_name;
         }
+
+
          // IChild interface
         public void Set(ServiceContract child, Request parent) {
+
             DataHandler dh = new DataHandler();
             
             String query = String.Format(
+
                 "UPDATE {0} SET ServiceContractID={1} WHERE {2}={3}",
                 table_name,
                 child.id,
                 table_identifier_name,
                 parent.id
+
             );
 
             dh.Update(query);
 
             dh.Dispose();
         }
+
+
         public ServiceContract ReadChild(Request parent) {
             DataHandler dh = new DataHandler();
 
