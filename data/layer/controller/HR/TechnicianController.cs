@@ -77,23 +77,22 @@ namespace data.layer.controller
                      
         }
 
-        /*
-         * public void Update(Technician obj)
+        public void Update(Technician obj)
         {
             DataHandler dh = new DataHandler();
 
-            dh.Update(string.Format(
+           /* dh.Update(string.Format(
                     "UPDATE dbo.Technician " + 
                     "WHERE TechnicianID = {0}",
                     obj.name, obj.contactNum, obj.employmentStatus, obj.employeeType
-                ));
+                )); */
 
             dh.Dispose();
 
             AgentController agentController = new AgentController();
             agentController.Update(obj);
-
+           
         }
-        */
+        
     }
 }
