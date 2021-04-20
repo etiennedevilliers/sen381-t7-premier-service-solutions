@@ -45,8 +45,11 @@ namespace data.layer.controller
             List<Technician> technicians = new List<Technician>();
 
 
-            String query = "SELECT A.AgentID, A.aName, A.ContactNum, A.employmentStatus, A.employeeType FROM Technician AS T LEFT JOIN Agent AS A ON A.AgentID = T.TechnicianID";
-
+            String query = "SELECT A.AgentID, A.aName, A.ContactNum, A.employmentStatus, A.employeeType " + 
+                            "FROM Technician AS T " + 
+                                "LEFT JOIN Agent AS A " + 
+                                    "ON A.AgentID = T.TechnicianID";
+                
             SqlDataReader read = dh.Select(query);
             Technician technician ;
 
@@ -79,13 +82,16 @@ namespace data.layer.controller
             DataHandler dh = new DataHandler();
 
             dh.Update(string.Format(
-                    "UPDATE Technician" +
-                    "SET name = '{0}', contactNum = '{1}', employmentStatus = '{2}', employeeType = '{3}'" +
-                    "WHERE TechnicianID = {4}",
-                    obj.name, obj.contactNum, obj.employmentStatus, obj.employeeType, obj.id
+                    "UPDATE dbo.Technician " + 
+                    "WHERE TechnicianID = {0}",
+                    obj.name, obj.contactNum, obj.employmentStatus, obj.employeeType
                 ));
 
             dh.Dispose();
+
+            AgentController agentController = new AgentController();
+            agentController.Update(obj);
+
         }
     }
 }

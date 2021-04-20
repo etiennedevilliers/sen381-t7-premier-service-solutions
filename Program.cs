@@ -10,10 +10,17 @@ namespace sen381_t7_premier_service_solutions
         static void Main(string[] args)
         {
 
+            
+
+
+        }
+
+        static void testTechnicians()
+        {
             TechnicianController technicianController = new TechnicianController();
 
-            Technician john = new Technician (
-                "john", 
+            Technician john = new Technician(
+                "john",
                 "098785754778",
                 "working",
                 "pc repair"
@@ -30,6 +37,11 @@ namespace sen381_t7_premier_service_solutions
                 Console.WriteLine(technician);
             }
             Console.WriteLine("done");
+        }
+
+        static void testTechContrUpd()
+        {
+
         }
 
         static void testAgents() {
