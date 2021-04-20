@@ -7,9 +7,9 @@ using Data.Layer.Objects;
 
 namespace data.layer.controller
 {
-    internal class RequestController : ICreate<Request>, IDelete<Request>, IUpdate<Request>
+    class RequestController : IChildren<Agent, Request>
     {
-        public int Create(Request obj)
+        internal int Create(Request obj)
         {
             DataHandler dh = new DataHandler();
 
@@ -30,7 +30,7 @@ namespace data.layer.controller
 
             return ID;
         }
-        public void Delete(Request obj)
+        internal void Delete(Request obj)
         {
             DataHandler dh = new DataHandler();
 
@@ -38,8 +38,7 @@ namespace data.layer.controller
 
             dh.Dispose();
         }
-
-        public void Update(Request obj)
+        internal void Update(Request obj)
         {
             DataHandler dh = new DataHandler();
 
@@ -55,6 +54,64 @@ namespace data.layer.controller
              ));
 
             dh.Dispose();
+        }
+    
+        public void Add(Agent child, Request parent) {
+            DataHandler dh = new DataHandler();
+
+            String query = string.Format(
+                "INSERT INTO agentRequestHandlers(AgentID, RequestID) VALUES({0}, {1})",
+                child.id,
+                parent.id
+            );
+            dh.Insert(query);
+
+            dh.Dispose();
+        }
+
+        public void Remove(Agent child, Request parent) {
+            DataHandler dh = new DataHandler();
+
+            dh.Delete("Request", String.Format(
+                "AgentID={0} AND RequestID={1}",
+                child.id,
+                parent.id
+            ));
+
+            dh.Dispose();
+        }
+
+        public List<Agent> ReadChildren(Request parent) 
+        {
+            DataHandler dh = new DataHandler();
+
+            List<Agent> agents = new List<Agent>();
+
+            String query = "SELECT A.AgentID, A.aName, A.contactNum, A.employmentStatus, A.employeeType FROM Agent AS A " +
+	                            "LEFT JOIN agentRequestHandlers AS H ON A.AgentID = H.AgentID " +
+                            "WHERE H.RequestID = {0}";
+
+            SqlDataReader read = dh.Select(String.Format(query, parent.id));
+            Agent agent;
+
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+
+                    agent = new Agent(
+                        read.GetInt32(0),
+                        read.GetString(1),
+                        read.GetString(2),
+                        read.GetString(3),
+                        read.GetString(4)
+                    );
+
+                    agents.Add(agent);
+                }
+            }
+            dh.Dispose();
+            return agents;
         }
     }
 }

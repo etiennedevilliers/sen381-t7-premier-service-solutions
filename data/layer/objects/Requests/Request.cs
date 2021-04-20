@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using data.layer.controller;
 
 namespace Data.Layer.Objects
 {
@@ -15,7 +16,6 @@ namespace Data.Layer.Objects
         private CallLog _call;
         private string _contactNum;
         private Client _client;
-        private List<Agent> _handler = new List<Agent>();
 
         //Properties
         public DateTime dateCreated { get => _dateCreated; set => _dateCreated = value; }
@@ -24,7 +24,9 @@ namespace Data.Layer.Objects
         public CallLog call { get => _call; set => _call = value; }
         public string contactNum { get => _contactNum; set => _contactNum = value; }
         public Client client { get => _client; set => _client = value; }
-        public List<Agent> handler { get => _handler; set => _handler = value; }
+        public List<Agent> handler { get {
+            return new RequestController().ReadChildren(this);
+        } }
         public int id { get => _id; set => _id = value; }
 
         //Constrcuctor
@@ -62,6 +64,5 @@ namespace Data.Layer.Objects
 
         //Shedule
         public abstract void Schedule();
-        //Ruben De Beer
     }
 }

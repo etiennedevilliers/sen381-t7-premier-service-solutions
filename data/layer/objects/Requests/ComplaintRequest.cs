@@ -28,10 +28,7 @@ namespace Data.Layer.Objects
 
         public override string ToString()
         {
-            return base.ToString();
+            return String.Format("ComplaintRequest({0}, {1}, {2}, {3}, ...)", dateCreated, dateResolved, call, description);
         }
-        //Ruben De Beer
-
-
     }
 }

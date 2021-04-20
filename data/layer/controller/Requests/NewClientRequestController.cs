@@ -5,7 +5,6 @@ using System.Text;
 using data.layer.access;
 using Data.Layer.Objects;
 
-
 namespace data.layer.controller 
 {
     class NewClientRequestController : ICreate<NewClientRequest>, IDelete<NewClientRequest>, IUpdate<NewClientRequest>, IRead<NewClientRequest>
@@ -30,7 +29,7 @@ namespace data.layer.controller
         public void Delete(NewClientRequest obj)
         {
             DataHandler dh = new DataHandler();
-            dh.Delete("NewClientRequestID", "NewClientRequestID = " + obj.id.ToString());
+            dh.Delete("NewClientRequest", "NewClientRequestID = " + obj.id.ToString());
             dh.Dispose();
 
             RequestController requestController = new RequestController();
