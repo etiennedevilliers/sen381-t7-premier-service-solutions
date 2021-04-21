@@ -1,13 +1,123 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8B97DA6E-DD8E-4186-9CC9-24260189F809}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>sen381_t7_premier_service_solutions</RootNamespace>
+    <AssemblyName>sen381-t7-premier-service-solutions</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
-
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Compile Include="data\layer\access\Children\IChild.cs" />
+    <Compile Include="data\layer\access\Children\IChildren.cs" />
+    <Compile Include="data\layer\access\CRUD\ICreate.cs" />
+    <Compile Include="data\layer\access\CRUD\IDelete.cs" />
+    <Compile Include="data\layer\access\CRUD\IRead.cs" />
+    <Compile Include="data\layer\access\CRUD\IReadSpecific.cs" />
+    <Compile Include="data\layer\access\CRUD\IUpdate.cs" />
+    <Compile Include="data\layer\access\Data Handler\DataHandler.cs" />
+    <Compile Include="data\layer\controller\Call Log\CallLogController.cs" />
+    <Compile Include="data\layer\controller\Clients\AddressController.cs" />
+    <Compile Include="data\layer\controller\Clients\BusinessClientController.cs" />
+    <Compile Include="data\layer\controller\Clients\ClientController.cs" />
+    <Compile Include="data\layer\controller\Clients\EmployeeController.cs" />
+    <Compile Include="data\layer\controller\Clients\IndividualClientController.cs" />
+    <Compile Include="data\layer\controller\HR\AgentControllers.cs" />
+    <Compile Include="data\layer\controller\HR\TechnicianController.cs" />
+    <Compile Include="data\layer\controller\Requests\ComplaintRequestController.cs" />
+    <Compile Include="data\layer\controller\Requests\NewClientRequestController.cs" />
+    <Compile Include="data\layer\controller\Requests\NewContractRequestController.cs" />
+    <Compile Include="data\layer\controller\Requests\RequestController.cs" />
+    <Compile Include="data\layer\controller\Requests\RequestServiceContractHandler.cs" />
+    <Compile Include="data\layer\controller\Requests\ServiceRequestController.cs" />
+    <Compile Include="data\layer\controller\ServiceContracts\PackageController.cs" />
+    <Compile Include="data\layer\controller\ServiceContracts\ServiceContractController.cs" />
+    <Compile Include="data\layer\controller\ServiceContracts\ServiceController.cs" />
+    <Compile Include="data\layer\controller\ServiceContracts\ServiceLevelAgreementController.cs" />
+    <Compile Include="data\layer\objects\Call Log\CallLog.cs" />
+    <Compile Include="data\layer\objects\Clients\Address.cs" />
+    <Compile Include="data\layer\objects\Clients\BusinessClient.cs" />
+    <Compile Include="data\layer\objects\Clients\Client.cs" />
+    <Compile Include="data\layer\objects\Clients\Employee.cs" />
+    <Compile Include="data\layer\objects\Clients\IndividualClient.cs" />
+    <Compile Include="data\layer\objects\HR\Agent.cs" />
+    <Compile Include="data\layer\objects\HR\Technician.cs" />
+    <Compile Include="data\layer\objects\Requests\ComplaintRequest.cs" />
+    <Compile Include="data\layer\objects\Requests\NewClientRequest.cs" />
+    <Compile Include="data\layer\objects\Requests\NewContractRequest.cs" />
+    <Compile Include="data\layer\objects\Requests\Request.cs" />
+    <Compile Include="data\layer\objects\Requests\ServiceRequest.cs" />
+    <Compile Include="data\layer\objects\ServiceContract\Package.cs" />
+    <Compile Include="data\layer\objects\ServiceContract\Service.cs" />
+    <Compile Include="data\layer\objects\ServiceContract\ServiceContract.cs" />
+    <Compile Include="data\layer\objects\ServiceContract\ServiceLevelAgreement.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
