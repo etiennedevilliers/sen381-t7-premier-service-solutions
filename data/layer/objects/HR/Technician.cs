@@ -11,11 +11,11 @@ namespace Data.Layer.Objects
 
         public List<Service> skills { get => _skills; set => _skills = value; }
 
-        public Technician(int Id, string name, string primaryContact, string empStatus, string empType, List<Service> skills)
-            : base(Id, name, primaryContact, empStatus, empType)
+        public Technician( string name, string primaryContact, string empStatus, string empType)
+            : base(name, primaryContact, empStatus, empType)
         {
             this.skills = skills;
-            this.id = id;
+            
         }
 
         public override string ToString()

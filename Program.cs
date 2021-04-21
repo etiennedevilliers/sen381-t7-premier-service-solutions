@@ -10,7 +10,37 @@ namespace sen381_t7_premier_service_solutions
         static void Main(string[] args)
         {
 
-            testServiceContractAndPackage();
+            
+
+
+        }
+
+        static void testTechnicians()
+        {
+            TechnicianController technicianController = new TechnicianController();
+
+            Technician john = new Technician(
+                "john",
+                "098785754778",
+                "working",
+                "pc repair"
+                );
+
+            Console.WriteLine("creating john");
+            technicianController.Create(john);
+            Console.WriteLine("done");
+
+
+            Console.WriteLine("reading");
+            foreach (Technician technician in technicianController.Read())
+            {
+                Console.WriteLine(technician);
+            }
+            Console.WriteLine("done");
+        }
+
+        static void testTechContrUpd()
+        {
 
         }
 
