@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using data.layer.controller;
+using Data.Layer.Controller;
 
 namespace Data.Layer.Objects
 {
     public abstract class Client
     {
         //Fields
-        protected int _id;
-        protected List<ServiceContract> _contracts;        
-        protected string _contactNum;
+        protected int id;
+        protected List<ServiceContract> contracts;
+        protected string contactNum;
 
         //Properties
-        public int id { get => _id; set => _id = value; }
-        public List<ServiceContract> contracts { get => _contracts; set => _contracts = value; }
+        public int Id { get => id; set => id = value; }
+        public List<ServiceContract> Contracts { get => contracts; set => contracts = value; }
         public List<Address> addresses
         {
             get
@@ -23,7 +22,7 @@ namespace Data.Layer.Objects
                 return adr.Read();
             }
         }
-        public string contactNum { get => _contactNum; set => _contactNum = value; }
+        public string ContactNum { get => contactNum; set => contactNum = value; }
 
         //Constructor
         public Client(string contactNum)
@@ -39,23 +38,23 @@ namespace Data.Layer.Objects
         }
 
         //Standard Methods
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             //Check for null and compare run-time types.
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
             {
                 return false;
             }
             else
             {
                 Client p = (Client)obj;
-                return p.id.Equals(this._id);
+                return p.Id.Equals(id);
             }
         }
 
         public override int GetHashCode()
         {
-            return this.id;
+            return Id;
         }
 
         public override string ToString()

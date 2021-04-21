@@ -1,23 +1,30 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
+using Data.Layer.Controller;
 
 namespace Data.Layer.Objects
 {
     //Need Help  
     public class Technician : Agent
     {
-        private List<Service> _skills;
+        //Fields
 
-        public List<Service> skills { get => _skills; set => _skills = value; }
-
-        public Technician( string name, string primaryContact, string empStatus, string empType)
-            : base(name, primaryContact, empStatus, empType)
+        //Properties
+        public List<Service> Skills
         {
-            this.skills = skills;
+            get
+            {
+                return new TechnicianController().ReadChildren(this);
+            }
+        }
+
+        //Constructor
+        public Technician( string name, string primaryContact, string empStatus, string empType) : base(name, primaryContact, empStatus, empType)
+        {
             
         }
 
+        //Standard Methods
         public override string ToString()
         {
             return base.ToString();

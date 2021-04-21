@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using System.Text;
 using Data.Layer.Objects;
-using data.layer.access;
+using Data.Layer.Access;
 using System.Data.SqlClient;
 
 
-namespace data.layer.controller
+namespace Data.Layer.Controller
 {
    class PackageController : ICreate<Package>, IDelete<Package>, IUpdate<Package>//IRead<Package>
     {
+        //Basic CRUD
         public int Create(Package obj)
         {
-           
             DataHandler dh = new DataHandler();
 
             int ID = dh.InsertID(string.Format(
                 "INSERT INTO Package(ServiceID, ServiceLevelAgreementID, pName, pDescription) VALUES ({0}, {1}, '{2}', '{3}')",        
-                 obj.service.id,
-                 obj.sla.id,
-                 obj.name,
-                 obj.decription
+                 obj.Service.Id,
+                 obj.Sla.Id,
+                 obj.Name,
+                 obj.Description
                 ));
 
-            obj.id = ID;
+            obj.Id = ID;
 
             dh.Dispose(); 
     
@@ -34,7 +34,7 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Delete("Package", "PackageID = " + obj.id.ToString());
+            dh.Delete("Package", "PackageID = " + obj.Id.ToString());
 
             dh.Dispose();
 
@@ -47,11 +47,11 @@ namespace data.layer.controller
             dh.Update(string.Format(
                 "UPDATE dbo.Package SET ServiceID = {1}, ServiceLevelAgreementID = {2}, pName = '{3}', pDescription = '{4}' WHERE PackageID = {0} ",
 
-                 obj.id,
-                 obj.service.id,
-                 obj.sla.id,
-                 obj.name,
-                 obj.decription          
+                 obj.Id,
+                 obj.Service.Id,
+                 obj.Sla.Id,
+                 obj.Name,
+                 obj.Description
                 ));
 
             dh.Dispose();
@@ -63,7 +63,7 @@ namespace data.layer.controller
 
             List<Package> packageList = new List<Package>();
 
-            String query = "SELECT P.PackageID, P.pName, P.pDescription, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription FROM Package AS P " +
+            string query = "SELECT P.PackageID, P.pName, P.pDescription, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription FROM Package AS P " +
 	                            "LEFT JOIN Service AS S ON S.ServiceID = P.ServiceID " +
 	                            "LEFT JOIN ServiceLevelAgreement AS SLA ON SLA.ServiceLevelAgreementID = P.ServiceLevelAgreementID";
 
@@ -77,15 +77,15 @@ namespace data.layer.controller
                 while (read.Read())
                 {
                     service = new Service(
-                        read.GetInt32(4),
-                        read.GetString(5)
+                        read.GetString(5),
+                        read.GetInt32(4)
                     );
-                    service.id = read.GetInt32(3);
+                    service.Id = read.GetInt32(3);
                     
                     serviceLevelAgreement = new ServiceLevelAgreement(
                         read.GetString(7)
                     );
-                    serviceLevelAgreement.id = read.GetInt32(6);
+                    serviceLevelAgreement.Id = read.GetInt32(6);
 
                     package = new Package(
                         read.GetString(1),
@@ -94,7 +94,7 @@ namespace data.layer.controller
                         serviceLevelAgreement
                     );
 
-                    package.id = read.GetInt32(0);
+                    package.Id = read.GetInt32(0);
 
                     packageList.Add(package);
                 }
@@ -104,7 +104,5 @@ namespace data.layer.controller
 
             return packageList;
         }
-
-
     }
 }

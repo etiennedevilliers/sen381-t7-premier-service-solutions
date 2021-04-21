@@ -2,43 +2,39 @@
 using System.Collections.Generic;
 using System.Text;
 using Data.Layer.Objects;
-using data.layer.access;
+using Data.Layer.Access;
 using System.Data.SqlClient;
 
-namespace data.layer.controller
+namespace Data.Layer.Controller
 {
     class ServiceController : ICreate<Service>, IDelete<Service>, IUpdate<Service>,IRead<Service>
     {
-
-        //Create 
+        //Basic CRUD
         public int Create(Service obj)
         {
-
             DataHandler dh = new DataHandler();
             int ID = dh.InsertID(string.Format(
                 "INSERT INTO  Service(sDescription,expectedDuration) VALUES ('{0}','{1}')",
-                obj.description,
-                obj.expectedDuration
+                obj.Description,
+                obj.ExpectedDuration
                 ));
 
-            obj.id = ID;
+            obj.Id = ID;
 
             dh.Dispose();
 
             return ID;
         }
 
-        //Delete 
         public void Delete(Service obj)
         {
             DataHandler dh = new DataHandler();
 
-            dh.Delete("Service", "ServiceID = " + obj.id.ToString());
+            dh.Delete("Service", "ServiceID = " + obj.Id.ToString());
 
             dh.Dispose();
         }
 
-        //Read 
         public List<Service> Read()
         {
             DataHandler dh = new DataHandler();
@@ -54,31 +50,28 @@ namespace data.layer.controller
                 while (read.Read())
                 {
                     newservice = new Service(
-                       // 
-                        read.GetInt32(2),
-                        read.GetString(1)                                          
+                        read.GetString(1),
+                        read.GetInt32(2)
                     );
 
-                    newservice.id = read.GetInt32(0);
+                    newservice.Id = read.GetInt32(0);
 
                     services.Add(newservice);
                 }
             }
+
             dh.Dispose();
+
             return services;
         }
 
-
-
-        //Update 
         public void Update(Service obj)
         {
             DataHandler dh = new DataHandler();
 
             dh.Update(string.Format("UPDATE dbo.Service SET sDescription = '{1}', expectedDuration = '{2}' WHERE ServiceID = {0} ,",
-
-                obj.description,
-                obj.expectedDuration          
+                obj.Description,
+                obj.ExpectedDuration
                 ));
         }
     }

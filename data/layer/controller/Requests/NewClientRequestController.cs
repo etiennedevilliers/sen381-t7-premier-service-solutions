@@ -2,34 +2,35 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
-using data.layer.access;
+using Data.Layer.Access;
 using Data.Layer.Objects;
 
-namespace data.layer.controller 
+namespace Data.Layer.Controller
 {
     class NewClientRequestController : ICreate<NewClientRequest>, IDelete<NewClientRequest>, IUpdate<NewClientRequest>, IRead<NewClientRequest>
     {
+        //Basic CRUD
         public int Create(NewClientRequest obj)
         {
             DataHandler dh = new DataHandler();
 
             RequestController requestController = new RequestController();
-            obj.id = requestController.Create(obj);
+            obj.Id = requestController.Create(obj);
 
             dh.Insert(string.Format(
                 "INSERT INTO NewClientRequest(NewClientRequestID) VALUES ({0})",
-                obj.id
+                obj.Id
             ));
 
             dh.Dispose();
 
-            return obj.id;
+            return obj.Id;
         }
 
         public void Delete(NewClientRequest obj)
         {
             DataHandler dh = new DataHandler();
-            dh.Delete("NewClientRequest", "NewClientRequestID = " + obj.id.ToString());
+            dh.Delete("NewClientRequest", "NewClientRequestID = " + obj.Id.ToString());
             dh.Dispose();
 
             RequestController requestController = new RequestController();
@@ -50,12 +51,13 @@ namespace data.layer.controller
                 while (read.Read())
                 {
                     CallLog callLog = new CallLog(
-                        read.GetInt32(6),
                         read.GetDateTime(7),
                         read.GetDateTime(8),
                         //read agent ID(9)???
                         read.GetBoolean(10)
                     );
+
+                    callLog.Id = read.GetInt32(6);
 
                     newClientRequest = new NewClientRequest(
                         read.GetDateTime(3),
@@ -64,15 +66,17 @@ namespace data.layer.controller
                     );
 
 
-                    newClientRequest.id = read.GetInt32(0);
+                    newClientRequest.Id = read.GetInt32(0);
                     // newClientRequest.client = ClientController.ReadSpecific(read.GetInt32(1));
-                    newClientRequest.contactNum = read.GetString(2);
-                    newClientRequest.status = read.GetString(5);
+                    newClientRequest.ContactNum = read.GetString(2);
+                    newClientRequest.Status = read.GetString(5);
 
                     clientRequests.Add(newClientRequest);
                 }
             }
+
             dh.Dispose();
+
             return clientRequests;
         }
 

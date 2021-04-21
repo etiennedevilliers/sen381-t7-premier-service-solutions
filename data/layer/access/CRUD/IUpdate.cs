@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace data.layer.access
+namespace Data.Layer.Access
 {
     interface IUpdate <T>
     {

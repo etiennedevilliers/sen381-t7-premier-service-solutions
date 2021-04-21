@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
-using data.layer.access;
+using Data.Layer.Access;
 using Data.Layer.Objects;
 
-namespace data.layer.controller
+namespace Data.Layer.Controller
 {
     class RequestController : IChildren<Agent, Request>, IChild<Client,Request>
     {
-        private String table_name;
-        private String table_identifier_name;
+        private string tableName;
+        private string tableIdentifierName;
 
         internal int Create(Request obj)
         {
@@ -18,15 +18,15 @@ namespace data.layer.controller
 
             int ID = dh.InsertID(string.Format(
                 "INSERT INTO Request(ClientID, dateCreated, dateResolved, status, contactNum, CallID) VALUES ({0},'{1}','{2}','{3}','{4}', {5})",
-                (obj.client != null) ? obj.client.id.ToString() : "null",
-                obj.dateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
-                obj.dateResolved.ToString("yyyy-MM-dd HH:mm:ss.fff"),
-                obj.status,
-                obj.contactNum,
-                obj.call.id
+                (obj.Client != null) ? obj.Client.Id.ToString() : "null",
+                obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.DateResolved.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.Status,
+                obj.ContactNum,
+                obj.Call.Id
             ));
 
-            obj.id = ID;
+            obj.Id = ID;
 
             dh.Dispose();
 
@@ -37,7 +37,7 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Delete("Request", "RequestID = " + obj.id.ToString());
+            dh.Delete("Request", "RequestID = " + obj.Id.ToString());
 
             dh.Dispose();
         }
@@ -48,13 +48,13 @@ namespace data.layer.controller
 
             dh.Update(string.Format(
                 "UPDATE dbo.Request SET ClientID={1}, CallID={2}, dateCreated='{3}', dateResolved='{4}', status='{5}', contactNum='{6}' WHERE RequestID = {0}", 
-                obj.id,
-                obj.client.id,
-                obj.call.id,
-                obj.dateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"), 
-                obj.dateResolved.ToString("yyyy-MM-dd HH:mm:ss.fff"),
-                obj.status,
-                obj.contactNum
+                obj.Id,
+                obj.Client.Id,
+                obj.Call.Id,
+                obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"), 
+                obj.DateResolved.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.Status,
+                obj.ContactNum
              ));
 
             dh.Dispose();
@@ -63,10 +63,10 @@ namespace data.layer.controller
         public void Add(Agent child, Request parent) {
             DataHandler dh = new DataHandler();
 
-            String query = string.Format(
+            string query = string.Format(
                 "INSERT INTO agentRequestHandlers(AgentID, RequestID) VALUES({0}, {1})",
-                child.id,
-                parent.id
+                child.Id,
+                parent.Id
             );
             dh.Insert(query);
 
@@ -76,10 +76,10 @@ namespace data.layer.controller
         public void Remove(Agent child, Request parent) {
             DataHandler dh = new DataHandler();
 
-            dh.Delete("Request", String.Format(
-                "AgentID={0} AND RequestID={1}",
-                child.id,
-                parent.id
+            dh.Delete("agentRequestHandlers", string.Format(
+                "AgentID = {0} AND RequestID = {1}",
+                child.Id,
+                parent.Id
             ));
 
             dh.Dispose();
@@ -91,11 +91,11 @@ namespace data.layer.controller
 
             List<Agent> agents = new List<Agent>();
 
-            String query = "SELECT A.AgentID, A.aName, A.contactNum, A.employmentStatus, A.employeeType FROM Agent AS A " +
+            string query = "SELECT A.AgentID, A.aName, A.contactNum, A.employmentStatus, A.employeeType FROM Agent AS A " +
 	                            "LEFT JOIN agentRequestHandlers AS H ON A.AgentID = H.AgentID " +
                             "WHERE H.RequestID = {0}";
 
-            SqlDataReader read = dh.Select(String.Format(query, parent.id));
+            SqlDataReader read = dh.Select(string.Format(query, parent.Id));
             Agent agent;
 
             if (read.HasRows)
@@ -104,12 +104,13 @@ namespace data.layer.controller
                 {
 
                     agent = new Agent(
-                        read.GetInt32(0),
                         read.GetString(1),
                         read.GetString(2),
                         read.GetString(3),
                         read.GetString(4)
                     );
+
+                    agent.Id = read.GetInt32(0);
 
                     agents.Add(agent);
                 }
@@ -119,26 +120,23 @@ namespace data.layer.controller
         }
 
 
-        //IChild Implementation 
-    
+        //Child CRUD
         public void Set(Client child , Request parent)
         {
-
             DataHandler dh = new DataHandler();
-
 
             string query = string.Format(
 
                     "UPDATE {0} SET ClientID = {1} WHERE {2} = {3}",
-                    table_name,
-                    child.id,
-                    table_identifier_name,
-                    parent.id
+                    tableName,
+                    child.Id,
+                    tableIdentifierName,
+                    parent.Id
                 );
 
             dh.Update(query);
-            dh.Dispose();
 
+            dh.Dispose();
         }
  
         public Client ReadChild(Request parent)
@@ -163,11 +161,11 @@ namespace data.layer.controller
                 {
                     newClient = new BusinessClient(read.GetString(1),read.GetString(2));
                 }
-               
             }
+
             dh.Dispose();
+
             return newClient;
         }
-
     }
 }

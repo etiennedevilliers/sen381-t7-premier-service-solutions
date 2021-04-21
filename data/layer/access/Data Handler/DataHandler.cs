@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Data;
 using System.Data.SqlClient;
 
-namespace Data.Layer.Objects
+namespace Data.Layer.Access
 {
     class DataHandler : IDisposable
     {

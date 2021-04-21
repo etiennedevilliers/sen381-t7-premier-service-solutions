@@ -1,70 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Data.Layer.Objects;
-using data.layer.access;
-using System.Data.SqlClient;
-using data.layer.controller;
+using Data.Layer.Controller;
 
 namespace Data.Layer.Objects
 {
     public class ServiceContract
     {
         //Fields
-        public int id;
-        private string _description;
-        private double _cost;
-        private DateTime _dateFinalised;
-        private DateTime _dateTerminated; 
-        private string _status;
+        private int id;
+        private string description;
+        private double cost;
+        private DateTime dateFinalised;
+        private DateTime dateTerminated; 
+        private string status;
 
-        public string Description { get => _description; set =>_description = value; }
-        public List<Package> Packages { 
-            get {
-                ServiceContractController serviceContractController = new ServiceContractController();
-                return serviceContractController.ReadChildren(this);
+        //Properties
+        public int Id { get => id; set => id = value; }
+        public string Description { get => description; set => description = value; }
+        public List<Package> Packages
+        {
+            get
+            {
+                return new ServiceContractController().ReadChildren(this);
             }
         }
-        public double Cost { get => _cost; set => _cost = value; }
-        public DateTime DateFinalised { get => _dateFinalised; set => _dateFinalised = value; }
-        public DateTime DateTerminated { get => _dateTerminated; set => _dateTerminated = value; }
-        public string Status { get => _status; set => _status = value; }
+        public double Cost { get => cost; set => cost = value; }
+        public DateTime DateFinalised { get => dateFinalised; set => dateFinalised = value; }
+        public DateTime DateTerminated { get => dateTerminated; set => dateTerminated = value; }
+        public string Status { get => status; set => status = value; }
 
-
-        //Custom Constructor
-        public ServiceContract(string description,double cost, DateTime dateFinalised, DateTime dateTerminated, string status)
-        {    
-            Description = description;
-            Cost = cost;
-            DateFinalised = dateFinalised;
-            DateTerminated = dateTerminated;
-            Status = status;
+        //Constructor
+        public ServiceContract(string description, double cost, DateTime dateFinalised, DateTime dateTerminated, string status)
+        {
+            this.description = description;
+            this.cost = cost;
+            this.dateFinalised = dateFinalised;
+            this.dateTerminated = dateTerminated;
+            this.status = status;
         }
 
+        //Standard Methods
         public override bool Equals(object obj)
         {
-
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
             {
                 return false;
             }
             else
             {
-                ServiceContract p = (ServiceContract)obj;
-                return p.id.Equals(this.id);
+                ServiceContract p = (ServiceContract) obj;
+                return p.Id.Equals(id);
             }
 
         }
 
         public override int GetHashCode()
         {
-            return this.id;
+            return Id;
         }
 
         public override string ToString()
         {
-            return String.Format("ServiceContract({0}, {1}, {2}, Packages count: {3}, {4}, {5})", id, Description, Cost, Packages.Count, DateFinalised, DateTerminated);
+            return string.Format("ServiceContract({0}, {1}, {2}, Packages count: {3}, {4}, {5})", id, description, cost, Packages.Count, dateFinalised, dateTerminated);
         }
-        //Ruben De Beer
     }
 }

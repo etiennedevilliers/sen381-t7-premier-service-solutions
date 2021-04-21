@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using data.layer.access;
+using Data.Layer.Access;
 using Data.Layer.Objects;
 using System.Data.SqlClient;
 
-namespace data.layer.controller
+namespace Data.Layer.Controller
 {
     class EmployeeController : IRead<Employee>, ICreate<Employee>, IUpdate<Employee>, IDelete<Employee>
     {
@@ -16,24 +15,25 @@ namespace data.layer.controller
             this.bus = bus;
         }
 
+        //Basic CRUD
         public int Create(Employee obj)
         {
             DataHandler dh = new DataHandler();
 
-            obj.id = dh.InsertID(string.Format(
+            obj.Id = dh.InsertID(string.Format(
                     "INSERT INTO Employee(name, surname, role, contactNum, BusinessClientID) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')",
-                    obj.name, obj.surname, obj.role, obj.contactNum, bus.id));
+                    obj.Name, obj.Surname, obj.Role, obj.ContactNum, bus.Id));
 
             dh.Dispose();
 
-            return obj.id;
+            return obj.Id;
         }
 
         public void Delete(Employee obj)
         {
             DataHandler dh = new DataHandler();
 
-            dh.Delete("Employee", "EmployeeID = " + obj.id.ToString());
+            dh.Delete("Employee", "EmployeeID = " + obj.Id.ToString());
 
             dh.Dispose();
         }
@@ -43,7 +43,7 @@ namespace data.layer.controller
             DataHandler dh = new DataHandler();
 
             List<Employee> empList = new List<Employee>();
-            SqlDataReader read = dh.Select("SELECT EmployeeID, name, surname, role, contactNum FROM Employee WHERE BusinessClientID = " + bus.id.ToString());
+            SqlDataReader read = dh.Select("SELECT EmployeeID, name, surname, role, contactNum FROM Employee WHERE BusinessClientID = " + bus.Id.ToString());
             Employee newEmp;
 
             if (read.HasRows)
@@ -57,7 +57,7 @@ namespace data.layer.controller
                             read.GetString(4)
                         );
 
-                    newEmp.id = read.GetInt32(0);
+                    newEmp.Id = read.GetInt32(0);
 
                     empList.Add(newEmp);
                 }
@@ -73,8 +73,8 @@ namespace data.layer.controller
             DataHandler dh = new DataHandler();
 
             dh.Update(string.Format("UPDATE dbo.Employee SET name = '{0}', surname = '{1}', role = '{2}', contactNum = '{3}' WHERE EmployeeID = {4}", 
-                obj.name, obj.surname, obj.role, obj.contactNum, obj.id));
-            
+                obj.Name, obj.Surname, obj.Role, obj.ContactNum, obj.Id));
+
             dh.Dispose();
         }
     }

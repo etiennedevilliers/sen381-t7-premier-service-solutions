@@ -1,6 +1,6 @@
 ﻿using System;
 using Data.Layer.Objects;
-using data.layer.controller;
+using Data.Layer.Controller;
 using System.Collections.Generic;
 
 namespace sen381_t7_premier_service_solutions
@@ -9,9 +9,6 @@ namespace sen381_t7_premier_service_solutions
     {
         static void Main(string[] args)
         {
-
-            
-
 
         }
 
@@ -114,7 +111,6 @@ namespace sen381_t7_premier_service_solutions
             foreach (Request req in requests) {
                 Console.WriteLine(req);
             }
-        
         }
 
         static void testClients() {
@@ -127,7 +123,7 @@ namespace sen381_t7_premier_service_solutions
             foreach (BusinessClient i in clients)
             {
                 Console.WriteLine(i);
-                foreach (Employee e in i.employees)
+                foreach (Employee e in i.Employees)
                 {
                     Console.WriteLine(string.Format("\t-{0}", e));
                 }
@@ -142,8 +138,8 @@ namespace sen381_t7_premier_service_solutions
             ServiceController servicecontroler = new ServiceController();
 
             Service cpurepairs = new Service(
-                    4,
-                    "CPU related repairs"
+                    "CPU related repairs",
+                    4
                 );
 
             Console.WriteLine("Creating CPU repair services ...");
@@ -179,14 +175,14 @@ namespace sen381_t7_premier_service_solutions
             CallLogController callLogController = new CallLogController();
 
             Service cpurepairs = new Service(
-                  4,
-                  "CPU related repairs"
-              );
-            
+                    "CPU related repairs",
+                    4
+                );
+
             Service gpuReplacement = new Service(
-                4,
-                "GPU replacements"
-            );
+                    "GPU Replacements",
+                    4
+                );
 
             ServiceLevelAgreement Sla = new ServiceLevelAgreement(
                 "50 char limit"

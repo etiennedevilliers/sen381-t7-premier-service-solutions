@@ -1,25 +1,27 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Data.Layer.Objects
 {
     
     public class NewContractRequest : Request
     {
-        public ServiceContract serviceContracts;
+        //Fields
+        private ServiceContract serviceContract;
 
-        public NewContractRequest(DateTime dtCreated, DateTime dtResolved, CallLog call) 
-                                                        : base(dtCreated, dtResolved, call) {
+        //Properties
+        public ServiceContract ServiceContract { get => serviceContract; set => serviceContract = value; }
+
+        //Constructor
+        public NewContractRequest(DateTime dtCreated, DateTime dtResolved, CallLog call) : base(dtCreated, dtResolved, call)
+        {
             
         }
 
-        public override void Schedule() {
-
-        }
-
-        public override string ToString() {
-            return String.Format("NewContractRequest({0}, {1}, {2}, ...)", dateCreated, dateResolved, call);
+        //Standard Methods
+        public override string ToString()
+        {
+            return string.Format("NewContractRequest({0}, {1}, {2}, ...)", DateCreated, DateResolved, Call);
         }
     }
 }
