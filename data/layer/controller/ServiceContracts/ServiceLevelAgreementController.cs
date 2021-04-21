@@ -2,46 +2,43 @@
 using System.Collections.Generic;
 using System.Text;
 using Data.Layer.Objects;
-using data.layer.access;
+using Data.Layer.Access;
 using System.Data.SqlClient;
 
-namespace data.layer.controller
+namespace Data.Layer.Controller
 {
     class ServiceLevelAgreementController : ICreate<ServiceLevelAgreement>, IDelete<ServiceLevelAgreement>, IUpdate<ServiceLevelAgreement>,IRead<ServiceLevelAgreement>
     {
-
-        //Create  
+        //Basic CRUD
         public int Create(ServiceLevelAgreement obj)
         {
             DataHandler dh = new DataHandler();
 
-            String query = string.Format(
+            string query = string.Format(
                 "INSERT INTO ServiceLevelAgreement(slaDescription) VALUES ('{0}')",
-                obj.description
+                obj.Description
             );
 
             Console.WriteLine(query);
 
             int ID = dh.InsertID(query);
 
-            obj.id = ID;
+            obj.Id = ID;
 
             dh.Dispose();
 
             return ID;
         }
 
-        //Delete 
         public void Delete(ServiceLevelAgreement obj)
         {
             DataHandler dh = new DataHandler();
 
-            dh.Delete("ServiceLevelAgreement", "ServiceLevelAgreementID = " + obj.id);
+            dh.Delete("ServiceLevelAgreement", "ServiceLevelAgreementID = " + obj.Id);
 
             dh.Dispose();
         }
 
-        //Read 
         public List<ServiceLevelAgreement> Read()
         {
             DataHandler dh = new DataHandler();
@@ -59,27 +56,24 @@ namespace data.layer.controller
                     newSLA = new ServiceLevelAgreement(
                         read.GetString(1)
                         );
-                   newSLA.id = read.GetInt32(0);
+                   newSLA.Id = read.GetInt32(0);
 
                    slas.Add(newSLA);
                 }
             }
 
-           
             dh.Dispose();
             return slas;
         }
 
-
-        //Update
         public void Update(ServiceLevelAgreement obj)
         {
             DataHandler dh = new DataHandler();
 
             dh.Update(string.Format(
                 "UPDATE dbo.ServiceLevelAgreement SET slaDescription = '{1}' WHERE ServiceLevelAgreementID = {0}",
-                obj.id,
-                obj.description
+                obj.Id,
+                obj.Description
                 )) ;
         }
     }

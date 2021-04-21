@@ -1,26 +1,25 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Data.Layer.Objects
 {
     
     public class NewClientRequest : Request
     {
+        //Fields
 
-        public NewClientRequest(DateTime dateCreated, DateTime dateResolved, CallLog call) : base(dateCreated, dateResolved, call) {
+        //Properties
 
-        }
-
-        public override void Schedule()
+        //Constructor
+        public NewClientRequest(DateTime dateCreated, DateTime dateResolved, CallLog call) : base(dateCreated, dateResolved, call)
         {
-            throw new NotImplementedException();
+
         }
 
+        //Standard Methods
         public override string ToString()
         {
-            return String.Format("NewClientRequest({0}, {1}, {2}, ...)", dateCreated, dateResolved, call);
+            return string.Format("NewClientRequest({0}, {1}, {2}, ...)", DateCreated, DateResolved, Call);
         }
-
     }
 }

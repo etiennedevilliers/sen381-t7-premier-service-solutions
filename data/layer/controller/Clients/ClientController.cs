@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Text;
-using data.layer.access;
+using Data.Layer.Access;
 using Data.Layer.Objects;
 
-namespace data.layer.controller
+namespace Data.Layer.Controller
 {
     internal class ClientController : ICreate<Client>, IUpdate<Client>, IDelete<Client>
     {
@@ -13,7 +11,7 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            int ID = dh.InsertID("INSERT INTO Client(contactNum) VALUES ('" + obj.contactNum + "')");
+            int ID = dh.InsertID("INSERT INTO Client(contactNum) VALUES ('" + obj.ContactNum + "')");
 
             dh.Dispose();
 
@@ -24,7 +22,7 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Delete("Client", "ClientID = " + obj.id.ToString());
+            dh.Delete("Client", "ClientID = " + obj.Id.ToString());
 
             dh.Dispose();
         }
@@ -33,7 +31,7 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Update(string.Format("UPDATE dbo.Client SET contactNum = '{0}' WHERE ClientID = {1}", obj.contactNum, obj.id));
+            dh.Update(string.Format("UPDATE dbo.Client SET contactNum = '{0}' WHERE ClientID = {1}", obj.ContactNum, obj.Id));
 
             dh.Dispose();
         }

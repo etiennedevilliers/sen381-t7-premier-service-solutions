@@ -1,33 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using data.layer.access;
+using Data.Layer.Access;
 using Data.Layer.Objects;
 using System.Data.SqlClient;
 
-namespace data.layer.controller
+namespace Data.Layer.Controller
 {
     class BusinessClientController : ICreate<BusinessClient>, IRead<BusinessClient>, IUpdate<BusinessClient>, IDelete<BusinessClient>
     {
+        //Basic CRUD
         public int Create(BusinessClient obj)
         {
             DataHandler dh = new DataHandler();
 
             ClientController cl = new ClientController();
-            obj.id = cl.Create(obj);
+            obj.Id = cl.Create(obj);
 
-            dh.Insert("INSERT INTO BusinessClient(BusinessClientID, name) VALUES (" + obj.id + ", '" + obj.name + "')");
+            dh.Insert("INSERT INTO BusinessClient(BusinessClientID, name) VALUES (" + obj.Id + ", '" + obj.Name + "')");
 
             dh.Dispose();
 
-            return obj.id;
+            return obj.Id;
         }
 
         public void Delete(BusinessClient obj)
         {
             DataHandler dh = new DataHandler();
 
-            dh.Delete("BusinessClient", "BusinessClientID = " + obj.id.ToString());
+            dh.Delete("BusinessClient", "BusinessClientID = " + obj.Id.ToString());
             ClientController cl = new ClientController();
             cl.Delete(obj);
 
@@ -38,7 +38,7 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            List<BusinessClient> indList = new List<BusinessClient>();
+            List<BusinessClient> busList = new List<BusinessClient>();
             SqlDataReader read = dh.Select("SELECT BC.BusinessClientID, name, contactNum" +
                 "FROM dbo.BusinessClient AS BC" +
                 "LEFT JOIN dbo.Client AS C ON C.ClientID = BC.BusinessClientID");
@@ -53,20 +53,20 @@ namespace data.layer.controller
                             read.GetString(1)
                         );
 
-                    newCl.id = read.GetInt32(0);
+                    newCl.Id = read.GetInt32(0);
 
-                    indList.Add(newCl);
+                    busList.Add(newCl);
                 }
             }
             dh.Dispose();
-            return indList;
+            return busList;
         }
 
         public void Update(BusinessClient obj)
         {
             DataHandler dh = new DataHandler();
 
-            dh.Update(string.Format("UPDATE dbo.BusinessClient SET name = '{0}' WHERE BusinessClientID = {1}", obj.name, obj.id));
+            dh.Update(string.Format("UPDATE dbo.BusinessClient SET name = '{0}' WHERE BusinessClientID = {1}", obj.Name, obj.Id));
             ClientController cl = new ClientController();
             cl.Update(obj);
 

@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 using Data.Layer.Objects;
-using data.layer.access;
+using Data.Layer.Access;
 using System.Data.SqlClient;
 
-namespace data.layer.controller
+namespace Data.Layer.Controller
 {
     class ServiceContractController : ICreate<ServiceContract>, IDelete<ServiceContract>, IUpdate<ServiceContract>,IRead<ServiceContract>, IChildren<Package, ServiceContract>
     {
-
-
+        //Basic CRUD
         public int Create(ServiceContract obj)
         {
-
             DataHandler dh = new DataHandler();
 
-            obj.id = dh.InsertID(string.Format("INSERT INTO ServiceContract (description, dateFinalised, dateTerminated, cost, status ) VALUES ('{0}', '{1}','{2}', '{3}','{4}')",        
+            obj.Id = dh.InsertID(string.Format("INSERT INTO ServiceContract (description, dateFinalised, dateTerminated, cost, status ) VALUES ('{0}', '{1}','{2}', '{3}','{4}')",        
                 obj.Description, 
                 obj.DateFinalised,
                 obj.DateTerminated,
@@ -25,28 +23,26 @@ namespace data.layer.controller
 
             dh.Dispose();
 
-            return obj.id;
+            return obj.Id;
         }
 
 
         public void Delete(ServiceContract obj)
         {
             DataHandler dh = new DataHandler();
-            dh.Delete("ServiceContract","ServiceContractID = "+obj.id.ToString());
+            dh.Delete("ServiceContract","ServiceContractID = " + obj.Id.ToString());
 
             dh.Dispose();
         }
 
         public void Update(ServiceContract obj)
         {
-
             DataHandler dh = new DataHandler();
 
             dh.Update(string.Format("UPDATE dbo.ServiceContract SET description = '{0}', dateFinalised = '{1}', dateTerminated = '{2}', cost = '{3}', status = '{4}' WHERE  ServiceContractID = {5}",
-                obj.Description, obj.DateFinalised, obj.DateTerminated, obj.Cost, obj.Status, obj.id ));
+                obj.Description, obj.DateFinalised, obj.DateTerminated, obj.Cost, obj.Status, obj.Id ));
 
             dh.Dispose();
-
         }
 
         public List<ServiceContract> Read()
@@ -63,13 +59,13 @@ namespace data.layer.controller
                 {
                     newSc = new ServiceContract(
                             read.GetString(1),
-                            Decimal.ToDouble(read.GetDecimal(4)),
+                            decimal.ToDouble(read.GetDecimal(4)),
                             read.GetDateTime(2),
                             read.GetDateTime(3),
                             read.GetString(5)
                         );
 
-                    newSc.id = read.GetInt32(0);
+                    newSc.Id = read.GetInt32(0);
 
                     scrList.Add(newSc);
                 }
@@ -84,10 +80,10 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            String query = string.Format(
+            string query = string.Format(
                 "INSERT INTO serviceContractPackages(ServiceContractID, PackageID) VALUES({0}, {1})",
-                parent.id,
-                child.id
+                parent.Id,
+                child.Id
             );
             dh.Insert(query);
 
@@ -98,10 +94,10 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Delete("serviceContractPackages", String.Format(
+            dh.Delete("serviceContractPackages", string.Format(
                 "ServiceContractID={0} AND PackageID={1}",
-                parent.id,
-                child.id
+                parent.Id,
+                child.Id
             ));
 
             dh.Dispose();
@@ -113,11 +109,11 @@ namespace data.layer.controller
 
             List<Package> packageList = new List<Package>();
 
-            String query = String.Format("SELECT P.PackageID, P.pName, P.pDescription, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription FROM Package AS P " +
+            string query = string.Format("SELECT P.PackageID, P.pName, P.pDescription, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription FROM Package AS P " +
 	                            "LEFT JOIN Service AS S ON S.ServiceID = P.ServiceID " +
 	                            "LEFT JOIN ServiceLevelAgreement AS SLA ON SLA.ServiceLevelAgreementID = P.ServiceLevelAgreementID " +
 	                            "LEFT JOIN serviceContractPackages AS SCP ON SCP.PackageID = P.PackageID " +
-                            "WHERE SCP.ServiceContractID={0}", parent.id);
+                            "WHERE SCP.ServiceContractID={0}", parent.Id);
 
             SqlDataReader read = dh.Select(query);
             Service service;
@@ -129,15 +125,15 @@ namespace data.layer.controller
                 while (read.Read())
                 {
                     service = new Service(
-                        read.GetInt32(4),
-                        read.GetString(5)
+                        read.GetString(5),
+                        read.GetInt32(4)
                     );
-                    service.id = read.GetInt32(3);
+                    service.Id = read.GetInt32(3);
                     
                     serviceLevelAgreement = new ServiceLevelAgreement(
                         read.GetString(7)
                     );
-                    serviceLevelAgreement.id = read.GetInt32(6);
+                    serviceLevelAgreement.Id = read.GetInt32(6);
 
                     package = new Package(
                         read.GetString(1),
@@ -146,7 +142,7 @@ namespace data.layer.controller
                         serviceLevelAgreement
                     );
 
-                    package.id = read.GetInt32(0);
+                    package.Id = read.GetInt32(0);
 
                     packageList.Add(package);
                 }
@@ -155,8 +151,6 @@ namespace data.layer.controller
             dh.Dispose();
 
             return packageList;
-
         }
-
     }
 }

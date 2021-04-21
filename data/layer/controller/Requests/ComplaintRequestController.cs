@@ -1,36 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using data.layer.access;
+using Data.Layer.Access;
 using Data.Layer.Objects;
 
-namespace data.layer.controller 
+namespace Data.Layer.Controller
 {
     class ComplaintRequestController : RequestServiceContractHandler, ICreate<ComplaintRequest>, IDelete<ComplaintRequest>, IRead<ComplaintRequest>, IUpdate<ComplaintRequest>
     {
+        //Basic CRUD
         public ComplaintRequestController() : base("ComplaintRequest", "ComplaintRequestID") {}
+
         public int Create(ComplaintRequest obj)
         {
             DataHandler dh = new DataHandler();
 
             RequestController requestController = new RequestController();
-            obj.id = requestController.Create(obj);
+            obj.Id = requestController.Create(obj);
 
             dh.Insert(string.Format(
                 "INSERT INTO ComplaintRequest(ComplaintRequestID, ServiceContractID, description) VALUES ({0}, null, '{1}')",
-                obj.id,
-                obj.description
+                obj.Id,
+                obj.Description
             ));
 
             dh.Dispose();
 
-            return obj.id;
+            return obj.Id;
         }
 
         public void Delete(ComplaintRequest obj)
         {
             DataHandler dh = new DataHandler();
-            dh.Delete("ComplaintRequest", "ComplaintRequestID = " + obj.id.ToString());
+            dh.Delete("ComplaintRequest", "ComplaintRequestID = " + obj.Id.ToString());
             dh.Dispose();
 
             RequestController requestController = new RequestController();
@@ -43,7 +45,7 @@ namespace data.layer.controller
 
             List<ComplaintRequest> complaintRequests = new List<ComplaintRequest>();
 
-            String query = "SELECT C.ComplaintRequestID, C.description, R.ClientID, R.contactNum, R.dateCreated, R.dateResolved, R.status, CL.CallID, CL.timeStarted, CL.timeEnded, CL.AgentID, CL.incoming " +
+            string query = "SELECT C.ComplaintRequestID, C.description, R.ClientID, R.contactNum, R.dateCreated, R.dateResolved, R.status, CL.CallID, CL.timeStarted, CL.timeEnded, CL.AgentID, CL.incoming " +
                            "FROM dbo.ComplaintRequest AS C " +
                            "LEFT JOIN dbo.Request AS R ON R.RequestID = C.ComplaintRequestID " +
                            "LEFT JOIN dbo.CallLog AS CL ON CL.CallID = R.CallID";
@@ -56,13 +58,14 @@ namespace data.layer.controller
             {
                 while (read.Read())
                 {
-                    CallLog callLog = new CallLog(
-                        read.GetInt32(7),
+                     CallLog callLog = new CallLog(
                         read.GetDateTime(8),
                         read.GetDateTime(9),
                         //read agent ID(10)???
                         read.GetBoolean(11)
                     );
+
+                    callLog.Id = read.GetInt32(7);
 
                     complaintRequest = new ComplaintRequest(
                         read.GetDateTime(4),
@@ -72,10 +75,10 @@ namespace data.layer.controller
                     );
 
 
-                    complaintRequest.id = read.GetInt32(0);
+                    complaintRequest.Id = read.GetInt32(0);
                     // newClientRequest.client = ClientController.ReadSpecific(read.GetInt32(1));
-                    complaintRequest.contactNum = read.GetString(3);
-                    complaintRequest.status = read.GetString(6);
+                    complaintRequest.ContactNum = read.GetString(3);
+                    complaintRequest.Status = read.GetString(6);
 
                     complaintRequests.Add(complaintRequest);
                 }
@@ -88,10 +91,10 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Update(String.Format(
+            dh.Update(string.Format(
                 "UPDATE dbo.ComplaintRequest SET description='{1}' WHERE ComplaintRequestID={0}",
-                obj.id,
-                obj.description
+                obj.Id,
+                obj.Description
                 //obj.serviceContract.id
             ));
 

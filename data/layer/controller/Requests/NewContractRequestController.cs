@@ -1,35 +1,37 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using data.layer.access;
+using Data.Layer.Access;
 using Data.Layer.Objects;
 
-namespace data.layer.controller 
+namespace Data.Layer.Controller
 {
     class NewContractRequestController : RequestServiceContractHandler, ICreate<NewContractRequest>, IDelete<NewContractRequest>, IRead<NewContractRequest>, IUpdate<NewContractRequest>
     {
+        //Basic CRUD
         public NewContractRequestController() : base("NewContractRequest", "NewContractRequestID") {}
+
         public int Create(NewContractRequest obj)
         {
             DataHandler dh = new DataHandler();
 
             RequestController requestController = new RequestController();
-            obj.id = requestController.Create(obj);
+            obj.Id = requestController.Create(obj);
 
             dh.Insert(string.Format(
                 "INSERT INTO NewContractRequest(NewContractRequestID, ServiceContractID) VALUES ({0}, null)",
-                obj.id
+                obj.Id
             ));
 
             dh.Dispose();
 
-            return obj.id;
+            return obj.Id;
         }
 
         public void Delete(NewContractRequest obj)
         {
             DataHandler dh = new DataHandler();
-            dh.Delete("NewContractRequest", "NewContractRequestID = " + obj.id.ToString());
+            dh.Delete("NewContractRequest", "NewContractRequestID = " + obj.Id.ToString());
             dh.Dispose();
 
             RequestController requestController = new RequestController();
@@ -56,12 +58,13 @@ namespace data.layer.controller
                 while (read.Read())
                 {
                     CallLog callLog = new CallLog(
-                        read.GetInt32(6),
                         read.GetDateTime(7),
                         read.GetDateTime(8),
                         //read agent ID(9)???
                         read.GetBoolean(10)
                     );
+
+                    callLog.Id = read.GetInt32(6);
 
                     newContractRequest = new NewContractRequest(
                         read.GetDateTime(3),
@@ -70,10 +73,10 @@ namespace data.layer.controller
                     );
 
 
-                    newContractRequest.id = read.GetInt32(0);
+                    newContractRequest.Id = read.GetInt32(0);
                     // newContractRequest.client = ClientController.ReadSpecific(read.GetInt32(1));
-                    newContractRequest.contactNum = read.GetString(2);
-                    newContractRequest.status = read.GetString(5);
+                    newContractRequest.ContactNum = read.GetString(2);
+                    newContractRequest.Status = read.GetString(5);
 
                     contractRequests.Add(newContractRequest);
                 }

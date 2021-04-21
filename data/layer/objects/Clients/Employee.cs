@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Data.Layer.Objects
 {
     public class Employee
     {
         //Fields
-        private int _id;
-        private string _name;
-        private string _surname;
-        private string _role;
-        private string _contactNum;
+        private int id;
+        private string name;
+        private string surname;
+        private string role;
+        private string contactNum;
 
         //Properties
-        public int id { get => _id; set => _id = value; }
-        public string name { get => _name; set => _name = value; }
-        public string surname { get => _surname; set => _surname = value; }
-        public string role { get => _role; set => _role = value; }
-        public string contactNum { get => _contactNum; set => _contactNum = value; }
+        public int Id { get => id; set => id = value; }
+        public string Name { get => name; set => name = value; }
+        public string Surname { get => surname; set => surname = value; }
+        public string Role { get => role; set => role = value; }
+        public string ContactNum { get => contactNum; set => contactNum = value; }
 
         //Constructor
         public Employee(string name, string surname, string role, string contactNum)
@@ -32,20 +31,20 @@ namespace Data.Layer.Objects
         //Standard Methods
         public override bool Equals(object obj)
         {
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
             {
                 return false;
             }
             else
             {
                 Employee p = (Employee)obj;
-                return p.id.Equals(this._id);
+                return p.Id.Equals(id);
             }
         }
 
         public override int GetHashCode()
         {
-            return this.id;
+            return Id;
         }
 
         public override string ToString()

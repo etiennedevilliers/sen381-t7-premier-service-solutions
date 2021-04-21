@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using data.layer.access;
+using Data.Layer.Access;
 using Data.Layer.Objects;
 
-namespace data.layer.controller 
+namespace Data.Layer.Controller
 {
     class ServiceRequestController : RequestServiceContractHandler, ICreate<ServiceRequest>, IDelete<ServiceRequest>, IRead<ServiceRequest>, IUpdate<ServiceRequest>
     {
+        //Basic CRUD
         public ServiceRequestController() : base("ServiceRequest", "ServiceRequestID") {}
 
         public int Create(ServiceRequest obj)
@@ -15,26 +16,26 @@ namespace data.layer.controller
             DataHandler dh = new DataHandler();
 
             RequestController requestController = new RequestController();
-            obj.id = requestController.Create(obj);
+            obj.Id = requestController.Create(obj);
 
-            String query = string.Format(
+            string query = string.Format(
                 "INSERT INTO ServiceRequest(ServiceRequestID, description, jobStarted) VALUES ({0}, '{1}', '{2}')",
-                obj.id,
-                obj.description,
-                obj.jobStarted.ToString("yyyy-MM-dd HH:mm:ss.fff")
+                obj.Id,
+                obj.Description,
+                obj.JobStarted.ToString("yyyy-MM-dd HH:mm:ss.fff")
             );
 
             dh.Insert(query);
 
             dh.Dispose();
 
-            return obj.id;
+            return obj.Id;
         }
 
         public void Delete(ServiceRequest obj)
         {
             DataHandler dh = new DataHandler();
-            dh.Delete("ServiceRequest", "ServiceRequestID = " + obj.id.ToString());
+            dh.Delete("ServiceRequest", "ServiceRequestID = " + obj.Id.ToString());
             dh.Dispose();
 
             RequestController requestController = new RequestController();
@@ -48,7 +49,7 @@ namespace data.layer.controller
             List<ServiceRequest> serviceRequests = new List<ServiceRequest>();
 
 
-            String query = "SELECT S.ServiceRequestID, S.description, S.jobStarted, R.ClientID, R.contactNum, R.dateCreated, R.dateResolved, R.status, CL.CallID, CL.timeStarted, CL.timeEnded, CL.AgentID, CL.incoming " + 
+            string query = "SELECT S.ServiceRequestID, S.description, S.jobStarted, R.ClientID, R.contactNum, R.dateCreated, R.dateResolved, R.status, CL.CallID, CL.timeStarted, CL.timeEnded, CL.AgentID, CL.incoming " + 
                            "FROM dbo.ServiceRequest AS S " + 
 	                            "LEFT JOIN dbo.Request AS R ON R.RequestID = S.ServiceRequestID " +
                                 "LEFT JOIN dbo.CallLog AS CL ON CL.CallID = R.CallID";
@@ -63,12 +64,13 @@ namespace data.layer.controller
                 while (read.Read())
                 {
                     CallLog callLog = new CallLog(
-                        read.GetInt32(8),
                         read.GetDateTime(9),
                         read.GetDateTime(10),
                         // 11 is CallLog.AgentID
                         read.GetBoolean(12)
                     );
+
+                    callLog.Id = read.GetInt32(8);
 
                     serviceRequest = new ServiceRequest(
                         read.GetDateTime(5),
@@ -79,9 +81,9 @@ namespace data.layer.controller
                     );
 
 
-                    serviceRequest.id = read.GetInt32(0);
-                    serviceRequest.contactNum = read.GetString(4);
-                    serviceRequest.status = read.GetString(7);
+                    serviceRequest.Id = read.GetInt32(0);
+                    serviceRequest.ContactNum = read.GetString(4);
+                    serviceRequest.Status = read.GetString(7);
 
                     serviceRequests.Add(serviceRequest);
                 }
@@ -95,11 +97,11 @@ namespace data.layer.controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Update(String.Format(
+            dh.Update(string.Format(
                 "UPDATE dbo.ServiceRequest SET description='{1}', jobStarted={2} WHERE ServiceRequestID={0}",
-                obj.id,
-                obj.description,
-                obj.jobStarted
+                obj.Id,
+                obj.Description,
+                obj.JobStarted
             ));
 
             dh.Dispose();

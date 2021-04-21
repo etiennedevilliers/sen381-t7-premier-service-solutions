@@ -1,49 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Data.Layer.Objects
 {
     public class ServiceLevelAgreement
     {
         //Fields
-        private int _id;
-        private string _description;
+        private int id;
+        private string description;
 
-        public int id { get => _id; set => _id = value; }
-        public string description { get => _description; set => _description = value; }
+        //Properties
+        public int Id { get => id; set => id = value; }
+        public string Description { get => description; set => description = value; }
 
-        //Custom COnstructor
-        public ServiceLevelAgreement( string description)
+        //Constructor
+        public ServiceLevelAgreement(string description)
         {
-      
             this.description = description;
         }
-          
+
+        //Standard Methods
         public override bool Equals(object obj)
         {
-
-            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
             {
                 return false;
             }
             else
             {
-                ServiceLevelAgreement p = (ServiceLevelAgreement)obj;
-                return p.id.Equals(this._id);
+                ServiceLevelAgreement p = (ServiceLevelAgreement) obj;
+                return p.Id.Equals(id);
             }
-
         }
 
         public override int GetHashCode()
         {
-            return this.id;
+            return Id;
         } 
 
         public override string ToString()
         {
-            return String.Format("ServiceLevelAgreement({0}, {1})", id, description);
+            return string.Format("ServiceLevelAgreement({0}, {1})", id, description);
         }
-        //Ruben De Beer
     }
 }

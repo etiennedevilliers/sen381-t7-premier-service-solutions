@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using data.layer.controller;
+using Data.Layer.Controller;
 
 namespace Data.Layer.Objects
 {
     public class BusinessClient : Client
     {
         //Fields
-        private string _name;
+        private string name;
 
         //Properties
-        public string name { get => _name; set => _name = value; }
-        public List<Employee> employees
+        public string Name { get => name; set => name = value; }
+        public List<Employee> Employees
         {
             get
             {
@@ -22,8 +21,7 @@ namespace Data.Layer.Objects
         }
 
         //Constructor
-        public BusinessClient(string contactNum, string name)
-                        : base(contactNum)
+        public BusinessClient(string contactNum, string name) : base(contactNum)
         {
             this.name = name;
         }

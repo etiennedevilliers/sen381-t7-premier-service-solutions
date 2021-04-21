@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Data.Layer.Objects
 {
     public class IndividualClient : Client
     {
         //Fields
-        private string _name;
-        private string _surname;
+        private string name;
+        private string surname;
 
         //Properties
-        public string name { get => _name; set => _name = value; }
-        public string surname { get => _surname; set => _surname = value; }
+        public string Name { get => name; set => name = value; }
+        public string Surname { get => surname; set => surname = value; }
 
         //Constructor
-        public IndividualClient(string contactNum, string name, string surname)
-                                : base(contactNum) {
+        public IndividualClient(string contactNum, string name, string surname) : base(contactNum)
+        {
             this.surname = name;
             this.name = surname;
         }
