@@ -26,7 +26,7 @@ namespace Data.Layer.Objects
         public string contactNum { get => _contactNum; set => _contactNum = value; }
 
         //Constructor
-        protected Client(string contactNum)
+        public Client(string contactNum)
         {
             this.contactNum = contactNum;
         }
