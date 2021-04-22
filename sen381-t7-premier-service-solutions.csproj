@@ -89,14 +89,104 @@
     <Compile Include="data\layer\objects\ServiceContract\Service.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ServiceContract.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ServiceLevelAgreement.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="presentation\forms\Call Centre\frmCall.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="presentation\forms\Call Centre\frmCall.Designer.cs">
+      <DependentUpon>frmCall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Call Centre\frmNewRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Call Centre\frmNewRequest.Designer.cs">
+      <DependentUpon>frmNewRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmAddContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmAddContract.Designer.cs">
+      <DependentUpon>frmAddContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmClientMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmClientMenu.Designer.cs">
+      <DependentUpon>frmClientMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmEditClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmEditClient.Designer.cs">
+      <DependentUpon>frmEditClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmNewClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmNewClient.Designer.cs">
+      <DependentUpon>frmNewClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmViewClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmViewClients.Designer.cs">
+      <DependentUpon>frmViewClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Client Satisfaction\frmViewComplaints.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Satisfaction\frmViewComplaints.Designer.cs">
+      <DependentUpon>frmViewComplaints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Contract Maintenance\frmContractMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Contract Maintenance\frmContractMenu.Designer.cs">
+      <DependentUpon>frmContractMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Contract Maintenance\frmEditContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Contract Maintenance\frmEditContract.Designer.cs">
+      <DependentUpon>frmEditContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Contract Maintenance\frmNewContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Contract Maintenance\frmNewContract.Designer.cs">
+      <DependentUpon>frmNewContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Contract Maintenance\frmViewContracts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Contract Maintenance\frmViewContracts.Designer.cs">
+      <DependentUpon>frmViewContracts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Service Department\Manager\frmServiceMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Service Department\Manager\frmServiceMenu.Designer.cs">
+      <DependentUpon>frmServiceMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Service Department\Technician\frmViewServicesAssigned.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Service Department\Technician\frmViewServicesAssigned.Designer.cs">
+      <DependentUpon>frmViewServicesAssigned.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Welcome\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Welcome\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="presentation\forms\Service Department\Manager\frmServiceMenu.resx">
+      <DependentUpon>frmServiceMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Welcome\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -106,6 +196,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -118,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="logic\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

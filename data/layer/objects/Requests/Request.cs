@@ -14,7 +14,6 @@ namespace Data.Layer.Objects
         private string status;
         private CallLog call;
         private string contactNum;
-        private Client client;
 
         //Properties
         public DateTime DateCreated { get => dateCreated; set => dateCreated = value; }
@@ -22,7 +21,12 @@ namespace Data.Layer.Objects
         public string Status { get => status; set => status = value; }
         public CallLog Call { get => call; set => call = value; }
         public string ContactNum { get => contactNum; set => contactNum = value; }
-        public Client Client { get => client; set => client = value; }
+        public Client Client {
+            get
+            {
+                return new RequestController().ReadChild(this);
+            }
+        }
         public List<Agent> Handler
         {
             get

@@ -9,9 +9,6 @@ namespace Data.Layer.Controller
 {
     class RequestController : IChildren<Agent, Request>, IChild<Client,Request>
     {
-        private string tableName;
-        private string tableIdentifierName;
-
         internal int Create(Request obj)
         {
             DataHandler dh = new DataHandler();
@@ -127,10 +124,8 @@ namespace Data.Layer.Controller
 
             string query = string.Format(
 
-                    "UPDATE {0} SET ClientID = {1} WHERE {2} = {3}",
-                    tableName,
+                    "UPDATE Request SET ClientID = {0} WHERE RequestID = {1}",
                     child.Id,
-                    tableIdentifierName,
                     parent.Id
                 );
 
@@ -143,9 +138,9 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            string qry = string.Format("SELECT C.ClientID ,C.contactNumber, I.IndividualClientID,I.name,I.surname FROM Client as C"+
-                "LEFT JOIN IndividualClient AS I ON I.IndividualClientID = C.ClientID"+
-                "WHERE C.ClientID = {0}"
+            string qry = string.Format("SELECT C.ClientID, C.contactNum, I.IndividualClientID,I.name,I.surname FROM Client as C "+
+                "LEFT JOIN IndividualClient AS I ON I.IndividualClientID = C.ClientID "+
+                "WHERE C.ClientID = {0}", parent.Id
                 );
 
             SqlDataReader read = dh.Select(qry);
@@ -155,11 +150,11 @@ namespace Data.Layer.Controller
             {
                 if (!read.IsDBNull(0))
                 {
-                    newClient = new IndividualClient(read.GetString(1),read.GetString(2),read.GetString(3));
+                    newClient = new IndividualClient(read.GetString(1), read.GetString(2), read.GetString(3));
                 }
                 else
                 {
-                    newClient = new BusinessClient(read.GetString(1),read.GetString(2));
+                    newClient = new BusinessClient(read.GetString(1), read.GetString(2));
                 }
             }
 
