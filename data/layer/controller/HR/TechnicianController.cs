@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Data.Layer.Controller
 {
-    class TechnicianController : ICreate<Technician>, IRead<Technician>, IUpdate<Technician>, IDelete<Technician>, IChildren<Service, Technician>
+    class TechnicianController : ICreate<Technician>, IRead<Technician>, IReadSpecific<Technician>, IUpdate<Technician>, IDelete<Technician>, IChildren<Service, Technician>
     {
         //Basic CRUD
         public int Create(Technician obj)
@@ -44,9 +44,9 @@ namespace Data.Layer.Controller
             List<Technician> technicians = new List<Technician>();
 
             string query = "SELECT A.AgentID, A.aName, A.ContactNum, A.employmentStatus, A.employeeType " + 
-                            "FROM Technician AS T " + 
-                                "LEFT JOIN Agent AS A " + 
-                                    "ON A.AgentID = T.TechnicianID";
+                           "FROM Technician AS T " + 
+                           "LEFT JOIN Agent AS A " + 
+                           "ON A.AgentID = T.TechnicianID";
 
             SqlDataReader read = dh.Select(query);
             Technician technician ;
@@ -55,7 +55,6 @@ namespace Data.Layer.Controller
             {
                 while (read.Read())
                 {
-
                     technician = new Technician(
                         read.GetString(1),
                         read.GetString(2),
@@ -71,8 +70,37 @@ namespace Data.Layer.Controller
             dh.Dispose();
 
             return technicians;
+        }
 
-                     
+        public Technician ReadSpecific(int ID)
+        {
+            DataHandler dh = new DataHandler();
+
+            SqlDataReader read = dh.Select(string.Format(
+                "SELECT A.aName, A.ContactNum, A.employmentStatus, A.employeeType " +
+                "FROM Technician AS T " +
+                "LEFT JOIN Agent AS A ON A.AgentID = T.TechnicianID " +
+                "WHERE TechnicianID = {0}", ID
+            ));
+            Technician tech = null;
+
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+                    tech = new Technician(
+                        read.GetString(0),
+                        read.GetString(1),
+                        read.GetString(2),
+                        read.GetString(3)
+                    );
+
+                    tech.Id = ID;
+                }
+            }
+            dh.Dispose();
+
+            return tech;
         }
 
         public void Update(Technician obj)

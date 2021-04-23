@@ -33,6 +33,7 @@
             this.btnCallCentre = new System.Windows.Forms.Button();
             this.btnClientSatis = new System.Windows.Forms.Button();
             this.btnClientMain = new System.Windows.Forms.Button();
+            this.btnTechnician = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnServiceDep
@@ -81,11 +82,22 @@
             this.btnClientMain.Text = "Client Maintenance";
             this.btnClientMain.UseVisualStyleBackColor = true;
             // 
+            // btnTechnician
+            // 
+            this.btnTechnician.Location = new System.Drawing.Point(292, 372);
+            this.btnTechnician.Name = "btnTechnician";
+            this.btnTechnician.Size = new System.Drawing.Size(194, 66);
+            this.btnTechnician.TabIndex = 5;
+            this.btnTechnician.Text = "Technician";
+            this.btnTechnician.UseVisualStyleBackColor = true;
+            this.btnTechnician.Click += new System.EventHandler(this.btnTechnician_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnTechnician);
             this.Controls.Add(this.btnClientMain);
             this.Controls.Add(this.btnClientSatis);
             this.Controls.Add(this.btnCallCentre);
@@ -104,6 +116,7 @@
         private System.Windows.Forms.Button btnCallCentre;
         private System.Windows.Forms.Button btnClientSatis;
         private System.Windows.Forms.Button btnClientMain;
+        private System.Windows.Forms.Button btnTechnician;
     }
 }
 

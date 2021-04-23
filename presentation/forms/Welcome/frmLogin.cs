@@ -25,5 +25,13 @@ namespace Presentation.Forms.Welcome
             form.ShowDialog();
             Show();
         }
+
+        private void btnTechnician_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmViewServices form = new frmViewServices();
+            form.ShowDialog();
+            Show();
+        }
     }
 }

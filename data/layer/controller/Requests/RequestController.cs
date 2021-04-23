@@ -88,8 +88,10 @@ namespace Data.Layer.Controller
 
             List<Agent> agents = new List<Agent>();
 
-            string query = "SELECT A.AgentID, A.aName, A.contactNum, A.employmentStatus, A.employeeType FROM Agent AS A " +
-	                            "LEFT JOIN agentRequestHandlers AS H ON A.AgentID = H.AgentID " +
+            string query = "SELECT A.AgentID, A.aName, A.contactNum, A.employmentStatus, A.employeeType, T.TechnicianID " +
+                            "FROM Agent A " +
+                            "LEFT OUTER JOIN agentRequestHandlers H ON A.AgentID = H.AgentID " +
+                            "LEFT OUTER JOIN Technician T ON T.TechnicianID = A.AgentID " +
                             "WHERE H.RequestID = {0}";
 
             SqlDataReader read = dh.Select(string.Format(query, parent.Id));
@@ -99,13 +101,24 @@ namespace Data.Layer.Controller
             {
                 while (read.Read())
                 {
-
-                    agent = new Agent(
-                        read.GetString(1),
-                        read.GetString(2),
-                        read.GetString(3),
-                        read.GetString(4)
-                    );
+                    if (!read.IsDBNull(5))
+                    {
+                        agent = new Technician(
+                            read.GetString(1),
+                            read.GetString(2),
+                            read.GetString(3),
+                            read.GetString(4)
+                        );
+                    }
+                    else
+                    {
+                        agent = new Agent(
+                            read.GetString(1),
+                            read.GetString(2),
+                            read.GetString(3),
+                            read.GetString(4)
+                        );
+                    }
 
                     agent.Id = read.GetInt32(0);
 
@@ -138,9 +151,14 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            string qry = string.Format("SELECT C.ClientID, C.contactNum, I.IndividualClientID,I.name,I.surname FROM Client as C "+
-                "LEFT JOIN IndividualClient AS I ON I.IndividualClientID = C.ClientID "+
-                "WHERE C.ClientID = {0}", parent.Id
+            string qry = string.Format
+                (
+                    "SELECT R.ClientID, BC.name, IC.name, IC.surname, C.contactNum " +
+                    "FROM Request R " +
+                    "LEFT OUTER JOIN Client C ON C.ClientID = R.ClientID " +
+                    "LEFT OUTER JOIN IndividualClient IC ON IC.IndividualClientID = C.ClientID " +
+                    "LEFT OUTER JOIN BusinessClient BC ON BC.BusinessClientID = C.ClientID " +
+                    "WHERE RequestID = {0}", parent.Id
                 );
 
             SqlDataReader read = dh.Select(qry);
@@ -148,14 +166,18 @@ namespace Data.Layer.Controller
 
             if (read.HasRows)
             {
-                if (!read.IsDBNull(0))
+                read.Read();
+
+                if (read.IsDBNull(1))
                 {
-                    newClient = new IndividualClient(read.GetString(1), read.GetString(2), read.GetString(3));
+                    newClient = new IndividualClient(read.GetString(4), read.GetString(2), read.GetString(3));
                 }
                 else
                 {
-                    newClient = new BusinessClient(read.GetString(1), read.GetString(2));
+                    newClient = new BusinessClient(read.GetString(4), read.GetString(1));
                 }
+
+                newClient.Id = read.GetInt32(0);
             }
 
             dh.Dispose();

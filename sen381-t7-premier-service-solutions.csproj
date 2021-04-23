@@ -89,6 +89,8 @@
     <Compile Include="data\layer\objects\ServiceContract\Service.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ServiceContract.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ServiceLevelAgreement.cs" />
+    <Compile Include="logic\Scheduler.cs" />
+    <Compile Include="logic\TechnicianHandler.cs" />
     <Compile Include="presentation\forms\Call Centre\frmCall.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,11 +169,11 @@
     <Compile Include="presentation\forms\Service Department\Manager\frmServiceMenu.Designer.cs">
       <DependentUpon>frmServiceMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="presentation\forms\Service Department\Technician\frmViewServicesAssigned.cs">
+    <Compile Include="presentation\forms\Service Department\Technician\frmViewServices.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="presentation\forms\Service Department\Technician\frmViewServicesAssigned.Designer.cs">
-      <DependentUpon>frmViewServicesAssigned.cs</DependentUpon>
+    <Compile Include="presentation\forms\Service Department\Technician\frmViewServices.Designer.cs">
+      <DependentUpon>frmViewServices.cs</DependentUpon>
     </Compile>
     <Compile Include="presentation\forms\Welcome\frmLogin.cs">
       <SubType>Form</SubType>
@@ -183,6 +185,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="presentation\forms\Service Department\Manager\frmServiceMenu.resx">
       <DependentUpon>frmServiceMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Service Department\Technician\frmViewServices.resx">
+      <DependentUpon>frmViewServices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Welcome\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -210,8 +215,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="logic\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

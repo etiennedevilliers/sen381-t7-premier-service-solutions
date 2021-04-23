@@ -27,7 +27,7 @@ namespace Data.Layer.Objects
                 return new RequestController().ReadChild(this);
             }
         }
-        public List<Agent> Handler
+        public List<Agent> Handlers
         {
             get
             {

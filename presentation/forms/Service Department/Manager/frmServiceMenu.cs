@@ -14,6 +14,9 @@ namespace Presentation.Forms.ServiceDepartment
 {
     public partial class frmServiceMenu : Form
     {
+        List<ServiceRequest> requests = new List<ServiceRequest>();
+        ServiceRequestController ctr = new ServiceRequestController();
+
         public frmServiceMenu()
         {
             InitializeComponent();
@@ -21,18 +24,69 @@ namespace Presentation.Forms.ServiceDepartment
 
         private void frmServiceMenu_Load(object sender, EventArgs e)
         {
-            ServiceRequestController ctr = new ServiceRequestController();
-            List<ServiceRequest> requests = ctr.Read();
+            LoadData();
+        }
+
+        private void btnCloseRequest_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(lstServices.SelectedItems[0].SubItems[0].Text);
 
             foreach (ServiceRequest i in requests)
             {
-                IndividualClient client = (IndividualClient) i.Client;
-                if (client != null)
+                if (i.Id == id)
                 {
+                    i.Status = "Closed";
+                    ctr.Update(i);
+                }
+            }
+
+            LoadData();
+        }
+
+        void LoadData()
+        {
+            lstServices.Items.Clear();
+            requests = ctr.Read();
+
+            foreach (ServiceRequest i in requests)
+            {
+                if (i.Status == "Open")
+                {
+                    Client client = i.Client;
+                    List<Agent> handlers = i.Handlers;
+                    string technicianNames = "";
+
+                    foreach (Agent j in handlers)
+                    {
+                        if (j is Technician)
+                        {
+                            technicianNames += j.Name + ", ";
+                        }
+                    }
+
+                    if (technicianNames != "")
+                    {
+                        technicianNames = technicianNames.Substring(0, technicianNames.Length - 2);
+                    }
+
                     ListViewItem lst = new ListViewItem(
-                        new string[] { i.Description, i.DateCreated.ToString(), i.JobStarted.ToString(),
-                                    i.DateResolved.ToString(), client.GetType().ToString(),
-                                    i.Call.TimeStarted.ToString(), i.Call.TimeEnded.ToString() });
+                        new string[]
+                        {
+                        i.Id.ToString(), i.Description, i.DateCreated.ToShortDateString(), i.JobStarted.ToShortDateString(),
+                        i.DateResolved.ToShortDateString(), i.Call.TimeStarted.ToLongTimeString(), i.Call.TimeEnded.ToLongTimeString(), technicianNames
+                        });
+
+                    if (client is IndividualClient)
+                    {
+                        IndividualClient ind = (IndividualClient)client;
+                        lst.SubItems.Add(ind.Name);
+                    }
+                    else if (client is BusinessClient)
+                    {
+                        BusinessClient bus = (BusinessClient)client;
+                        lst.SubItems.Add(bus.Name);
+                    }
+
                     lstServices.Items.Add(lst);
                 }
             }

@@ -98,10 +98,10 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             dh.Update(string.Format(
-                "UPDATE dbo.ServiceRequest SET description='{1}', jobStarted={2} WHERE ServiceRequestID={0}",
+                "UPDATE dbo.ServiceRequest SET description='{1}', jobStarted='{2}' WHERE ServiceRequestID={0}",
                 obj.Id,
                 obj.Description,
-                obj.JobStarted
+                obj.JobStarted.ToString("yyyy-MM-dd HH:mm:ss.fff")
             ));
 
             dh.Dispose();
