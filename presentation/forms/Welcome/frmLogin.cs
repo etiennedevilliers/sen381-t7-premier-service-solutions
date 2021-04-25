@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Presentation.Forms.ServiceDepartment;
+//using Presentation.Forms.ClientMaintenance;
+using Presentation.Forms.Contract_Maintenance;
+
 
 namespace Presentation.Forms.Welcome
 {
@@ -32,6 +35,21 @@ namespace Presentation.Forms.Welcome
             frmViewServices form = new frmViewServices();
             form.ShowDialog();
             Show();
+        }
+
+        private void btnContractMain_Click(object sender, EventArgs e)
+        {
+            //Hide the current form 
+            Hide();
+            //Create  instance of the target form 
+            //frmContractMaintenance
+            frmContractMenu form = new frmContractMenu();
+
+            //Show the target form dialog
+            form.ShowDialog();
+
+            //Show the target form 
+            form.Show();
         }
     }
 }

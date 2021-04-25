@@ -8,13 +8,36 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace sen381_t7_premier_service_solutions.presentation.forms.Contract_Maintenance
+namespace Presentation.Forms.Contract_Maintenance
 {
     public partial class frmContractMenu : Form
     {
         public frmContractMenu()
         {
             InitializeComponent();
+        }
+
+        private void frmContractMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnViewContracts_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmViewContracts form = new frmViewContracts();
+            form.ShowDialog();
+            form.Show();
+
+        }
+
+        private void btnEditContracts_Click(object sender, EventArgs e)
+        {
+           
+            Hide();
+            frmNewContract form = new frmNewContract();
+            form.ShowDialog();
+            form.Show();
         }
     }
 }

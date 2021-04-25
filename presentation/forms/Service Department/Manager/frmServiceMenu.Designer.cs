@@ -54,20 +54,22 @@ namespace Presentation.Forms.ServiceDepartment
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabServiceMenu.Controls.Add(this.tpgService);
             this.tabServiceMenu.Controls.Add(this.tpgTechnicians);
-            this.tabServiceMenu.Location = new System.Drawing.Point(0, 3);
+            this.tabServiceMenu.Location = new System.Drawing.Point(0, 6);
+            this.tabServiceMenu.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tabServiceMenu.Name = "tabServiceMenu";
             this.tabServiceMenu.SelectedIndex = 0;
-            this.tabServiceMenu.Size = new System.Drawing.Size(799, 451);
+            this.tabServiceMenu.Size = new System.Drawing.Size(1598, 867);
             this.tabServiceMenu.TabIndex = 2;
             // 
             // tpgService
             // 
             this.tpgService.Controls.Add(this.lstServices);
             this.tpgService.Controls.Add(this.btnCloseRequest);
-            this.tpgService.Location = new System.Drawing.Point(4, 22);
+            this.tpgService.Location = new System.Drawing.Point(8, 39);
+            this.tpgService.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tpgService.Name = "tpgService";
-            this.tpgService.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgService.Size = new System.Drawing.Size(791, 425);
+            this.tpgService.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tpgService.Size = new System.Drawing.Size(1582, 820);
             this.tpgService.TabIndex = 0;
             this.tpgService.Text = "Services";
             this.tpgService.UseVisualStyleBackColor = true;
@@ -88,12 +90,14 @@ namespace Presentation.Forms.ServiceDepartment
             this.colTechnicians,
             this.colClientName});
             this.lstServices.HideSelection = false;
-            this.lstServices.Location = new System.Drawing.Point(6, 40);
+            this.lstServices.Location = new System.Drawing.Point(12, 77);
+            this.lstServices.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lstServices.Name = "lstServices";
-            this.lstServices.Size = new System.Drawing.Size(779, 379);
+            this.lstServices.Size = new System.Drawing.Size(1554, 725);
             this.lstServices.TabIndex = 3;
             this.lstServices.UseCompatibleStateImageBehavior = false;
             this.lstServices.View = System.Windows.Forms.View.Details;
+            this.lstServices.SelectedIndexChanged += new System.EventHandler(this.lstServices_SelectedIndexChanged);
             // 
             // colID
             // 
@@ -137,9 +141,10 @@ namespace Presentation.Forms.ServiceDepartment
             // btnCloseRequest
             // 
             this.btnCloseRequest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseRequest.Location = new System.Drawing.Point(669, 6);
+            this.btnCloseRequest.Location = new System.Drawing.Point(1338, 12);
+            this.btnCloseRequest.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnCloseRequest.Name = "btnCloseRequest";
-            this.btnCloseRequest.Size = new System.Drawing.Size(115, 28);
+            this.btnCloseRequest.Size = new System.Drawing.Size(230, 54);
             this.btnCloseRequest.TabIndex = 1;
             this.btnCloseRequest.Text = "Close Request";
             this.btnCloseRequest.UseVisualStyleBackColor = true;
@@ -147,20 +152,22 @@ namespace Presentation.Forms.ServiceDepartment
             // 
             // tpgTechnicians
             // 
-            this.tpgTechnicians.Location = new System.Drawing.Point(4, 22);
+            this.tpgTechnicians.Location = new System.Drawing.Point(8, 39);
+            this.tpgTechnicians.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tpgTechnicians.Name = "tpgTechnicians";
-            this.tpgTechnicians.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgTechnicians.Size = new System.Drawing.Size(791, 425);
+            this.tpgTechnicians.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tpgTechnicians.Size = new System.Drawing.Size(1582, 820);
             this.tpgTechnicians.TabIndex = 1;
             this.tpgTechnicians.Text = "Technicians";
             this.tpgTechnicians.UseVisualStyleBackColor = true;
             // 
             // frmServiceMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1600, 865);
             this.Controls.Add(this.tabServiceMenu);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmServiceMenu";
             this.Text = "ServiceMenu";
             this.Load += new System.EventHandler(this.frmServiceMenu_Load);

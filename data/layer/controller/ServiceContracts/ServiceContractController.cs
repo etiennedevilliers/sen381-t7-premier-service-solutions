@@ -50,7 +50,7 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             List<ServiceContract> scrList = new List<ServiceContract>();
-            SqlDataReader read = dh.Select("SELECT ServiceContractID, description, dateFinalised, dateTerminated, cost, status FROM ServiceContract "); //Geen Fk Select nie 
+            SqlDataReader read = dh.Select("SELECT ServiceContractID, description, dateFinalised, dateTerminated, cost, status FROM ServiceContract "); 
             ServiceContract newSc;
 
             if (read.HasRows)
