@@ -26,34 +26,28 @@ namespace Presentation.Forms.Contract_Maintenance
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string Description = textBox2.Text;
-            int Duration = int.Parse(textBox3.Text);
-
-            Service newService = new Service(Description,Duration);
-
-            ServiceController Servicectr = new ServiceController();
-
-            Servicectr.Create(newService);
-
 
         }
 
         private void frmNewContract_Load(object sender, EventArgs e)
         {
+
+            //Populate Package Combo Boxes with service and service level agreement Objects
             gbrxServiceLevelAgreement.Visible = false;
             gbxService.Visible = false;
+            gbPackage.Visible = false;
 
             ServiceLevelAgreementController SLACTR = new ServiceLevelAgreementController();
             ServiceController SCTR = new ServiceController();
 
             foreach (Service i in SCTR.Read())
             {
-                comboBox1.Items.Add(i);
+                cmbxService.Items.Add(i);
             }
 
             foreach (ServiceLevelAgreement i in SLACTR.Read())
             {
-                comboBox2.Items.Add(i);
+                cmbxSla.Items.Add(i);
             }
         }
 
@@ -98,19 +92,6 @@ namespace Presentation.Forms.Contract_Maintenance
 
         private void button5_Click(object sender, EventArgs e)
         {
-
-            PackageController PCtr = new PackageController();
-            
-            string Name = textBox5.Text;
-            string Dis = textBox6.Text;
-
-            Service s = comboBox1.SelectedItem as Service;
-
-            ServiceLevelAgreement sla = comboBox2.SelectedItem as ServiceLevelAgreement;
-
-            Package P = new Package(Name,Dis,s,sla);
-            PCtr.Create(P);
-
         }
 
         private void btnAddContracts_Click(object sender, EventArgs e)
@@ -188,9 +169,6 @@ namespace Presentation.Forms.Contract_Maintenance
             ServiceLevelAgreementController SLA_ctr = new ServiceLevelAgreementController();
             SLA_ctr.Create(SLA);
 
-
-
-
             //Service Level Agreement Object List 
             List<ServiceLevelAgreement> List_Of_SLA_Ob = new List<ServiceLevelAgreement>();
 
@@ -198,7 +176,6 @@ namespace Presentation.Forms.Contract_Maintenance
             lstViewItems.Columns.Clear();
             lstViewItems.Columns.Add("SLA ID");
             lstViewItems.Columns.Add("Description");
-
 
             List_Of_SLA_Ob = SLA_ctr.Read();
 
@@ -212,11 +189,63 @@ namespace Presentation.Forms.Contract_Maintenance
                 lstViewItems.Items.Add(lst);
             }
 
-
-
-
-
-
         }//Add Service Level Agreement Functionality (Done)
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            lstViewItems.Items.Clear();
+            gbPackage.Visible = false;
+
+        }// Package Done Button Fucntionlality (Done)
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+            //Package Object list and Controler
+            List<Package> List_Of_Package_Ob = new List<Package>();
+            PackageController P_ctr = new PackageController();
+
+            
+
+            string Name = txtPname.Text;
+            string Dis = txtPDis.Text;
+
+            Service s = cmbxService.SelectedItem as Service;
+
+            ServiceLevelAgreement sla = cmbxSla.SelectedItem as ServiceLevelAgreement;
+
+            Package P = new Package(Name, Dis, s, sla);
+
+            P_ctr.Create(P);
+
+            //Update list view
+            //View by Package 
+            lstViewItems.Columns.Clear();
+            lstViewItems.Columns.Add("Package ID");
+            lstViewItems.Columns.Add("Service ID");
+            lstViewItems.Columns.Add("Service Level Agreement");
+            lstViewItems.Columns.Add("Package Name");
+            lstViewItems.Columns.Add("Package Description");
+
+            List_Of_Package_Ob = P_ctr.Read();
+
+            foreach (Package p in List_Of_Package_Ob)
+            {
+                ListViewItem lst = new ListViewItem(new string[]{
+                  p.Id.ToString(),
+                  p.Service.ToString(),
+                  p.Sla.ToString(),
+                  p.Name,
+                  p.Description
+               });
+
+                lstViewItems.Items.Add(lst);
+            }
+        }// Add Package Functionality(Done)
+
+        private void btnAddPackage_Click(object sender, EventArgs e)
+        {
+            gbPackage.Visible = true;
+        }//Add Pcakge Group Box Visibility (Done)
     }
 }
