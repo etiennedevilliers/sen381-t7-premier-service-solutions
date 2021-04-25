@@ -77,6 +77,11 @@ namespace Presentation.Forms.Contract_Maintenance
             this.lblServiceDiscription = new System.Windows.Forms.Label();
             this.lblServiceDuration = new System.Windows.Forms.Label();
             this.btnServiceDone = new System.Windows.Forms.Button();
+            this.gbrxServiceLevelAgreement = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtSLADescription = new System.Windows.Forms.TextBox();
+            this.btnAddServiceLevelAgreement = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabContracts.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -87,6 +92,7 @@ namespace Presentation.Forms.Contract_Maintenance
             this.tabSLA.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbxService.SuspendLayout();
+            this.gbrxServiceLevelAgreement.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -104,6 +110,7 @@ namespace Presentation.Forms.Contract_Maintenance
             // 
             // tabContracts
             // 
+            this.tabContracts.Controls.Add(this.gbrxServiceLevelAgreement);
             this.tabContracts.Controls.Add(this.label6);
             this.tabContracts.Controls.Add(this.gbxService);
             this.tabContracts.Controls.Add(this.lstViewItems);
@@ -126,7 +133,7 @@ namespace Presentation.Forms.Contract_Maintenance
             this.tabControl2.Controls.Add(this.tabPage2);
             this.tabControl2.Controls.Add(this.tabPage1);
             this.tabControl2.Controls.Add(this.tabPage3);
-            this.tabControl2.Location = new System.Drawing.Point(2064, 833);
+            this.tabControl2.Location = new System.Drawing.Point(3526, 865);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(1466, 766);
@@ -219,7 +226,7 @@ namespace Presentation.Forms.Contract_Maintenance
             this.tabPage1.Location = new System.Drawing.Point(8, 39);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(2531, 719);
+            this.tabPage1.Size = new System.Drawing.Size(1450, 719);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Service Level agreement";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -442,7 +449,7 @@ namespace Presentation.Forms.Contract_Maintenance
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox1.Location = new System.Drawing.Point(1505, 820);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(540, 1614);
+            this.groupBox1.Size = new System.Drawing.Size(540, 1278);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add New Elements";
@@ -474,6 +481,7 @@ namespace Presentation.Forms.Contract_Maintenance
             this.btnAddSLA.TabIndex = 2;
             this.btnAddSLA.Text = "Add Service Level Agreement";
             this.btnAddSLA.UseVisualStyleBackColor = true;
+            this.btnAddSLA.Click += new System.EventHandler(this.btnAddSLA_Click);
             // 
             // btnAddService
             // 
@@ -483,15 +491,17 @@ namespace Presentation.Forms.Contract_Maintenance
             this.btnAddService.TabIndex = 3;
             this.btnAddService.Text = "Add Service ";
             this.btnAddService.UseVisualStyleBackColor = true;
+            this.btnAddService.Click += new System.EventHandler(this.btnAddService_Click);
             // 
             // lstViewItems
             // 
             this.lstViewItems.HideSelection = false;
-            this.lstViewItems.Location = new System.Drawing.Point(2085, 1715);
+            this.lstViewItems.Location = new System.Drawing.Point(2074, 1400);
             this.lstViewItems.Name = "lstViewItems";
             this.lstViewItems.Size = new System.Drawing.Size(1445, 698);
             this.lstViewItems.TabIndex = 4;
             this.lstViewItems.UseCompatibleStateImageBehavior = false;
+            this.lstViewItems.View = System.Windows.Forms.View.Details;
             // 
             // gbxService
             // 
@@ -501,7 +511,7 @@ namespace Presentation.Forms.Contract_Maintenance
             this.gbxService.Controls.Add(this.txtServiceDuration);
             this.gbxService.Controls.Add(this.txtServiceDescription);
             this.gbxService.Controls.Add(this.btnService);
-            this.gbxService.Location = new System.Drawing.Point(3548, 872);
+            this.gbxService.Location = new System.Drawing.Point(2060, 820);
             this.gbxService.Name = "gbxService";
             this.gbxService.Size = new System.Drawing.Size(721, 385);
             this.gbxService.TabIndex = 5;
@@ -568,12 +578,63 @@ namespace Presentation.Forms.Contract_Maintenance
             this.btnServiceDone.TabIndex = 5;
             this.btnServiceDone.Text = "Done";
             this.btnServiceDone.UseVisualStyleBackColor = true;
+            this.btnServiceDone.Click += new System.EventHandler(this.btnServiceDone_Click);
+            // 
+            // gbrxServiceLevelAgreement
+            // 
+            this.gbrxServiceLevelAgreement.Controls.Add(this.button6);
+            this.gbrxServiceLevelAgreement.Controls.Add(this.label8);
+            this.gbrxServiceLevelAgreement.Controls.Add(this.txtSLADescription);
+            this.gbrxServiceLevelAgreement.Controls.Add(this.btnAddServiceLevelAgreement);
+            this.gbrxServiceLevelAgreement.Location = new System.Drawing.Point(2060, 875);
+            this.gbrxServiceLevelAgreement.Name = "gbrxServiceLevelAgreement";
+            this.gbrxServiceLevelAgreement.Size = new System.Drawing.Size(816, 261);
+            this.gbrxServiceLevelAgreement.TabIndex = 6;
+            this.gbrxServiceLevelAgreement.TabStop = false;
+            this.gbrxServiceLevelAgreement.Text = "New Service Level Agreement ";
+            // 
+            // button6
+            // 
+            this.button6.AutoEllipsis = true;
+            this.button6.Location = new System.Drawing.Point(511, 168);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(230, 45);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "Done";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(28, 84);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(360, 25);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "ServiceLevel Agreement Description";
+            // 
+            // txtSLADescription
+            // 
+            this.txtSLADescription.Location = new System.Drawing.Point(408, 81);
+            this.txtSLADescription.Name = "txtSLADescription";
+            this.txtSLADescription.Size = new System.Drawing.Size(333, 31);
+            this.txtSLADescription.TabIndex = 1;
+            // 
+            // btnAddServiceLevelAgreement
+            // 
+            this.btnAddServiceLevelAgreement.Location = new System.Drawing.Point(33, 168);
+            this.btnAddServiceLevelAgreement.Name = "btnAddServiceLevelAgreement";
+            this.btnAddServiceLevelAgreement.Size = new System.Drawing.Size(355, 45);
+            this.btnAddServiceLevelAgreement.TabIndex = 0;
+            this.btnAddServiceLevelAgreement.Text = "Add Service Level Agreement";
+            this.btnAddServiceLevelAgreement.UseVisualStyleBackColor = true;
+            this.btnAddServiceLevelAgreement.Click += new System.EventHandler(this.btnAddServiceLevelAgreement_Click);
             // 
             // frmNewContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(3303, 1638);
+            this.ClientSize = new System.Drawing.Size(3303, 1312);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmNewContract";
             this.Text = "NewContract";
@@ -593,6 +654,8 @@ namespace Presentation.Forms.Contract_Maintenance
             this.groupBox1.ResumeLayout(false);
             this.gbxService.ResumeLayout(false);
             this.gbxService.PerformLayout();
+            this.gbrxServiceLevelAgreement.ResumeLayout(false);
+            this.gbrxServiceLevelAgreement.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -647,5 +710,10 @@ namespace Presentation.Forms.Contract_Maintenance
         private System.Windows.Forms.Button btnAddContracts;
         private System.Windows.Forms.Button btnAddPackage;
         private System.Windows.Forms.Button btnServiceDone;
+        private System.Windows.Forms.GroupBox gbrxServiceLevelAgreement;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtSLADescription;
+        private System.Windows.Forms.Button btnAddServiceLevelAgreement;
     }
 }

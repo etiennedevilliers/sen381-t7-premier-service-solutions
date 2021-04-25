@@ -81,6 +81,7 @@ namespace Presentation.Forms.Contract_Maintenance
 
                 lstViewItems.Items.Add(lst);
             }
+
         }//View By Service Functionality (Done)
 
         private void btnViewContracts_Click(object sender, EventArgs e)
@@ -140,7 +141,7 @@ namespace Presentation.Forms.Contract_Maintenance
 
         private void btnViewSLA_Click_1(object sender, EventArgs e)
         {
-            //View by Package 
+            //View by SLA 
             lstViewItems.Columns.Clear();
             lstViewItems.Columns.Add("SLA ID");
             lstViewItems.Columns.Add("Description");
@@ -157,6 +158,8 @@ namespace Presentation.Forms.Contract_Maintenance
 
                 lstViewItems.Items.Add(lst);
             }
+
+
         }//View By SLA Functionality (Done)
 
         private void btnBack_Click(object sender, EventArgs e)
