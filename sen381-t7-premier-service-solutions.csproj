@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8B97DA6E-DD8E-4186-9CC9-24260189F809}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>sen381_t7_premier_service_solutions</RootNamespace>
     <AssemblyName>sen381-t7-premier-service-solutions</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -183,6 +186,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="presentation\forms\Call Centre\frmCall.resx">
+      <DependentUpon>frmCall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Call Centre\frmNewRequest.resx">
+      <DependentUpon>frmNewRequest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Service Department\Manager\frmServiceMenu.resx">
       <DependentUpon>frmServiceMenu.cs</DependentUpon>
     </EmbeddedResource>

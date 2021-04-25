@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Presentation.Forms.ServiceDepartment;
+using Presentation.Forms.CallCentre;
 
 namespace Presentation.Forms.Welcome
 {
@@ -32,6 +33,15 @@ namespace Presentation.Forms.Welcome
             frmViewServices form = new frmViewServices();
             form.ShowDialog();
             Show();
+        }
+
+        private void btnCallCentre_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmCall form = new frmCall();
+            form.ShowDialog();
+            Show();
+          
         }
     }
 }

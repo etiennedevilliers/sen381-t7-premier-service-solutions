@@ -13,15 +13,19 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            int ID = dh.InsertID(string.Format(
+            string query = string.Format(
                 "INSERT INTO Request(ClientID, dateCreated, dateResolved, status, contactNum, CallID) VALUES ({0},'{1}','{2}','{3}','{4}', {5})",
                 (obj.Client != null) ? obj.Client.Id.ToString() : "null",
                 obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
-                obj.DateResolved.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.DateResolved == null ? null : obj.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"),
                 obj.Status,
                 obj.ContactNum,
                 obj.Call.Id
-            ));
+            );
+
+            Console.WriteLine(query);
+
+            int ID = dh.InsertID(query);
 
             obj.Id = ID;
 
@@ -48,8 +52,8 @@ namespace Data.Layer.Controller
                 obj.Id,
                 obj.Client.Id,
                 obj.Call.Id,
-                obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"), 
-                obj.DateResolved.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.DateResolved == null ? "null" : obj.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"),
                 obj.Status,
                 obj.ContactNum
              ));

@@ -13,7 +13,7 @@ namespace Data.Layer.Objects
         public ServiceContract ServiceContract { get => serviceContract; set => serviceContract = value; }
 
         //Constructor
-        public NewContractRequest(DateTime dtCreated, DateTime dtResolved, CallLog call) : base(dtCreated, dtResolved, call)
+        public NewContractRequest(DateTime dtCreated, DateTime? dtResolved, CallLog call) : base(dtCreated, dtResolved, call)
         {
             
         }

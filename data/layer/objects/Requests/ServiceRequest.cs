@@ -23,7 +23,7 @@ namespace Data.Layer.Objects
         public DateTime JobStarted { get => jobStarted; set => jobStarted = value; }
 
         //Constructor
-        public ServiceRequest(DateTime dateCreated, DateTime dateResolved, CallLog call, string description, DateTime jobStarted) : base(dateCreated, dateResolved, call)
+        public ServiceRequest(DateTime dateCreated, DateTime? dateResolved, CallLog call, string description, DateTime jobStarted) : base(dateCreated, dateResolved, call)
         {
             this.description = description;
             this.jobStarted = jobStarted;

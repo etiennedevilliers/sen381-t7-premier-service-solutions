@@ -20,6 +20,8 @@ namespace Data.Layer.Controller
                 obj.Incoming ? 1 : 0
             );
 
+            Console.WriteLine(query);
+
             obj.Id = dh.InsertID(query);
 
             dh.Dispose();

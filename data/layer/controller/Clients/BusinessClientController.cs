@@ -39,9 +39,11 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             List<BusinessClient> busList = new List<BusinessClient>();
-            SqlDataReader read = dh.Select("SELECT BC.BusinessClientID, name, contactNum" +
-                "FROM dbo.BusinessClient AS BC" +
-                "LEFT JOIN dbo.Client AS C ON C.ClientID = BC.BusinessClientID");
+            SqlDataReader read = dh.Select(
+                "SELECT BC.BusinessClientID, name, contactNum " +
+                "FROM dbo.BusinessClient AS BC " +
+                    "LEFT JOIN dbo.Client AS C ON C.ClientID = BC.BusinessClientID "
+            );
             BusinessClient newCl;
 
             if (read.HasRows)

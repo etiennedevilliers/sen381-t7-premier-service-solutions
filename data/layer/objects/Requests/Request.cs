@@ -10,14 +10,13 @@ namespace Data.Layer.Objects
         //Fields
         private int id;
         private DateTime dateCreated;
-        private DateTime dateResolved;
         private string status;
         private CallLog call;
         private string contactNum;
 
         //Properties
         public DateTime DateCreated { get => dateCreated; set => dateCreated = value; }
-        public DateTime DateResolved { get => dateResolved; set => dateResolved = value; }
+        public DateTime? DateResolved;
         public string Status { get => status; set => status = value; }
         public CallLog Call { get => call; set => call = value; }
         public string ContactNum { get => contactNum; set => contactNum = value; }
@@ -37,10 +36,10 @@ namespace Data.Layer.Objects
         public int Id { get => id; set => id = value; }
 
         //Constructor
-        protected Request(DateTime dateCreated, DateTime dateResolved, CallLog call)
+        protected Request(DateTime dateCreated, DateTime? dateResolved, CallLog call)
         {
             this.dateCreated = dateCreated;
-            this.dateResolved = dateResolved;
+            this.DateResolved = dateResolved;
             this.call = call;
         }
 

@@ -63,6 +63,7 @@
             this.btnCallCentre.TabIndex = 2;
             this.btnCallCentre.Text = "Call Centre";
             this.btnCallCentre.UseVisualStyleBackColor = true;
+            this.btnCallCentre.Click += new System.EventHandler(this.btnCallCentre_Click);
             // 
             // btnClientSatis
             // 

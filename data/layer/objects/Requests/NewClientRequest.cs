@@ -11,7 +11,7 @@ namespace Data.Layer.Objects
         //Properties
 
         //Constructor
-        public NewClientRequest(DateTime dateCreated, DateTime dateResolved, CallLog call) : base(dateCreated, dateResolved, call)
+        public NewClientRequest(DateTime dateCreated, DateTime? dateResolved, CallLog call) : base(dateCreated, dateResolved, call)
         {
 
         }
