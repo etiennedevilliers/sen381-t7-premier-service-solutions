@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.SqlServer.Server;
+using System.Data.SqlClient;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
@@ -21,7 +22,50 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void frmClientMenu_Load(object sender, EventArgs e)
         {
-            DBAccess dBAccess = new DBAccess();
+            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=SocialNetwork;Integrated Security=True");
+            SqlCommand cmd;
+            DataTable dt;
+            SqlDataAdapter da;
+            DataSet ds;
+
+
+            con.Open();
+            cmd = new SqlCommand("SELECT * FROM IndividualClient", con);
+            da = new SqlDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds, "test");
+            con.Close();
+
+            dt = ds.Tables["test"];
+            int i;
+
+            for (i = 0; i < dt.Rows.Count; i++)
+            {
+                lstClientsI.Items.Add(dt.Rows[i].ItemArray[0].ToString());
+                lstClientsI.Items[i].SubItems.Add(dt.Rows[i].ItemArray[1].ToString());
+                lstClientsI.Items[i].SubItems.Add(dt.Rows[i].ItemArray[2].ToString());
+                lstClientsI.Items[i].SubItems.Add(dt.Rows[i].ItemArray[3].ToString());
+            }
+
+
+            con.Open();
+            cmd = new SqlCommand("SELECT * FROM BusinessClient", con);
+            da = new SqlDataAdapter(cmd);
+            ds = new DataSet();
+            da.Fill(ds, "test");
+            con.Close();
+
+            dt = ds.Tables["test"];
+            int j;
+
+            for (j = 0; j < dt.Rows.Count; j++)
+            {
+                lstClientsB.Items.Add(dt.Rows[j].ItemArray[0].ToString());
+                lstClientsB.Items[j].SubItems.Add(dt.Rows[j].ItemArray[1].ToString());
+                lstClientsB.Items[j].SubItems.Add(dt.Rows[j].ItemArray[2].ToString());
+            }
+
+
 
         }
 
