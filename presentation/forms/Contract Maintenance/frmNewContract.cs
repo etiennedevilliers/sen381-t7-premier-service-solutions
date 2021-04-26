@@ -19,15 +19,6 @@ namespace Presentation.Forms.Contract_Maintenance
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void frmNewContract_Load(object sender, EventArgs e)
         {
@@ -36,68 +27,30 @@ namespace Presentation.Forms.Contract_Maintenance
             gbrxServiceLevelAgreement.Visible = false;
             gbxService.Visible = false;
             gbPackage.Visible = false;
+            grbxServiceContracts.Visible = false;
 
             ServiceLevelAgreementController SLACTR = new ServiceLevelAgreementController();
             ServiceController SCTR = new ServiceController();
 
+            //Populate the Combo box with Services
             foreach (Service i in SCTR.Read())
             {
                 cmbxService.Items.Add(i);
             }
-
+            //Populate the Combo box with SLA's
             foreach (ServiceLevelAgreement i in SLACTR.Read())
             {
                 cmbxSla.Items.Add(i);
             }
-        }
+        }// (On form load functionality)
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage3_Click(object sender, EventArgs e)
-        {
-        
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-        }
+        /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// (Ignore )
 
         private void btnAddContracts_Click(object sender, EventArgs e)
         {
-           
-        }
+            grbxServiceContracts.Visible = true;
+
+        }//Add Cervice Contract Visibiliity (Done)
 
         private void btnService_Click(object sender, EventArgs e)
         {
@@ -247,5 +200,53 @@ namespace Presentation.Forms.Contract_Maintenance
         {
             gbPackage.Visible = true;
         }//Add Pcakge Group Box Visibility (Done)
+
+        private void btnSCDone_Click(object sender, EventArgs e)
+        {
+            grbxServiceContracts.Visible = false;
+        }//Remove SC Group box visibility
+
+        private void btnAddContract_Click(object sender, EventArgs e)
+        {
+            List<ServiceContract> List_of_Service_Contrcat_Ob = new List<ServiceContract>();
+
+            ServiceContractController SC_Ctr = new ServiceContractController();
+
+            string Description = txtPDis.Text;
+            double cost = double.Parse(txtCost.Text);
+            string status = txtStatus.Text;
+            DateTime DateFinal = dtpDateFianal.Value;
+            DateTime DateTerm = dtpDateTer.Value;
+
+            ServiceContract SC = new ServiceContract(Description,cost,DateFinal,DateTerm,status);
+
+            SC_Ctr.Create(SC);
+
+            //View the Service Contracts
+
+            lstViewItems.Clear();
+            lstViewItems.Columns.Add("Service Contract ID");
+            lstViewItems.Columns.Add("Description");
+            lstViewItems.Columns.Add("Date Finilized");
+            lstViewItems.Columns.Add("Date Terminiated");
+            lstViewItems.Columns.Add("Cost");
+            lstViewItems.Columns.Add("Status");
+            List_of_Service_Contrcat_Ob = SC_Ctr.Read();
+
+            foreach (ServiceContract sc in List_of_Service_Contrcat_Ob)
+            {
+                ListViewItem lst = new ListViewItem(new string[]{
+                    sc.Id.ToString(),
+                    sc.Id.ToString(),
+                    sc.Description,
+                    sc.DateFinalised.ToString(),
+                    sc.Cost.ToString(),
+                    sc.Status
+               });
+
+                lstViewItems.Items.Add(lst);
+            }
+
+        }//Add Service COntract Functionality
     }
-}
+}//Code By Ruben 

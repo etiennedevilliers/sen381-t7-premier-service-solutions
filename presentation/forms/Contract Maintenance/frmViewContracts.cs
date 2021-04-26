@@ -34,31 +34,13 @@ namespace Presentation.Forms.Contract_Maintenance
         public frmViewContracts()
         {
             InitializeComponent();
-        }//Ignore
+        }
         private void frmViewContracts_Load(object sender, EventArgs e)
         {
-            
-        }//Ignore
-        private void btnView_All_Service_Contracts_Click(object sender, EventArgs e)
-        {
-            //Call the method that loads the data 
- 
-        }//Ignore
-        private void btnViewByClient_Click(object sender, EventArgs e)
-        {
-            
-        }//Ignore
-        private void btnViewSLA_Click(object sender, EventArgs e)
-        {
-            
 
-        }//Ignore   
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
         }//Ignore
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void button1_Click_1(object sender, EventArgs e)
         {
