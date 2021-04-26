@@ -7,17 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.SqlServer.Server;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
     public partial class frmClientMenu : Form
     {
+        
         public frmClientMenu()
         {
             InitializeComponent();
         }
 
+        private void frmClientMenu_Load(object sender, EventArgs e)
+        {
+            DBAccess dBAccess = new DBAccess();
 
+        }
 
         private void tpgIndividualClients_Click(object sender, EventArgs e)
         {
@@ -130,5 +136,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             MessageBox.Show("Employee assigned to client", "EMPLOYEE ASSIGNED",
                              MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        
     }
 }

@@ -253,6 +253,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.Controls.Add(this.tpgIndividual);
             this.Name = "frmClientMenu";
             this.Text = "ClientMenu";
+            this.Load += new System.EventHandler(this.frmClientMenu_Load);
             this.tpgIndividual.ResumeLayout(false);
             this.tpgIndividualClients.ResumeLayout(false);
             this.tpgBusinessClients.ResumeLayout(false);

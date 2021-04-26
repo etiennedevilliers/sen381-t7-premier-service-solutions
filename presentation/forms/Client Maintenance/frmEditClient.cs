@@ -44,36 +44,62 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             }
         }
 
-        public static string name;
-        public static string surname; 
+        public static string nameEdit;
+        public static string surnameEdit; 
 
         private void btnIndividualEdit_Click(object sender, EventArgs e)
         {
-            name = txtNameEditI.Text;
-            surname = txtSurnameEditI.Text; 
+            nameEdit = txtNameEditI.Text;
+            surnameEdit = txtSurnameEditI.Text;
 
-            MessageBox.Show("Individual Client edit successful, returning to Client Menu", "INDIVIDUAL CLIENT EDITED",
+            if (nameEdit.Equals(""))
+            {
+                MessageBox.Show("Please enter a client name", "EMPTY FIELDS!!",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (surnameEdit.Equals(""))
+            {
+                MessageBox.Show("Please enter a client surname", "EMPTY FIELDS!!",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Individual Client edit successful, returning to Client Menu", "INDIVIDUAL CLIENT EDITED",
                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Hide();
+                frmClientMenu form = new frmClientMenu();
+                form.ShowDialog();
+                Show();
+            }
 
-            Hide();
-            frmClientMenu form = new frmClientMenu();
-            form.ShowDialog();
-            Show();
+            
+
+            
         }
 
-        public static string busiName;
+        public static string busiNameEdit;
 
         private void btnEditBusiness_Click(object sender, EventArgs e)
         {
-            busiName = txtBusinessNameEdit.Text; 
-
-            MessageBox.Show("Business Client edit successful, returning to Client Menu", "BUSINESS CLIENT EDITED",
+            busiNameEdit = txtBusinessNameEdit.Text; 
+            
+            if (busiNameEdit.Equals(""))
+            {
+                MessageBox.Show("Please enter a business name", "EMPTY FIELDS!!",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Business Client edit successful, returning to Client Menu", "BUSINESS CLIENT EDITED",
                              MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            Hide();
-            frmClientMenu form = new frmClientMenu();
-            form.ShowDialog();
-            Show();
+                Hide();
+                frmClientMenu form = new frmClientMenu();
+                form.ShowDialog();
+                Show();
+            }
+
+            
         }
     }
 }

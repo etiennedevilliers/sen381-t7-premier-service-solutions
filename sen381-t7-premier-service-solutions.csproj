@@ -106,6 +106,7 @@
     <Compile Include="presentation\forms\Call Centre\frmNewRequest.Designer.cs">
       <DependentUpon>frmNewRequest.cs</DependentUpon>
     </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\DBAccess.cs" />
     <Compile Include="presentation\forms\Client Maintenance\frmViewContract.cs">
       <SubType>Form</SubType>
     </Compile>
