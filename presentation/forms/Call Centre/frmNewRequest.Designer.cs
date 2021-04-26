@@ -53,6 +53,8 @@ namespace Presentation.Forms.CallCentre
             this.label7 = new System.Windows.Forms.Label();
             this.cbServiceRequestServiceContract = new System.Windows.Forms.ComboBox();
             this.btnServiceRequest = new System.Windows.Forms.Button();
+            this.tbServiceRequestDescription = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -261,6 +263,8 @@ namespace Presentation.Forms.CallCentre
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label9);
+            this.tabPage4.Controls.Add(this.tbServiceRequestDescription);
             this.tabPage4.Controls.Add(this.label7);
             this.tabPage4.Controls.Add(this.cbServiceRequestServiceContract);
             this.tabPage4.Controls.Add(this.btnServiceRequest);
@@ -296,6 +300,24 @@ namespace Presentation.Forms.CallCentre
             this.btnServiceRequest.TabIndex = 0;
             this.btnServiceRequest.Text = "Create Service Request";
             this.btnServiceRequest.UseVisualStyleBackColor = true;
+            this.btnServiceRequest.Click += new System.EventHandler(this.btnServiceRequest_Click);
+            // 
+            // tbServiceRequestDescription
+            // 
+            this.tbServiceRequestDescription.Location = new System.Drawing.Point(4, 73);
+            this.tbServiceRequestDescription.Multiline = true;
+            this.tbServiceRequestDescription.Name = "tbServiceRequestDescription";
+            this.tbServiceRequestDescription.Size = new System.Drawing.Size(413, 276);
+            this.tbServiceRequestDescription.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(4, 54);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(140, 13);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Service Request description";
             // 
             // FrmNewRequest
             // 
@@ -350,5 +372,7 @@ namespace Presentation.Forms.CallCentre
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbServiceRequestServiceContract;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbServiceRequestDescription;
     }
 }

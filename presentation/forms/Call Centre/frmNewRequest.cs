@@ -72,6 +72,7 @@ namespace Presentation.Forms.CallCentre
                 foreach (ServiceContract serviceContract in clientController.ReadChildren(currentClient))
                 {
                     cbComplaintServiceContract.Items.Add(serviceContract);
+                    cbServiceRequestServiceContract.Items.Add(serviceContract);
                 }
             }
         }
@@ -125,6 +126,36 @@ namespace Presentation.Forms.CallCentre
                 cbExistingClient.SelectedItem as Client
             );
 
+            Close();
+        }
+
+        private void btnServiceRequest_Click(object sender, EventArgs e)
+        {
+            if (cbExistingClient.SelectedItem == null)
+            {
+                MessageBox.Show("You need to select a Client first");
+                return;
+            }
+
+            if (cbServiceRequestServiceContract.SelectedItem == null)
+            {
+                MessageBox.Show("You need to select a ServiceContract for service first");
+                return;
+            }
+
+            if (tbServiceRequestDescription.Text.Length == 0)
+            {
+                MessageBox.Show("You need to add a decription first");
+                return;
+            }
+
+            callCentreLogic.CreateNewServiceRequest(
+                cbServiceRequestServiceContract.SelectedItem as ServiceContract,
+                cbExistingClient.SelectedItem as Client,
+                tbServiceRequestDescription.Text
+            );
+
+            Close();
         }
     }
 }

@@ -68,6 +68,26 @@ namespace Logic
             newContractRequestController.Set(serviceContract, newContractRequest);
             requestController.Set(client, newContractRequest);
         }
+
+        public void CreateNewServiceRequest(ServiceContract serviceContract, Client client, string desc)
+        {
+            endCall();
+
+            ServiceRequestController serviceRequestController = new ServiceRequestController();
+            RequestController requestController = new RequestController();
+
+            ServiceRequest serviceRequest = new ServiceRequest(
+                DateTime.Now,
+                null,
+                callLog,
+                desc
+            );
+
+            serviceRequestController.Create(serviceRequest);
+            serviceRequestController.Set(serviceContract, serviceRequest);
+            requestController.Set(client, serviceRequest);
+
+        }
         private void endCall()
         {
             CallLogController callLogController = new CallLogController();

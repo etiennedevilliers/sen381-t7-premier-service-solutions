@@ -75,7 +75,7 @@ namespace Presentation.Forms.ServiceDepartment
                             i.Id.ToString(), 
                             i.Description, 
                             i.DateCreated.ToShortDateString(), 
-                            i.JobStarted.ToShortDateString(),
+                            i.JobStarted == null ? "Not Started" : i.JobStarted.Value.ToShortDateString(),
                             i.DateResolved == null ? "Unresolved" : i.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"), 
                             i.Call.TimeStarted.ToLongTimeString(), 
                             i.Call.TimeEnded.ToLongTimeString(), 
