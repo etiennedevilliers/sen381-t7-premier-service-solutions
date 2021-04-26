@@ -30,29 +30,29 @@ namespace Presentation.Forms.CallCentre
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbExistingClient = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tbContactNumber = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbExistingClient = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.btnNewClientRequest = new System.Windows.Forms.Button();
-            this.btnComplaintRequest = new System.Windows.Forms.Button();
-            this.btnNewContractRequest = new System.Windows.Forms.Button();
-            this.btnServiceRequest = new System.Windows.Forms.Button();
-            this.cbComplaintServiceContract = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tbComplaintDescription = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cbNewContractRequestServiceContract = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbServiceRequestServiceContract = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnNewClientRequest = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbComplaintDescription = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbComplaintServiceContract = new System.Windows.Forms.ComboBox();
+            this.btnComplaintRequest = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbNewContractRequestServiceContract = new System.Windows.Forms.ComboBox();
+            this.btnNewContractRequest = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbServiceRequestServiceContract = new System.Windows.Forms.ComboBox();
+            this.btnServiceRequest = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -63,7 +63,7 @@ namespace Presentation.Forms.CallCentre
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tbContactNumber);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cbExistingClient);
@@ -74,23 +74,12 @@ namespace Presentation.Forms.CallCentre
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Client";
             // 
-            // cbExistingClient
+            // tbContactNumber
             // 
-            this.cbExistingClient.FormattingEnabled = true;
-            this.cbExistingClient.Location = new System.Drawing.Point(6, 47);
-            this.cbExistingClient.Name = "cbExistingClient";
-            this.cbExistingClient.Size = new System.Drawing.Size(253, 21);
-            this.cbExistingClient.TabIndex = 0;
-            this.cbExistingClient.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Existing Cient(Leave blank for new)";
+            this.tbContactNumber.Location = new System.Drawing.Point(6, 88);
+            this.tbContactNumber.Name = "tbContactNumber";
+            this.tbContactNumber.Size = new System.Drawing.Size(253, 20);
+            this.tbContactNumber.TabIndex = 3;
             // 
             // label2
             // 
@@ -101,12 +90,23 @@ namespace Presentation.Forms.CallCentre
             this.label2.TabIndex = 2;
             this.label2.Text = "Client Number";
             // 
-            // textBox1
+            // label1
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 88);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(253, 20);
-            this.textBox1.TabIndex = 3;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(173, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Existing Cient(Leave blank for new)";
+            // 
+            // cbExistingClient
+            // 
+            this.cbExistingClient.FormattingEnabled = true;
+            this.cbExistingClient.Location = new System.Drawing.Point(6, 47);
+            this.cbExistingClient.Name = "cbExistingClient";
+            this.cbExistingClient.Size = new System.Drawing.Size(253, 21);
+            this.cbExistingClient.TabIndex = 0;
+            this.cbExistingClient.SelectedIndexChanged += new System.EventHandler(this.cbExistingClient_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -142,6 +142,25 @@ namespace Presentation.Forms.CallCentre
             this.tabPage1.Text = "New Client Request";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(385, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Enter Client number, the Client Maintenance Department will contact this person.";
+            // 
+            // btnNewClientRequest
+            // 
+            this.btnNewClientRequest.Location = new System.Drawing.Point(297, 352);
+            this.btnNewClientRequest.Name = "btnNewClientRequest";
+            this.btnNewClientRequest.Size = new System.Drawing.Size(121, 23);
+            this.btnNewClientRequest.TabIndex = 0;
+            this.btnNewClientRequest.Text = "Create New Client";
+            this.btnNewClientRequest.UseVisualStyleBackColor = true;
+            this.btnNewClientRequest.Click += new System.EventHandler(this.btnNewClientRequest_Click);
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label5);
@@ -157,6 +176,50 @@ namespace Presentation.Forms.CallCentre
             this.tabPage2.Text = "Complaint Request";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Description";
+            // 
+            // tbComplaintDescription
+            // 
+            this.tbComplaintDescription.Location = new System.Drawing.Point(9, 76);
+            this.tbComplaintDescription.Multiline = true;
+            this.tbComplaintDescription.Name = "tbComplaintDescription";
+            this.tbComplaintDescription.Size = new System.Drawing.Size(407, 270);
+            this.tbComplaintDescription.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(196, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Problematic Service Contract from Client";
+            // 
+            // cbComplaintServiceContract
+            // 
+            this.cbComplaintServiceContract.FormattingEnabled = true;
+            this.cbComplaintServiceContract.Location = new System.Drawing.Point(9, 26);
+            this.cbComplaintServiceContract.Name = "cbComplaintServiceContract";
+            this.cbComplaintServiceContract.Size = new System.Drawing.Size(407, 21);
+            this.cbComplaintServiceContract.TabIndex = 1;
+            // 
+            // btnComplaintRequest
+            // 
+            this.btnComplaintRequest.Location = new System.Drawing.Point(289, 352);
+            this.btnComplaintRequest.Name = "btnComplaintRequest";
+            this.btnComplaintRequest.Size = new System.Drawing.Size(128, 23);
+            this.btnComplaintRequest.TabIndex = 0;
+            this.btnComplaintRequest.Text = "Create Complaint";
+            this.btnComplaintRequest.UseVisualStyleBackColor = true;
+            this.btnComplaintRequest.Click += new System.EventHandler(this.btnComplaintRequest_Click);
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.label6);
@@ -168,6 +231,33 @@ namespace Presentation.Forms.CallCentre
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "New Contract Request";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(4, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(86, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Service Contract";
+            // 
+            // cbNewContractRequestServiceContract
+            // 
+            this.cbNewContractRequestServiceContract.FormattingEnabled = true;
+            this.cbNewContractRequestServiceContract.Location = new System.Drawing.Point(4, 26);
+            this.cbNewContractRequestServiceContract.Name = "cbNewContractRequestServiceContract";
+            this.cbNewContractRequestServiceContract.Size = new System.Drawing.Size(413, 21);
+            this.cbNewContractRequestServiceContract.TabIndex = 1;
+            // 
+            // btnNewContractRequest
+            // 
+            this.btnNewContractRequest.Location = new System.Drawing.Point(246, 355);
+            this.btnNewContractRequest.Name = "btnNewContractRequest";
+            this.btnNewContractRequest.Size = new System.Drawing.Size(175, 23);
+            this.btnNewContractRequest.TabIndex = 0;
+            this.btnNewContractRequest.Text = "Create New Contract Request";
+            this.btnNewContractRequest.UseVisualStyleBackColor = true;
+            this.btnNewContractRequest.Click += new System.EventHandler(this.btnNewContractRequest_Click);
             // 
             // tabPage4
             // 
@@ -181,102 +271,6 @@ namespace Presentation.Forms.CallCentre
             this.tabPage4.Text = "Service Request";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // btnNewClientRequest
-            // 
-            this.btnNewClientRequest.Location = new System.Drawing.Point(297, 352);
-            this.btnNewClientRequest.Name = "btnNewClientRequest";
-            this.btnNewClientRequest.Size = new System.Drawing.Size(121, 23);
-            this.btnNewClientRequest.TabIndex = 0;
-            this.btnNewClientRequest.Text = "Create New Client";
-            this.btnNewClientRequest.UseVisualStyleBackColor = true;
-            this.btnNewClientRequest.Click += new System.EventHandler(this.btnNewClientRequest_Click);
-            // 
-            // btnComplaintRequest
-            // 
-            this.btnComplaintRequest.Location = new System.Drawing.Point(289, 352);
-            this.btnComplaintRequest.Name = "btnComplaintRequest";
-            this.btnComplaintRequest.Size = new System.Drawing.Size(128, 23);
-            this.btnComplaintRequest.TabIndex = 0;
-            this.btnComplaintRequest.Text = "Create Complaint";
-            this.btnComplaintRequest.UseVisualStyleBackColor = true;
-            // 
-            // btnNewContractRequest
-            // 
-            this.btnNewContractRequest.Location = new System.Drawing.Point(302, 355);
-            this.btnNewContractRequest.Name = "btnNewContractRequest";
-            this.btnNewContractRequest.Size = new System.Drawing.Size(119, 23);
-            this.btnNewContractRequest.TabIndex = 0;
-            this.btnNewContractRequest.Text = "Create New Contract Request";
-            this.btnNewContractRequest.UseVisualStyleBackColor = true;
-            // 
-            // btnServiceRequest
-            // 
-            this.btnServiceRequest.Location = new System.Drawing.Point(263, 355);
-            this.btnServiceRequest.Name = "btnServiceRequest";
-            this.btnServiceRequest.Size = new System.Drawing.Size(154, 23);
-            this.btnServiceRequest.TabIndex = 0;
-            this.btnServiceRequest.Text = "Create Service Request";
-            this.btnServiceRequest.UseVisualStyleBackColor = true;
-            // 
-            // cbComplaintServiceContract
-            // 
-            this.cbComplaintServiceContract.FormattingEnabled = true;
-            this.cbComplaintServiceContract.Location = new System.Drawing.Point(9, 26);
-            this.cbComplaintServiceContract.Name = "cbComplaintServiceContract";
-            this.cbComplaintServiceContract.Size = new System.Drawing.Size(407, 21);
-            this.cbComplaintServiceContract.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Service Contract from Client";
-            // 
-            // tbComplaintDescription
-            // 
-            this.tbComplaintDescription.Location = new System.Drawing.Point(9, 76);
-            this.tbComplaintDescription.Multiline = true;
-            this.tbComplaintDescription.Name = "tbComplaintDescription";
-            this.tbComplaintDescription.Size = new System.Drawing.Size(407, 270);
-            this.tbComplaintDescription.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Description";
-            // 
-            // cbNewContractRequestServiceContract
-            // 
-            this.cbNewContractRequestServiceContract.FormattingEnabled = true;
-            this.cbNewContractRequestServiceContract.Location = new System.Drawing.Point(4, 26);
-            this.cbNewContractRequestServiceContract.Name = "cbNewContractRequestServiceContract";
-            this.cbNewContractRequestServiceContract.Size = new System.Drawing.Size(413, 21);
-            this.cbNewContractRequestServiceContract.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Service Contract";
-            // 
-            // cbServiceRequestServiceContract
-            // 
-            this.cbServiceRequestServiceContract.FormattingEnabled = true;
-            this.cbServiceRequestServiceContract.Location = new System.Drawing.Point(4, 24);
-            this.cbServiceRequestServiceContract.Name = "cbServiceRequestServiceContract";
-            this.cbServiceRequestServiceContract.Size = new System.Drawing.Size(413, 21);
-            this.cbServiceRequestServiceContract.TabIndex = 1;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -286,14 +280,22 @@ namespace Presentation.Forms.CallCentre
             this.label7.TabIndex = 2;
             this.label7.Text = "Service Contract From Client";
             // 
-            // label8
+            // cbServiceRequestServiceContract
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(385, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Enter Client number, the Client Maintenance Department will contact this person.";
+            this.cbServiceRequestServiceContract.FormattingEnabled = true;
+            this.cbServiceRequestServiceContract.Location = new System.Drawing.Point(4, 24);
+            this.cbServiceRequestServiceContract.Name = "cbServiceRequestServiceContract";
+            this.cbServiceRequestServiceContract.Size = new System.Drawing.Size(413, 21);
+            this.cbServiceRequestServiceContract.TabIndex = 1;
+            // 
+            // btnServiceRequest
+            // 
+            this.btnServiceRequest.Location = new System.Drawing.Point(263, 355);
+            this.btnServiceRequest.Name = "btnServiceRequest";
+            this.btnServiceRequest.Size = new System.Drawing.Size(154, 23);
+            this.btnServiceRequest.TabIndex = 0;
+            this.btnServiceRequest.Text = "Create Service Request";
+            this.btnServiceRequest.UseVisualStyleBackColor = true;
             // 
             // FrmNewRequest
             // 
@@ -325,7 +327,7 @@ namespace Presentation.Forms.CallCentre
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbContactNumber;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbExistingClient;

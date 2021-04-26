@@ -41,6 +41,8 @@ namespace Data.Layer.Objects
             this.dateCreated = dateCreated;
             this.DateResolved = dateResolved;
             this.call = call;
+
+            this.Status = "Open";
         }
 
         //Standard Methods

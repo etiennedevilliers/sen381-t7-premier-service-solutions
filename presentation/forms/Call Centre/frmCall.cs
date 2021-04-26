@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Layer.Controller;
 using Data.Layer.Objects;
+using Logic;
 
 namespace Presentation.Forms.CallCentre
 {
@@ -42,9 +43,8 @@ namespace Presentation.Forms.CallCentre
         private void btnStartCall_Click(object sender, EventArgs e)
         {
             Hide();
-            CallLog callLog = new CallLog(DateTime.Now, cbIncoming.Checked);
-            callLog.Representative = cbAgents.SelectedItem as Agent;
-            FrmNewRequest frmNewRequest = new FrmNewRequest(callLog);
+            CallCentreLogic callCentreLogic = new CallCentreLogic(cbAgents.SelectedItem as Agent, cbIncoming.Checked);
+            FrmNewRequest frmNewRequest = new FrmNewRequest(callCentreLogic);
             frmNewRequest.ShowDialog();
             Show();
         }
