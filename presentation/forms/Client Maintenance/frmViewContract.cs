@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
-    public partial class frmAddContract : Form
+    public partial class frmViewContract : Form
     {
-        public frmAddContract()
+        public frmViewContract()
         {
             InitializeComponent();
         }

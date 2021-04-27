@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Presentation.Forms.ServiceDepartment;
 using Presentation.Forms.CallCentre;
+using sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance;
 
 namespace Presentation.Forms.Welcome
 {
@@ -42,6 +43,15 @@ namespace Presentation.Forms.Welcome
             form.ShowDialog();
             Show();
           
+        }
+
+        private void btnClientMain_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmClientMenu form = new frmClientMenu();
+            form.ShowDialog();
+            Show();
+
         }
     }
 }

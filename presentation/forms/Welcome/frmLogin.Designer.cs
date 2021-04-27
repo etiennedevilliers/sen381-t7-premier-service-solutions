@@ -38,9 +38,10 @@
             // 
             // btnServiceDep
             // 
-            this.btnServiceDep.Location = new System.Drawing.Point(292, 12);
+            this.btnServiceDep.Location = new System.Drawing.Point(389, 15);
+            this.btnServiceDep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnServiceDep.Name = "btnServiceDep";
-            this.btnServiceDep.Size = new System.Drawing.Size(194, 66);
+            this.btnServiceDep.Size = new System.Drawing.Size(259, 81);
             this.btnServiceDep.TabIndex = 0;
             this.btnServiceDep.Text = "Service Department";
             this.btnServiceDep.UseVisualStyleBackColor = true;
@@ -48,18 +49,20 @@
             // 
             // btnContractMain
             // 
-            this.btnContractMain.Location = new System.Drawing.Point(292, 84);
+            this.btnContractMain.Location = new System.Drawing.Point(389, 103);
+            this.btnContractMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnContractMain.Name = "btnContractMain";
-            this.btnContractMain.Size = new System.Drawing.Size(194, 66);
+            this.btnContractMain.Size = new System.Drawing.Size(259, 81);
             this.btnContractMain.TabIndex = 1;
             this.btnContractMain.Text = "Contract Maintenance";
             this.btnContractMain.UseVisualStyleBackColor = true;
             // 
             // btnCallCentre
             // 
-            this.btnCallCentre.Location = new System.Drawing.Point(292, 156);
+            this.btnCallCentre.Location = new System.Drawing.Point(389, 192);
+            this.btnCallCentre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCallCentre.Name = "btnCallCentre";
-            this.btnCallCentre.Size = new System.Drawing.Size(194, 66);
+            this.btnCallCentre.Size = new System.Drawing.Size(259, 81);
             this.btnCallCentre.TabIndex = 2;
             this.btnCallCentre.Text = "Call Centre";
             this.btnCallCentre.UseVisualStyleBackColor = true;
@@ -67,27 +70,31 @@
             // 
             // btnClientSatis
             // 
-            this.btnClientSatis.Location = new System.Drawing.Point(292, 228);
+            this.btnClientSatis.Location = new System.Drawing.Point(389, 281);
+            this.btnClientSatis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClientSatis.Name = "btnClientSatis";
-            this.btnClientSatis.Size = new System.Drawing.Size(194, 66);
+            this.btnClientSatis.Size = new System.Drawing.Size(259, 81);
             this.btnClientSatis.TabIndex = 3;
             this.btnClientSatis.Text = "Client Satisfaction";
             this.btnClientSatis.UseVisualStyleBackColor = true;
             // 
             // btnClientMain
             // 
-            this.btnClientMain.Location = new System.Drawing.Point(292, 300);
+            this.btnClientMain.Location = new System.Drawing.Point(389, 369);
+            this.btnClientMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClientMain.Name = "btnClientMain";
-            this.btnClientMain.Size = new System.Drawing.Size(194, 66);
+            this.btnClientMain.Size = new System.Drawing.Size(259, 81);
             this.btnClientMain.TabIndex = 4;
             this.btnClientMain.Text = "Client Maintenance";
             this.btnClientMain.UseVisualStyleBackColor = true;
+            this.btnClientMain.Click += new System.EventHandler(this.btnClientMain_Click);
             // 
             // btnTechnician
             // 
-            this.btnTechnician.Location = new System.Drawing.Point(292, 372);
+            this.btnTechnician.Location = new System.Drawing.Point(389, 458);
+            this.btnTechnician.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTechnician.Name = "btnTechnician";
-            this.btnTechnician.Size = new System.Drawing.Size(194, 66);
+            this.btnTechnician.Size = new System.Drawing.Size(259, 81);
             this.btnTechnician.TabIndex = 5;
             this.btnTechnician.Text = "Technician";
             this.btnTechnician.UseVisualStyleBackColor = true;
@@ -95,15 +102,16 @@
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.btnTechnician);
             this.Controls.Add(this.btnClientMain);
             this.Controls.Add(this.btnClientSatis);
             this.Controls.Add(this.btnCallCentre);
             this.Controls.Add(this.btnContractMain);
             this.Controls.Add(this.btnServiceDep);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmLogin";
             this.Text = "Login";
             this.ResumeLayout(false);
