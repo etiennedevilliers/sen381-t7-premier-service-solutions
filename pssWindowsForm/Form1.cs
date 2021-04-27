@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
+namespace pssWindowsForm
 {
-    public partial class frmEditClient : Form
+    public partial class Form1 : Form
     {
-        public frmEditClient()
+        public Form1()
         {
             InitializeComponent();
         }

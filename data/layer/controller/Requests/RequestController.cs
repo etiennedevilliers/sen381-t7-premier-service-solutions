@@ -13,15 +13,19 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            int ID = dh.InsertID(string.Format(
+            string query = string.Format(
                 "INSERT INTO Request(ClientID, dateCreated, dateResolved, status, contactNum, CallID) VALUES ({0},'{1}','{2}','{3}','{4}', {5})",
                 (obj.Client != null) ? obj.Client.Id.ToString() : "null",
                 obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
-                obj.DateResolved.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.DateResolved == null ? null : obj.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"),
                 obj.Status,
                 obj.ContactNum,
                 obj.Call.Id
-            ));
+            );
+
+            Console.WriteLine(query);
+
+            int ID = dh.InsertID(query);
 
             obj.Id = ID;
 
@@ -48,8 +52,8 @@ namespace Data.Layer.Controller
                 obj.Id,
                 obj.Client.Id,
                 obj.Call.Id,
-                obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"), 
-                obj.DateResolved.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.DateResolved == null ? "null" : obj.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"),
                 obj.Status,
                 obj.ContactNum
              ));
@@ -166,18 +170,22 @@ namespace Data.Layer.Controller
 
             if (read.HasRows)
             {
-                read.Read();
-
-                if (read.IsDBNull(1))
+                while (read.Read()) 
                 {
-                    newClient = new IndividualClient(read.GetString(4), read.GetString(2), read.GetString(3));
-                }
-                else
-                {
-                    newClient = new BusinessClient(read.GetString(4), read.GetString(1));
-                }
+                    if (read.IsDBNull(1))
+                    {
+                        Console.WriteLine(read.GetInt32(0));
+                        Console.WriteLine(read.GetString(2));
+                        Console.WriteLine(read.GetString(3));
+                        newClient = new IndividualClient(read.GetString(4), read.GetString(2), read.GetString(3));
+                    }
+                    else
+                    {
+                        newClient = new BusinessClient(read.GetString(4), read.GetString(1));
+                    }
 
-                newClient.Id = read.GetInt32(0);
+                    newClient.Id = read.GetInt32(0);
+                }   
             }
 
             dh.Dispose();

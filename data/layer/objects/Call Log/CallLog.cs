@@ -27,6 +27,12 @@ namespace Data.Layer.Objects
             this.incoming = incoming;
         }
 
+        public CallLog(DateTime timeStarted,  bool incoming)
+        {
+            this.timeStarted = timeStarted;
+            this.incoming = incoming;
+        }
+
         //Standard Classes
         public override bool Equals(object obj)
         {

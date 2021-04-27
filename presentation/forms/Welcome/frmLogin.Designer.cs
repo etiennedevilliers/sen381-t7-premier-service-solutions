@@ -67,6 +67,7 @@
             this.btnCallCentre.TabIndex = 2;
             this.btnCallCentre.Text = "Call Centre";
             this.btnCallCentre.UseVisualStyleBackColor = true;
+            this.btnCallCentre.Click += new System.EventHandler(this.btnCallCentre_Click);
             // 
             // btnClientSatis
             // 
@@ -87,6 +88,7 @@
             this.btnClientMain.TabIndex = 4;
             this.btnClientMain.Text = "Client Maintenance";
             this.btnClientMain.UseVisualStyleBackColor = true;
+            this.btnClientMain.Click += new System.EventHandler(this.btnClientMain_Click);
             // 
             // btnTechnician
             // 

@@ -1,7 +1,7 @@
 ﻿
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
-    partial class frmAddContract
+    partial class frmViewContract
     {
         /// <summary>
         /// Required designer variable.

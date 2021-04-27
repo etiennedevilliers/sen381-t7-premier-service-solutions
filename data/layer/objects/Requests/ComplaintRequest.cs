@@ -14,7 +14,7 @@ namespace Data.Layer.Objects
         public string Description { get => description; set => description = value; }
 
         //Constructor
-        public ComplaintRequest(DateTime dateCreated, DateTime dateResolved, CallLog call, string description) : base(dateCreated, dateResolved, call)
+        public ComplaintRequest(DateTime dateCreated, DateTime? dateResolved, CallLog call, string description) : base(dateCreated, dateResolved, call)
         {
             this.description = description;
         }

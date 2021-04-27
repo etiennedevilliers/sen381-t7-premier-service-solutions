@@ -22,7 +22,7 @@ namespace Data.Layer.Controller
                 "INSERT INTO ServiceRequest(ServiceRequestID, description, jobStarted) VALUES ({0}, '{1}', '{2}')",
                 obj.Id,
                 obj.Description,
-                obj.JobStarted.ToString("yyyy-MM-dd HH:mm:ss.fff")
+                obj.JobStarted == null ? null : obj.JobStarted.Value.ToString("yyyy-MM-dd HH:mm:ss.fff")
             );
 
             dh.Insert(query);
@@ -76,9 +76,10 @@ namespace Data.Layer.Controller
                         read.GetDateTime(5),
                         read.GetDateTime(6),
                         callLog,
-                        read.GetString(1),
-                        read.GetDateTime(2)
+                        read.GetString(1)
                     );
+
+                    serviceRequest.JobStarted = read.GetDateTime(2);
 
 
                     serviceRequest.Id = read.GetInt32(0);
@@ -101,7 +102,7 @@ namespace Data.Layer.Controller
                 "UPDATE dbo.ServiceRequest SET description='{1}', jobStarted='{2}' WHERE ServiceRequestID={0}",
                 obj.Id,
                 obj.Description,
-                obj.JobStarted.ToString("yyyy-MM-dd HH:mm:ss.fff")
+                obj.JobStarted == null ? null : obj.JobStarted.Value.ToString("yyyy-MM-dd HH:mm:ss.fff")
             ));
 
             dh.Dispose();

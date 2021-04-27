@@ -8,9 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Presentation.Forms.ServiceDepartment;
+using Presentation.Forms.CallCentre;
+using sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance;
 //using Presentation.Forms.ClientMaintenance;
 using Presentation.Forms.Contract_Maintenance;
-
 
 namespace Presentation.Forms.Welcome
 {
@@ -35,6 +36,24 @@ namespace Presentation.Forms.Welcome
             frmViewServices form = new frmViewServices();
             form.ShowDialog();
             Show();
+        }
+
+        private void btnCallCentre_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmCall form = new frmCall();
+            form.ShowDialog();
+            Show();
+          
+        }
+
+        private void btnClientMain_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmClientMenu form = new frmClientMenu();
+            form.ShowDialog();
+            Show();
+
         }
 
         private void btnContractMain_Click(object sender, EventArgs e)

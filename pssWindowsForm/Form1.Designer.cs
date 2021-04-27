@@ -1,7 +1,7 @@
 ﻿
-namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
+namespace pssWindowsForm
 {
-    partial class frmViewClients
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -32,9 +32,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ViewClient";
+            this.Text = "Form1";
         }
 
         #endregion
     }
 }
+
