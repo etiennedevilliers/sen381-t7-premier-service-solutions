@@ -19,8 +19,6 @@ namespace Data.Layer.Controller
                 obj.Description
             );
 
-            Console.WriteLine(query);
-
             int ID = dh.InsertID(query);
 
             obj.Id = ID;

@@ -32,6 +32,10 @@ namespace Presentation.Forms.Contract_Maintenance
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabContracts = new System.Windows.Forms.TabPage();
             this.grbxServiceContracts = new System.Windows.Forms.GroupBox();
+            this.lblImportanceLevel = new System.Windows.Forms.Label();
+            this.lblPackage = new System.Windows.Forms.Label();
+            this.cmbIdentNumber = new System.Windows.Forms.ComboBox();
+            this.cmbAddPackage = new System.Windows.Forms.ComboBox();
             this.dtpDateTer = new System.Windows.Forms.DateTimePicker();
             this.dtpDateFianal = new System.Windows.Forms.DateTimePicker();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -85,10 +89,6 @@ namespace Presentation.Forms.Contract_Maintenance
             this.listViewServiceLevelAgreemnet = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cmbAddPackage = new System.Windows.Forms.ComboBox();
-            this.cmbIdentNumber = new System.Windows.Forms.ComboBox();
-            this.lblPackage = new System.Windows.Forms.Label();
-            this.lblImportanceLevel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabContracts.SuspendLayout();
             this.grbxServiceContracts.SuspendLayout();
@@ -106,11 +106,11 @@ namespace Presentation.Forms.Contract_Maintenance
             this.tabControl1.Controls.Add(this.tabPackage);
             this.tabControl1.Controls.Add(this.tabService);
             this.tabControl1.Controls.Add(this.tabSLA);
-            this.tabControl1.Location = new System.Drawing.Point(-1501, -847);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl1.Location = new System.Drawing.Point(-750, -440);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(6304, 3333);
+            this.tabControl1.Size = new System.Drawing.Size(3152, 1733);
             this.tabControl1.TabIndex = 1;
             // 
             // tabContracts
@@ -124,11 +124,11 @@ namespace Presentation.Forms.Contract_Maintenance
             this.tabContracts.Controls.Add(this.groupBox1);
             this.tabContracts.Controls.Add(this.button2);
             this.tabContracts.Controls.Add(this.btnView_All_Service_Contracts);
-            this.tabContracts.Location = new System.Drawing.Point(8, 39);
-            this.tabContracts.Margin = new System.Windows.Forms.Padding(4);
+            this.tabContracts.Location = new System.Drawing.Point(4, 22);
+            this.tabContracts.Margin = new System.Windows.Forms.Padding(2);
             this.tabContracts.Name = "tabContracts";
-            this.tabContracts.Padding = new System.Windows.Forms.Padding(4);
-            this.tabContracts.Size = new System.Drawing.Size(6288, 3286);
+            this.tabContracts.Padding = new System.Windows.Forms.Padding(2);
+            this.tabContracts.Size = new System.Drawing.Size(3144, 1707);
             this.tabContracts.TabIndex = 0;
             this.tabContracts.UseVisualStyleBackColor = true;
             // 
@@ -150,74 +150,127 @@ namespace Presentation.Forms.Contract_Maintenance
             this.grbxServiceContracts.Controls.Add(this.lblSCDescription);
             this.grbxServiceContracts.Controls.Add(this.txtSCDescription);
             this.grbxServiceContracts.Controls.Add(this.btnAddContract);
-            this.grbxServiceContracts.Location = new System.Drawing.Point(3547, 843);
+            this.grbxServiceContracts.Location = new System.Drawing.Point(1774, 438);
+            this.grbxServiceContracts.Margin = new System.Windows.Forms.Padding(2);
             this.grbxServiceContracts.Name = "grbxServiceContracts";
-            this.grbxServiceContracts.Size = new System.Drawing.Size(721, 679);
+            this.grbxServiceContracts.Padding = new System.Windows.Forms.Padding(2);
+            this.grbxServiceContracts.Size = new System.Drawing.Size(360, 353);
             this.grbxServiceContracts.TabIndex = 10;
             this.grbxServiceContracts.TabStop = false;
             this.grbxServiceContracts.Text = "New Service Cotract";
             // 
+            // lblImportanceLevel
+            // 
+            this.lblImportanceLevel.AutoSize = true;
+            this.lblImportanceLevel.Location = new System.Drawing.Point(16, 230);
+            this.lblImportanceLevel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblImportanceLevel.Name = "lblImportanceLevel";
+            this.lblImportanceLevel.Size = new System.Drawing.Size(101, 13);
+            this.lblImportanceLevel.TabIndex = 15;
+            this.lblImportanceLevel.Text = "Level of Importance";
+            // 
+            // lblPackage
+            // 
+            this.lblPackage.AutoSize = true;
+            this.lblPackage.Location = new System.Drawing.Point(16, 193);
+            this.lblPackage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPackage.Name = "lblPackage";
+            this.lblPackage.Size = new System.Drawing.Size(50, 13);
+            this.lblPackage.TabIndex = 14;
+            this.lblPackage.Text = "Package";
+            // 
+            // cmbIdentNumber
+            // 
+            this.cmbIdentNumber.FormattingEnabled = true;
+            this.cmbIdentNumber.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D"});
+            this.cmbIdentNumber.Location = new System.Drawing.Point(162, 226);
+            this.cmbIdentNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbIdentNumber.Name = "cmbIdentNumber";
+            this.cmbIdentNumber.Size = new System.Drawing.Size(168, 21);
+            this.cmbIdentNumber.TabIndex = 13;
+            // 
+            // cmbAddPackage
+            // 
+            this.cmbAddPackage.FormattingEnabled = true;
+            this.cmbAddPackage.Location = new System.Drawing.Point(162, 189);
+            this.cmbAddPackage.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbAddPackage.Name = "cmbAddPackage";
+            this.cmbAddPackage.Size = new System.Drawing.Size(168, 21);
+            this.cmbAddPackage.TabIndex = 10;
+            // 
             // dtpDateTer
             // 
-            this.dtpDateTer.Location = new System.Drawing.Point(319, 167);
+            this.dtpDateTer.Location = new System.Drawing.Point(160, 87);
+            this.dtpDateTer.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateTer.Name = "dtpDateTer";
-            this.dtpDateTer.Size = new System.Drawing.Size(336, 31);
+            this.dtpDateTer.Size = new System.Drawing.Size(170, 20);
             this.dtpDateTer.TabIndex = 12;
             // 
             // dtpDateFianal
             // 
-            this.dtpDateFianal.Location = new System.Drawing.Point(319, 119);
+            this.dtpDateFianal.Location = new System.Drawing.Point(160, 62);
+            this.dtpDateFianal.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateFianal.Name = "dtpDateFianal";
-            this.dtpDateFianal.Size = new System.Drawing.Size(336, 31);
+            this.dtpDateFianal.Size = new System.Drawing.Size(170, 20);
             this.dtpDateFianal.TabIndex = 11;
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(31, 294);
+            this.lblStatus.Location = new System.Drawing.Point(16, 153);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(73, 25);
+            this.lblStatus.Size = new System.Drawing.Size(37, 13);
             this.lblStatus.TabIndex = 11;
             this.lblStatus.Text = "Status";
             // 
             // txtStatus
             // 
-            this.txtStatus.Location = new System.Drawing.Point(322, 291);
+            this.txtStatus.Location = new System.Drawing.Point(161, 151);
+            this.txtStatus.Margin = new System.Windows.Forms.Padding(2);
             this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(333, 31);
+            this.txtStatus.Size = new System.Drawing.Size(168, 20);
             this.txtStatus.TabIndex = 10;
             // 
             // txtCost
             // 
-            this.txtCost.Location = new System.Drawing.Point(322, 230);
+            this.txtCost.Location = new System.Drawing.Point(161, 120);
+            this.txtCost.Margin = new System.Windows.Forms.Padding(2);
             this.txtCost.Name = "txtCost";
-            this.txtCost.Size = new System.Drawing.Size(333, 31);
+            this.txtCost.Size = new System.Drawing.Size(168, 20);
             this.txtCost.TabIndex = 9;
             // 
             // lblCost
             // 
             this.lblCost.AutoSize = true;
-            this.lblCost.Location = new System.Drawing.Point(31, 230);
+            this.lblCost.Location = new System.Drawing.Point(16, 120);
+            this.lblCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(56, 25);
+            this.lblCost.Size = new System.Drawing.Size(28, 13);
             this.lblCost.TabIndex = 8;
             this.lblCost.Text = "Cost";
             // 
             // lblDateTerminated
             // 
             this.lblDateTerminated.AutoSize = true;
-            this.lblDateTerminated.Location = new System.Drawing.Point(31, 172);
+            this.lblDateTerminated.Location = new System.Drawing.Point(16, 89);
+            this.lblDateTerminated.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDateTerminated.Name = "lblDateTerminated";
-            this.lblDateTerminated.Size = new System.Drawing.Size(165, 25);
+            this.lblDateTerminated.Size = new System.Drawing.Size(83, 13);
             this.lblDateTerminated.TabIndex = 6;
             this.lblDateTerminated.Text = "DateTerminated";
             // 
             // btnSCDone
             // 
             this.btnSCDone.AutoEllipsis = true;
-            this.btnSCDone.Location = new System.Drawing.Point(376, 574);
+            this.btnSCDone.Location = new System.Drawing.Point(188, 298);
+            this.btnSCDone.Margin = new System.Windows.Forms.Padding(2);
             this.btnSCDone.Name = "btnSCDone";
-            this.btnSCDone.Size = new System.Drawing.Size(279, 45);
+            this.btnSCDone.Size = new System.Drawing.Size(140, 23);
             this.btnSCDone.TabIndex = 5;
             this.btnSCDone.Text = "Done";
             this.btnSCDone.UseVisualStyleBackColor = true;
@@ -226,33 +279,37 @@ namespace Presentation.Forms.Contract_Maintenance
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 119);
+            this.label3.Location = new System.Drawing.Point(16, 62);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 25);
+            this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Date Finalised";
             // 
             // lblSCDescription
             // 
             this.lblSCDescription.AutoSize = true;
-            this.lblSCDescription.Location = new System.Drawing.Point(31, 58);
+            this.lblSCDescription.Location = new System.Drawing.Point(16, 30);
+            this.lblSCDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSCDescription.Name = "lblSCDescription";
-            this.lblSCDescription.Size = new System.Drawing.Size(285, 25);
+            this.lblSCDescription.Size = new System.Drawing.Size(142, 13);
             this.lblSCDescription.TabIndex = 3;
             this.lblSCDescription.Text = "Service Contract Description";
             // 
             // txtSCDescription
             // 
-            this.txtSCDescription.Location = new System.Drawing.Point(322, 52);
+            this.txtSCDescription.Location = new System.Drawing.Point(161, 27);
+            this.txtSCDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtSCDescription.Name = "txtSCDescription";
-            this.txtSCDescription.Size = new System.Drawing.Size(333, 31);
+            this.txtSCDescription.Size = new System.Drawing.Size(168, 20);
             this.txtSCDescription.TabIndex = 1;
             // 
             // btnAddContract
             // 
-            this.btnAddContract.Location = new System.Drawing.Point(36, 574);
+            this.btnAddContract.Location = new System.Drawing.Point(18, 298);
+            this.btnAddContract.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddContract.Name = "btnAddContract";
-            this.btnAddContract.Size = new System.Drawing.Size(279, 45);
+            this.btnAddContract.Size = new System.Drawing.Size(140, 23);
             this.btnAddContract.TabIndex = 0;
             this.btnAddContract.Text = "Add Service Contract";
             this.btnAddContract.UseVisualStyleBackColor = true;
@@ -270,9 +327,11 @@ namespace Presentation.Forms.Contract_Maintenance
             this.gbPackage.Controls.Add(this.txtPDis);
             this.gbPackage.Controls.Add(this.txtPname);
             this.gbPackage.Controls.Add(this.btnAddPcak);
-            this.gbPackage.Location = new System.Drawing.Point(2801, 831);
+            this.gbPackage.Location = new System.Drawing.Point(1400, 432);
+            this.gbPackage.Margin = new System.Windows.Forms.Padding(2);
             this.gbPackage.Name = "gbPackage";
-            this.gbPackage.Size = new System.Drawing.Size(721, 408);
+            this.gbPackage.Padding = new System.Windows.Forms.Padding(2);
+            this.gbPackage.Size = new System.Drawing.Size(360, 212);
             this.gbPackage.TabIndex = 6;
             this.gbPackage.TabStop = false;
             this.gbPackage.Text = "New Package";
@@ -280,43 +339,48 @@ namespace Presentation.Forms.Contract_Maintenance
             // cmbxSla
             // 
             this.cmbxSla.FormattingEnabled = true;
-            this.cmbxSla.Location = new System.Drawing.Point(323, 230);
+            this.cmbxSla.Location = new System.Drawing.Point(162, 120);
+            this.cmbxSla.Margin = new System.Windows.Forms.Padding(2);
             this.cmbxSla.Name = "cmbxSla";
-            this.cmbxSla.Size = new System.Drawing.Size(332, 33);
+            this.cmbxSla.Size = new System.Drawing.Size(168, 21);
             this.cmbxSla.TabIndex = 9;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(77, 230);
+            this.label11.Location = new System.Drawing.Point(38, 120);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 25);
+            this.label11.Size = new System.Drawing.Size(41, 13);
             this.label11.TabIndex = 8;
             this.label11.Text = "SLA ID";
             // 
             // cmbxService
             // 
             this.cmbxService.FormattingEnabled = true;
-            this.cmbxService.Location = new System.Drawing.Point(322, 172);
+            this.cmbxService.Location = new System.Drawing.Point(161, 89);
+            this.cmbxService.Margin = new System.Windows.Forms.Padding(2);
             this.cmbxService.Name = "cmbxService";
-            this.cmbxService.Size = new System.Drawing.Size(332, 33);
+            this.cmbxService.Size = new System.Drawing.Size(168, 21);
             this.cmbxService.TabIndex = 7;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(76, 172);
+            this.label10.Location = new System.Drawing.Point(38, 89);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(110, 25);
+            this.label10.Size = new System.Drawing.Size(57, 13);
             this.label10.TabIndex = 6;
             this.label10.Text = "Service ID";
             // 
             // button7
             // 
             this.button7.AutoEllipsis = true;
-            this.button7.Location = new System.Drawing.Point(375, 303);
+            this.button7.Location = new System.Drawing.Point(188, 158);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(279, 45);
+            this.button7.Size = new System.Drawing.Size(140, 23);
             this.button7.TabIndex = 5;
             this.button7.Text = "Done";
             this.button7.UseVisualStyleBackColor = true;
@@ -325,40 +389,45 @@ namespace Presentation.Forms.Contract_Maintenance
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(76, 107);
+            this.label7.Location = new System.Drawing.Point(38, 56);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(210, 25);
+            this.label7.Size = new System.Drawing.Size(106, 13);
             this.label7.TabIndex = 4;
             this.label7.Text = "Package Description";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(76, 55);
+            this.label9.Location = new System.Drawing.Point(38, 29);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(158, 25);
+            this.label9.Size = new System.Drawing.Size(81, 13);
             this.label9.TabIndex = 3;
             this.label9.Text = "Package Name";
             // 
             // txtPDis
             // 
-            this.txtPDis.Location = new System.Drawing.Point(322, 113);
+            this.txtPDis.Location = new System.Drawing.Point(161, 59);
+            this.txtPDis.Margin = new System.Windows.Forms.Padding(2);
             this.txtPDis.Name = "txtPDis";
-            this.txtPDis.Size = new System.Drawing.Size(333, 31);
+            this.txtPDis.Size = new System.Drawing.Size(168, 20);
             this.txtPDis.TabIndex = 2;
             // 
             // txtPname
             // 
-            this.txtPname.Location = new System.Drawing.Point(322, 52);
+            this.txtPname.Location = new System.Drawing.Point(161, 27);
+            this.txtPname.Margin = new System.Windows.Forms.Padding(2);
             this.txtPname.Name = "txtPname";
-            this.txtPname.Size = new System.Drawing.Size(333, 31);
+            this.txtPname.Size = new System.Drawing.Size(168, 20);
             this.txtPname.TabIndex = 1;
             // 
             // btnAddPcak
             // 
-            this.btnAddPcak.Location = new System.Drawing.Point(36, 303);
+            this.btnAddPcak.Location = new System.Drawing.Point(18, 158);
+            this.btnAddPcak.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddPcak.Name = "btnAddPcak";
-            this.btnAddPcak.Size = new System.Drawing.Size(279, 45);
+            this.btnAddPcak.Size = new System.Drawing.Size(140, 23);
             this.btnAddPcak.TabIndex = 0;
             this.btnAddPcak.Text = "Add Package";
             this.btnAddPcak.UseVisualStyleBackColor = true;
@@ -370,9 +439,11 @@ namespace Presentation.Forms.Contract_Maintenance
             this.gbrxServiceLevelAgreement.Controls.Add(this.label8);
             this.gbrxServiceLevelAgreement.Controls.Add(this.txtSLADescription);
             this.gbrxServiceLevelAgreement.Controls.Add(this.btnAddServiceLevelAgreement);
-            this.gbrxServiceLevelAgreement.Location = new System.Drawing.Point(2074, 1230);
+            this.gbrxServiceLevelAgreement.Location = new System.Drawing.Point(1037, 640);
+            this.gbrxServiceLevelAgreement.Margin = new System.Windows.Forms.Padding(2);
             this.gbrxServiceLevelAgreement.Name = "gbrxServiceLevelAgreement";
-            this.gbrxServiceLevelAgreement.Size = new System.Drawing.Size(816, 261);
+            this.gbrxServiceLevelAgreement.Padding = new System.Windows.Forms.Padding(2);
+            this.gbrxServiceLevelAgreement.Size = new System.Drawing.Size(408, 136);
             this.gbrxServiceLevelAgreement.TabIndex = 6;
             this.gbrxServiceLevelAgreement.TabStop = false;
             this.gbrxServiceLevelAgreement.Text = "New Service Level Agreement ";
@@ -380,9 +451,10 @@ namespace Presentation.Forms.Contract_Maintenance
             // button6
             // 
             this.button6.AutoEllipsis = true;
-            this.button6.Location = new System.Drawing.Point(511, 168);
+            this.button6.Location = new System.Drawing.Point(256, 87);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(230, 45);
+            this.button6.Size = new System.Drawing.Size(115, 23);
             this.button6.TabIndex = 5;
             this.button6.Text = "Done";
             this.button6.UseVisualStyleBackColor = true;
@@ -391,24 +463,27 @@ namespace Presentation.Forms.Contract_Maintenance
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(28, 84);
+            this.label8.Location = new System.Drawing.Point(14, 44);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(360, 25);
+            this.label8.Size = new System.Drawing.Size(179, 13);
             this.label8.TabIndex = 3;
             this.label8.Text = "ServiceLevel Agreement Description";
             // 
             // txtSLADescription
             // 
-            this.txtSLADescription.Location = new System.Drawing.Point(408, 81);
+            this.txtSLADescription.Location = new System.Drawing.Point(204, 42);
+            this.txtSLADescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtSLADescription.Name = "txtSLADescription";
-            this.txtSLADescription.Size = new System.Drawing.Size(333, 31);
+            this.txtSLADescription.Size = new System.Drawing.Size(168, 20);
             this.txtSLADescription.TabIndex = 1;
             // 
             // btnAddServiceLevelAgreement
             // 
-            this.btnAddServiceLevelAgreement.Location = new System.Drawing.Point(33, 168);
+            this.btnAddServiceLevelAgreement.Location = new System.Drawing.Point(16, 87);
+            this.btnAddServiceLevelAgreement.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddServiceLevelAgreement.Name = "btnAddServiceLevelAgreement";
-            this.btnAddServiceLevelAgreement.Size = new System.Drawing.Size(355, 45);
+            this.btnAddServiceLevelAgreement.Size = new System.Drawing.Size(178, 23);
             this.btnAddServiceLevelAgreement.TabIndex = 0;
             this.btnAddServiceLevelAgreement.Text = "Add Service Level Agreement";
             this.btnAddServiceLevelAgreement.UseVisualStyleBackColor = true;
@@ -418,8 +493,9 @@ namespace Presentation.Forms.Contract_Maintenance
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 25);
+            this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 6;
             this.label6.Text = "label6";
             // 
@@ -431,9 +507,11 @@ namespace Presentation.Forms.Contract_Maintenance
             this.gbxService.Controls.Add(this.txtServiceDuration);
             this.gbxService.Controls.Add(this.txtServiceDescription);
             this.gbxService.Controls.Add(this.btnService);
-            this.gbxService.Location = new System.Drawing.Point(2074, 820);
+            this.gbxService.Location = new System.Drawing.Point(1037, 426);
+            this.gbxService.Margin = new System.Windows.Forms.Padding(2);
             this.gbxService.Name = "gbxService";
-            this.gbxService.Size = new System.Drawing.Size(721, 385);
+            this.gbxService.Padding = new System.Windows.Forms.Padding(2);
+            this.gbxService.Size = new System.Drawing.Size(360, 200);
             this.gbxService.TabIndex = 5;
             this.gbxService.TabStop = false;
             this.gbxService.Text = "New Service";
@@ -441,9 +519,10 @@ namespace Presentation.Forms.Contract_Maintenance
             // btnServiceDone
             // 
             this.btnServiceDone.AutoEllipsis = true;
-            this.btnServiceDone.Location = new System.Drawing.Point(376, 301);
+            this.btnServiceDone.Location = new System.Drawing.Point(188, 157);
+            this.btnServiceDone.Margin = new System.Windows.Forms.Padding(2);
             this.btnServiceDone.Name = "btnServiceDone";
-            this.btnServiceDone.Size = new System.Drawing.Size(279, 45);
+            this.btnServiceDone.Size = new System.Drawing.Size(140, 23);
             this.btnServiceDone.TabIndex = 5;
             this.btnServiceDone.Text = "Done";
             this.btnServiceDone.UseVisualStyleBackColor = true;
@@ -452,40 +531,45 @@ namespace Presentation.Forms.Contract_Maintenance
             // lblServiceDuration
             // 
             this.lblServiceDuration.AutoSize = true;
-            this.lblServiceDuration.Location = new System.Drawing.Point(76, 211);
+            this.lblServiceDuration.Location = new System.Drawing.Point(38, 110);
+            this.lblServiceDuration.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblServiceDuration.Name = "lblServiceDuration";
-            this.lblServiceDuration.Size = new System.Drawing.Size(171, 25);
+            this.lblServiceDuration.Size = new System.Drawing.Size(86, 13);
             this.lblServiceDuration.TabIndex = 4;
             this.lblServiceDuration.Text = "Service Duration";
             // 
             // lblServiceDiscription
             // 
             this.lblServiceDiscription.AutoSize = true;
-            this.lblServiceDiscription.Location = new System.Drawing.Point(76, 135);
+            this.lblServiceDiscription.Location = new System.Drawing.Point(38, 70);
+            this.lblServiceDiscription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblServiceDiscription.Name = "lblServiceDiscription";
-            this.lblServiceDiscription.Size = new System.Drawing.Size(198, 25);
+            this.lblServiceDiscription.Size = new System.Drawing.Size(99, 13);
             this.lblServiceDiscription.TabIndex = 3;
             this.lblServiceDiscription.Text = "Service Description";
             // 
             // txtServiceDuration
             // 
-            this.txtServiceDuration.Location = new System.Drawing.Point(322, 211);
+            this.txtServiceDuration.Location = new System.Drawing.Point(161, 110);
+            this.txtServiceDuration.Margin = new System.Windows.Forms.Padding(2);
             this.txtServiceDuration.Name = "txtServiceDuration";
-            this.txtServiceDuration.Size = new System.Drawing.Size(333, 31);
+            this.txtServiceDuration.Size = new System.Drawing.Size(168, 20);
             this.txtServiceDuration.TabIndex = 2;
             // 
             // txtServiceDescription
             // 
-            this.txtServiceDescription.Location = new System.Drawing.Point(322, 129);
+            this.txtServiceDescription.Location = new System.Drawing.Point(161, 67);
+            this.txtServiceDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtServiceDescription.Name = "txtServiceDescription";
-            this.txtServiceDescription.Size = new System.Drawing.Size(333, 31);
+            this.txtServiceDescription.Size = new System.Drawing.Size(168, 20);
             this.txtServiceDescription.TabIndex = 1;
             // 
             // btnService
             // 
-            this.btnService.Location = new System.Drawing.Point(33, 301);
+            this.btnService.Location = new System.Drawing.Point(16, 157);
+            this.btnService.Margin = new System.Windows.Forms.Padding(2);
             this.btnService.Name = "btnService";
-            this.btnService.Size = new System.Drawing.Size(279, 45);
+            this.btnService.Size = new System.Drawing.Size(140, 23);
             this.btnService.TabIndex = 0;
             this.btnService.Text = "Add Service";
             this.btnService.UseVisualStyleBackColor = true;
@@ -494,9 +578,10 @@ namespace Presentation.Forms.Contract_Maintenance
             // lstViewItems
             // 
             this.lstViewItems.HideSelection = false;
-            this.lstViewItems.Location = new System.Drawing.Point(1970, 1607);
+            this.lstViewItems.Location = new System.Drawing.Point(985, 836);
+            this.lstViewItems.Margin = new System.Windows.Forms.Padding(2);
             this.lstViewItems.Name = "lstViewItems";
-            this.lstViewItems.Size = new System.Drawing.Size(1445, 757);
+            this.lstViewItems.Size = new System.Drawing.Size(724, 396);
             this.lstViewItems.TabIndex = 4;
             this.lstViewItems.UseCompatibleStateImageBehavior = false;
             this.lstViewItems.View = System.Windows.Forms.View.Details;
@@ -509,18 +594,21 @@ namespace Presentation.Forms.Contract_Maintenance
             this.groupBox1.Controls.Add(this.btnAddContracts);
             this.groupBox1.Controls.Add(this.btnAddPackage);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox1.Location = new System.Drawing.Point(1505, 820);
+            this.groupBox1.Location = new System.Drawing.Point(752, 426);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(540, 491);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(270, 255);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add New Elements";
             // 
             // btnAddService
             // 
-            this.btnAddService.Location = new System.Drawing.Point(43, 370);
+            this.btnAddService.Location = new System.Drawing.Point(22, 192);
+            this.btnAddService.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddService.Name = "btnAddService";
-            this.btnAddService.Size = new System.Drawing.Size(412, 49);
+            this.btnAddService.Size = new System.Drawing.Size(206, 25);
             this.btnAddService.TabIndex = 3;
             this.btnAddService.Text = "Add Service ";
             this.btnAddService.UseVisualStyleBackColor = true;
@@ -528,9 +616,10 @@ namespace Presentation.Forms.Contract_Maintenance
             // 
             // btnAddSLA
             // 
-            this.btnAddSLA.Location = new System.Drawing.Point(43, 275);
+            this.btnAddSLA.Location = new System.Drawing.Point(22, 143);
+            this.btnAddSLA.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddSLA.Name = "btnAddSLA";
-            this.btnAddSLA.Size = new System.Drawing.Size(412, 49);
+            this.btnAddSLA.Size = new System.Drawing.Size(206, 25);
             this.btnAddSLA.TabIndex = 2;
             this.btnAddSLA.Text = "Add Service Level Agreement";
             this.btnAddSLA.UseVisualStyleBackColor = true;
@@ -538,9 +627,10 @@ namespace Presentation.Forms.Contract_Maintenance
             // 
             // btnAddContracts
             // 
-            this.btnAddContracts.Location = new System.Drawing.Point(43, 185);
+            this.btnAddContracts.Location = new System.Drawing.Point(22, 96);
+            this.btnAddContracts.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddContracts.Name = "btnAddContracts";
-            this.btnAddContracts.Size = new System.Drawing.Size(412, 49);
+            this.btnAddContracts.Size = new System.Drawing.Size(206, 25);
             this.btnAddContracts.TabIndex = 1;
             this.btnAddContracts.Text = "Add Service Contract";
             this.btnAddContracts.UseVisualStyleBackColor = true;
@@ -548,9 +638,10 @@ namespace Presentation.Forms.Contract_Maintenance
             // 
             // btnAddPackage
             // 
-            this.btnAddPackage.Location = new System.Drawing.Point(43, 95);
+            this.btnAddPackage.Location = new System.Drawing.Point(22, 49);
+            this.btnAddPackage.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddPackage.Name = "btnAddPackage";
-            this.btnAddPackage.Size = new System.Drawing.Size(412, 49);
+            this.btnAddPackage.Size = new System.Drawing.Size(206, 25);
             this.btnAddPackage.TabIndex = 0;
             this.btnAddPackage.Text = "Add Package";
             this.btnAddPackage.UseVisualStyleBackColor = true;
@@ -559,29 +650,29 @@ namespace Presentation.Forms.Contract_Maintenance
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(38, 12);
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // btnView_All_Service_Contracts
             // 
-            this.btnView_All_Service_Contracts.Location = new System.Drawing.Point(1599, 602);
-            this.btnView_All_Service_Contracts.Margin = new System.Windows.Forms.Padding(6);
+            this.btnView_All_Service_Contracts.Location = new System.Drawing.Point(800, 313);
             this.btnView_All_Service_Contracts.Name = "btnView_All_Service_Contracts";
-            this.btnView_All_Service_Contracts.Size = new System.Drawing.Size(340, 59);
+            this.btnView_All_Service_Contracts.Size = new System.Drawing.Size(170, 31);
             this.btnView_All_Service_Contracts.TabIndex = 0;
             this.btnView_All_Service_Contracts.Text = "View All Service Contracts";
             this.btnView_All_Service_Contracts.UseVisualStyleBackColor = true;
             // 
             // tabPackage
             // 
-            this.tabPackage.Location = new System.Drawing.Point(8, 39);
-            this.tabPackage.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPackage.Location = new System.Drawing.Point(4, 22);
+            this.tabPackage.Margin = new System.Windows.Forms.Padding(2);
             this.tabPackage.Name = "tabPackage";
-            this.tabPackage.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPackage.Size = new System.Drawing.Size(6288, 3286);
+            this.tabPackage.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPackage.Size = new System.Drawing.Size(3144, 1707);
             this.tabPackage.TabIndex = 1;
             this.tabPackage.Text = "Package";
             this.tabPackage.UseVisualStyleBackColor = true;
@@ -590,29 +681,31 @@ namespace Presentation.Forms.Contract_Maintenance
             // 
             this.tabService.Controls.Add(this.button1);
             this.tabService.Controls.Add(this.listView1);
-            this.tabService.Location = new System.Drawing.Point(8, 39);
-            this.tabService.Margin = new System.Windows.Forms.Padding(4);
+            this.tabService.Location = new System.Drawing.Point(4, 22);
+            this.tabService.Margin = new System.Windows.Forms.Padding(2);
             this.tabService.Name = "tabService";
-            this.tabService.Padding = new System.Windows.Forms.Padding(4);
-            this.tabService.Size = new System.Drawing.Size(6288, 3286);
+            this.tabService.Padding = new System.Windows.Forms.Padding(2);
+            this.tabService.Size = new System.Drawing.Size(3144, 1707);
             this.tabService.TabIndex = 2;
             this.tabService.Text = "Service";
             this.tabService.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1975, 450);
+            this.button1.Location = new System.Drawing.Point(988, 234);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(361, 77);
+            this.button1.Size = new System.Drawing.Size(180, 40);
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = true;
             // 
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(7, 787);
+            this.listView1.Location = new System.Drawing.Point(4, 409);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(2868, 588);
+            this.listView1.Size = new System.Drawing.Size(1436, 308);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -620,20 +713,21 @@ namespace Presentation.Forms.Contract_Maintenance
             // 
             this.tabSLA.Controls.Add(this.btnViewSLA);
             this.tabSLA.Controls.Add(this.listViewServiceLevelAgreemnet);
-            this.tabSLA.Location = new System.Drawing.Point(8, 39);
-            this.tabSLA.Margin = new System.Windows.Forms.Padding(4);
+            this.tabSLA.Location = new System.Drawing.Point(4, 22);
+            this.tabSLA.Margin = new System.Windows.Forms.Padding(2);
             this.tabSLA.Name = "tabSLA";
-            this.tabSLA.Padding = new System.Windows.Forms.Padding(4);
-            this.tabSLA.Size = new System.Drawing.Size(6288, 3286);
+            this.tabSLA.Padding = new System.Windows.Forms.Padding(2);
+            this.tabSLA.Size = new System.Drawing.Size(3144, 1707);
             this.tabSLA.TabIndex = 3;
             this.tabSLA.Text = "Service Level Agreement";
             this.tabSLA.UseVisualStyleBackColor = true;
             // 
             // btnViewSLA
             // 
-            this.btnViewSLA.Location = new System.Drawing.Point(2176, 630);
+            this.btnViewSLA.Location = new System.Drawing.Point(1088, 328);
+            this.btnViewSLA.Margin = new System.Windows.Forms.Padding(2);
             this.btnViewSLA.Name = "btnViewSLA";
-            this.btnViewSLA.Size = new System.Drawing.Size(403, 60);
+            this.btnViewSLA.Size = new System.Drawing.Size(202, 31);
             this.btnViewSLA.TabIndex = 1;
             this.btnViewSLA.Text = "View Service Level Agreemnet";
             this.btnViewSLA.UseVisualStyleBackColor = true;
@@ -644,9 +738,10 @@ namespace Presentation.Forms.Contract_Maintenance
             this.ID,
             this.Description});
             this.listViewServiceLevelAgreemnet.HideSelection = false;
-            this.listViewServiceLevelAgreemnet.Location = new System.Drawing.Point(28, 803);
+            this.listViewServiceLevelAgreemnet.Location = new System.Drawing.Point(14, 418);
+            this.listViewServiceLevelAgreemnet.Margin = new System.Windows.Forms.Padding(2);
             this.listViewServiceLevelAgreemnet.Name = "listViewServiceLevelAgreemnet";
-            this.listViewServiceLevelAgreemnet.Size = new System.Drawing.Size(2551, 551);
+            this.listViewServiceLevelAgreemnet.Size = new System.Drawing.Size(1278, 288);
             this.listViewServiceLevelAgreemnet.TabIndex = 0;
             this.listViewServiceLevelAgreemnet.UseCompatibleStateImageBehavior = false;
             this.listViewServiceLevelAgreemnet.View = System.Windows.Forms.View.Details;
@@ -660,51 +755,13 @@ namespace Presentation.Forms.Contract_Maintenance
             // 
             this.Description.Text = "Description";
             // 
-            // cmbAddPackage
-            // 
-            this.cmbAddPackage.FormattingEnabled = true;
-            this.cmbAddPackage.Location = new System.Drawing.Point(323, 363);
-            this.cmbAddPackage.Name = "cmbAddPackage";
-            this.cmbAddPackage.Size = new System.Drawing.Size(332, 33);
-            this.cmbAddPackage.TabIndex = 10;
-            // 
-            // cmbIdentNumber
-            // 
-            this.cmbIdentNumber.FormattingEnabled = true;
-            this.cmbIdentNumber.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D"});
-            this.cmbIdentNumber.Location = new System.Drawing.Point(323, 435);
-            this.cmbIdentNumber.Name = "cmbIdentNumber";
-            this.cmbIdentNumber.Size = new System.Drawing.Size(332, 33);
-            this.cmbIdentNumber.TabIndex = 13;
-            // 
-            // lblPackage
-            // 
-            this.lblPackage.AutoSize = true;
-            this.lblPackage.Location = new System.Drawing.Point(31, 371);
-            this.lblPackage.Name = "lblPackage";
-            this.lblPackage.Size = new System.Drawing.Size(96, 25);
-            this.lblPackage.TabIndex = 14;
-            this.lblPackage.Text = "Package";
-            // 
-            // lblImportanceLevel
-            // 
-            this.lblImportanceLevel.AutoSize = true;
-            this.lblImportanceLevel.Location = new System.Drawing.Point(31, 443);
-            this.lblImportanceLevel.Name = "lblImportanceLevel";
-            this.lblImportanceLevel.Size = new System.Drawing.Size(200, 25);
-            this.lblImportanceLevel.TabIndex = 15;
-            this.lblImportanceLevel.Text = "Level of Importance";
-            // 
             // frmNewContract
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(3120, 1680);
+            this.ClientSize = new System.Drawing.Size(1560, 821);
             this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmNewContract";
             this.Text = "NewContract";
             this.Load += new System.EventHandler(this.frmNewContract_Load);

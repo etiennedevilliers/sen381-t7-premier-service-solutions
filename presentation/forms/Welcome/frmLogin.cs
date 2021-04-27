@@ -44,7 +44,6 @@ namespace Presentation.Forms.Welcome
             frmCall form = new frmCall();
             form.ShowDialog();
             Show();
-          
         }
 
         private void btnClientMain_Click(object sender, EventArgs e)
@@ -53,7 +52,6 @@ namespace Presentation.Forms.Welcome
             frmClientMenu form = new frmClientMenu();
             form.ShowDialog();
             Show();
-
         }
 
         private void btnContractMain_Click(object sender, EventArgs e)
@@ -67,8 +65,8 @@ namespace Presentation.Forms.Welcome
             //Show the target form dialog
             form.ShowDialog();
 
-            //Show the target form 
-            form.Show();
+            //Show this form 
+            Show();
         }
     }
 }

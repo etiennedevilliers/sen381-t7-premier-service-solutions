@@ -38,7 +38,7 @@ namespace Data.Layer.Objects
             this.dateFinalised = dateFinalised;
             this.dateTerminated = dateTerminated;
             this.status = status;
-            this.identifier = identifier; 
+            this.identifier = identifier;
         }
 
         //Standard Methods

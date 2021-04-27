@@ -30,6 +30,25 @@ namespace Presentation.Forms.ServiceDepartment
             tech = techCtr.ReadSpecific(7);
             //
 
+            LoadData();
+        }
+
+        private void btnComplete_Click(object sender, EventArgs e)
+        {
+            currentServiceRequest.Status = "Resolved";
+            RequestController rqCtr = new RequestController();
+            rqCtr.Update(currentServiceRequest);
+
+            Scheduler sch = new Scheduler();
+            sch.Schedule(tech);
+
+            LoadData();
+        }
+
+        void LoadData()
+        {
+            lstCurrentServices.Items.Clear();
+
             TechnicianHandler handler = new TechnicianHandler();
             currentServiceRequest = handler.GetServiceRequest(tech);
 
@@ -46,14 +65,6 @@ namespace Presentation.Forms.ServiceDepartment
                     }
                 }
             }
-        }
-
-        private void btnComplete_Click(object sender, EventArgs e)
-        {
-            //Update Request status
-
-            Scheduler sch = new Scheduler();
-            sch.Schedule(tech);
         }
     }
 }

@@ -17,13 +17,16 @@ namespace Logic
 
             foreach (ServiceRequest i in requests)
             {
-                List<Agent> handlers = i.Handlers;
-
-                foreach (Agent j in handlers)
+                if (i.Status == "Open")
                 {
-                    if (j.Id == tech.Id)
+                    List<Agent> handlers = i.Handlers;
+
+                    foreach (Agent j in handlers)
                     {
-                        return i;
+                        if (j.Id == tech.Id)
+                        {
+                            return i;
+                        }
                     }
                 }
             }
