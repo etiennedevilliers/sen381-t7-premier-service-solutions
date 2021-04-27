@@ -8,12 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.SqlServer.Server;
+using System.Data.SqlClient;
+using Data.Layer.Objects;
+using Data.Layer.Controller;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
     public partial class frmClientMenu : Form
     {
-        
+        List<IndividualClient> individualClients = new List<IndividualClient>();
+        IndividualClientController ictr = new IndividualClientController();
+
+        List<BusinessClient> businessClients = new List<BusinessClient>();
+        BusinessClientController bctr = new BusinessClientController();
+
+
         public frmClientMenu()
         {
             InitializeComponent();
@@ -21,15 +30,51 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void frmClientMenu_Load(object sender, EventArgs e)
         {
-            DBAccess dBAccess = new DBAccess();
-
+            LoadIndividualClient();
+            LoadBusinessClient();
         }
 
-        private void tpgIndividualClients_Click(object sender, EventArgs e)
+        void LoadIndividualClient()
         {
+            //lstClientsI.Clear();
+            IndividualClientController individualClientController = new IndividualClientController();
 
+            foreach (IndividualClient client in individualClientController.Read())
+            {
+                ListViewItem lstI = new ListViewItem(
+                    new string[] {
+                        client.Name,
+                        client.Surname,
+                        client.ContactNum
+                    }
+                );
+
+                lstI.Tag = client;
+
+                lstClientsI.Items.Add(lstI);
+            }
         }
 
+        void LoadBusinessClient()
+        {
+            BusinessClientController businessClientController = new BusinessClientController();
+
+            foreach (BusinessClient client in businessClientController.Read())
+            {
+                ListViewItem lstB = new ListViewItem(
+                    new string[]
+                    {
+                        client.Name,
+                        client.ContactNum
+                    }
+                 );
+
+                lstB.Tag = client;
+                lstClientsB.Items.Add(lstB);
+            }
+        }
+
+        
         public static Boolean Individual;
 
         private void btnAddI_Click(object sender, EventArgs e)
@@ -39,19 +84,27 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             Hide();
             frmNewClient form = new frmNewClient();
             form.ShowDialog();
-            Show();
+            
 
 
         }
 
         private void btnEditI_Click(object sender, EventArgs e)
         {
-            Individual = true;
+            //Individual = true;
 
-            Hide();
-            frmEditClient form = new frmEditClient();
-            form.ShowDialog();
-            Show();
+            //Hide();
+            //frmEditClient form = new frmEditClient();
+            //form.ShowDialog();
+
+            if (lstClientsI.SelectedItems.Count > 0)
+            {
+                IndividualClient client = lstClientsI.SelectedItems[0].Tag as IndividualClient;
+
+
+                frmEditIndividualClient editFrm = new frmEditIndividualClient(client);
+                editFrm.ShowDialog();
+            }
         }
 
         public static Boolean Business;
@@ -63,7 +116,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             Hide();
             frmNewClient form = new frmNewClient();
             form.ShowDialog();
-            Show();
+            
 
         }
 
@@ -71,10 +124,22 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         {
             Business = true;
 
-            Hide();
-            frmEditClient form = new frmEditClient();
-            form.ShowDialog();
-            Show();
+            //Hide();
+            //frmEditBusinessClient form = new fr();
+            //form.ShowDialog();
+            if (lstClientsB.SelectedItems.Count > 0)
+            {
+                BusinessClient client = lstClientsB.SelectedItems[0].Tag as BusinessClient;
+                MessageBox.Show(this.ToString() + client.ToString());
+
+                frmEditBusinessClient editFrmB = new frmEditBusinessClient(client);
+                editFrmB.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a field to edit", "SELECT A FIELD",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDeleteI_Click(object sender, EventArgs e)
@@ -83,8 +148,18 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
                                                      MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (deleteI == DialogResult.Yes)
             {
-                MessageBox.Show("Client successfully deleted", "CLIENT DELETED",
-                                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (lstClientsI.SelectedItems.Count > 0) {
+                    //MessageBox.Show((lstClientsI.SelectedItems[0].Tag as Client).ToString());
+                    IndividualClientController individualClientController = new IndividualClientController();
+                    IndividualClient client = lstClientsI.SelectedItems[0].Tag as IndividualClient;
+                        individualClientController.Delete(client);
+                    lstClientsI.Items.Clear();
+                    LoadIndividualClient();
+                    MessageBox.Show("Client successfully deleted", "INDIVIDUAL CLIENT DELETED",
+                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                }
+                
             }
             else
             {
@@ -103,8 +178,16 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
             if (deleteB == DialogResult.Yes)
             {
-                MessageBox.Show("Client successfully deleted", "CLIENT DELETED",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (lstClientsB.SelectedItems.Count > 0)
+                {
+                    BusinessClientController businessClientController = new BusinessClientController();
+                    BusinessClient client = lstClientsB.SelectedItems[0].Tag as BusinessClient;
+                    businessClientController.Delete(client);
+                    lstClientsB.Items.Clear();
+                    LoadBusinessClient();
+                    MessageBox.Show("Client successfully deleted", "BUSINESS CLIENT DELETED",
+                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
@@ -120,7 +203,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             Hide();
             frmViewContract form = new frmViewContract();
             form.ShowDialog();
-            Show();
+            
         }
 
         private void btnViewContractB_Click(object sender, EventArgs e)
@@ -128,7 +211,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             Hide();
             frmViewContract form = new frmViewContract();
             form.ShowDialog();
-            Show();
+            
         }
 
         private void btnAssignEmployeeB_Click(object sender, EventArgs e)

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Data.Layer.Objects;
+using Data.Layer.Controller;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
@@ -22,7 +24,8 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         
         private void frmNewClient_Load(object sender, EventArgs e)
         {
-            DBAccess dBAccess = new DBAccess();
+            IndividualClientController individualClientController = new IndividualClientController();
+            BusinessClientController businessClientController = new BusinessClientController();
 
             Boolean isIndividual = frmClientMenu.Individual;
             Boolean isBusiness = frmClientMenu.Business;
@@ -49,17 +52,30 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             }
         }
 
+        public static string newcontact;
         public static string newclientname;
         public static string newclientsurname;
 
         private void btnIndividualNew_Click(object sender, EventArgs e)
         {
+            newcontact = txtContact.Text;
             newclientname = txtNameNewI.Text;
             newclientsurname = txtSurnameNewI.Text;
 
-            DBAccess objdbAccess = new DBAccess();
+            IndividualClientController individualClientController = new IndividualClientController();
+            
+            IndividualClient individualClient = new IndividualClient(
+                newcontact,
+                newclientname,
+                newclientsurname
+                );
 
 
+            if (newcontact.Equals(""))
+            {
+                MessageBox.Show("Please enter client contact details", "EMPTY FIELDS!!",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             if (newclientname.Equals(""))
             {
                 MessageBox.Show("Please enter a client name", "EMPTY FIELDS!!",
@@ -72,13 +88,8 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             }
             else
             {
-                SqlCommand insertCommand = new SqlCommand("INSERT INTO IndividualClient(name,surname)" +
-                                                           "VALUES(@newclientname,@newclientsurname)");
-                insertCommand.Parameters.AddWithValue("@newclientname", newclientname);
-                insertCommand.Parameters.AddWithValue("@newclientsurname", newclientsurname);
-
-                objdbAccess.executeQuery(insertCommand);
-
+                
+                individualClientController.Create(individualClient);
 
                 MessageBox.Show("Individual Client add successful, returning to Client Menu", "INDIVIDUAL CLIENT ADDED",
                              MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -92,14 +103,27 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         }
 
+        public static string newbusicontact;
         public static string newbusinessclient;
 
         private void btnNewBusiness_Click(object sender, EventArgs e)
         {
+            newbusicontact = txtnewbusicontact.Text;
             newbusinessclient = txtBusinessNameNew.Text;
 
-            DBAccess objdbAccess = new DBAccess();
+            BusinessClientController businessClientController = new BusinessClientController();
 
+            BusinessClient businessClient = new BusinessClient(
+                newbusicontact,
+                newbusinessclient
+                );
+
+
+            if (newbusicontact.Equals(""))
+            {
+                MessageBox.Show("Please enter business contact details", "EMPTY FIELDS!!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             if (newbusinessclient.Equals(""))
             {
                 MessageBox.Show("Please enter a business client name", "EMPTY FIELDS!!",
@@ -107,11 +131,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             }
             else
             {
-                SqlCommand insertCommand = new SqlCommand("INSERT INTO IndividualClient(name)" +
-                                                           "VALUES(@newbusinessclient)");
-                insertCommand.Parameters.AddWithValue("@newbusinessclient", newbusinessclient);
-                
-                objdbAccess.executeQuery(insertCommand);
+                businessClientController.Create(businessClient);
 
                 MessageBox.Show("Business Client add successful, returning to Client Menu", " BUSINESS CLIENT ADDED",
                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -123,5 +143,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             }
             
         }
+
     }
 }

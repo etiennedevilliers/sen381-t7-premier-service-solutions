@@ -30,7 +30,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private void InitializeComponent()
         {
             this.lstClientsI = new System.Windows.Forms.ListView();
-            this.colClientIDI = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colClientNameI = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colClientSurnameI = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnEditI = new System.Windows.Forms.Button();
@@ -46,9 +45,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.btnDeleteB = new System.Windows.Forms.Button();
             this.btnViewContractB = new System.Windows.Forms.Button();
             this.lstClientsB = new System.Windows.Forms.ListView();
-            this.colClientIDB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colNameB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnEditB = new System.Windows.Forms.Button();
+            this.colContactNumI = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colContactNumB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tpgIndividual.SuspendLayout();
             this.tpgIndividualClients.SuspendLayout();
             this.tpgBusinessClients.SuspendLayout();
@@ -57,9 +57,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // lstClientsI
             // 
             this.lstClientsI.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colClientIDI,
             this.colClientNameI,
-            this.colClientSurnameI});
+            this.colClientSurnameI,
+            this.colContactNumI});
+            this.lstClientsI.FullRowSelect = true;
             this.lstClientsI.HideSelection = false;
             this.lstClientsI.Location = new System.Drawing.Point(0, 34);
             this.lstClientsI.Name = "lstClientsI";
@@ -68,19 +69,15 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.lstClientsI.UseCompatibleStateImageBehavior = false;
             this.lstClientsI.View = System.Windows.Forms.View.Details;
             // 
-            // colClientIDI
-            // 
-            this.colClientIDI.Text = "Client ID";
-            this.colClientIDI.Width = 97;
-            // 
             // colClientNameI
             // 
             this.colClientNameI.Text = "Name";
+            this.colClientNameI.Width = 125;
             // 
             // colClientSurnameI
             // 
             this.colClientSurnameI.Text = "Surname";
-            this.colClientSurnameI.Width = 101;
+            this.colClientSurnameI.Width = 188;
             // 
             // btnEditI
             // 
@@ -136,7 +133,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.tpgIndividualClients.TabIndex = 0;
             this.tpgIndividualClients.Text = "Individual Clients";
             this.tpgIndividualClients.UseVisualStyleBackColor = true;
-            this.tpgIndividualClients.Click += new System.EventHandler(this.tpgIndividualClients_Click);
             // 
             // btnAddI
             // 
@@ -216,8 +212,9 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // lstClientsB
             // 
             this.lstClientsB.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colClientIDB,
-            this.colNameB});
+            this.colNameB,
+            this.colContactNumB});
+            this.lstClientsB.FullRowSelect = true;
             this.lstClientsB.HideSelection = false;
             this.lstClientsB.Location = new System.Drawing.Point(3, 32);
             this.lstClientsB.Name = "lstClientsB";
@@ -226,14 +223,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.lstClientsB.UseCompatibleStateImageBehavior = false;
             this.lstClientsB.View = System.Windows.Forms.View.Details;
             // 
-            // colClientIDB
-            // 
-            this.colClientIDB.Text = "Client ID";
-            this.colClientIDB.Width = 97;
-            // 
             // colNameB
             // 
             this.colNameB.Text = "Name";
+            this.colNameB.Width = 147;
             // 
             // btnEditB
             // 
@@ -244,6 +237,16 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.btnEditB.Text = "Edit";
             this.btnEditB.UseVisualStyleBackColor = true;
             this.btnEditB.Click += new System.EventHandler(this.btnEditB_Click);
+            // 
+            // colContactNumI
+            // 
+            this.colContactNumI.Text = "Contact Number";
+            this.colContactNumI.Width = 136;
+            // 
+            // colContactNumB
+            // 
+            this.colContactNumB.Text = "Contact Number";
+            this.colContactNumB.Width = 167;
             // 
             // frmClientMenu
             // 
@@ -264,7 +267,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         #endregion
 
         private System.Windows.Forms.ListView lstClientsI;
-        private System.Windows.Forms.ColumnHeader colClientIDI;
         private System.Windows.Forms.ColumnHeader colClientNameI;
         private System.Windows.Forms.ColumnHeader colClientSurnameI;
         private System.Windows.Forms.Button btnEditI;
@@ -278,10 +280,11 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private System.Windows.Forms.Button btnDeleteB;
         private System.Windows.Forms.Button btnViewContractB;
         private System.Windows.Forms.ListView lstClientsB;
-        private System.Windows.Forms.ColumnHeader colClientIDB;
         private System.Windows.Forms.ColumnHeader colNameB;
         private System.Windows.Forms.Button btnEditB;
         private System.Windows.Forms.ComboBox cbEmployeesB;
         private System.Windows.Forms.Button btnAssignEmployeeB;
+        private System.Windows.Forms.ColumnHeader colContactNumI;
+        private System.Windows.Forms.ColumnHeader colContactNumB;
     }
 }
