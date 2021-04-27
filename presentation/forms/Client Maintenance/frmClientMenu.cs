@@ -11,6 +11,7 @@ using Microsoft.SqlServer.Server;
 using System.Data.SqlClient;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
+using Logic;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
@@ -32,6 +33,58 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         {
             LoadIndividualClient();
             LoadBusinessClient();
+            LoadServiceContractRequests();
+            LoadAgents();
+        }
+
+        void LoadAgents()
+        {
+            AgentController agentController = new AgentController();
+
+            foreach (Agent agent in agentController.Read())
+            {
+                cbAgents.Items.Add(agent);
+            }
+        }
+
+        void LoadServiceContractRequests() 
+        {
+            NewContractRequestController newContractRequestController = new NewContractRequestController();
+
+            foreach (NewContractRequest newContractRequest in newContractRequestController.Read())
+            {
+                Client client = newContractRequest.Client;
+
+                if (client is IndividualClient)
+                {
+                    IndividualClient iClient = client as IndividualClient;
+
+                    ListViewItem listViewItem = new ListViewItem(new string[] {
+                        String.Format("{0} {1}", iClient.Name, iClient.Surname),
+                        "Individual Client",
+                        newContractRequest.ServiceContract.Description
+                    });
+
+                    listViewItem.Tag = iClient;
+
+                    lvServiceContractRequests.Items.Add(listViewItem);
+                }
+                else
+                {
+                    BusinessClient bClient = client as BusinessClient;
+
+                    ListViewItem listViewItem = new ListViewItem(new string[] {
+                        bClient.Name,
+                        "Business Client",
+                        newContractRequest.ServiceContract.Description
+                    });
+
+                    listViewItem.Tag = bClient;
+
+                    lvServiceContractRequests.Items.Add(listViewItem);
+                }
+                
+            }
         }
 
         void LoadIndividualClient()
@@ -220,6 +273,23 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
                              MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        
+        private void btnCallClient_Click(object sender, EventArgs e)
+        {
+            if (cbAgents.SelectedItem == null)
+            {
+                MessageBox.Show("Select agent first!");
+                return;
+            }
+
+            CallCentreLogic serviceRequestLogic = new CallCentreLogic(
+                cbAgents.SelectedItem as Agent,
+                false
+            );
+
+            frmAddServiceContractToClient form = new frmAddServiceContractToClient(serviceRequestLogic);
+            form.ShowDialog();
+
+
+        }
     }
 }

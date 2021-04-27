@@ -94,6 +94,7 @@
     <Compile Include="data\layer\objects\ServiceContract\ServiceLevelAgreement.cs" />
     <Compile Include="logic\CallCentreLogic.cs" />
     <Compile Include="logic\Scheduler.cs" />
+    <Compile Include="logic\NewContractRequestLogic.cs" />
     <Compile Include="logic\TechnicianHandler.cs" />
     <Compile Include="presentation\forms\Call Centre\frmCall.cs">
       <SubType>Form</SubType>
@@ -106,6 +107,12 @@
     </Compile>
     <Compile Include="presentation\forms\Call Centre\frmNewRequest.Designer.cs">
       <DependentUpon>frmNewRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmAddServiceContractToClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmAddServiceContractToClient.Designer.cs">
+      <DependentUpon>frmAddServiceContractToClient.cs</DependentUpon>
     </Compile>
     <Compile Include="presentation\forms\Client Maintenance\frmEditBusinessClient.cs">
       <SubType>Form</SubType>

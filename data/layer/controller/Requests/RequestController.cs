@@ -170,18 +170,22 @@ namespace Data.Layer.Controller
 
             if (read.HasRows)
             {
-                read.Read();
-
-                if (read.IsDBNull(1))
+                while (read.Read()) 
                 {
-                    newClient = new IndividualClient(read.GetString(4), read.GetString(2), read.GetString(3));
-                }
-                else
-                {
-                    newClient = new BusinessClient(read.GetString(4), read.GetString(1));
-                }
+                    if (read.IsDBNull(1))
+                    {
+                        Console.WriteLine(read.GetInt32(0));
+                        Console.WriteLine(read.GetString(2));
+                        Console.WriteLine(read.GetString(3));
+                        newClient = new IndividualClient(read.GetString(4), read.GetString(2), read.GetString(3));
+                    }
+                    else
+                    {
+                        newClient = new BusinessClient(read.GetString(4), read.GetString(1));
+                    }
 
-                newClient.Id = read.GetInt32(0);
+                    newClient.Id = read.GetInt32(0);
+                }   
             }
 
             dh.Dispose();
