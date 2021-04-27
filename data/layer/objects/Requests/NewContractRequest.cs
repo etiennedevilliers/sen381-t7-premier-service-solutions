@@ -1,19 +1,24 @@
 using System;
 using System.Collections.Generic;
+using Data.Layer.Controller;
 
 namespace Data.Layer.Objects
 {
     
     public class NewContractRequest : Request
     {
-        //Fields
-        private ServiceContract serviceContract;
 
         //Properties
-        public ServiceContract ServiceContract { get => serviceContract; set => serviceContract = value; }
+        public ServiceContract ServiceContract { 
+            get {
+                NewContractRequestController newContractRequestController = new NewContractRequestController();
+
+                return newContractRequestController.ReadChild(this);
+            } 
+        }
 
         //Constructor
-        public NewContractRequest(DateTime dtCreated, DateTime dtResolved, CallLog call) : base(dtCreated, dtResolved, call)
+        public NewContractRequest(DateTime dtCreated, DateTime? dtResolved, CallLog call) : base(dtCreated, dtResolved, call)
         {
             
         }

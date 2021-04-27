@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Data.Layer.Controller
 {
-   class PackageController : ICreate<Package>, IDelete<Package>, IUpdate<Package>//IRead<Package>
+   class PackageController : ICreate<Package>, IDelete<Package>, IUpdate<Package>, IRead<Package>
     {
         //Basic CRUD
         public int Create(Package obj)

@@ -9,7 +9,7 @@ namespace Data.Layer.Objects
     {
         //Fields
         private string description;
-        private DateTime jobStarted;
+        
 
         //Properties
         public ServiceContract ServiceContract
@@ -20,19 +20,18 @@ namespace Data.Layer.Objects
             }
         }
         public string Description { get => description; set => description = value; }
-        public DateTime JobStarted { get => jobStarted; set => jobStarted = value; }
-
+        public  DateTime? JobStarted;
         //Constructor
-        public ServiceRequest(DateTime dateCreated, DateTime dateResolved, CallLog call, string description, DateTime jobStarted) : base(dateCreated, dateResolved, call)
+        public ServiceRequest(DateTime dateCreated, DateTime? dateResolved, CallLog call, string description) : base(dateCreated, dateResolved, call)
         {
             this.description = description;
-            this.jobStarted = jobStarted;
+            this.JobStarted = null;
         }
 
         //Standard Methods
         public override string ToString()
         {
-            return string.Format("ServiceRequest({0}, {1}, {2}, {3}, JobStarted={4}, contract={5} ...)", DateCreated, DateResolved, Call, description, jobStarted, ServiceContract);
+            return string.Format("ServiceRequest({0}, {1}, {2}, {3}, JobStarted={4}, contract={5} ...)", DateCreated, DateResolved, Call, description, JobStarted, ServiceContract);
         }
     }
 }

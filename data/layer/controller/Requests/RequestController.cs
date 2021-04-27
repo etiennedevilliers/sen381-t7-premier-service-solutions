@@ -9,22 +9,23 @@ namespace Data.Layer.Controller
 {
     class RequestController : IChildren<Agent, Request>, IChild<Client,Request>
     {
-        private string tableName;
-        private string tableIdentifierName;
-
         internal int Create(Request obj)
         {
             DataHandler dh = new DataHandler();
 
-            int ID = dh.InsertID(string.Format(
+            string query = string.Format(
                 "INSERT INTO Request(ClientID, dateCreated, dateResolved, status, contactNum, CallID) VALUES ({0},'{1}','{2}','{3}','{4}', {5})",
                 (obj.Client != null) ? obj.Client.Id.ToString() : "null",
                 obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
-                obj.DateResolved.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.DateResolved == null ? null : obj.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"),
                 obj.Status,
                 obj.ContactNum,
                 obj.Call.Id
-            ));
+            );
+
+            Console.WriteLine(query);
+
+            int ID = dh.InsertID(query);
 
             obj.Id = ID;
 
@@ -51,8 +52,8 @@ namespace Data.Layer.Controller
                 obj.Id,
                 obj.Client.Id,
                 obj.Call.Id,
-                obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"), 
-                obj.DateResolved.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.DateResolved == null ? "null" : obj.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"),
                 obj.Status,
                 obj.ContactNum
              ));
@@ -91,8 +92,10 @@ namespace Data.Layer.Controller
 
             List<Agent> agents = new List<Agent>();
 
-            string query = "SELECT A.AgentID, A.aName, A.contactNum, A.employmentStatus, A.employeeType FROM Agent AS A " +
-	                            "LEFT JOIN agentRequestHandlers AS H ON A.AgentID = H.AgentID " +
+            string query = "SELECT A.AgentID, A.aName, A.contactNum, A.employmentStatus, A.employeeType, T.TechnicianID " +
+                            "FROM Agent A " +
+                            "LEFT OUTER JOIN agentRequestHandlers H ON A.AgentID = H.AgentID " +
+                            "LEFT OUTER JOIN Technician T ON T.TechnicianID = A.AgentID " +
                             "WHERE H.RequestID = {0}";
 
             SqlDataReader read = dh.Select(string.Format(query, parent.Id));
@@ -102,13 +105,24 @@ namespace Data.Layer.Controller
             {
                 while (read.Read())
                 {
-
-                    agent = new Agent(
-                        read.GetString(1),
-                        read.GetString(2),
-                        read.GetString(3),
-                        read.GetString(4)
-                    );
+                    if (!read.IsDBNull(5))
+                    {
+                        agent = new Technician(
+                            read.GetString(1),
+                            read.GetString(2),
+                            read.GetString(3),
+                            read.GetString(4)
+                        );
+                    }
+                    else
+                    {
+                        agent = new Agent(
+                            read.GetString(1),
+                            read.GetString(2),
+                            read.GetString(3),
+                            read.GetString(4)
+                        );
+                    }
 
                     agent.Id = read.GetInt32(0);
 
@@ -127,10 +141,8 @@ namespace Data.Layer.Controller
 
             string query = string.Format(
 
-                    "UPDATE {0} SET ClientID = {1} WHERE {2} = {3}",
-                    tableName,
+                    "UPDATE Request SET ClientID = {0} WHERE RequestID = {1}",
                     child.Id,
-                    tableIdentifierName,
                     parent.Id
                 );
 
@@ -143,9 +155,14 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            string qry = string.Format("SELECT C.ClientID ,C.contactNumber, I.IndividualClientID,I.name,I.surname FROM Client as C"+
-                "LEFT JOIN IndividualClient AS I ON I.IndividualClientID = C.ClientID"+
-                "WHERE C.ClientID = {0}"
+            string qry = string.Format
+                (
+                    "SELECT R.ClientID, BC.name, IC.name, IC.surname, C.contactNum " +
+                    "FROM Request R " +
+                    "LEFT OUTER JOIN Client C ON C.ClientID = R.ClientID " +
+                    "LEFT OUTER JOIN IndividualClient IC ON IC.IndividualClientID = C.ClientID " +
+                    "LEFT OUTER JOIN BusinessClient BC ON BC.BusinessClientID = C.ClientID " +
+                    "WHERE RequestID = {0}", parent.Id
                 );
 
             SqlDataReader read = dh.Select(qry);
@@ -153,14 +170,22 @@ namespace Data.Layer.Controller
 
             if (read.HasRows)
             {
-                if (!read.IsDBNull(0))
+                while (read.Read()) 
                 {
-                    newClient = new IndividualClient(read.GetString(1),read.GetString(2),read.GetString(3));
-                }
-                else
-                {
-                    newClient = new BusinessClient(read.GetString(1),read.GetString(2));
-                }
+                    if (read.IsDBNull(1))
+                    {
+                        Console.WriteLine(read.GetInt32(0));
+                        Console.WriteLine(read.GetString(2));
+                        Console.WriteLine(read.GetString(3));
+                        newClient = new IndividualClient(read.GetString(4), read.GetString(2), read.GetString(3));
+                    }
+                    else
+                    {
+                        newClient = new BusinessClient(read.GetString(4), read.GetString(1));
+                    }
+
+                    newClient.Id = read.GetInt32(0);
+                }   
             }
 
             dh.Dispose();

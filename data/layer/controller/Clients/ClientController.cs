@@ -1,12 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using Data.Layer.Access;
 using Data.Layer.Objects;
 
 namespace Data.Layer.Controller
 {
-    internal class ClientController : ICreate<Client>, IUpdate<Client>, IDelete<Client>
+    internal class ClientController : ICreate<Client>, IUpdate<Client>, IDelete<Client>, IChildren<ServiceContract, Client>
     {
+        public void Add(ServiceContract child, Client parent)
+        {
+            DataHandler dh = new DataHandler();
+
+            string query = string.Format(
+                "INSERT INTO clientServiceContracts(ServiceContractID, ClientID) VALUES({0}, {1})",
+                child.Id,
+                parent.Id
+            );
+            dh.Insert(query);
+
+            dh.Dispose();
+        }
+
         public int Create(Client obj)
         {
             DataHandler dh = new DataHandler();
@@ -23,6 +38,56 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             dh.Delete("Client", "ClientID = " + obj.Id.ToString());
+
+            dh.Dispose();
+        }
+
+        public List<ServiceContract> ReadChildren(Client parent)
+        {
+            DataHandler dh = new DataHandler();
+
+            List<ServiceContract> serviceContracts = new List<ServiceContract>();
+
+            string query = String.Format("SELECT SC.ServiceContractID, SC.description, SC.dateFinalised, SC.dateTerminated, SC.cost, SC.status " +
+                                         "FROM ServiceContract AS SC " +
+                                            "LEFT JOIN clientServiceContracts as CSC ON CSC.ServiceContractID = SC.ServiceContractID " +
+                                         "WHERE CSC.ClientID = {0}", parent.Id);
+            SqlDataReader read = dh.Select(query);
+
+            ServiceContract newSc;
+
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+                    newSc = new ServiceContract(
+                            read.GetString(1),
+                            decimal.ToDouble(read.GetDecimal(4)),
+                            read.GetDateTime(2),
+                            read.GetDateTime(3),
+                            read.GetString(5)
+                        );
+
+                    newSc.Id = read.GetInt32(0);
+
+                    serviceContracts.Add(newSc);
+                }
+            }
+
+            dh.Dispose();
+
+            return serviceContracts;
+        }
+
+        public void Remove(ServiceContract child, Client parent)
+        {
+            DataHandler dh = new DataHandler();
+
+            dh.Delete("clientServiceContracts", string.Format(
+                "ServiceContractID = {0} AND ClientID = {1}",
+                child.Id,
+                parent.Id
+            ));
 
             dh.Dispose();
         }

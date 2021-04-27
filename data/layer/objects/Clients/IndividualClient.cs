@@ -16,8 +16,8 @@ namespace Data.Layer.Objects
         //Constructor
         public IndividualClient(string contactNum, string name, string surname) : base(contactNum)
         {
-            this.surname = name;
-            this.name = surname;
+            this.name = name;
+            this.surname = surname;
         }
 
         //Standards Methods
