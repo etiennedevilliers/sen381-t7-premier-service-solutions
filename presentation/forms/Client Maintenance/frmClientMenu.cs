@@ -49,10 +49,14 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         void LoadServiceContractRequests() 
         {
+            lvServiceContractRequests.Items.Clear();
             NewContractRequestController newContractRequestController = new NewContractRequestController();
 
             foreach (NewContractRequest newContractRequest in newContractRequestController.Read())
             {
+                if (newContractRequest.Status != "Open") continue;
+                
+                
                 Client client = newContractRequest.Client;
 
                 if (client is IndividualClient)
@@ -62,10 +66,12 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
                     ListViewItem listViewItem = new ListViewItem(new string[] {
                         String.Format("{0} {1}", iClient.Name, iClient.Surname),
                         "Individual Client",
-                        newContractRequest.ServiceContract.Description
+                        newContractRequest.ServiceContract.Description,
+                        newContractRequest.DateCreated.ToShortDateString(),
+                        newContractRequest.Status
                     });
 
-                    listViewItem.Tag = iClient;
+                    listViewItem.Tag = newContractRequest;
 
                     lvServiceContractRequests.Items.Add(listViewItem);
                 }
@@ -76,10 +82,12 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
                     ListViewItem listViewItem = new ListViewItem(new string[] {
                         bClient.Name,
                         "Business Client",
-                        newContractRequest.ServiceContract.Description
+                        newContractRequest.ServiceContract.Description,
+                        newContractRequest.DateCreated.ToShortDateString(),
+                        newContractRequest.Status
                     });
 
-                    listViewItem.Tag = bClient;
+                    listViewItem.Tag = newContractRequest;
 
                     lvServiceContractRequests.Items.Add(listViewItem);
                 }
@@ -281,15 +289,24 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
                 return;
             }
 
-            CallCentreLogic serviceRequestLogic = new CallCentreLogic(
+            if (lvServiceContractRequests.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select Service Contract request first!");
+                return;
+            }
+
+            NewContractRequestLogic newContractRequestLogic = new NewContractRequestLogic(
                 cbAgents.SelectedItem as Agent,
-                false
+                false,
+                lvServiceContractRequests.SelectedItems[0].Tag as NewContractRequest
             );
 
-            frmAddServiceContractToClient form = new frmAddServiceContractToClient(serviceRequestLogic);
+            frmAddServiceContractToClient form = new frmAddServiceContractToClient(newContractRequestLogic);
             form.ShowDialog();
 
+            LoadServiceContractRequests();
 
         }
     }
 }
+  

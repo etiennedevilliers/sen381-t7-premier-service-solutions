@@ -200,6 +200,9 @@
     <EmbeddedResource Include="presentation\forms\Call Centre\frmNewRequest.resx">
       <DependentUpon>frmNewRequest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmAddServiceContractToClient.resx">
+      <DependentUpon>frmAddServiceContractToClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmClientMenu.resx">
       <DependentUpon>frmClientMenu.cs</DependentUpon>
     </EmbeddedResource>

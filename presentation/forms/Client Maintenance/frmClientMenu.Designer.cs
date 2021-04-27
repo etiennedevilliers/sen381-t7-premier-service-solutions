@@ -58,6 +58,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.cbAgents = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCallClient = new System.Windows.Forms.Button();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tpgIndividual.SuspendLayout();
             this.tpgIndividualClients.SuspendLayout();
             this.tpgBusinessClients.SuspendLayout();
@@ -293,7 +294,8 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.chClient,
             this.chClientType,
             this.chServiceContract,
-            this.columnHeader1});
+            this.columnHeader1,
+            this.columnHeader2});
             this.lvServiceContractRequests.FullRowSelect = true;
             this.lvServiceContractRequests.HideSelection = false;
             this.lvServiceContractRequests.Location = new System.Drawing.Point(0, 38);
@@ -351,6 +353,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.btnCallClient.UseVisualStyleBackColor = true;
             this.btnCallClient.Click += new System.EventHandler(this.btnCallClient_Click);
             // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Status";
+            // 
             // frmClientMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,5 +407,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private System.Windows.Forms.Button btnCallClient;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbAgents;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
