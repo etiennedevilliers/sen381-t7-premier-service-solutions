@@ -106,6 +106,18 @@
     <Compile Include="presentation\forms\Call Centre\frmNewRequest.Designer.cs">
       <DependentUpon>frmNewRequest.cs</DependentUpon>
     </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmEditBusinessClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmEditBusinessClient.Designer.cs">
+      <DependentUpon>frmEditBusinessClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmEditIndividualClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmEditIndividualClient.Designer.cs">
+      <DependentUpon>frmEditIndividualClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="presentation\forms\Client Maintenance\frmViewContract.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,12 +129,6 @@
     </Compile>
     <Compile Include="presentation\forms\Client Maintenance\frmClientMenu.Designer.cs">
       <DependentUpon>frmClientMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmEditClient.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmEditClient.Designer.cs">
-      <DependentUpon>frmEditClient.cs</DependentUpon>
     </Compile>
     <Compile Include="presentation\forms\Client Maintenance\frmNewClient.cs">
       <SubType>Form</SubType>
@@ -189,8 +195,11 @@
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmClientMenu.resx">
       <DependentUpon>frmClientMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmEditClient.resx">
-      <DependentUpon>frmEditClient.cs</DependentUpon>
+    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmEditBusinessClient.resx">
+      <DependentUpon>frmEditBusinessClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmEditIndividualClient.resx">
+      <DependentUpon>frmEditIndividualClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewClient.resx">
       <DependentUpon>frmNewClient.cs</DependentUpon>
