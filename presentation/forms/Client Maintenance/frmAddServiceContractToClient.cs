@@ -15,13 +15,55 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 {
     public partial class frmAddServiceContractToClient : Form
     {
-        private CallCentreLogic serviceRequestLogic;
+        private NewContractRequestLogic newContractRequestLogic;
 
-        public frmAddServiceContractToClient(CallCentreLogic serviceRequestLogic)
+        public frmAddServiceContractToClient(NewContractRequestLogic newContractRequestLogic)
         {
             InitializeComponent();
 
-            this.serviceRequestLogic = serviceRequestLogic;
+            this.newContractRequestLogic = newContractRequestLogic;
+
+            Client client = newContractRequestLogic.newContractRequest.Client;
+
+            if (client is IndividualClient)
+            {
+                IndividualClient iClient = client as IndividualClient;
+                lblClient.Text = iClient.ToString();
+
+            }
+            else
+            {
+                BusinessClient bClient = client as BusinessClient;
+                lblClient.Text = bClient.ToString();
+            }
+            
+            lblServiceContract.Text = newContractRequestLogic.newContractRequest.ServiceContract.ToString();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEndCall_Click(object sender, EventArgs e)
+        {
+            newContractRequestLogic.addServiceContract();
+            Close();
         }
     }
 }

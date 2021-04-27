@@ -6,19 +6,40 @@ using System.Threading.Tasks;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
 
-namespace sen381_t7_premier_service_solutions.logic
+namespace Logic
 {
-    class NewContractRequestLogic
+    public class NewContractRequestLogic
     {
         private CallLog callLog;
-        private NewContractRequest NewContractRequest;
+        public NewContractRequest newContractRequest;
 
-        public NewContractRequestLogic(Agent agent, Boolean incoming, NewContractRequest newContractRequest)
+        public NewContractRequestLogic(Agent agent, Boolean incoming, NewContractRequest ncr)
         {
             callLog = new CallLog(DateTime.Now, incoming);
             callLog.Representative = agent;
+
+            this.newContractRequest = ncr;
         }
 
+        public void addServiceContract()
+        {
+            endCall();
+            ClientController clientController = new ClientController();
+            NewContractRequestController newContractRequestController = new NewContractRequestController();
+
+            clientController.Add(
+                newContractRequest.ServiceContract,
+                newContractRequest.Client
+            );
+
+            newContractRequest.Status = "Resolved";
+
+            newContractRequestController.Update(newContractRequest);
+
+
+
+
+        }
 
 
 
