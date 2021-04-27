@@ -14,12 +14,14 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            obj.Id = dh.InsertID(string.Format("INSERT INTO ServiceContract (description, dateFinalised, dateTerminated, cost, status ) VALUES ('{0}', '{1}','{2}', '{3}','{4}')",        
+            obj.Id = dh.InsertID(string.Format("INSERT INTO ServiceContract (description, dateFinalised, dateTerminated, cost, status, identifier) VALUES ('{0}', '{1}','{2}', '{3}','{4}', '{5}')",        
                 obj.Description, 
                 obj.DateFinalised,
                 obj.DateTerminated,
                 obj.Cost, 
-                obj.Status));
+                obj.Status,
+                obj.identifier
+            ));
 
             dh.Dispose();
 
@@ -39,8 +41,8 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Update(string.Format("UPDATE dbo.ServiceContract SET description = '{0}', dateFinalised = '{1}', dateTerminated = '{2}', cost = '{3}', status = '{4}' WHERE  ServiceContractID = {5}",
-                obj.Description, obj.DateFinalised, obj.DateTerminated, obj.Cost, obj.Status, obj.Id ));
+            dh.Update(string.Format("UPDATE dbo.ServiceContract SET description = '{0}', dateFinalised = '{1}', dateTerminated = '{2}', cost = '{3}', status = '{4}', identifier='{6}' WHERE  ServiceContractID = {5}",
+                obj.Description, obj.DateFinalised, obj.DateTerminated, obj.Cost, obj.Status, obj.Id, obj.identifier ));
 
             dh.Dispose();
         }
@@ -50,7 +52,7 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             List<ServiceContract> scrList = new List<ServiceContract>();
-            SqlDataReader read = dh.Select("SELECT ServiceContractID, description, dateFinalised, dateTerminated, cost, status FROM ServiceContract "); //Geen Fk Select nie 
+            SqlDataReader read = dh.Select("SELECT ServiceContractID, description, dateFinalised, dateTerminated, cost, status, identifier FROM ServiceContract "); //Geen Fk Select nie 
             ServiceContract newSc;
 
             if (read.HasRows)
@@ -64,6 +66,13 @@ namespace Data.Layer.Controller
                             read.GetDateTime(3),
                             read.GetString(5)
                         );
+
+                    if (!read.IsDBNull(6))
+                    {
+                        newSc.identifier = read.GetString(6);
+                    }
+
+                    
 
                     newSc.Id = read.GetInt32(0);
 

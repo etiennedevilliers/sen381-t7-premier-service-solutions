@@ -28,6 +28,7 @@ namespace Data.Layer.Objects
         public DateTime DateFinalised { get => dateFinalised; set => dateFinalised = value; }
         public DateTime DateTerminated { get => dateTerminated; set => dateTerminated = value; }
         public string Status { get => status; set => status = value; }
+        public string identifier;
 
         //Constructor
         public ServiceContract(string description, double cost, DateTime dateFinalised, DateTime dateTerminated, string status)
@@ -61,7 +62,7 @@ namespace Data.Layer.Objects
 
         public override string ToString()
         {
-            return string.Format("ServiceContract({0}, {1}, {2}, Packages count: {3}, {4}, {5})", id, description, cost, Packages.Count, dateFinalised, dateTerminated);
+            return string.Format("ServiceContract({0}, {1}, {2}, Packages count: {3}, {4}, {5})", identifier, description, cost, Packages.Count, dateFinalised, dateTerminated);
         }
     }
 }
