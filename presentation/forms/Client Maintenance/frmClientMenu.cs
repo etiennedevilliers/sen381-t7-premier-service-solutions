@@ -79,7 +79,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             Hide();
             frmNewClient form = new frmNewClient();
             form.ShowDialog();
-            Show();
+            
 
 
         }
@@ -91,7 +91,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             Hide();
             frmEditClient form = new frmEditClient();
             form.ShowDialog();
-            Show();
+            
         }
 
         public static Boolean Business;
@@ -103,7 +103,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             Hide();
             frmNewClient form = new frmNewClient();
             form.ShowDialog();
-            Show();
+            
 
         }
 
@@ -114,7 +114,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             Hide();
             frmEditClient form = new frmEditClient();
             form.ShowDialog();
-            Show();
+            
         }
 
         private void btnDeleteI_Click(object sender, EventArgs e)
@@ -143,7 +143,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
             if (deleteB == DialogResult.Yes)
             {
-                if (Individual)
+                /*(if (Individual)
                 {
                     IndividualClientController individualClientController = new IndividualClientController();
                     IndividualClient individualClient = new IndividualClient(
@@ -160,6 +160,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
                         );
                     BusinessClientController.Delete(businessClient);
                 }
+                */
                 MessageBox.Show("Client successfully deleted", "CLIENT DELETED",
                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -177,7 +178,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             Hide();
             frmViewContract form = new frmViewContract();
             form.ShowDialog();
-            Show();
+            
         }
 
         private void btnViewContractB_Click(object sender, EventArgs e)
@@ -185,7 +186,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             Hide();
             frmViewContract form = new frmViewContract();
             form.ShowDialog();
-            Show();
+            
         }
 
         private void btnAssignEmployeeB_Click(object sender, EventArgs e)
