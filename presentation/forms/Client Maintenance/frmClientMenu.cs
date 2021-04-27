@@ -9,12 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.SqlServer.Server;
 using System.Data.SqlClient;
+using Data.Layer.Objects;
+using Data.Layer.Controller;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
     public partial class frmClientMenu : Form
     {
-        
+        List<IndividualClient> individualClients = new List<IndividualClient>();
+        IndividualClientController ictr = new IndividualClientController();
+
+        List<BusinessClient> businessClients = new List<BusinessClient>();
+        BusinessClientController bctr = new BusinessClientController();
+
+
         public frmClientMenu()
         {
             InitializeComponent();
@@ -22,58 +30,46 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void frmClientMenu_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=(local);Initial Catalog=SocialNetwork;Integrated Security=True");
-            SqlCommand cmd;
-            DataTable dt;
-            SqlDataAdapter da;
-            DataSet ds;
-
-
-            con.Open();
-            cmd = new SqlCommand("SELECT * FROM IndividualClient", con);
-            da = new SqlDataAdapter(cmd);
-            ds = new DataSet();
-            da.Fill(ds, "test");
-            con.Close();
-
-            dt = ds.Tables["test"];
-            int i;
-
-            for (i = 0; i < dt.Rows.Count; i++)
-            {
-                lstClientsI.Items.Add(dt.Rows[i].ItemArray[0].ToString());
-                lstClientsI.Items[i].SubItems.Add(dt.Rows[i].ItemArray[1].ToString());
-                lstClientsI.Items[i].SubItems.Add(dt.Rows[i].ItemArray[2].ToString());
-                lstClientsI.Items[i].SubItems.Add(dt.Rows[i].ItemArray[3].ToString());
-            }
-
-
-            con.Open();
-            cmd = new SqlCommand("SELECT * FROM BusinessClient", con);
-            da = new SqlDataAdapter(cmd);
-            ds = new DataSet();
-            da.Fill(ds, "test");
-            con.Close();
-
-            dt = ds.Tables["test"];
-            int j;
-
-            for (j = 0; j < dt.Rows.Count; j++)
-            {
-                lstClientsB.Items.Add(dt.Rows[j].ItemArray[0].ToString());
-                lstClientsB.Items[j].SubItems.Add(dt.Rows[j].ItemArray[1].ToString());
-                lstClientsB.Items[j].SubItems.Add(dt.Rows[j].ItemArray[2].ToString());
-            }
-
-
-
+            LoadIndividualClient();
+            LoadBusinessClient();
         }
 
-        private void tpgIndividualClients_Click(object sender, EventArgs e)
+        void LoadIndividualClient()
         {
+            IndividualClientController individualClientController = new IndividualClientController();
 
+            foreach (IndividualClient client in individualClientController.Read())
+            {
+                ListViewItem lstI = new ListViewItem(
+                    new string[] {
+                        client.Name,
+                        client.Surname,
+                        client.ContactNum
+                    }
+                );
+
+                lstClientsI.Items.Add(lstI);
+            }
         }
 
+        void LoadBusinessClient()
+        {
+            BusinessClientController businessClientController = new BusinessClientController();
+
+            foreach (BusinessClient client in businessClientController.Read())
+            {
+                ListViewItem lstB = new ListViewItem(
+                    new string[]
+                    {
+                        client.Name,
+                        client.ContactNum
+                    }
+                 );
+                lstClientsB.Items.Add(lstB);
+            }
+        }
+
+        
         public static Boolean Individual;
 
         private void btnAddI_Click(object sender, EventArgs e)
@@ -147,6 +143,23 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
             if (deleteB == DialogResult.Yes)
             {
+                if (Individual)
+                {
+                    IndividualClientController individualClientController = new IndividualClientController();
+                    IndividualClient individualClient = new IndividualClient(
+                        
+                        );
+                    individualClientController.Delete(individualClient);
+                }
+                if (Business)
+                {
+                    BusinessClientController businessClientController = new BusinessClientController();
+                    BusinessClient businessClient = new BusinessClient(
+                        
+                        
+                        );
+                    BusinessClientController.Delete(businessClient);
+                }
                 MessageBox.Show("Client successfully deleted", "CLIENT DELETED",
                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

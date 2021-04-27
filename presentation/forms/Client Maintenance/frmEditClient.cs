@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient; 
+using System.Data.SqlClient;
+using Data.Layer.Objects;
+using Data.Layer.Controller;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
@@ -45,16 +47,28 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             }
         }
 
+        public static string contactNumEdit;
         public static string nameEdit;
         public static string surnameEdit; 
 
         private void btnIndividualEdit_Click(object sender, EventArgs e)
         {
-            DBAccess objdbAccess = new DBAccess();
-
+            contactNumEdit = txtContactEdI.Text;
             nameEdit = txtNameEditI.Text;
             surnameEdit = txtSurnameEditI.Text;
 
+            IndividualClientController individualClientController = new IndividualClientController();
+            IndividualClient individualClient = new IndividualClient(
+                contactNumEdit,
+                nameEdit,
+                surnameEdit
+                );
+
+            if (contactNumEdit.Equals(""))
+            {
+                MessageBox.Show("Please enter a client name", "EMPTY FIELDS!!",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             if (nameEdit.Equals(""))
             {
                 MessageBox.Show("Please enter a client name", "EMPTY FIELDS!!",
@@ -67,12 +81,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             }
             else
             {
-                SqlCommand editCommand = new SqlCommand("ALTER TABLE IndividualClient(name,surname)" +
-                                                          "VALUES(@nameEdit,@surnameEdit)");
-                editCommand.Parameters.AddWithValue("@nameEdit", nameEdit);
-                editCommand.Parameters.AddWithValue("@surnameEdit", surnameEdit);
-
-                objdbAccess.executeQuery(editCommand);
+                individualClientController.Update(individualClient);
 
                 MessageBox.Show("Individual Client edit successful, returning to Client Menu", "INDIVIDUAL CLIENT EDITED",
                              MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -87,14 +96,27 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             
         }
 
+        public static string busicontactEdit;
         public static string busiNameEdit;
 
         private void btnEditBusiness_Click(object sender, EventArgs e)
         {
+            busicontactEdit = txtContactEdB.Text;
             busiNameEdit = txtBusinessNameEdit.Text;
 
-            DBAccess objdbAccess = new DBAccess();
+            BusinessClientController businessClientController = new BusinessClientController();
 
+            BusinessClient businessClient = new BusinessClient(
+                busicontactEdit,
+                busiNameEdit
+                );
+
+
+            if (busicontactEdit.Equals(""))
+            {
+                MessageBox.Show("Please enter a client name", "EMPTY FIELDS!!",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             if (busiNameEdit.Equals(""))
             {
                 MessageBox.Show("Please enter a business name", "EMPTY FIELDS!!",
@@ -102,11 +124,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             }
             else
             {
-                SqlCommand editCommand = new SqlCommand("ALTER TABLE BusinessClient(name)" +
-                                                          "VALUES(@busiNameEdit)");
-                editCommand.Parameters.AddWithValue("@busiNameEdit", busiNameEdit);
-
-                objdbAccess.executeQuery(editCommand);
+                businessClientController.Update(businessClient);
 
                 MessageBox.Show("Business Client edit successful, returning to Client Menu", "BUSINESS CLIENT EDITED",
                              MessageBoxButtons.OK, MessageBoxIcon.Information);
