@@ -14,6 +14,8 @@ namespace Presentation.Forms.Contract_Maintenance
 {
     public partial class frmNewContract : Form
     {
+
+        private ServiceContract Service_Contract;
         public frmNewContract()
         {
             InitializeComponent();
@@ -28,19 +30,27 @@ namespace Presentation.Forms.Contract_Maintenance
             gbxService.Visible = false;
             gbPackage.Visible = false;
             grbxServiceContracts.Visible = false;
+           
 
             ServiceLevelAgreementController SLACTR = new ServiceLevelAgreementController();
             ServiceController SCTR = new ServiceController();
+            PackageController P_CTR = new PackageController();
 
             //Populate the Combo box with Services
             foreach (Service i in SCTR.Read())
             {
                 cmbxService.Items.Add(i);
             }
+
             //Populate the Combo box with SLA's
             foreach (ServiceLevelAgreement i in SLACTR.Read())
             {
                 cmbxSla.Items.Add(i);
+            }
+
+            foreach (Package P in P_CTR.Read())
+            {
+                cmbAddPackage.Items.Add(P);
             }
         }// (On form load functionality)
 
@@ -218,12 +228,14 @@ namespace Presentation.Forms.Contract_Maintenance
             DateTime DateFinal = dtpDateFianal.Value;
             DateTime DateTerm = dtpDateTer.Value;
 
-            ServiceContract SC = new ServiceContract(Description,cost,DateFinal,DateTerm,status);
+            ServiceContract SC = new ServiceContract(Description,cost,DateFinal,DateTerm,status,"A1234560000");
+            Service_Contract = SC;
+            Package Pack = cmbAddPackage.SelectedItem as Package;
 
             SC_Ctr.Create(SC);
+            SC_Ctr.Add(Pack, SC);
 
             //View the Service Contracts
-
             lstViewItems.Clear();
             lstViewItems.Columns.Add("Service Contract ID");
             lstViewItems.Columns.Add("Description");
@@ -231,6 +243,8 @@ namespace Presentation.Forms.Contract_Maintenance
             lstViewItems.Columns.Add("Date Terminiated");
             lstViewItems.Columns.Add("Cost");
             lstViewItems.Columns.Add("Status");
+            lstViewItems.Columns.Add("Identifier");
+
             List_of_Service_Contrcat_Ob = SC_Ctr.Read();
 
             foreach (ServiceContract sc in List_of_Service_Contrcat_Ob)
@@ -241,12 +255,27 @@ namespace Presentation.Forms.Contract_Maintenance
                     sc.Description,
                     sc.DateFinalised.ToString(),
                     sc.Cost.ToString(),
-                    sc.Status
+                    sc.Status,
+                    SC.identifier
                });
 
                 lstViewItems.Items.Add(lst);
             }
 
-        }//Add Service COntract Functionality
+        }//Add Service Contract Functionality
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void btnAddAnotherPack_Click(object sender, EventArgs e)
+        {
+
+
+          
+
+        }
     }
 }//Code By Ruben 

@@ -48,7 +48,7 @@ namespace Data.Layer.Controller
 
             List<ServiceContract> serviceContracts = new List<ServiceContract>();
 
-            string query = String.Format("SELECT SC.ServiceContractID, SC.description, SC.dateFinalised, SC.dateTerminated, SC.cost, SC.status " +
+            string query = String.Format("SELECT SC.ServiceContractID, SC.description, SC.dateFinalised, SC.dateTerminated, SC.cost, SC.status, SC.identifier " +
                                          "FROM ServiceContract AS SC " +
                                             "LEFT JOIN clientServiceContracts as CSC ON CSC.ServiceContractID = SC.ServiceContractID " +
                                          "WHERE CSC.ClientID = {0}", parent.Id);
@@ -65,7 +65,8 @@ namespace Data.Layer.Controller
                             decimal.ToDouble(read.GetDecimal(4)),
                             read.GetDateTime(2),
                             read.GetDateTime(3),
-                            read.GetString(5)
+                            read.GetString(5),
+                            read.IsDBNull(6) ? null : read.GetString(6)
                         );
 
                     newSc.Id = read.GetInt32(0);

@@ -215,6 +215,12 @@
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmContractMenu.resx">
       <DependentUpon>frmContractMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmNewContract.resx">
+      <DependentUpon>frmNewContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmViewContracts.resx">
+      <DependentUpon>frmViewContracts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Service Department\Manager\frmServiceMenu.resx">
       <DependentUpon>frmServiceMenu.cs</DependentUpon>
     </EmbeddedResource>

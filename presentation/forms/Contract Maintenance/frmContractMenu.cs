@@ -27,7 +27,7 @@ namespace Presentation.Forms.Contract_Maintenance
             Hide();
             frmViewContracts form = new frmViewContracts();
             form.ShowDialog();
-            form.Show();
+          
 
         }
 
@@ -37,7 +37,7 @@ namespace Presentation.Forms.Contract_Maintenance
             Hide();
             frmNewContract form = new frmNewContract();
             form.ShowDialog();
-            form.Show();
+        
         }
     }
 }

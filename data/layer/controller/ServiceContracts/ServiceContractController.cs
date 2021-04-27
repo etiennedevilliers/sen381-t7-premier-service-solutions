@@ -64,7 +64,8 @@ namespace Data.Layer.Controller
                             decimal.ToDouble(read.GetDecimal(4)),
                             read.GetDateTime(2),
                             read.GetDateTime(3),
-                            read.GetString(5)
+                            read.GetString(5),
+                            read.IsDBNull(6) ? null : read.GetString(6)
                         );
 
                     if (!read.IsDBNull(6))
@@ -126,7 +127,7 @@ namespace Data.Layer.Controller
 
             SqlDataReader read = dh.Select(query);
             Service service;
-            ServiceLevelAgreement serviceLevelAgreement;
+            ServiceLevelAgreement serviceLevelAgreement; 
             Package package;
 
             if (read.HasRows)

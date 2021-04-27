@@ -37,11 +37,11 @@ namespace Data.Layer.Controller
             dh.Dispose();
         }
 
-        public ServiceContract ReadChild(Request parent) {
+        public ServiceContract ReadChild(Request parent){
             DataHandler dh = new DataHandler();
 
             string query = string.Format(
-                "SELECT SC.ServiceContractID, SC.description, SC.dateFinalised, SC.dateTerminated, SC.cost, status FROM ServiceContract AS SC " +
+                "SELECT SC.ServiceContractID, SC.description, SC.dateFinalised, SC.dateTerminated, SC.cost, status, SC.identifier FROM ServiceContract AS SC " +
 	                "LEFT JOIN {0} AS R ON R.ServiceContractID = SC.ServiceContractID " +
                     "WHERE R.{1} = {2}",
                 tableName,
@@ -61,7 +61,8 @@ namespace Data.Layer.Controller
                             decimal.ToDouble(read.GetDecimal(4)),
                             read.GetDateTime(2),
                             read.GetDateTime(3),
-                            read.GetString(5)
+                            read.GetString(5),
+                            read.IsDBNull(6) ? null : read.GetString(6)
                         );
 
                     newSc.Id = read.GetInt32(0);

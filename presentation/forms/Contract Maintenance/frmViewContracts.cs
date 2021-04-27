@@ -13,7 +13,7 @@ using Data.Layer.Objects;
 namespace Presentation.Forms.Contract_Maintenance
 {
     public partial class frmViewContracts : Form
-    { 
+    {
         //Service Contract Object List and Controller
         List<ServiceContract> List_Of_ServiceContracts_Ob = new List<ServiceContract>();
         ServiceContractController SC_ctr = new ServiceContractController();
@@ -37,9 +37,9 @@ namespace Presentation.Forms.Contract_Maintenance
         }
         private void frmViewContracts_Load(object sender, EventArgs e)
         {
-
+            gbxSelectServiceContract.Visible = false;
         }//Ignore
-       
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace Presentation.Forms.Contract_Maintenance
                 {
                     S.Id.ToString(),
                     S.Description,
-                    S.ExpectedDuration.ToString()          
+                    S.ExpectedDuration.ToString()
                 });
 
                 lstViewItems.Items.Add(lst);
@@ -152,7 +152,51 @@ namespace Presentation.Forms.Contract_Maintenance
             form.Show();
 
         }//Back Button Functionality (Done) 
-    }
 
-    //Code By Ruben / Etienne 
+        private void btnPackageBySC_Click(object sender, EventArgs e)
+        {
+            //View the packages by the Service Contracts
+            gbxSelectServiceContract.Visible = true;
+
+            //Load the Data into the combo box
+
+            foreach (ServiceContract SC in SC_ctr.Read())
+            {
+                cmbxNewpackage.Items.Add(SC);
+            }
+        }
+
+        private void btnViewPackagesBySC_Click(object sender, EventArgs e)
+        {
+            lstViewItems.Columns.Clear();
+            lstViewItems.Columns.Add("Package ID");
+            lstViewItems.Columns.Add("Service ID");
+            lstViewItems.Columns.Add("Service Level Agreement");
+            lstViewItems.Columns.Add("Package Name");
+            lstViewItems.Columns.Add("Package Description");
+
+            ServiceContractController SC_Ctr = new ServiceContractController();
+
+            ServiceContract SC_CT = cmbxNewpackage.SelectedItem as ServiceContract;
+
+            List_Of_Package_Ob = SC_Ctr.ReadChildren(SC_CT);
+
+            foreach (Package P in List_Of_Package_Ob)
+            {
+                ListViewItem lst = new ListViewItem(new string[]{
+                  P.Id.ToString(),
+                  P.Service.ToString(),
+                  P.Sla.ToString(),
+                  P.Name,
+                  P.Description
+               });
+
+                lstViewItems.Items.Add(lst);
+
+
+            }
+        }
+
+        //Code By Ruben / Etienne 
+    }
 }
