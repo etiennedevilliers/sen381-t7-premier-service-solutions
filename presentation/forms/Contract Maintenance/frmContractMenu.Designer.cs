@@ -36,9 +36,10 @@ namespace Presentation.Forms.Contract_Maintenance
             // btnViewContracts
             // 
             this.btnViewContracts.AccessibleDescription = "";
-            this.btnViewContracts.Location = new System.Drawing.Point(344, 92);
+            this.btnViewContracts.Location = new System.Drawing.Point(172, 48);
+            this.btnViewContracts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnViewContracts.Name = "btnViewContracts";
-            this.btnViewContracts.Size = new System.Drawing.Size(729, 208);
+            this.btnViewContracts.Size = new System.Drawing.Size(364, 108);
             this.btnViewContracts.TabIndex = 0;
             this.btnViewContracts.Text = "View Contracts";
             this.btnViewContracts.UseVisualStyleBackColor = true;
@@ -47,9 +48,10 @@ namespace Presentation.Forms.Contract_Maintenance
             // btnEditContracts
             // 
             this.btnEditContracts.AccessibleDescription = "";
-            this.btnEditContracts.Location = new System.Drawing.Point(344, 343);
+            this.btnEditContracts.Location = new System.Drawing.Point(172, 178);
+            this.btnEditContracts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEditContracts.Name = "btnEditContracts";
-            this.btnEditContracts.Size = new System.Drawing.Size(729, 208);
+            this.btnEditContracts.Size = new System.Drawing.Size(364, 108);
             this.btnEditContracts.TabIndex = 1;
             this.btnEditContracts.Text = "Edit Contracts";
             this.btnEditContracts.UseVisualStyleBackColor = true;
@@ -57,11 +59,12 @@ namespace Presentation.Forms.Contract_Maintenance
             // 
             // frmContractMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1674, 894);
+            this.ClientSize = new System.Drawing.Size(718, 410);
             this.Controls.Add(this.btnEditContracts);
             this.Controls.Add(this.btnViewContracts);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmContractMenu";
             this.Text = "Contact Menu";
             this.Load += new System.EventHandler(this.frmContractMenu_Load);

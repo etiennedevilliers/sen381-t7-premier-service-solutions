@@ -45,6 +45,7 @@ namespace Presentation.Forms.Contract_Maintenance
         private void button1_Click_1(object sender, EventArgs e)
         {
             //View By Services
+            lstViewItems.Items.Clear();
             lstViewItems.Columns.Clear();
             lstViewItems.Columns.Add("Service ID");
             lstViewItems.Columns.Add("Service Description");
@@ -70,7 +71,8 @@ namespace Presentation.Forms.Contract_Maintenance
         {
             //View By Service Contracts 
 
-            lstViewItems.Clear();
+            lstViewItems.Items.Clear();
+            lstViewItems.Columns.Clear();
             lstViewItems.Columns.Add("Service Contract ID");
             lstViewItems.Columns.Add("Description");
             lstViewItems.Columns.Add("Date Finilized");
@@ -83,9 +85,9 @@ namespace Presentation.Forms.Contract_Maintenance
             {
                 ListViewItem lst = new ListViewItem(new string[]{
                     SC.Id.ToString(),
-                    SC.Id.ToString(),
                     SC.Description,
                     SC.DateFinalised.ToString(),
+                    SC.DateTerminated.ToString(),
                     SC.Cost.ToString(),
                     SC.Status
                });
@@ -98,10 +100,11 @@ namespace Presentation.Forms.Contract_Maintenance
         private void btnViewPacages_Click(object sender, EventArgs e)
         {
             //View by Package 
+            lstViewItems.Items.Clear();
             lstViewItems.Columns.Clear();
             lstViewItems.Columns.Add("Package ID");
             lstViewItems.Columns.Add("Service ID");
-            lstViewItems.Columns.Add("Service Level Agreement");
+            lstViewItems.Columns.Add("Service Level Agreement ID");
             lstViewItems.Columns.Add("Package Name");
             lstViewItems.Columns.Add("Package Description");
 
@@ -111,8 +114,8 @@ namespace Presentation.Forms.Contract_Maintenance
             {
                 ListViewItem lst = new ListViewItem(new string[]{
                   P.Id.ToString(),
-                  P.Service.ToString(),
-                  P.Sla.ToString(),
+                  P.Service.Id.ToString(),
+                  P.Sla.Id.ToString(),
                   P.Name,
                   P.Description
                });
@@ -124,10 +127,10 @@ namespace Presentation.Forms.Contract_Maintenance
         private void btnViewSLA_Click_1(object sender, EventArgs e)
         {
             //View by SLA 
+            lstViewItems.Items.Clear();
             lstViewItems.Columns.Clear();
             lstViewItems.Columns.Add("SLA ID");
             lstViewItems.Columns.Add("Description");
-
 
             List_Of_SLA_Ob = SLA_ctr.Read();
 
@@ -185,8 +188,8 @@ namespace Presentation.Forms.Contract_Maintenance
             {
                 ListViewItem lst = new ListViewItem(new string[]{
                   P.Id.ToString(),
-                  P.Service.ToString(),
-                  P.Sla.ToString(),
+                  P.Service.Id.ToString(),
+                  P.Sla.Id.ToString(),
                   P.Name,
                   P.Description
                });

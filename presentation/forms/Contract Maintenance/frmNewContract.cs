@@ -21,17 +21,8 @@ namespace Presentation.Forms.Contract_Maintenance
             InitializeComponent();
         }
 
-
-        private void frmNewContract_Load(object sender, EventArgs e)
+        void LoadData()
         {
-
-            //Populate Package Combo Boxes with service and service level agreement Objects
-            gbrxServiceLevelAgreement.Visible = false;
-            gbxService.Visible = false;
-            gbPackage.Visible = false;
-            grbxServiceContracts.Visible = false;
-           
-
             ServiceLevelAgreementController SLACTR = new ServiceLevelAgreementController();
             ServiceController SCTR = new ServiceController();
             PackageController P_CTR = new PackageController();
@@ -52,6 +43,19 @@ namespace Presentation.Forms.Contract_Maintenance
             {
                 cmbAddPackage.Items.Add(P);
             }
+        }
+
+        private void frmNewContract_Load(object sender, EventArgs e)
+        {
+
+            //Populate Package Combo Boxes with service and service level agreement Objects
+            gbrxServiceLevelAgreement.Visible = false;
+            gbxService.Visible = false;
+            gbPackage.Visible = false;
+            grbxServiceContracts.Visible = false;
+
+
+            LoadData();
         }// (On form load functionality)
 
         /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// (Ignore )
@@ -99,6 +103,8 @@ namespace Presentation.Forms.Contract_Maintenance
 
                 lstViewItems.Items.Add(lst);
             }
+
+            LoadData();
         }// Inserting New Service Fucntionality (Done)
 
         private void btnAddService_Click(object sender, EventArgs e)
@@ -152,6 +158,7 @@ namespace Presentation.Forms.Contract_Maintenance
                 lstViewItems.Items.Add(lst);
             }
 
+            LoadData();
         }//Add Service Level Agreement Functionality (Done)
 
         private void button7_Click(object sender, EventArgs e)
@@ -196,14 +203,16 @@ namespace Presentation.Forms.Contract_Maintenance
             {
                 ListViewItem lst = new ListViewItem(new string[]{
                   p.Id.ToString(),
-                  p.Service.ToString(),
-                  p.Sla.ToString(),
+                  p.Service.Id.ToString(),
+                  p.Sla.Id.ToString(),
                   p.Name,
                   p.Description
                });
 
                 lstViewItems.Items.Add(lst);
             }
+
+            LoadData();
         }// Add Package Functionality(Done)
 
         private void btnAddPackage_Click(object sender, EventArgs e)
@@ -243,7 +252,6 @@ namespace Presentation.Forms.Contract_Maintenance
             lstViewItems.Columns.Add("Date Terminiated");
             lstViewItems.Columns.Add("Cost");
             lstViewItems.Columns.Add("Status");
-            lstViewItems.Columns.Add("Identifier");
 
             List_of_Service_Contrcat_Ob = SC_Ctr.Read();
 
@@ -255,13 +263,13 @@ namespace Presentation.Forms.Contract_Maintenance
                     sc.Description,
                     sc.DateFinalised.ToString(),
                     sc.Cost.ToString(),
-                    sc.Status,
-                    SC.identifier
+                    sc.Status
                });
 
                 lstViewItems.Items.Add(lst);
             }
 
+            LoadData();
         }//Add Service Contract Functionality
 
         private void button3_Click(object sender, EventArgs e)
