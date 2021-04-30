@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
 using Logic;
+using Presentation.Forms.Agents;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
@@ -34,18 +35,8 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             LoadIndividualClient();
             LoadBusinessClient();
             LoadServiceContractRequests();
-            LoadAgents();
         }
 
-        void LoadAgents()
-        {
-            AgentController agentController = new AgentController();
-
-            foreach (Agent agent in agentController.Read())
-            {
-                cbAgents.Items.Add(agent);
-            }
-        }
 
         void LoadServiceContractRequests() 
         {
@@ -283,11 +274,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void btnCallClient_Click(object sender, EventArgs e)
         {
-            if (cbAgents.SelectedItem == null)
-            {
-                MessageBox.Show("Select agent first!");
-                return;
-            }
 
             if (lvServiceContractRequests.SelectedItems.Count == 0)
             {
@@ -295,16 +281,23 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
                 return;
             }
 
-            NewContractRequestLogic newContractRequestLogic = new NewContractRequestLogic(
-                cbAgents.SelectedItem as Agent,
-                false,
-                lvServiceContractRequests.SelectedItems[0].Tag as NewContractRequest
-            );
+            Agent agent = frmSelectAgent.GetAgent();
 
-            frmAddServiceContractToClient form = new frmAddServiceContractToClient(newContractRequestLogic);
-            form.ShowDialog();
+            if (agent != null)
+            {
+                NewContractRequestLogic newContractRequestLogic = new NewContractRequestLogic(
+                    agent,
+                    false,
+                    lvServiceContractRequests.SelectedItems[0].Tag as NewContractRequest
+                );
 
-            LoadServiceContractRequests();
+                frmAddServiceContractToClient form = new frmAddServiceContractToClient(newContractRequestLogic);
+                form.ShowDialog();
+
+                LoadServiceContractRequests();
+            }
+
+            
 
         }
     }

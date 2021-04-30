@@ -39,8 +39,7 @@ namespace Presentation.Forms.Welcome
         private void btnCallCentre_Click(object sender, EventArgs e)
         {
             Hide();
-            frmCall form = new frmCall();
-            form.ShowDialog();
+            FrmNewRequest.OpenRequest();
             Show();
           
         }

@@ -10,13 +10,27 @@ using System.Windows.Forms;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
 using Logic;
+using Presentation.Forms.Agents;
 
 namespace Presentation.Forms.CallCentre
 {
     public partial class FrmNewRequest : Form
     {
         private CallCentreLogic callCentreLogic;
-        public FrmNewRequest(CallCentreLogic callCentreLogic)
+
+        public static void OpenRequest()
+        {
+            Agent agent = frmSelectAgent.GetAgent();
+
+            if (agent != null) 
+            {
+                CallCentreLogic callCentreLogic = new CallCentreLogic(agent, true);
+                FrmNewRequest frmNewRequest = new FrmNewRequest(callCentreLogic);
+                frmNewRequest.ShowDialog();
+            }
+              
+        }
+        private FrmNewRequest(CallCentreLogic callCentreLogic)
         {
             InitializeComponent();
             this.callCentreLogic = callCentreLogic;
