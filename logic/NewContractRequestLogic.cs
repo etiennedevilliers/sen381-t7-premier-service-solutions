@@ -21,14 +21,16 @@ namespace Logic
             this.newContractRequest = ncr;
         }
 
-        public void addServiceContract()
+        public void addServiceContract(DateTime startDate, DateTime endDate)
         {
             endCall();
             ClientController clientController = new ClientController();
             NewContractRequestController newContractRequestController = new NewContractRequestController();
 
+            ClientServiceContract clientServiceContract = new ClientServiceContract(startDate, endDate, newContractRequest.ServiceContract);
+
             clientController.Add(
-                newContractRequest.ServiceContract,
+                clientServiceContract,
                 newContractRequest.Client
             );
 

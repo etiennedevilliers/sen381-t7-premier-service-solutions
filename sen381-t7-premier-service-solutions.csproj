@@ -88,6 +88,7 @@
     <Compile Include="data\layer\objects\Requests\NewContractRequest.cs" />
     <Compile Include="data\layer\objects\Requests\Request.cs" />
     <Compile Include="data\layer\objects\Requests\ServiceRequest.cs" />
+    <Compile Include="data\layer\objects\ServiceContract\ClientServiceContract.cs" />
     <Compile Include="data\layer\objects\ServiceContract\Package.cs" />
     <Compile Include="data\layer\objects\ServiceContract\Service.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ServiceContract.cs" />

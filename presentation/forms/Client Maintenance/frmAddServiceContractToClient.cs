@@ -62,7 +62,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void btnEndCall_Click(object sender, EventArgs e)
         {
-            newContractRequestLogic.addServiceContract();
+            DateTime startDate = dtpStart.Value;
+            DateTime endDate = dtpEnd.Value;
+
+            newContractRequestLogic.addServiceContract(startDate, endDate);
             Close();
         }
     }
