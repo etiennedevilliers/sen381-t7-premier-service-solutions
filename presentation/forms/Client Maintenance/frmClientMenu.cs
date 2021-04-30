@@ -281,23 +281,13 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
                 return;
             }
 
-            Agent agent = frmSelectAgent.GetAgent();
+            frmAddServiceContractToClient.FullfillNewContractRequest(
+                lvServiceContractRequests.SelectedItems[0].Tag as NewContractRequest
+            );
 
-            if (agent != null)
-            {
-                NewContractRequestLogic newContractRequestLogic = new NewContractRequestLogic(
-                    agent,
-                    false,
-                    lvServiceContractRequests.SelectedItems[0].Tag as NewContractRequest
-                );
+            LoadServiceContractRequests();
 
-                frmAddServiceContractToClient form = new frmAddServiceContractToClient(newContractRequestLogic);
-                form.ShowDialog();
 
-                LoadServiceContractRequests();
-            }
-
-            
 
         }
     }

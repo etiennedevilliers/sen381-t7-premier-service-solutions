@@ -10,14 +10,32 @@ using System.Windows.Forms;
 using Logic;
 using Data.Layer.Controller;
 using Data.Layer.Objects;
+using Presentation.Forms.Agents;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
     public partial class frmAddServiceContractToClient : Form
     {
+        public static void FullfillNewContractRequest(NewContractRequest newContractRequest)
+        {
+            Agent agent = frmSelectAgent.GetAgent();
+
+            if (agent != null)
+            {
+                NewContractRequestLogic newContractRequestLogic = new NewContractRequestLogic(
+                    agent,
+                    false,
+                    newContractRequest
+                );
+
+                frmAddServiceContractToClient form = new frmAddServiceContractToClient(newContractRequestLogic);
+                form.ShowDialog();
+            }
+        }
+
         private NewContractRequestLogic newContractRequestLogic;
 
-        public frmAddServiceContractToClient(NewContractRequestLogic newContractRequestLogic)
+        private frmAddServiceContractToClient(NewContractRequestLogic newContractRequestLogic)
         {
             InitializeComponent();
 
