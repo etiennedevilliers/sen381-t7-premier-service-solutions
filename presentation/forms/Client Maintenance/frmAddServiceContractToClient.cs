@@ -38,6 +38,8 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             }
             
             lblServiceContract.Text = newContractRequestLogic.newContractRequest.ServiceContract.ToString();
+
+            updateErrorLabel();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -47,12 +49,12 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-
+            updateErrorLabel();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-
+            updateErrorLabel();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -60,10 +62,23 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         }
 
+        private void updateErrorLabel()
+        {
+            errorLabel.Text = newContractRequestLogic.checkDateTime(
+                dtpStart.Value,
+                dtpEnd.Value
+            ).NotValidReason;
+        }
+
         private void btnEndCall_Click(object sender, EventArgs e)
         {
             DateTime startDate = dtpStart.Value;
             DateTime endDate = dtpEnd.Value;
+
+            if (!newContractRequestLogic.checkDateTime(startDate, endDate).Valid) {
+                MessageBox.Show("Pick Valid dates first!");
+                return;
+            }
 
             newContractRequestLogic.addServiceContract(startDate, endDate);
             Close();

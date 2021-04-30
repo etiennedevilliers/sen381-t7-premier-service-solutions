@@ -35,6 +35,8 @@
             this.lblClient = new System.Windows.Forms.Label();
             this.lblServiceContract = new System.Windows.Forms.Label();
             this.btnEndCall = new System.Windows.Forms.Button();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.errorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // dtpStart
@@ -108,11 +110,26 @@
             this.btnEndCall.UseVisualStyleBackColor = true;
             this.btnEndCall.Click += new System.EventHandler(this.btnEndCall_Click);
             // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // errorLabel
+            // 
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabel.Location = new System.Drawing.Point(26, 198);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(110, 25);
+            this.errorLabel.TabIndex = 7;
+            this.errorLabel.Text = "errorLabel";
+            // 
             // frmAddServiceContractToClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 698);
+            this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.btnEndCall);
             this.Controls.Add(this.lblServiceContract);
             this.Controls.Add(this.lblClient);
@@ -137,5 +154,7 @@
         private System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.Label lblServiceContract;
         private System.Windows.Forms.Button btnEndCall;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.Label errorLabel;
     }
 }

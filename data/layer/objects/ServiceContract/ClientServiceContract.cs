@@ -21,5 +21,15 @@ namespace Data.Layer.Objects
 
         public DateTime? StartDate;
         public DateTime? EndDate;
+
+        public override string ToString()
+        {
+            return String.Format(
+                "{0} From: {1} To: {2}",
+                 base.ToString(),
+                 StartDate,
+                 EndDate
+            );
+        }
     }
 }
