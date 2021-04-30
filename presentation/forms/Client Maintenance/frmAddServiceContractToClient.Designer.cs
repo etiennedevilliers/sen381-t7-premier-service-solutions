@@ -37,12 +37,13 @@
             this.btnEndCall = new System.Windows.Forms.Button();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.errorLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // dtpStart
             // 
             this.dtpStart.Location = new System.Drawing.Point(462, 94);
-            this.dtpStart.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dtpStart.Margin = new System.Windows.Forms.Padding(6);
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(396, 31);
             this.dtpStart.TabIndex = 0;
@@ -73,7 +74,7 @@
             // dtpEnd
             // 
             this.dtpEnd.Location = new System.Drawing.Point(462, 144);
-            this.dtpEnd.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dtpEnd.Margin = new System.Windows.Forms.Padding(6);
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.Size = new System.Drawing.Size(396, 31);
             this.dtpEnd.TabIndex = 3;
@@ -101,12 +102,13 @@
             // 
             // btnEndCall
             // 
-            this.btnEndCall.Location = new System.Drawing.Point(440, 631);
-            this.btnEndCall.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnEndCall.BackgroundImage = global::sen381_t7_premier_service_solutions.Properties.Resources.phone_x;
+            this.btnEndCall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEndCall.Location = new System.Drawing.Point(788, 631);
+            this.btnEndCall.Margin = new System.Windows.Forms.Padding(6);
             this.btnEndCall.Name = "btnEndCall";
-            this.btnEndCall.Size = new System.Drawing.Size(422, 44);
+            this.btnEndCall.Size = new System.Drawing.Size(74, 44);
             this.btnEndCall.TabIndex = 6;
-            this.btnEndCall.Text = "End Call and Add Service Contract";
             this.btnEndCall.UseVisualStyleBackColor = true;
             this.btnEndCall.Click += new System.EventHandler(this.btnEndCall_Click);
             // 
@@ -124,11 +126,21 @@
             this.errorLabel.TabIndex = 7;
             this.errorLabel.Text = "errorLabel";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(437, 641);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(342, 25);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "End Call and add Service Contract";
+            // 
             // frmAddServiceContractToClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 698);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.btnEndCall);
             this.Controls.Add(this.lblServiceContract);
@@ -137,7 +149,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpStart);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmAddServiceContractToClient";
             this.Text = "frmAddServiceContractToClient";
             this.ResumeLayout(false);
@@ -156,5 +168,6 @@
         private System.Windows.Forms.Button btnEndCall;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.Label label3;
     }
 }

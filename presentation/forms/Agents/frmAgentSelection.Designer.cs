@@ -34,16 +34,19 @@ namespace Presentation.Forms.Agents
             this.agentCollection = new System.Windows.Forms.ListBox();
             this.tbNameFilter = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStartCall
             // 
-            this.btnStartCall.Location = new System.Drawing.Point(24, 679);
-            this.btnStartCall.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnStartCall.BackgroundImage = global::sen381_t7_premier_service_solutions.Properties.Resources.phone_outgoing;
+            this.btnStartCall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnStartCall.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStartCall.Location = new System.Drawing.Point(488, 679);
+            this.btnStartCall.Margin = new System.Windows.Forms.Padding(6);
             this.btnStartCall.Name = "btnStartCall";
-            this.btnStartCall.Size = new System.Drawing.Size(530, 44);
+            this.btnStartCall.Size = new System.Drawing.Size(66, 44);
             this.btnStartCall.TabIndex = 1;
-            this.btnStartCall.Text = "Start Call";
             this.btnStartCall.UseVisualStyleBackColor = true;
             this.btnStartCall.Click += new System.EventHandler(this.btnStartCall_Click);
             // 
@@ -84,17 +87,27 @@ namespace Presentation.Forms.Agents
             this.label1.TabIndex = 6;
             this.label1.Text = "Name filter";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(379, 689);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 25);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Start Call";
+            // 
             // frmSelectAgent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 746);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbNameFilter);
             this.Controls.Add(this.agentCollection);
             this.Controls.Add(this.lbl1);
             this.Controls.Add(this.btnStartCall);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmSelectAgent";
             this.Text = "Select Agent";
             this.Load += new System.EventHandler(this.frmCall_Load);
@@ -109,5 +122,6 @@ namespace Presentation.Forms.Agents
         private System.Windows.Forms.ListBox agentCollection;
         private System.Windows.Forms.TextBox tbNameFilter;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
