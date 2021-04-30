@@ -39,7 +39,7 @@
             // btnServiceDep
             // 
             this.btnServiceDep.Location = new System.Drawing.Point(584, 23);
-            this.btnServiceDep.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnServiceDep.Margin = new System.Windows.Forms.Padding(6);
             this.btnServiceDep.Name = "btnServiceDep";
             this.btnServiceDep.Size = new System.Drawing.Size(388, 127);
             this.btnServiceDep.TabIndex = 0;
@@ -50,7 +50,7 @@
             // btnContractMain
             // 
             this.btnContractMain.Location = new System.Drawing.Point(584, 162);
-            this.btnContractMain.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnContractMain.Margin = new System.Windows.Forms.Padding(6);
             this.btnContractMain.Name = "btnContractMain";
             this.btnContractMain.Size = new System.Drawing.Size(388, 127);
             this.btnContractMain.TabIndex = 1;
@@ -61,7 +61,7 @@
             // btnCallCentre
             // 
             this.btnCallCentre.Location = new System.Drawing.Point(584, 300);
-            this.btnCallCentre.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnCallCentre.Margin = new System.Windows.Forms.Padding(6);
             this.btnCallCentre.Name = "btnCallCentre";
             this.btnCallCentre.Size = new System.Drawing.Size(388, 127);
             this.btnCallCentre.TabIndex = 2;
@@ -72,7 +72,7 @@
             // btnClientSatis
             // 
             this.btnClientSatis.Location = new System.Drawing.Point(584, 438);
-            this.btnClientSatis.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnClientSatis.Margin = new System.Windows.Forms.Padding(6);
             this.btnClientSatis.Name = "btnClientSatis";
             this.btnClientSatis.Size = new System.Drawing.Size(388, 127);
             this.btnClientSatis.TabIndex = 3;
@@ -82,7 +82,7 @@
             // btnClientMain
             // 
             this.btnClientMain.Location = new System.Drawing.Point(584, 577);
-            this.btnClientMain.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnClientMain.Margin = new System.Windows.Forms.Padding(6);
             this.btnClientMain.Name = "btnClientMain";
             this.btnClientMain.Size = new System.Drawing.Size(388, 127);
             this.btnClientMain.TabIndex = 4;
@@ -93,7 +93,7 @@
             // btnTechnician
             // 
             this.btnTechnician.Location = new System.Drawing.Point(584, 715);
-            this.btnTechnician.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnTechnician.Margin = new System.Windows.Forms.Padding(6);
             this.btnTechnician.Name = "btnTechnician";
             this.btnTechnician.Size = new System.Drawing.Size(388, 127);
             this.btnTechnician.TabIndex = 5;
@@ -112,9 +112,10 @@
             this.Controls.Add(this.btnCallCentre);
             this.Controls.Add(this.btnContractMain);
             this.Controls.Add(this.btnServiceDep);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmLogin";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
 
         }

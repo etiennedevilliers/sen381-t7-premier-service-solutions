@@ -60,13 +60,18 @@ namespace Presentation.Forms.Welcome
             Hide();
             //Create  instance of the target form 
             //frmContractMaintenance
-            frmContractMenu form = new frmContractMenu();
-
+        
+            frmServiceContract form = new frmServiceContract();
             //Show the target form dialog
             form.ShowDialog();
 
             //Show this form 
             Show();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

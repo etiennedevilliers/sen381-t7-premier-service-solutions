@@ -44,6 +44,7 @@ namespace Presentation.Forms.ServiceDepartment
             this.colReqStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnCloseRequest = new System.Windows.Forms.Button();
             this.tpgTechnicians = new System.Windows.Forms.TabPage();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.lstTechnicians = new System.Windows.Forms.ListView();
@@ -66,20 +67,22 @@ namespace Presentation.Forms.ServiceDepartment
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabServiceMenu.Controls.Add(this.tpgService);
             this.tabServiceMenu.Controls.Add(this.tpgTechnicians);
-            this.tabServiceMenu.Location = new System.Drawing.Point(0, 3);
+            this.tabServiceMenu.Location = new System.Drawing.Point(0, 6);
+            this.tabServiceMenu.Margin = new System.Windows.Forms.Padding(6);
             this.tabServiceMenu.Name = "tabServiceMenu";
             this.tabServiceMenu.SelectedIndex = 0;
-            this.tabServiceMenu.Size = new System.Drawing.Size(799, 451);
+            this.tabServiceMenu.Size = new System.Drawing.Size(1598, 867);
             this.tabServiceMenu.TabIndex = 2;
             // 
             // tpgService
             // 
             this.tpgService.Controls.Add(this.lstServices);
             this.tpgService.Controls.Add(this.btnCloseRequest);
-            this.tpgService.Location = new System.Drawing.Point(4, 22);
+            this.tpgService.Location = new System.Drawing.Point(8, 39);
+            this.tpgService.Margin = new System.Windows.Forms.Padding(6);
             this.tpgService.Name = "tpgService";
-            this.tpgService.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgService.Size = new System.Drawing.Size(791, 425);
+            this.tpgService.Padding = new System.Windows.Forms.Padding(6);
+            this.tpgService.Size = new System.Drawing.Size(1582, 820);
             this.tpgService.TabIndex = 0;
             this.tpgService.Text = "Requests";
             this.tpgService.UseVisualStyleBackColor = true;
@@ -101,9 +104,10 @@ namespace Presentation.Forms.ServiceDepartment
             this.colClientName,
             this.colReqStatus});
             this.lstServices.HideSelection = false;
-            this.lstServices.Location = new System.Drawing.Point(6, 40);
+            this.lstServices.Location = new System.Drawing.Point(12, 77);
+            this.lstServices.Margin = new System.Windows.Forms.Padding(6);
             this.lstServices.Name = "lstServices";
-            this.lstServices.Size = new System.Drawing.Size(779, 379);
+            this.lstServices.Size = new System.Drawing.Size(1554, 725);
             this.lstServices.TabIndex = 3;
             this.lstServices.UseCompatibleStateImageBehavior = false;
             this.lstServices.View = System.Windows.Forms.View.Details;
@@ -154,9 +158,10 @@ namespace Presentation.Forms.ServiceDepartment
             // btnCloseRequest
             // 
             this.btnCloseRequest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseRequest.Location = new System.Drawing.Point(669, 6);
+            this.btnCloseRequest.Location = new System.Drawing.Point(1338, 12);
+            this.btnCloseRequest.Margin = new System.Windows.Forms.Padding(6);
             this.btnCloseRequest.Name = "btnCloseRequest";
-            this.btnCloseRequest.Size = new System.Drawing.Size(115, 28);
+            this.btnCloseRequest.Size = new System.Drawing.Size(230, 54);
             this.btnCloseRequest.TabIndex = 1;
             this.btnCloseRequest.Text = "Close Request";
             this.btnCloseRequest.UseVisualStyleBackColor = true;
@@ -164,24 +169,35 @@ namespace Presentation.Forms.ServiceDepartment
             // 
             // tpgTechnicians
             // 
+            this.tpgTechnicians.Controls.Add(this.checkedListBox1);
             this.tpgTechnicians.Controls.Add(this.btnCreate);
             this.tpgTechnicians.Controls.Add(this.btnEdit);
             this.tpgTechnicians.Controls.Add(this.lstTechnicians);
             this.tpgTechnicians.Controls.Add(this.btnRemove);
-            this.tpgTechnicians.Location = new System.Drawing.Point(4, 22);
+            this.tpgTechnicians.Location = new System.Drawing.Point(8, 39);
+            this.tpgTechnicians.Margin = new System.Windows.Forms.Padding(6);
             this.tpgTechnicians.Name = "tpgTechnicians";
-            this.tpgTechnicians.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgTechnicians.Size = new System.Drawing.Size(791, 425);
+            this.tpgTechnicians.Padding = new System.Windows.Forms.Padding(6);
+            this.tpgTechnicians.Size = new System.Drawing.Size(1582, 820);
             this.tpgTechnicians.TabIndex = 1;
             this.tpgTechnicians.Text = "Technicians";
             this.tpgTechnicians.UseVisualStyleBackColor = true;
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(1116, 618);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(8, 4);
+            this.checkedListBox1.TabIndex = 8;
+            // 
             // btnCreate
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.Location = new System.Drawing.Point(427, 6);
+            this.btnCreate.Location = new System.Drawing.Point(854, 12);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(6);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(115, 28);
+            this.btnCreate.Size = new System.Drawing.Size(230, 54);
             this.btnCreate.TabIndex = 7;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -190,9 +206,10 @@ namespace Presentation.Forms.ServiceDepartment
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(548, 6);
+            this.btnEdit.Location = new System.Drawing.Point(1096, 12);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(6);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(115, 28);
+            this.btnEdit.Size = new System.Drawing.Size(230, 54);
             this.btnEdit.TabIndex = 6;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -210,9 +227,10 @@ namespace Presentation.Forms.ServiceDepartment
             this.colSkills,
             this.colAssignedID});
             this.lstTechnicians.HideSelection = false;
-            this.lstTechnicians.Location = new System.Drawing.Point(6, 40);
+            this.lstTechnicians.Location = new System.Drawing.Point(12, 77);
+            this.lstTechnicians.Margin = new System.Windows.Forms.Padding(6);
             this.lstTechnicians.Name = "lstTechnicians";
-            this.lstTechnicians.Size = new System.Drawing.Size(779, 379);
+            this.lstTechnicians.Size = new System.Drawing.Size(1554, 725);
             this.lstTechnicians.TabIndex = 5;
             this.lstTechnicians.UseCompatibleStateImageBehavior = false;
             this.lstTechnicians.View = System.Windows.Forms.View.Details;
@@ -247,9 +265,10 @@ namespace Presentation.Forms.ServiceDepartment
             // btnRemove
             // 
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove.Location = new System.Drawing.Point(669, 6);
+            this.btnRemove.Location = new System.Drawing.Point(1338, 12);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(6);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(115, 28);
+            this.btnRemove.Size = new System.Drawing.Size(230, 54);
             this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -257,10 +276,11 @@ namespace Presentation.Forms.ServiceDepartment
             // 
             // frmServiceMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1600, 865);
             this.Controls.Add(this.tabServiceMenu);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmServiceMenu";
             this.Text = "ServiceMenu";
             this.Load += new System.EventHandler(this.frmServiceMenu_Load);
@@ -298,5 +318,6 @@ namespace Presentation.Forms.ServiceDepartment
         private System.Windows.Forms.ColumnHeader colSkills;
         private System.Windows.Forms.ColumnHeader colAssignedID;
         private System.Windows.Forms.ColumnHeader colReqStatus;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }

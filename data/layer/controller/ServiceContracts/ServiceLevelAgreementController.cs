@@ -69,7 +69,7 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             dh.Update(string.Format(
-                "UPDATE dbo.ServiceLevelAgreement SET slaDescription = '{1}' WHERE ServiceLevelAgreementID = {0}",
+                "UPDATE dbo.ServiceLevelAgreement SET slaDescription = '{1}' WHERE ServiceLevelAgreementID = {0} ",
                 obj.Id,
                 obj.Description
                 )) ;
