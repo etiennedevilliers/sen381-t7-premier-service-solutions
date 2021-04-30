@@ -32,6 +32,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.lstClientsI = new System.Windows.Forms.ListView();
             this.colClientNameI = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colClientSurnameI = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colContactNumI = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnEditI = new System.Windows.Forms.Button();
             this.btnDeleteI = new System.Windows.Forms.Button();
             this.btnViewContractI = new System.Windows.Forms.Button();
@@ -46,9 +47,8 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.btnViewContractB = new System.Windows.Forms.Button();
             this.lstClientsB = new System.Windows.Forms.ListView();
             this.colNameB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnEditB = new System.Windows.Forms.Button();
-            this.colContactNumI = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colContactNumB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnEditB = new System.Windows.Forms.Button();
             this.tpgIndividual.SuspendLayout();
             this.tpgIndividualClients.SuspendLayout();
             this.tpgBusinessClients.SuspendLayout();
@@ -78,6 +78,11 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             this.colClientSurnameI.Text = "Surname";
             this.colClientSurnameI.Width = 188;
+            // 
+            // colContactNumI
+            // 
+            this.colContactNumI.Text = "Contact Number";
+            this.colContactNumI.Width = 136;
             // 
             // btnEditI
             // 
@@ -228,6 +233,11 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colNameB.Text = "Name";
             this.colNameB.Width = 147;
             // 
+            // colContactNumB
+            // 
+            this.colContactNumB.Text = "Contact Number";
+            this.colContactNumB.Width = 167;
+            // 
             // btnEditB
             // 
             this.btnEditB.Location = new System.Drawing.Point(834, 5);
@@ -237,16 +247,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.btnEditB.Text = "Edit";
             this.btnEditB.UseVisualStyleBackColor = true;
             this.btnEditB.Click += new System.EventHandler(this.btnEditB_Click);
-            // 
-            // colContactNumI
-            // 
-            this.colContactNumI.Text = "Contact Number";
-            this.colContactNumI.Width = 136;
-            // 
-            // colContactNumB
-            // 
-            this.colContactNumB.Text = "Contact Number";
-            this.colContactNumB.Width = 167;
             // 
             // frmClientMenu
             // 
