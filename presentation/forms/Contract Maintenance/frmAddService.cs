@@ -64,8 +64,8 @@ namespace Presentation.Forms.Contract_Maintenance
                 Hide();
                 frmServiceContract form = new frmServiceContract();
                 form.ShowDialog();
-
             }//Add the Service
+
        }//Validate inputs and add service
 
      

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
+using Logic.CustomExceptions;
 
 namespace Logic
 {
@@ -21,9 +22,23 @@ namespace Logic
 
         public void Removeservice(Service RemoveService)
         {
-            S_ctr.Delete(RemoveService);
+            S_ctr.Delete(RemoveService);//Actually delete the Service
 
         }//Remove service 
+
+        public void ServiceInPckage(Service SER)
+        {
+            foreach (Package package in new PackageController().Read())
+            {
+                if (package.Service.Equals(SER))
+                {
+                    
+                    throw new ServiceExistsException(package);
+
+                }
+              
+            }
+        }//Check if SLA is in a Package 
 
         public void UpdateService(Service UpdateService)
         {
@@ -41,7 +56,7 @@ namespace Logic
 
         }//View Service //Return a list of services
 
-
-
     }
+
+   
 }

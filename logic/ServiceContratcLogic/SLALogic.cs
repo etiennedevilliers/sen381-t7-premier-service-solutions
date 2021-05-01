@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
+using Logic.CustomExceptions;
 
 namespace Logic
 {
@@ -40,6 +41,18 @@ namespace Logic
         {
             SLA_Ctr.Create(SLA);
         }
+
+        public void SLAInPackage(ServiceLevelAgreement SLA)
+        {
+            foreach (Package package in new PackageController().Read())
+            {
+                if (package.Sla.Equals(SLA))
+                {
+                    throw new SLAExistsException(package);
+
+                } 
+            }
+        }//Check if service is in packages
 
     }
 }

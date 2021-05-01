@@ -10,17 +10,22 @@ using System.Windows.Forms;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
 using Logic;
+using Logic.CustomExceptions;
 
 
 namespace Presentation.Forms.Contract_Maintenance
 {
     public partial class frmServiceContract : Form
     {
-
         //Create gobal Service logic and service list  objects
         List<Service> List_Of_Services_Ob = new List<Service>();
         ServiceLogic Sl = new ServiceLogic();
+
         List<ServiceLevelAgreement> List_Of_Sla_Ob = new List<ServiceLevelAgreement>();
+        SLALogic SLAL = new SLALogic();
+
+        List<Package> List_OF_Package_Ob = new List<Package>();
+        PackageLogic P_L = new PackageLogic();
 
         public frmServiceContract()
         {
@@ -31,9 +36,12 @@ namespace Presentation.Forms.Contract_Maintenance
         {
             LoadServices();
             LoadSLA();
+            LoadPackage();
 
         }//View list of services on load 
 
+        ///  Service///////////////////////////////////////////////////////////////////////////////////////Service Content     
+       
         private void btnServiceAdd_Click(object sender, EventArgs e)
         {
             //Call the add service form 
@@ -63,6 +71,9 @@ namespace Presentation.Forms.Contract_Maintenance
 
         private void btnServiceRemove_Click(object sender, EventArgs e)
         {
+            bool Valid = true;
+
+
             //If a item is selected in the list view perform delete 
             if (lstServiceView.SelectedItems.Count > 0)
             {
@@ -71,17 +82,36 @@ namespace Presentation.Forms.Contract_Maintenance
                 DialogResult deleteI = MessageBox.Show("Are you sure you want to delete this Service?", "WARNING: DELETE Service",
                                                   MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 //Get user for conformation
+
+
                 if (deleteI == DialogResult.Yes)
                 {
 
                     Service RService = lstServiceView.SelectedItems[0].Tag as Service;
-                    // Parse the object to the Service logic to perform action
-                    Sl.Removeservice(RService);
 
-                    lstServiceView.Clear();
+                    //Parse the object to the Service logic to perform action
 
-                    MessageBox.Show("Service successfully deleted", " DELETED",
-                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    try
+                    {
+                        Sl.ServiceInPckage(RService);
+
+                    }
+                    catch (ServiceExistsException ex)
+                    {
+
+                        MessageBox.Show(string.Format("DELETION ANOMOLY {0}", ex));
+                        
+                        Valid = false;
+                        
+                    }
+                    if (Valid == true)
+                    {
+                        Sl.Removeservice(RService);
+                        MessageBox.Show("Service successfully deleted", " DELETED",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        lstServiceView.Clear();
+
+                    }
 
                     //Hide this form and dispay the Dialog for the Service Contract Manu
                     Hide();
@@ -97,7 +127,7 @@ namespace Presentation.Forms.Contract_Maintenance
                                         MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-        }//Remove a service
+        }//Remove a service With Custom Exception
 
         private void btnServiceEdit_Click(object sender, EventArgs e)
         {
@@ -129,6 +159,10 @@ namespace Presentation.Forms.Contract_Maintenance
 
         }//Edit a selected Service
 
+        /// Service ////////////////////////////////////////////////////////////////////////////////////////Service Content   
+
+        /// SLA  ////////////////////////////////////////////////////////////////////////////////////////SLA Content
+       
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmNewSLA form = new frmNewSLA();
@@ -159,32 +193,55 @@ namespace Presentation.Forms.Contract_Maintenance
         private void btnRemove_Click(object sender, EventArgs e)
         {
             //If a item is selected in the list view perform delete 
+
+            bool Valid = true;
+
+            //If a item is selected in the list view perform delete 
             if (lstSLA.SelectedItems.Count > 0)
             {
-                SLALogic SLA_L = new SLALogic();
+
                 //Ask user for conformation
-                DialogResult deleteI = MessageBox.Show("Are you sure you want to delete this SLA?", "WARNING: DELETE SLA",
+                DialogResult deleteI = MessageBox.Show("Are you sure you want to delete this SLA?", "WARNING: DELETE Package",
                                                   MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 //Get user for conformation
+
+
                 if (deleteI == DialogResult.Yes)
                 {
-
                     ServiceLevelAgreement RSLA = lstSLA.SelectedItems[0].Tag as ServiceLevelAgreement;
-                    // Parse the object to the SLA logic to perform action
-                    SLA_L.DeleteSLA(RSLA);
 
-                    lstSLA.Clear();
+                    //Parse the object to the Service logic to perform action
 
-                    MessageBox.Show("SLA successfully deleted", " DELETED",
-                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    try
+                    {
+                        SLAL.SLAInPackage(RSLA);
 
-                    //Hide this form and dispay the Dialog for the Service Contract Manu
+
+
+                    }
+                    catch (SLAExistsException ex)
+                    {
+
+                        MessageBox.Show(string.Format("DELETION ANOMOLY {0}", ex));
+
+                        Valid = false;
+                        
+                    }
+                    if (Valid == true)
+                    {
+                        SLAL.DeleteSLA(RSLA);
+
+                        MessageBox.Show("SLA successfully deleted", " DELETED",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        lstSLA.Clear();
+                    }
+
                     Hide();
                     frmServiceContract form = new frmServiceContract();
                     form.ShowDialog();
-                    LoadSLA();
-                }
+                    LoadServices();
 
+                }
             }
             else
             {
@@ -221,5 +278,101 @@ namespace Presentation.Forms.Contract_Maintenance
                                         MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }//Edit the SLA
+
+        /// SLA  ////////////////////////////////////////////////////////////////////////////////////////SLA Colntent
+
+
+        /// Package ////////////////////////////////////////////////////////////////////////////////////////Service Content
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bool Valid = false;
+
+            if (listPackage.SelectedItems.Count > 0)
+            {
+
+                //Ask user for conformation
+                DialogResult deleteI = MessageBox.Show("Are you sure you want to delete this Package?", "WARNING: DELETE Package",
+                                                  MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                //Get user for conformation
+
+
+                if (deleteI == DialogResult.Yes)
+                {
+                    Package RP = listPackage.SelectedItems[0].Tag as Package;
+
+                    //Parse the object to the Service logic to perform action
+
+                    try
+                    {
+                        
+                        P_L.SLA_and_Service_In_Package(RP);
+                    }
+                    catch (PackageExictsException ex)
+                    {
+
+                        MessageBox.Show(string.Format("DELETION ANOMOLY {0}", ex));
+                        Valid = true;
+                    }
+
+                    if (Valid == false)
+                    {
+                        P_L.RemovePackage(RP);
+                        MessageBox.Show("Package successfully deleted", " DELETED",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        lstSLA.Clear();
+                    }
+
+                    Hide();
+                    frmServiceContract form = new frmServiceContract();
+                    form.ShowDialog();
+                    LoadServices();
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Record was selected", "SELECTION",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }//Remove a pacakge 
+
+        //Add a Package 
+        
+        //Edit a Package 
+
+
+        public void LoadPackage()
+        {
+
+            List_OF_Package_Ob = P_L.ViewPackage();
+
+            foreach (Package P in List_OF_Package_Ob)
+            {
+                ListViewItem lst = new ListViewItem(new string[]
+               {
+                    P.Id.ToString(),
+                    P.Service.ToString(),
+                    P.Sla.ToString(),
+                    P.Name,
+                    P.Description,
+
+               });
+                lst.Tag = P;
+                listPackage.Items.Add(lst);
+            }
+        }//Load the Packages 
+
+        private void btnAddPackage_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        /// Package ////////////////////////////////////////////////////////////////////////////////////////Service Content
+
+
+
     }
+
 }
