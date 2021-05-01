@@ -169,6 +169,12 @@
     <Compile Include="presentation\forms\Contract Maintenance\frmAddService.Designer.cs">
       <DependentUpon>frmAddService.cs</DependentUpon>
     </Compile>
+    <Compile Include="presentation\forms\Contract Maintenance\frmAddServiceContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Contract Maintenance\frmAddServiceContract.Designer.cs">
+      <DependentUpon>frmAddServiceContract.cs</DependentUpon>
+    </Compile>
     <Compile Include="presentation\forms\Contract Maintenance\frmContractMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmAddService.resx">
       <DependentUpon>frmAddService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmAddServiceContract.resx">
+      <DependentUpon>frmAddServiceContract.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmContractMenu.resx">
       <DependentUpon>frmContractMenu.cs</DependentUpon>

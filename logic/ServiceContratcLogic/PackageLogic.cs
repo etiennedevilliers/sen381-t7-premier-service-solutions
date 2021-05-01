@@ -31,7 +31,7 @@ namespace Logic
         {
             PackageController P_Ctr = new PackageController();
             P_Ctr.Update(P);
-        }
+        }//Edit Package
 
         public List<Package> ViewPackage()
         {

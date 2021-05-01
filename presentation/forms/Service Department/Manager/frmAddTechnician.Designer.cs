@@ -33,22 +33,23 @@ namespace Presentation.Forms.ServiceDepartment
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtContactNum = new System.Windows.Forms.TextBox();
             this.lstSkills = new System.Windows.Forms.ListView();
+            this.colID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colExpectedDur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cbxServices = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
             this.lblContactNum = new System.Windows.Forms.Label();
             this.lblSkills = new System.Windows.Forms.Label();
-            this.colID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colExpectedDur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(249, 276);
+            this.btnOk.Location = new System.Drawing.Point(498, 531);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(190, 62);
+            this.btnOk.Size = new System.Drawing.Size(380, 119);
             this.btnOk.TabIndex = 0;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -56,16 +57,18 @@ namespace Presentation.Forms.ServiceDepartment
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(122, 6);
+            this.txtName.Location = new System.Drawing.Point(244, 12);
+            this.txtName.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(170, 20);
+            this.txtName.Size = new System.Drawing.Size(336, 31);
             this.txtName.TabIndex = 1;
             // 
             // txtContactNum
             // 
-            this.txtContactNum.Location = new System.Drawing.Point(122, 32);
+            this.txtContactNum.Location = new System.Drawing.Point(244, 62);
+            this.txtContactNum.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtContactNum.Name = "txtContactNum";
-            this.txtContactNum.Size = new System.Drawing.Size(170, 20);
+            this.txtContactNum.Size = new System.Drawing.Size(336, 31);
             this.txtContactNum.TabIndex = 2;
             // 
             // lstSkills
@@ -75,67 +78,13 @@ namespace Presentation.Forms.ServiceDepartment
             this.colDescription,
             this.colExpectedDur});
             this.lstSkills.HideSelection = false;
-            this.lstSkills.Location = new System.Drawing.Point(122, 85);
+            this.lstSkills.Location = new System.Drawing.Point(244, 163);
+            this.lstSkills.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lstSkills.Name = "lstSkills";
-            this.lstSkills.Size = new System.Drawing.Size(317, 185);
+            this.lstSkills.Size = new System.Drawing.Size(630, 352);
             this.lstSkills.TabIndex = 3;
             this.lstSkills.UseCompatibleStateImageBehavior = false;
             this.lstSkills.View = System.Windows.Forms.View.Details;
-            // 
-            // cbxServices
-            // 
-            this.cbxServices.FormattingEnabled = true;
-            this.cbxServices.Location = new System.Drawing.Point(122, 58);
-            this.cbxServices.Name = "cbxServices";
-            this.cbxServices.Size = new System.Drawing.Size(312, 21);
-            this.cbxServices.TabIndex = 4;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(26, 85);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(84, 21);
-            this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Location = new System.Drawing.Point(26, 112);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(84, 21);
-            this.btnRemove.TabIndex = 6;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(23, 9);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(38, 13);
-            this.lblName.TabIndex = 7;
-            this.lblName.Text = "Name:";
-            // 
-            // lblContactNum
-            // 
-            this.lblContactNum.AutoSize = true;
-            this.lblContactNum.Location = new System.Drawing.Point(23, 35);
-            this.lblContactNum.Name = "lblContactNum";
-            this.lblContactNum.Size = new System.Drawing.Size(87, 13);
-            this.lblContactNum.TabIndex = 8;
-            this.lblContactNum.Text = "Contact Number:";
-            // 
-            // lblSkills
-            // 
-            this.lblSkills.AutoSize = true;
-            this.lblSkills.Location = new System.Drawing.Point(23, 62);
-            this.lblSkills.Name = "lblSkills";
-            this.lblSkills.Size = new System.Drawing.Size(34, 13);
-            this.lblSkills.TabIndex = 9;
-            this.lblSkills.Text = "Skills:";
             // 
             // colID
             // 
@@ -152,11 +101,72 @@ namespace Presentation.Forms.ServiceDepartment
             this.colExpectedDur.Text = "Expected Duration";
             this.colExpectedDur.Width = 103;
             // 
+            // cbxServices
+            // 
+            this.cbxServices.FormattingEnabled = true;
+            this.cbxServices.Location = new System.Drawing.Point(244, 112);
+            this.cbxServices.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbxServices.Name = "cbxServices";
+            this.cbxServices.Size = new System.Drawing.Size(620, 33);
+            this.cbxServices.TabIndex = 4;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(52, 163);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(168, 40);
+            this.btnAdd.TabIndex = 5;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(52, 215);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(168, 40);
+            this.btnRemove.TabIndex = 6;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(46, 17);
+            this.lblName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(74, 25);
+            this.lblName.TabIndex = 7;
+            this.lblName.Text = "Name:";
+            // 
+            // lblContactNum
+            // 
+            this.lblContactNum.AutoSize = true;
+            this.lblContactNum.Location = new System.Drawing.Point(46, 67);
+            this.lblContactNum.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblContactNum.Name = "lblContactNum";
+            this.lblContactNum.Size = new System.Drawing.Size(173, 25);
+            this.lblContactNum.TabIndex = 8;
+            this.lblContactNum.Text = "Contact Number:";
+            // 
+            // lblSkills
+            // 
+            this.lblSkills.AutoSize = true;
+            this.lblSkills.Location = new System.Drawing.Point(46, 119);
+            this.lblSkills.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblSkills.Name = "lblSkills";
+            this.lblSkills.Size = new System.Drawing.Size(69, 25);
+            this.lblSkills.TabIndex = 9;
+            this.lblSkills.Text = "Skills:";
+            // 
             // frmAddTechnician
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 345);
+            this.ClientSize = new System.Drawing.Size(892, 663);
             this.Controls.Add(this.lblSkills);
             this.Controls.Add(this.lblContactNum);
             this.Controls.Add(this.lblName);
@@ -167,6 +177,7 @@ namespace Presentation.Forms.ServiceDepartment
             this.Controls.Add(this.txtContactNum);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.btnOk);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmAddTechnician";
             this.Text = "frmAddTechnician";
             this.Load += new System.EventHandler(this.frmAddTechnician_Load);

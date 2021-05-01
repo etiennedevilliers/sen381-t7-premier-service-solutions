@@ -56,12 +56,12 @@ namespace Presentation.Forms.Contract_Maintenance
                 MessageBox.Show("Please enter package name details", "EMPTY FIELDS!!",
                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }//Data Validation
-            if (cmbPService.Items.Count < 0)
+            if (cmbPService.SelectedIndex < 0)
             {
                 MessageBox.Show("Please Select a Service", "EMPTY VALUE!!",
                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (cmbPSLA.Items.Count < 0)
+            if (cmbPSLA.SelectedIndex < 0)
             {
                 MessageBox.Show("Please Select a Service Level Agreemnt", "EMPTY VALUE!!",
                               MessageBoxButtons.OK, MessageBoxIcon.Error);

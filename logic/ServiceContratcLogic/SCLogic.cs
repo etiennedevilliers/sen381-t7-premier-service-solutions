@@ -13,8 +13,6 @@ namespace Logic
     {
         private ServiceContractController SC_Ctr = new ServiceContractController();
 
-        
-
         public List<ServiceContract> ViewServiceContrac()
         {
             List<ServiceContract> returnlist = SC_Ctr.Read();
@@ -37,7 +35,6 @@ namespace Logic
             SC_Ctr.Create(SC);
         }//Add/Create
 
-        //Generate identifier
         public string GenerateIDentifier(DateTime CreationDate , string LevelOfImportance)
         {
             string Result = "";
@@ -50,6 +47,18 @@ namespace Logic
             Result = Year + Random_String + LevelOfImportance;
 
             return Result;
-        }
+        }//Generate identifier
+
+     
+
+        public void AddPackage(Package P , ServiceContract SC)
+        {
+            SC_Ctr.Add(P,SC);
+        }//Add Package to SC 
+
+        public void RemovePackage(Package P, ServiceContract SC)
+        {
+            SC_Ctr.Remove(P, SC);
+        }//Add Package to SC 
     }
 }

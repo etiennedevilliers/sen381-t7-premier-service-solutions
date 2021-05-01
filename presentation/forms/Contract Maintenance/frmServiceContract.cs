@@ -21,11 +21,15 @@ namespace Presentation.Forms.Contract_Maintenance
         List<Service> List_Of_Services_Ob = new List<Service>();
         ServiceLogic Sl = new ServiceLogic();
 
+        
         List<ServiceLevelAgreement> List_Of_Sla_Ob = new List<ServiceLevelAgreement>();
         SLALogic SLAL = new SLALogic();
 
         List<Package> List_OF_Package_Ob = new List<Package>();
         PackageLogic P_L = new PackageLogic();
+
+        List<ServiceContract> List_Of_Service_Contract_OB = new List<ServiceContract>();
+        SCLogic SC_L = new SCLogic();
 
         public frmServiceContract()
         {
@@ -37,7 +41,7 @@ namespace Presentation.Forms.Contract_Maintenance
             LoadServices();
             LoadSLA();
             LoadPackage();
-
+            LoadServiceContract();
         }//View list of services on load 
 
         ///  Service///////////////////////////////////////////////////////////////////////////////////////Service Content     
@@ -279,8 +283,7 @@ namespace Presentation.Forms.Contract_Maintenance
 
         /// SLA  ////////////////////////////////////////////////////////////////////////////////////////SLA Colntent
 
-
-        /// Package ////////////////////////////////////////////////////////////////////////////////////////Service Content
+        /// Package ////////////////////////////////////////////////////////////////////////////////////////Package Content
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -392,10 +395,39 @@ namespace Presentation.Forms.Contract_Maintenance
 
 
 
-        } //Edit a Package 
+        } //Edit a Package
 
-        /// Package ////////////////////////////////////////////////////////////////////////////////////////Service Content
+        /// Package ////////////////////////////////////////////////////////////////////////////////////////Package Content
 
+        private void btnAddServiceContract_Click(object sender, EventArgs e)
+        {
+            frmAddServiceContract form = new frmAddServiceContract();
+            DialogResult res = form.ShowDialog();
+            LoadServiceContract();
+
+        }//Add Service Contract
+
+        public void LoadServiceContract()
+        {
+            SCLogic SC_L = new SCLogic();
+            List_Of_Service_Contract_OB = SC_L.ViewServiceContrac();
+            foreach (ServiceContract SC in List_Of_Service_Contract_OB)
+            {
+                ListViewItem lst = new ListViewItem(new string[]
+               {
+                 SC.Id.ToString(),
+                 SC.Description,
+                 SC.DateFinalised.ToString(),
+                 SC.DateTerminated.ToString(),
+                 SC.Cost.ToString(),
+                 SC.Status,
+                 SC.identifier
+               });
+
+                lst.Tag = SC;
+                lstServiceContract.Items.Add(lst);
+            }
+        }//Load the Service Contract
 
 
     }
