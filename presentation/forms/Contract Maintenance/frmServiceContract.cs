@@ -166,7 +166,6 @@ namespace Presentation.Forms.Contract_Maintenance
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmNewSLA form = new frmNewSLA();
-            Hide();
             DialogResult res = form.ShowDialog();
             LoadServices();
         
@@ -237,9 +236,8 @@ namespace Presentation.Forms.Contract_Maintenance
                         lstSLA.Clear();
                     }
 
-                    Hide();
                     frmServiceContract form = new frmServiceContract();
-                    form.ShowDialog();
+                    DialogResult res = form.ShowDialog();
                     LoadServices();
 
                 }
@@ -267,7 +265,6 @@ namespace Presentation.Forms.Contract_Maintenance
                     //Hide this form and dispay the Dialog for the Service Contract Manu
 
                     ServiceLevelAgreement sla = lstSLA.SelectedItems[0].Tag as ServiceLevelAgreement;
-                    Hide();
                     frmEditSLA form = new frmEditSLA(sla);
                     DialogResult res = form.ShowDialog();
                     LoadServices();
@@ -324,7 +321,6 @@ namespace Presentation.Forms.Contract_Maintenance
                         lstSLA.Clear();
                     }
 
-                    Hide();
                     frmServiceContract form = new frmServiceContract();
                     form.ShowDialog();
                     LoadServices();
@@ -364,7 +360,6 @@ namespace Presentation.Forms.Contract_Maintenance
         private void btnAddPackage_Click(object sender, EventArgs e)
         {
             frmAddPackage form = new frmAddPackage();
-            Hide();
             DialogResult res = form.ShowDialog();
             LoadPackage();
 
@@ -383,7 +378,6 @@ namespace Presentation.Forms.Contract_Maintenance
                     Package Pack = listPackage.SelectedItems[0].Tag as Package;
 
                     frmEditPackages form = new frmEditPackages(Pack);
-                    Hide();
                     DialogResult res = form.ShowDialog();
                     LoadPackage();
 
