@@ -88,19 +88,20 @@
     <Compile Include="data\layer\objects\Requests\NewContractRequest.cs" />
     <Compile Include="data\layer\objects\Requests\Request.cs" />
     <Compile Include="data\layer\objects\Requests\ServiceRequest.cs" />
+    <Compile Include="data\layer\objects\ServiceContract\ClientServiceContract.cs" />
     <Compile Include="data\layer\objects\ServiceContract\Package.cs" />
     <Compile Include="data\layer\objects\ServiceContract\Service.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ServiceContract.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ServiceLevelAgreement.cs" />
-    <Compile Include="logic\CallCentreLogic.cs" />
+    <Compile Include="logic\CallCentre\CallCentreLogic.cs" />
     <Compile Include="logic\Scheduler.cs" />
     <Compile Include="logic\NewContractRequestLogic.cs" />
     <Compile Include="logic\TechnicianHandler.cs" />
-    <Compile Include="presentation\forms\Call Centre\frmCall.cs">
+    <Compile Include="presentation\forms\Agents\frmAgentSelection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="presentation\forms\Call Centre\frmCall.Designer.cs">
-      <DependentUpon>frmCall.cs</DependentUpon>
+    <Compile Include="presentation\forms\Agents\frmAgentSelection.Designer.cs">
+      <DependentUpon>frmAgentSelection.cs</DependentUpon>
     </Compile>
     <Compile Include="presentation\forms\Call Centre\frmNewRequest.cs">
       <SubType>Form</SubType>
@@ -206,11 +207,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="presentation\forms\Call Centre\frmCall.resx">
-      <DependentUpon>frmCall.cs</DependentUpon>
+    <EmbeddedResource Include="presentation\forms\Agents\frmAgentSelection.resx">
+      <DependentUpon>frmAgentSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Call Centre\frmNewRequest.resx">
       <DependentUpon>frmNewRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmAddServiceContractToClient.resx">
+      <DependentUpon>frmAddServiceContractToClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmClientMenu.resx">
       <DependentUpon>frmClientMenu.cs</DependentUpon>
@@ -253,6 +257,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
@@ -268,6 +273,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="presentation\assets\phone-outgoing.png" />
+    <Content Include="presentation\assets\phone-x.png" />
+    <None Include="Resources\phone-x.png" />
+    <None Include="Resources\phone-outgoing.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

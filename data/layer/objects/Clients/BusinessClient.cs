@@ -15,8 +15,7 @@ namespace Data.Layer.Objects
         {
             get
             {
-                EmployeeController emp = new EmployeeController(this);
-                return emp.Read();
+                return new BusinessClientController().ReadChildren(this);
             }
         }
 
@@ -24,12 +23,6 @@ namespace Data.Layer.Objects
         public BusinessClient(string contactNum, string name) : base(contactNum)
         {
             this.name = name;
-        }
-
-        //Employee Methods
-        public void AddEmployee(Employee emp){
-            EmployeeController empContr = new EmployeeController(this);
-            empContr.Create(emp);
         }
  
         //Standard Methods

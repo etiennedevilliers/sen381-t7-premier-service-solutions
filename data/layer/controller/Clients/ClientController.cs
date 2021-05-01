@@ -6,16 +6,18 @@ using Data.Layer.Objects;
 
 namespace Data.Layer.Controller
 {
-    internal class ClientController : ICreate<Client>, IUpdate<Client>, IDelete<Client>, IChildren<ServiceContract, Client>
+    internal class ClientController : ICreate<Client>, IUpdate<Client>, IDelete<Client>, IChildren<ClientServiceContract, Client>
     {
-        public void Add(ServiceContract child, Client parent)
+        public void Add(ClientServiceContract child, Client parent)
         {
             DataHandler dh = new DataHandler();
 
-            string query = string.Format(
-                "INSERT INTO clientServiceContracts(ServiceContractID, ClientID) VALUES({0}, {1})",
+            string query = string.Format( // Check date dates
+                "INSERT INTO clientServiceContracts(ServiceContractID, ClientID, DateStart, DateEnd) VALUES({0}, {1}, '{2}', '{3}')",
                 child.Id,
-                parent.Id
+                parent.Id,
+                child.StartDate,
+                child.EndDate
             );
             dh.Insert(query);
 
@@ -42,25 +44,23 @@ namespace Data.Layer.Controller
             dh.Dispose();
         }
 
-        public List<ServiceContract> ReadChildren(Client parent)
+        public List<ClientServiceContract> ReadChildren(Client parent)
         {
             DataHandler dh = new DataHandler();
 
-            List<ServiceContract> serviceContracts = new List<ServiceContract>();
+            List<ClientServiceContract> clientServiceContracts = new List<ClientServiceContract>();
 
-            string query = String.Format("SELECT SC.ServiceContractID, SC.description, SC.dateFinalised, SC.dateTerminated, SC.cost, SC.status, SC.identifier " +
-                                         "FROM ServiceContract AS SC " +
-                                            "LEFT JOIN clientServiceContracts as CSC ON CSC.ServiceContractID = SC.ServiceContractID " +
+            string query = String.Format("SELECT SC.ServiceContractID, SC.description, SC.dateFinalised, SC.dateTerminated, SC.cost, SC.status, CSC.DateStart, CSC.DateEnd " +
+                                         "FROM clientServiceContracts as CSC " +
+                                            "LEFT JOIN ServiceContract AS SC ON CSC.ServiceContractID = SC.ServiceContractID " +
                                          "WHERE CSC.ClientID = {0}", parent.Id);
             SqlDataReader read = dh.Select(query);
-
-            ServiceContract newSc;
 
             if (read.HasRows)
             {
                 while (read.Read())
                 {
-                    newSc = new ServiceContract(
+                    ServiceContract newSc = new ServiceContract(
                             read.GetString(1),
                             decimal.ToDouble(read.GetDecimal(4)),
                             read.GetDateTime(2),
@@ -71,16 +71,22 @@ namespace Data.Layer.Controller
 
                     newSc.Id = read.GetInt32(0);
 
-                    serviceContracts.Add(newSc);
+                    ClientServiceContract clientServiceContract = new ClientServiceContract(
+                        read.IsDBNull(6) ? null : new DateTime?(read.GetDateTime(6)),
+                        read.IsDBNull(7) ? null : new DateTime?(read.GetDateTime(7)),
+                        newSc
+                    );
+
+                    clientServiceContracts.Add(clientServiceContract);
                 }
             }
 
             dh.Dispose();
 
-            return serviceContracts;
+            return clientServiceContracts;
         }
 
-        public void Remove(ServiceContract child, Client parent)
+        public void Remove(ClientServiceContract child, Client parent)
         {
             DataHandler dh = new DataHandler();
 
