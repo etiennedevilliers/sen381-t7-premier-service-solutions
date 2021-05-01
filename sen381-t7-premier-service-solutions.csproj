@@ -99,6 +99,7 @@
     <Compile Include="logic\ServiceContratcLogic\CustomExceptions\ServiceExistsException.cs" />
     <Compile Include="logic\ServiceContratcLogic\CustomExceptions\SLAExistsException.cs" />
     <Compile Include="logic\ServiceContratcLogic\PackageLogic.cs" />
+    <Compile Include="logic\ServiceContratcLogic\SCLogic.cs" />
     <Compile Include="logic\ServiceContratcLogic\ServiceLogic.cs" />
     <Compile Include="logic\ServiceContratcLogic\SLALogic.cs" />
     <Compile Include="logic\TechnicianHandler.cs" />

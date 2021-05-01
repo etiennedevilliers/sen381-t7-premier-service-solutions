@@ -183,7 +183,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(809, 268);
+            this.btnRemove.Location = new System.Drawing.Point(1009, 268);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(160, 54);
             this.btnRemove.TabIndex = 4;
@@ -193,7 +193,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(809, 174);
+            this.btnEdit.Location = new System.Drawing.Point(1009, 174);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(160, 54);
             this.btnEdit.TabIndex = 3;
@@ -203,7 +203,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(809, 86);
+            this.btnAdd.Location = new System.Drawing.Point(1009, 86);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(160, 54);
             this.btnAdd.TabIndex = 2;
@@ -219,7 +219,7 @@
             this.lstSLA.HideSelection = false;
             this.lstSLA.Location = new System.Drawing.Point(14, 86);
             this.lstSLA.Name = "lstSLA";
-            this.lstSLA.Size = new System.Drawing.Size(776, 726);
+            this.lstSLA.Size = new System.Drawing.Size(969, 726);
             this.lstSLA.TabIndex = 1;
             this.lstSLA.UseCompatibleStateImageBehavior = false;
             this.lstSLA.View = System.Windows.Forms.View.Details;
@@ -249,7 +249,7 @@
             // 
             // btnServiceRemove
             // 
-            this.btnServiceRemove.Location = new System.Drawing.Point(911, 283);
+            this.btnServiceRemove.Location = new System.Drawing.Point(1101, 283);
             this.btnServiceRemove.Name = "btnServiceRemove";
             this.btnServiceRemove.Size = new System.Drawing.Size(208, 57);
             this.btnServiceRemove.TabIndex = 3;
@@ -259,7 +259,7 @@
             // 
             // btnServiceEdit
             // 
-            this.btnServiceEdit.Location = new System.Drawing.Point(911, 193);
+            this.btnServiceEdit.Location = new System.Drawing.Point(1101, 193);
             this.btnServiceEdit.Name = "btnServiceEdit";
             this.btnServiceEdit.Size = new System.Drawing.Size(208, 57);
             this.btnServiceEdit.TabIndex = 2;
@@ -269,7 +269,7 @@
             // 
             // btnServiceAdd
             // 
-            this.btnServiceAdd.Location = new System.Drawing.Point(911, 98);
+            this.btnServiceAdd.Location = new System.Drawing.Point(1101, 98);
             this.btnServiceAdd.Name = "btnServiceAdd";
             this.btnServiceAdd.Size = new System.Drawing.Size(208, 57);
             this.btnServiceAdd.TabIndex = 1;
@@ -286,7 +286,7 @@
             this.lstServiceView.HideSelection = false;
             this.lstServiceView.Location = new System.Drawing.Point(23, 98);
             this.lstServiceView.Name = "lstServiceView";
-            this.lstServiceView.Size = new System.Drawing.Size(852, 726);
+            this.lstServiceView.Size = new System.Drawing.Size(1047, 726);
             this.lstServiceView.TabIndex = 0;
             this.lstServiceView.UseCompatibleStateImageBehavior = false;
             this.lstServiceView.View = System.Windows.Forms.View.Details;
