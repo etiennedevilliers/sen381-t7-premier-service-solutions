@@ -57,6 +57,7 @@ namespace Presentation.Forms.Contract_Maintenance
                
                 this.service.Description = txtDescription.Text;
                 this.service.ExpectedDuration = int.Parse(txtDuration.Text);
+
                 Sl.UpdateService(this.service);
                 MessageBox.Show("Service successfully Updated", " Edit",
                                       MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -77,11 +78,11 @@ namespace Presentation.Forms.Contract_Maintenance
             foreach (Service S in List_Of_Services_Ob)
             {
                 ListViewItem lst = new ListViewItem(new string[]
-               {
-                   S.Id.ToString(),
-                   S.Description,
-                   S.ExpectedDuration.ToString()
-               });
+                {
+                    S.Id.ToString(),
+                    S.Description,
+                    S.ExpectedDuration.ToString()
+                });
 
                 lst.Tag = S;
             }

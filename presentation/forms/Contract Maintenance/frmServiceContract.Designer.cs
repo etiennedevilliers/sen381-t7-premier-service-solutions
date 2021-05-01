@@ -115,6 +115,7 @@
             this.btnEditPackage.TabIndex = 5;
             this.btnEditPackage.Text = "Edit";
             this.btnEditPackage.UseVisualStyleBackColor = true;
+            this.btnEditPackage.Click += new System.EventHandler(this.btnEditPackage_Click);
             // 
             // btnAddPackage
             // 
@@ -309,7 +310,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2049, 879);
+            this.ClientSize = new System.Drawing.Size(2200, 1049);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmServiceContract";
             this.Text = "frmServiceContract";

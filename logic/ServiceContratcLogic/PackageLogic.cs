@@ -11,26 +11,32 @@ namespace Logic
 {
     class PackageLogic
     {
-        //Add Package 
+        private PackageController P_ctr = new PackageController();
 
-        //Remove package 
+        public void Addpackage(Package P)
+        {
+           
+            P_ctr.Create(P);
+
+        }//Add Package 
+
         public void RemovePackage(Package P)
         {
-            PackageController P_ctr = new PackageController();
-
+           
             P_ctr.Delete(P);
 
-        }//Still need to do 
+        }//Still need to do  //Remove package
 
-        //Edit Package 
-
-        
+        public void EditPackage(Package P)
+        {
+            PackageController P_Ctr = new PackageController();
+            P_Ctr.Update(P);
+        }
 
         public List<Package> ViewPackage()
         {
-            PackageController P_Ctr = new PackageController();
 
-            List<Package> returnlist = P_Ctr.Read();
+            List<Package> returnlist = P_ctr.Read();
 
             return returnlist;
 

@@ -169,6 +169,7 @@ namespace Presentation.Forms.Contract_Maintenance
             Hide();
             DialogResult res = form.ShowDialog();
             LoadServices();
+        
 
         }//Show the new SLA form 
 
@@ -336,12 +337,7 @@ namespace Presentation.Forms.Contract_Maintenance
                                         MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-        }//Remove a pacakge 
-
-        //Add a Package 
-        
-        //Edit a Package 
-
+        }//Remove a package // (Still Not Done)
 
         public void LoadPackage()
         {
@@ -353,12 +349,13 @@ namespace Presentation.Forms.Contract_Maintenance
                 ListViewItem lst = new ListViewItem(new string[]
                {
                     P.Id.ToString(),
-                    P.Service.ToString(),
-                    P.Sla.ToString(),
+                    P.Service.Id.ToString(),
+                    P.Sla.Id.ToString(),
                     P.Name,
                     P.Description,
 
                });
+
                 lst.Tag = P;
                 listPackage.Items.Add(lst);
             }
@@ -366,8 +363,42 @@ namespace Presentation.Forms.Contract_Maintenance
 
         private void btnAddPackage_Click(object sender, EventArgs e)
         {
-            
-        }
+            frmAddPackage form = new frmAddPackage();
+            Hide();
+            DialogResult res = form.ShowDialog();
+            LoadPackage();
+
+        } //Add a Package 
+
+        private void btnEditPackage_Click(object sender, EventArgs e)
+        {
+            if (listPackage.SelectedItems.Count > 0)
+            {
+
+                //Ask user for conformation
+                DialogResult deleteI = MessageBox.Show("Are you sure you want to Edit this Package?", "WARNING: EDIT Package",
+                                                  MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (deleteI == DialogResult.Yes)
+                {
+                    Package Pack = listPackage.SelectedItems[0].Tag as Package;
+
+                    frmEditPackages form = new frmEditPackages(Pack);
+                    Hide();
+                    DialogResult res = form.ShowDialog();
+                    LoadPackage();
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("No Record was selected", "SELECTION",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+
+
+        } //Edit a Package 
 
         /// Package ////////////////////////////////////////////////////////////////////////////////////////Service Content
 

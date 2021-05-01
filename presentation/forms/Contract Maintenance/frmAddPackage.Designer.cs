@@ -41,7 +41,7 @@
             // 
             // btnAddPackage1
             // 
-            this.btnAddPackage1.Location = new System.Drawing.Point(477, 418);
+            this.btnAddPackage1.Location = new System.Drawing.Point(632, 391);
             this.btnAddPackage1.Name = "btnAddPackage1";
             this.btnAddPackage1.Size = new System.Drawing.Size(126, 47);
             this.btnAddPackage1.TabIndex = 2;
@@ -53,7 +53,7 @@
             // 
             this.txtPName.Location = new System.Drawing.Point(331, 105);
             this.txtPName.Name = "txtPName";
-            this.txtPName.Size = new System.Drawing.Size(272, 31);
+            this.txtPName.Size = new System.Drawing.Size(427, 31);
             this.txtPName.TabIndex = 4;
             // 
             // label1
@@ -70,7 +70,7 @@
             this.cmbPService.FormattingEnabled = true;
             this.cmbPService.Location = new System.Drawing.Point(331, 262);
             this.cmbPService.Name = "cmbPService";
-            this.cmbPService.Size = new System.Drawing.Size(272, 33);
+            this.cmbPService.Size = new System.Drawing.Size(427, 33);
             this.cmbPService.TabIndex = 7;
             // 
             // cmbPSLA
@@ -78,7 +78,7 @@
             this.cmbPSLA.FormattingEnabled = true;
             this.cmbPSLA.Location = new System.Drawing.Point(331, 332);
             this.cmbPSLA.Name = "cmbPSLA";
-            this.cmbPSLA.Size = new System.Drawing.Size(272, 33);
+            this.cmbPSLA.Size = new System.Drawing.Size(427, 33);
             this.cmbPSLA.TabIndex = 8;
             // 
             // label3
@@ -103,7 +103,7 @@
             // 
             this.txtPDiscript.Location = new System.Drawing.Point(331, 183);
             this.txtPDiscript.Name = "txtPDiscript";
-            this.txtPDiscript.Size = new System.Drawing.Size(272, 31);
+            this.txtPDiscript.Size = new System.Drawing.Size(427, 31);
             this.txtPDiscript.TabIndex = 13;
             // 
             // label2
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 521);
+            this.ClientSize = new System.Drawing.Size(850, 464);
             this.Controls.Add(this.txtPDiscript);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
@@ -131,6 +131,7 @@
             this.Controls.Add(this.btnAddPackage1);
             this.Name = "frmAddPackage";
             this.Text = "frmAddPackage";
+            this.Load += new System.EventHandler(this.frmAddPackage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
