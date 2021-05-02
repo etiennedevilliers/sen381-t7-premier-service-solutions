@@ -29,20 +29,20 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstViewBusi = new System.Windows.Forms.ListView();
             this.tbBusContact = new System.Windows.Forms.TextBox();
             this.tbBusiName = new System.Windows.Forms.TextBox();
             this.btnApply = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listView1
+            // lstViewBusi
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(88, 98);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(625, 255);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lstViewBusi.HideSelection = false;
+            this.lstViewBusi.Location = new System.Drawing.Point(88, 98);
+            this.lstViewBusi.Name = "lstViewBusi";
+            this.lstViewBusi.Size = new System.Drawing.Size(625, 255);
+            this.lstViewBusi.TabIndex = 1;
+            this.lstViewBusi.UseCompatibleStateImageBehavior = false;
             // 
             // tbBusContact
             // 
@@ -76,7 +76,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.tbBusiName);
             this.Controls.Add(this.tbBusContact);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lstViewBusi);
             this.Name = "frmViewBusinessContract";
             this.Text = "frmViewBusinessContract";
             this.Load += new System.EventHandler(this.frmViewBusinessContract_Load);
@@ -87,7 +87,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstViewBusi;
         private System.Windows.Forms.TextBox tbBusContact;
         private System.Windows.Forms.TextBox tbBusiName;
         private System.Windows.Forms.Button btnApply;

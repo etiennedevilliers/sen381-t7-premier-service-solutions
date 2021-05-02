@@ -28,6 +28,20 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void frmViewBusinessContract_Load(object sender, EventArgs e)
         {
+            //clientServiceContract servContract = new clientServiceContract();
+            /*
+             * foreach (ServiceContract serviceContract in ServiceContract.Read())
+                {
+                    ListViewItem lstViewBusiI = new ListViewItem(
+                        new string[] {
+                            serviceContract.serviceContractID,
+                            serviceContract.DateStart,
+                            serviceContract.DateEnd
+                        }
+                    );
+
+                lstViewBusi.Items.Add(lstVlstViewBusiIiewIndivI);
+            */
 
         }
 

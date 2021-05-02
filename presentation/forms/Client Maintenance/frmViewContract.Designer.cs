@@ -29,21 +29,21 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstViewIndiv = new System.Windows.Forms.ListView();
             this.tbIndivName = new System.Windows.Forms.TextBox();
             this.tbIndivContact = new System.Windows.Forms.TextBox();
             this.tbIndivSurname = new System.Windows.Forms.TextBox();
             this.btnApply = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listView1
+            // lstViewIndiv
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(58, 119);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(625, 255);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lstViewIndiv.HideSelection = false;
+            this.lstViewIndiv.Location = new System.Drawing.Point(58, 119);
+            this.lstViewIndiv.Name = "lstViewIndiv";
+            this.lstViewIndiv.Size = new System.Drawing.Size(625, 255);
+            this.lstViewIndiv.TabIndex = 0;
+            this.lstViewIndiv.UseCompatibleStateImageBehavior = false;
             // 
             // tbIndivName
             // 
@@ -85,7 +85,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.Controls.Add(this.tbIndivSurname);
             this.Controls.Add(this.tbIndivContact);
             this.Controls.Add(this.tbIndivName);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lstViewIndiv);
             this.Name = "frmViewContract";
             this.Text = "ViewContract";
             this.Load += new System.EventHandler(this.frmViewContract_Load);
@@ -96,7 +96,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstViewIndiv;
         private System.Windows.Forms.TextBox tbIndivName;
         private System.Windows.Forms.TextBox tbIndivContact;
         private System.Windows.Forms.TextBox tbIndivSurname;
