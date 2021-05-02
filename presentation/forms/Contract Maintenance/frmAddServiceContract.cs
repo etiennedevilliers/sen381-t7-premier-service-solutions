@@ -18,9 +18,10 @@ namespace Presentation.Forms.Contract_Maintenance
     public partial class frmAddServiceContract : Form
     {
         List<ServiceContract> List_Of_Service_Contract_OB = new List<ServiceContract>();
+        List<Package> NewPackagesForSC = new List<Package>();
         private  SCLogic SC_L = new SCLogic();
         private  List<Package> Place_Holer_Package_List = new List<Package>();
-        private PackageLogic P_L = new PackageLogic();
+        private  PackageLogic P_L = new PackageLogic();
 
         public frmAddServiceContract()
         {
@@ -65,16 +66,16 @@ namespace Presentation.Forms.Contract_Maintenance
 
         private void btnAddPackage_Click(object sender, EventArgs e)
         {
+
+
             if (cmbPackage.SelectedIndex < 0 )
             {
-                MessageBox.Show("Please Select a Service", "EMPTY VALUE!!",
+                MessageBox.Show("Please Select a Package", "EMPTY VALUE!!",
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                Package NewPackage;
-
-                NewPackage = Place_Holer_Package_List[cmbPackage.SelectedIndex];
+                Package NewPackage = Place_Holer_Package_List[cmbPackage.SelectedIndex];
 
                 ListViewItem lst = new ListViewItem(new string[]
                 {
@@ -85,11 +86,63 @@ namespace Presentation.Forms.Contract_Maintenance
                     NewPackage.Description
                 });
 
+                NewPackagesForSC.Add(Place_Holer_Package_List[cmbPackage.SelectedIndex]);
                 listPackage.Items.Add(lst);
-                //Also add to the Service Contract
-
             }
   
+        }//Add Package to SC
+
+        private void btnRemovePackage_Click(object sender, EventArgs e)
+        {
+            listPackage.Items.RemoveAt(listPackage.SelectedIndices[0]);
+            int index = listPackage.FocusedItem.Index;
+            NewPackagesForSC.RemoveAt(index);
+     
+        }//Remove Package form CS 
+
+        private void btnSCOk_Click(object sender, EventArgs e)
+        {
+            if (txtDescription.Text.Equals(""))
+            {
+                MessageBox.Show("Please enter Service Contract description details", "EMPTY FIELDS!!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (txtCost.Text.Equals(""))
+            {
+                MessageBox.Show("Please enter Service Contract cost details", "EMPTY FIELDS!!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (txtStat.Text.Equals(""))
+            {
+                MessageBox.Show("Please enter Service Contract status details", "EMPTY FIELDS!!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btnGenerateID_Click(object sender, EventArgs e)
+        {
+            //get the Dtae 
+            //get the Level of importance 
+
+            //Buuild the Identifier 
+
+            //Display on Tetxt box 
+
+            if (cmbImportance.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select a level of importance", "EMPTY FIELDS!!",
+                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                txtIdentifier.Text = SC_L.GenerateIDentifier(dtDateFinal.Value,cmbImportance.SelectedItem.ToString());
+
+            }
+
+           
+
+
         }
     }
 }

@@ -38,18 +38,19 @@ namespace Logic
         public string GenerateIDentifier(DateTime CreationDate , string LevelOfImportance)
         {
             string Result = "";
-            Random RND = new Random();
+            Random RND = new Random(26);
+            string Character = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
 
             string Year = CreationDate.Year.ToString();
-            string Random_String = (RND.Next('a', 'z').ToString()).ToUpper();
 
+            string Random_String = Character[RND.Next(0,26)].ToString();
 
             Result = Year + Random_String + LevelOfImportance;
 
-            return Result;
-        }//Generate identifier
+            return Result.PadLeft(12,'0');
 
-     
+        }//Generate identifier
 
         public void AddPackage(Package P , ServiceContract SC)
         {

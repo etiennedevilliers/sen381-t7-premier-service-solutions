@@ -35,12 +35,12 @@
             this.lblSCDateTer = new System.Windows.Forms.Label();
             this.lblIDent = new System.Windows.Forms.Label();
             this.lblscStatus = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.txtCost = new System.Windows.Forms.TextBox();
+            this.txtStat = new System.Windows.Forms.TextBox();
+            this.txtIdentifier = new System.Windows.Forms.TextBox();
+            this.dtDateFinal = new System.Windows.Forms.DateTimePicker();
+            this.dtDateTer = new System.Windows.Forms.DateTimePicker();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnAddPackage = new System.Windows.Forms.Button();
             this.btnRemovePackage = new System.Windows.Forms.Button();
@@ -52,21 +52,25 @@
             this.slaId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPDis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnGenerateID = new System.Windows.Forms.Button();
+            this.cmbImportance = new System.Windows.Forms.ComboBox();
+            this.lblImportance = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSCOk
             // 
-            this.btnSCOk.Location = new System.Drawing.Point(1296, 1031);
+            this.btnSCOk.Location = new System.Drawing.Point(1314, 1145);
             this.btnSCOk.Name = "btnSCOk";
             this.btnSCOk.Size = new System.Drawing.Size(172, 53);
             this.btnSCOk.TabIndex = 0;
             this.btnSCOk.Text = "OK";
             this.btnSCOk.UseVisualStyleBackColor = true;
+            this.btnSCOk.Click += new System.EventHandler(this.btnSCOk_Click);
             // 
             // lblSCDescript
             // 
             this.lblSCDescript.AutoSize = true;
-            this.lblSCDescript.Location = new System.Drawing.Point(127, 36);
+            this.lblSCDescript.Location = new System.Drawing.Point(51, 42);
             this.lblSCDescript.Name = "lblSCDescript";
             this.lblSCDescript.Size = new System.Drawing.Size(120, 25);
             this.lblSCDescript.TabIndex = 1;
@@ -75,7 +79,7 @@
             // lblDateFinalized
             // 
             this.lblDateFinalized.AutoSize = true;
-            this.lblDateFinalized.Location = new System.Drawing.Point(127, 95);
+            this.lblDateFinalized.Location = new System.Drawing.Point(51, 101);
             this.lblDateFinalized.Name = "lblDateFinalized";
             this.lblDateFinalized.Size = new System.Drawing.Size(150, 25);
             this.lblDateFinalized.TabIndex = 2;
@@ -84,7 +88,7 @@
             // lblCost
             // 
             this.lblCost.AutoSize = true;
-            this.lblCost.Location = new System.Drawing.Point(945, 36);
+            this.lblCost.Location = new System.Drawing.Point(875, 42);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(56, 25);
             this.lblCost.TabIndex = 4;
@@ -93,7 +97,7 @@
             // lblSCDateTer
             // 
             this.lblSCDateTer.AutoSize = true;
-            this.lblSCDateTer.Location = new System.Drawing.Point(127, 155);
+            this.lblSCDateTer.Location = new System.Drawing.Point(51, 161);
             this.lblSCDateTer.Name = "lblSCDateTer";
             this.lblSCDateTer.Size = new System.Drawing.Size(171, 25);
             this.lblSCDateTer.TabIndex = 3;
@@ -102,7 +106,7 @@
             // lblIDent
             // 
             this.lblIDent.AutoSize = true;
-            this.lblIDent.Location = new System.Drawing.Point(945, 161);
+            this.lblIDent.Location = new System.Drawing.Point(135, 277);
             this.lblIDent.Name = "lblIDent";
             this.lblIDent.Size = new System.Drawing.Size(94, 25);
             this.lblIDent.TabIndex = 6;
@@ -111,57 +115,57 @@
             // lblscStatus
             // 
             this.lblscStatus.AutoSize = true;
-            this.lblscStatus.Location = new System.Drawing.Point(942, 89);
+            this.lblscStatus.Location = new System.Drawing.Point(875, 101);
             this.lblscStatus.Name = "lblscStatus";
             this.lblscStatus.Size = new System.Drawing.Size(73, 25);
             this.lblscStatus.TabIndex = 5;
             this.lblscStatus.Text = "Status";
             // 
-            // textBox1
+            // txtDescription
             // 
-            this.textBox1.Location = new System.Drawing.Point(349, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(397, 31);
-            this.textBox1.TabIndex = 7;
+            this.txtDescription.Location = new System.Drawing.Point(273, 36);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(397, 31);
+            this.txtDescription.TabIndex = 7;
             // 
-            // textBox2
+            // txtCost
             // 
-            this.textBox2.Location = new System.Drawing.Point(1071, 30);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(397, 31);
-            this.textBox2.TabIndex = 8;
+            this.txtCost.Location = new System.Drawing.Point(1089, 36);
+            this.txtCost.Name = "txtCost";
+            this.txtCost.Size = new System.Drawing.Size(397, 31);
+            this.txtCost.TabIndex = 8;
             // 
-            // textBox3
+            // txtStat
             // 
-            this.textBox3.Location = new System.Drawing.Point(1071, 89);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(397, 31);
-            this.textBox3.TabIndex = 9;
+            this.txtStat.Location = new System.Drawing.Point(1089, 95);
+            this.txtStat.Name = "txtStat";
+            this.txtStat.Size = new System.Drawing.Size(397, 31);
+            this.txtStat.TabIndex = 9;
             // 
-            // textBox4
+            // txtIdentifier
             // 
-            this.textBox4.Location = new System.Drawing.Point(1071, 155);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(397, 31);
-            this.textBox4.TabIndex = 10;
+            this.txtIdentifier.Location = new System.Drawing.Point(273, 271);
+            this.txtIdentifier.Name = "txtIdentifier";
+            this.txtIdentifier.Size = new System.Drawing.Size(397, 31);
+            this.txtIdentifier.TabIndex = 10;
             // 
-            // dateTimePicker1
+            // dtDateFinal
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(349, 89);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(397, 31);
-            this.dateTimePicker1.TabIndex = 11;
+            this.dtDateFinal.Location = new System.Drawing.Point(273, 95);
+            this.dtDateFinal.Name = "dtDateFinal";
+            this.dtDateFinal.Size = new System.Drawing.Size(397, 31);
+            this.dtDateFinal.TabIndex = 11;
             // 
-            // dateTimePicker2
+            // dtDateTer
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(349, 149);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(397, 31);
-            this.dateTimePicker2.TabIndex = 12;
+            this.dtDateTer.Location = new System.Drawing.Point(273, 155);
+            this.dtDateTer.Name = "dtDateTer";
+            this.dtDateTer.Size = new System.Drawing.Size(397, 31);
+            this.dtDateTer.TabIndex = 12;
             // 
             // btnAddPackage
             // 
-            this.btnAddPackage.Location = new System.Drawing.Point(132, 304);
+            this.btnAddPackage.Location = new System.Drawing.Point(1492, 400);
             this.btnAddPackage.Name = "btnAddPackage";
             this.btnAddPackage.Size = new System.Drawing.Size(187, 53);
             this.btnAddPackage.TabIndex = 13;
@@ -171,17 +175,18 @@
             // 
             // btnRemovePackage
             // 
-            this.btnRemovePackage.Location = new System.Drawing.Point(132, 396);
+            this.btnRemovePackage.Location = new System.Drawing.Point(1492, 459);
             this.btnRemovePackage.Name = "btnRemovePackage";
-            this.btnRemovePackage.Size = new System.Drawing.Size(187, 63);
+            this.btnRemovePackage.Size = new System.Drawing.Size(187, 53);
             this.btnRemovePackage.TabIndex = 14;
             this.btnRemovePackage.Text = "Remove package";
             this.btnRemovePackage.UseVisualStyleBackColor = true;
+            this.btnRemovePackage.Click += new System.EventHandler(this.btnRemovePackage_Click);
             // 
             // lblPackage
             // 
             this.lblPackage.AutoSize = true;
-            this.lblPackage.Location = new System.Drawing.Point(127, 231);
+            this.lblPackage.Location = new System.Drawing.Point(133, 354);
             this.lblPackage.Name = "lblPackage";
             this.lblPackage.Size = new System.Drawing.Size(96, 25);
             this.lblPackage.TabIndex = 16;
@@ -190,9 +195,9 @@
             // cmbPackage
             // 
             this.cmbPackage.FormattingEnabled = true;
-            this.cmbPackage.Location = new System.Drawing.Point(349, 223);
+            this.cmbPackage.Location = new System.Drawing.Point(273, 351);
             this.cmbPackage.Name = "cmbPackage";
-            this.cmbPackage.Size = new System.Drawing.Size(1119, 33);
+            this.cmbPackage.Size = new System.Drawing.Size(1213, 33);
             this.cmbPackage.TabIndex = 17;
             // 
             // listPackage
@@ -204,9 +209,9 @@
             this.chPName,
             this.chPDis});
             this.listPackage.HideSelection = false;
-            this.listPackage.Location = new System.Drawing.Point(349, 279);
+            this.listPackage.Location = new System.Drawing.Point(273, 402);
             this.listPackage.Name = "listPackage";
-            this.listPackage.Size = new System.Drawing.Size(1119, 726);
+            this.listPackage.Size = new System.Drawing.Size(1213, 726);
             this.listPackage.TabIndex = 18;
             this.listPackage.UseCompatibleStateImageBehavior = false;
             this.listPackage.View = System.Windows.Forms.View.Details;
@@ -236,22 +241,57 @@
             this.chPDis.Text = "Package Description";
             this.chPDis.Width = 221;
             // 
+            // btnGenerateID
+            // 
+            this.btnGenerateID.Location = new System.Drawing.Point(732, 257);
+            this.btnGenerateID.Name = "btnGenerateID";
+            this.btnGenerateID.Size = new System.Drawing.Size(157, 45);
+            this.btnGenerateID.TabIndex = 19;
+            this.btnGenerateID.Text = "Generate ID";
+            this.btnGenerateID.UseVisualStyleBackColor = true;
+            this.btnGenerateID.Click += new System.EventHandler(this.btnGenerateID_Click);
+            // 
+            // cmbImportance
+            // 
+            this.cmbImportance.FormattingEnabled = true;
+            this.cmbImportance.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D"});
+            this.cmbImportance.Location = new System.Drawing.Point(1089, 165);
+            this.cmbImportance.Name = "cmbImportance";
+            this.cmbImportance.Size = new System.Drawing.Size(397, 33);
+            this.cmbImportance.TabIndex = 20;
+            // 
+            // lblImportance
+            // 
+            this.lblImportance.AutoSize = true;
+            this.lblImportance.Location = new System.Drawing.Point(872, 173);
+            this.lblImportance.Name = "lblImportance";
+            this.lblImportance.Size = new System.Drawing.Size(204, 25);
+            this.lblImportance.TabIndex = 21;
+            this.lblImportance.Text = "Level Of Importance";
+            // 
             // frmAddServiceContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1598, 1178);
+            this.ClientSize = new System.Drawing.Size(2469, 1616);
+            this.Controls.Add(this.lblImportance);
+            this.Controls.Add(this.cmbImportance);
+            this.Controls.Add(this.btnGenerateID);
             this.Controls.Add(this.listPackage);
             this.Controls.Add(this.cmbPackage);
             this.Controls.Add(this.lblPackage);
             this.Controls.Add(this.btnRemovePackage);
             this.Controls.Add(this.btnAddPackage);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.dtDateTer);
+            this.Controls.Add(this.dtDateFinal);
+            this.Controls.Add(this.txtIdentifier);
+            this.Controls.Add(this.txtStat);
+            this.Controls.Add(this.txtCost);
+            this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.lblIDent);
             this.Controls.Add(this.lblscStatus);
             this.Controls.Add(this.lblCost);
@@ -276,12 +316,12 @@
         private System.Windows.Forms.Label lblSCDateTer;
         private System.Windows.Forms.Label lblIDent;
         private System.Windows.Forms.Label lblscStatus;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.TextBox txtCost;
+        private System.Windows.Forms.TextBox txtStat;
+        private System.Windows.Forms.TextBox txtIdentifier;
+        private System.Windows.Forms.DateTimePicker dtDateFinal;
+        private System.Windows.Forms.DateTimePicker dtDateTer;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnAddPackage;
         private System.Windows.Forms.Button btnRemovePackage;
@@ -293,5 +333,8 @@
         private System.Windows.Forms.ColumnHeader slaId;
         private System.Windows.Forms.ColumnHeader chPName;
         private System.Windows.Forms.ColumnHeader chPDis;
+        private System.Windows.Forms.Button btnGenerateID;
+        private System.Windows.Forms.ComboBox cmbImportance;
+        private System.Windows.Forms.Label lblImportance;
     }
 }
