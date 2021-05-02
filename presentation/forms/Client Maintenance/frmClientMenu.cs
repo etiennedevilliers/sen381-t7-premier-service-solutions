@@ -114,7 +114,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             Business = true;
 
             Hide();
-            frmNewClient form = new frmNewClient();
+            frmNewBusinessClient form = new frmNewBusinessClient();
             form.ShowDialog();
             
 
@@ -122,7 +122,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void btnEditB_Click(object sender, EventArgs e)
         {
-            Business = true;
+            //Business = true;
 
             //Hide();
             //frmEditBusinessClient form = new fr();
@@ -200,18 +200,39 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void btnViewContractI_Click(object sender, EventArgs e)
         {
-            Hide();
-            frmViewContract form = new frmViewContract();
-            form.ShowDialog();
+            if (lstClientsI.SelectedItems.Count > 0)
+            {
+                IndividualClient client = lstClientsI.SelectedItems[0].Tag as IndividualClient;
+                //MessageBox.Show(this.ToString() + client.ToString());
+
+                frmViewContract viewContrFrm = new frmViewContract(client);
+                viewContrFrm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a field to view", "SELECT A FIELD",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
             
         }
 
         private void btnViewContractB_Click(object sender, EventArgs e)
         {
-            Hide();
-            frmViewContract form = new frmViewContract();
-            form.ShowDialog();
-            
+            if (lstClientsB.SelectedItems.Count > 0)
+            {
+                BusinessClient client = lstClientsB.SelectedItems[0].Tag as BusinessClient;
+                //MessageBox.Show(this.ToString() + client.ToString());
+
+                frmViewBusinessContract viewBusinessContrFrm = new frmViewBusinessContract(client);
+                viewBusinessContrFrm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a field to view", "SELECT A FIELD",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnAssignEmployeeB_Click(object sender, EventArgs e)

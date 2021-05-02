@@ -1,7 +1,7 @@
 ﻿
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
-    partial class frmViewContract
+    partial class frmViewBusinessContract
     {
         /// <summary>
         /// Required designer variable.
@@ -30,65 +30,56 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private void InitializeComponent()
         {
             this.listView1 = new System.Windows.Forms.ListView();
-            this.tbIndivName = new System.Windows.Forms.TextBox();
-            this.tbIndivContact = new System.Windows.Forms.TextBox();
-            this.tbIndivSurname = new System.Windows.Forms.TextBox();
+            this.tbBusContact = new System.Windows.Forms.TextBox();
+            this.tbBusiName = new System.Windows.Forms.TextBox();
             this.btnApply = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(58, 119);
+            this.listView1.Location = new System.Drawing.Point(88, 98);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(625, 255);
-            this.listView1.TabIndex = 0;
+            this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
-            // tbIndivName
+            // tbBusContact
             // 
-            this.tbIndivName.Location = new System.Drawing.Point(58, 75);
-            this.tbIndivName.Name = "tbIndivName";
-            this.tbIndivName.Size = new System.Drawing.Size(147, 22);
-            this.tbIndivName.TabIndex = 1;
+            this.tbBusContact.Location = new System.Drawing.Point(88, 57);
+            this.tbBusContact.Name = "tbBusContact";
+            this.tbBusContact.Size = new System.Drawing.Size(154, 22);
+            this.tbBusContact.TabIndex = 2;
             // 
-            // tbIndivContact
+            // tbBusiName
             // 
-            this.tbIndivContact.Location = new System.Drawing.Point(395, 75);
-            this.tbIndivContact.Name = "tbIndivContact";
-            this.tbIndivContact.Size = new System.Drawing.Size(172, 22);
-            this.tbIndivContact.TabIndex = 2;
-            // 
-            // tbIndivSurname
-            // 
-            this.tbIndivSurname.Location = new System.Drawing.Point(217, 75);
-            this.tbIndivSurname.Name = "tbIndivSurname";
-            this.tbIndivSurname.Size = new System.Drawing.Size(168, 22);
-            this.tbIndivSurname.TabIndex = 3;
+            this.tbBusiName.Location = new System.Drawing.Point(279, 57);
+            this.tbBusiName.Name = "tbBusiName";
+            this.tbBusiName.Size = new System.Drawing.Size(163, 22);
+            this.tbBusiName.TabIndex = 3;
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(597, 59);
+            this.btnApply.Location = new System.Drawing.Point(621, 44);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(86, 48);
-            this.btnApply.TabIndex = 4;
+            this.btnApply.TabIndex = 5;
             this.btnApply.Text = "Apply Changes";
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
-            // frmViewContract
+            // frmViewBusinessContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnApply);
-            this.Controls.Add(this.tbIndivSurname);
-            this.Controls.Add(this.tbIndivContact);
-            this.Controls.Add(this.tbIndivName);
+            this.Controls.Add(this.tbBusiName);
+            this.Controls.Add(this.tbBusContact);
             this.Controls.Add(this.listView1);
-            this.Name = "frmViewContract";
-            this.Text = "ViewContract";
-            this.Load += new System.EventHandler(this.frmViewContract_Load);
+            this.Name = "frmViewBusinessContract";
+            this.Text = "frmViewBusinessContract";
+            this.Load += new System.EventHandler(this.frmViewBusinessContract_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,9 +88,8 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         #endregion
 
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.TextBox tbIndivName;
-        private System.Windows.Forms.TextBox tbIndivContact;
-        private System.Windows.Forms.TextBox tbIndivSurname;
+        private System.Windows.Forms.TextBox tbBusContact;
+        private System.Windows.Forms.TextBox tbBusiName;
         private System.Windows.Forms.Button btnApply;
     }
 }
