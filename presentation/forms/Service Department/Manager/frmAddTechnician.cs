@@ -38,14 +38,10 @@ namespace Presentation.Forms.ServiceDepartment
         private void btnOk_Click(object sender, EventArgs e)
         {
             newTech = new Technician(txtName.Text, txtContactNum.Text, "Open", "Technician");
-            Service skill;
 
             foreach (ListViewItem i in lstSkills.Items)
             {
-                skill = new Service(i.SubItems[1].Text, int.Parse(i.SubItems[2].Text));
-                skill.Id = int.Parse(i.SubItems[0].Text);
-
-                newSkills.Add(skill);
+                newSkills.Add((Service) i.Tag);
             }
 
             DialogResult = DialogResult.OK;
@@ -55,7 +51,8 @@ namespace Presentation.Forms.ServiceDepartment
         {
             Service skill = (Service) cbxServices.SelectedItem;
 
-            ListViewItem lst = new ListViewItem(new string[] { skill.Id.ToString(), skill.Description, skill.ExpectedDuration.ToString() });
+            ListViewItem lst = new ListViewItem(new string[] { skill.Description, skill.ExpectedDuration.ToString() });
+            lst.Tag = skill;
 
             lstSkills.Items.Add(lst);
         }

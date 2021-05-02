@@ -15,6 +15,7 @@ namespace Presentation.Forms.ServiceDepartment
 {
     public partial class frmViewServices : Form
     {
+        ServiceDepartmentLogic sdLogic = new ServiceDepartmentLogic();
         ServiceRequest currentServiceRequest;
         Technician tech;
 
@@ -39,8 +40,12 @@ namespace Presentation.Forms.ServiceDepartment
             RequestController rqCtr = new RequestController();
             rqCtr.Update(currentServiceRequest);
 
-            Scheduler sch = new Scheduler();
-            sch.Schedule(tech);
+            if (sdLogic.GetQueueDuration(tech) == 0)
+            {
+                tech.EmploymentStatus = "Open";
+                TechnicianController techCtr = new TechnicianController();
+                techCtr.Update(tech);
+            }
 
             LoadData();
         }
@@ -49,21 +54,27 @@ namespace Presentation.Forms.ServiceDepartment
         {
             lstCurrentServices.Items.Clear();
 
-            TechnicianHandler handler = new TechnicianHandler();
-            currentServiceRequest = handler.GetServiceRequest(tech);
+            currentServiceRequest = sdLogic.GetServiceRequest(tech);
 
-            List<Package> packages = currentServiceRequest.ServiceContract.Packages;
-            List<Service> skills = tech.Skills;
-
-            foreach (Package i in packages)
+            if (currentServiceRequest == null)
             {
-                foreach (Service j in skills)
+                List<Package> packages = currentServiceRequest.ServiceContract.Packages;
+                List<Service> skills = tech.Skills;
+
+                foreach (Package i in packages)
                 {
-                    if (i.Service.Id == j.Id)
+                    foreach (Service j in skills)
                     {
-                        lstCurrentServices.Items.Add(i.Service.Description);
+                        if (i.Service.Id == j.Id)
+                        {
+                            lstCurrentServices.Items.Add(i.Service.Description);
+                        }
                     }
                 }
+            }
+            else
+            {
+                //No work
             }
         }
     }

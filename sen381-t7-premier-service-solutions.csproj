@@ -88,15 +88,16 @@
     <Compile Include="data\layer\objects\Requests\NewContractRequest.cs" />
     <Compile Include="data\layer\objects\Requests\Request.cs" />
     <Compile Include="data\layer\objects\Requests\ServiceRequest.cs" />
+    <Compile Include="data\layer\objects\Requests\RequestAgent.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ClientServiceContract.cs" />
     <Compile Include="data\layer\objects\ServiceContract\Package.cs" />
     <Compile Include="data\layer\objects\ServiceContract\Service.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ServiceContract.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ServiceLevelAgreement.cs" />
     <Compile Include="logic\CallCentre\CallCentreLogic.cs" />
-    <Compile Include="logic\Scheduler.cs" />
+    <Compile Include="logic\GeneralLogic.cs" />
     <Compile Include="logic\NewContractRequestLogic.cs" />
-    <Compile Include="logic\TechnicianHandler.cs" />
+    <Compile Include="logic\ServiceDepartmentLogic.cs" />
     <Compile Include="presentation\forms\Agents\frmAgentSelection.cs">
       <SubType>Form</SubType>
     </Compile>

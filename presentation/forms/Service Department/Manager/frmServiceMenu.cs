@@ -15,11 +15,8 @@ namespace Presentation.Forms.ServiceDepartment
 {
     public partial class frmServiceMenu : Form
     {
-        List<ServiceRequest> requests = new List<ServiceRequest>();
-        List<Technician> technicians = new List<Technician>();
-
-        ServiceRequestController rqCtr = new ServiceRequestController();
-        TechnicianController tcCtr = new TechnicianController();
+        ServiceDepartmentLogic sdLogic = new ServiceDepartmentLogic();
+        GeneralLogic genLogic = new GeneralLogic();
 
         public frmServiceMenu()
         {
@@ -32,28 +29,12 @@ namespace Presentation.Forms.ServiceDepartment
             LoadTechnicians();
         }
 
-        private void btnCloseRequest_Click(object sender, EventArgs e)
-        {
-            int id = int.Parse(lstServices.SelectedItems[0].SubItems[0].Text);
-
-            foreach (ServiceRequest i in requests)
-            {
-                if (i.Id == id)
-                {
-                    i.Status = "Closed";
-                    rqCtr.Update(i);
-                }
-            }
-
-            LoadRequests();
-        }
-
         void LoadRequests()
         {
-            lstServices.Items.Clear();
-            requests = rqCtr.Read();
+            lstRequests.Items.Clear();
+            List<ServiceRequest> requests = new ServiceRequestController().Read();
             Client client;
-            List<Agent> handlers;
+            List<RequestAgent> handlers;
             string technicianNames;
             IndividualClient ind;
             BusinessClient bus;
@@ -69,22 +50,19 @@ namespace Presentation.Forms.ServiceDepartment
 
                     foreach (Agent j in handlers)
                     {
-                        if (j is Technician)
+                        if (j.EmployeeType == "Technician")
                         {
                             technicianNames += j.Name + ", ";
                         }
                     }
 
-                    if (technicianNames != "")
-                    {
-                        technicianNames = technicianNames.Substring(0, technicianNames.Length - 2);
-                    }
+                    technicianNames = genLogic.TruncList(technicianNames);
 
                     lst = new ListViewItem(
                         new string[]
                         {
-                        i.Id.ToString(), i.Description, i.DateCreated.ToShortDateString(), i.JobStarted.ToString(),
-                        i.DateResolved.ToString(), i.Call.TimeStarted.ToLongTimeString(), i.Call.TimeEnded.ToLongTimeString(), technicianNames
+                            i.Description, i.DateCreated.ToShortDateString(), i.JobStarted.ToString(),
+                            i.DateResolved.ToString(), i.Call.TimeStarted.ToLongTimeString(), i.Call.TimeEnded.ToLongTimeString(), technicianNames
                         });
 
                     if (client is IndividualClient)
@@ -100,7 +78,9 @@ namespace Presentation.Forms.ServiceDepartment
 
                     lst.SubItems.Add(i.Status);
 
-                    lstServices.Items.Add(lst);
+                    lst.Tag = i;
+
+                    lstRequests.Items.Add(lst);
                 }
             }
         }
@@ -108,8 +88,7 @@ namespace Presentation.Forms.ServiceDepartment
         void LoadTechnicians()
         {
             lstTechnicians.Items.Clear();
-            technicians = tcCtr.Read();
-            TechnicianHandler handler = new TechnicianHandler();
+            List<Technician> technicians = new TechnicianController().Read();
             ServiceRequest currentRequest;
             List<Service> skills;
             string skillSet;
@@ -125,40 +104,56 @@ namespace Presentation.Forms.ServiceDepartment
                     skillSet += j.Description + ", ";
                 }
 
-                if (skillSet != "")
-                {
-                    skillSet = skillSet.Substring(0, skillSet.Length - 2);
-                }
+                skillSet = genLogic.TruncList(skillSet);
 
                 lst = new ListViewItem(
                         new string[]
                         {
-                        i.Id.ToString(), i.Name, i.ContactNum, i.EmploymentStatus, skillSet
+                            i.Name, i.ContactNum, i.EmploymentStatus, skillSet
                         });
 
                 if (i.EmploymentStatus == "Working")
                 {
-                    currentRequest = handler.GetServiceRequest(i);
+                    currentRequest = sdLogic.GetServiceRequest(i);
                     lst.SubItems.Add(currentRequest.Id.ToString());
                 }
+
+                lst.Tag = i;
 
                 lstTechnicians.Items.Add(lst);
             }
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
+        //Requests Tab
+        private void btnSchedule_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(lstTechnicians.SelectedItems[0].SubItems[0].Text);
-
-            foreach (Technician i in technicians)
+            if (sdLogic.Schedule((ServiceRequest)lstRequests.SelectedItems[0].Tag))
             {
-                if (i.Id == id)
-                {
-                    tcCtr.Delete(i);
-                }
+                MessageBox.Show("Technicians Successfully Scheduled");
+            }
+            else
+            {
+                MessageBox.Show("Technicians Not Scheduled");
             }
 
+            LoadRequests();
             LoadTechnicians();
+        }
+
+        private void btnCloseRequest_Click(object sender, EventArgs e)
+        {
+            sdLogic.CloseRequest((ServiceRequest)lstRequests.SelectedItems[0].Tag);
+
+            LoadRequests();
+        }
+
+        //Technicians Tab
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            sdLogic.DeleteTechnician((Technician) lstTechnicians.SelectedItems[0].Tag);
+
+            LoadTechnicians();
+            LoadRequests();
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -168,14 +163,7 @@ namespace Presentation.Forms.ServiceDepartment
 
             if (res == DialogResult.OK)
             {
-                Technician tech = form.newTech;
-
-                tcCtr.Create(tech);
-
-                foreach (Service i in form.newSkills)
-                {
-                    tcCtr.Add(i, tech);
-                }
+                sdLogic.CreateTechnician(form.newTech, form.newSkills);
             }
 
             LoadTechnicians();

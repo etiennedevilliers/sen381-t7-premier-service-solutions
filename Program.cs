@@ -13,6 +13,7 @@ namespace sen381_t7_premier_service_solutions
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// 
         [STAThread]
         static void Main()
         {

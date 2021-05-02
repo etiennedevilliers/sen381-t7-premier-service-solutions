@@ -33,15 +33,14 @@ namespace Presentation.Forms.ServiceDepartment
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtContactNum = new System.Windows.Forms.TextBox();
             this.lstSkills = new System.Windows.Forms.ListView();
+            this.colDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colExpectedDur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cbxServices = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
             this.lblContactNum = new System.Windows.Forms.Label();
             this.lblSkills = new System.Windows.Forms.Label();
-            this.colID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colExpectedDur = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnOk
@@ -71,7 +70,6 @@ namespace Presentation.Forms.ServiceDepartment
             // lstSkills
             // 
             this.lstSkills.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colID,
             this.colDescription,
             this.colExpectedDur});
             this.lstSkills.HideSelection = false;
@@ -81,6 +79,16 @@ namespace Presentation.Forms.ServiceDepartment
             this.lstSkills.TabIndex = 3;
             this.lstSkills.UseCompatibleStateImageBehavior = false;
             this.lstSkills.View = System.Windows.Forms.View.Details;
+            // 
+            // colDescription
+            // 
+            this.colDescription.Text = "Description";
+            this.colDescription.Width = 166;
+            // 
+            // colExpectedDur
+            // 
+            this.colExpectedDur.Text = "Expected Duration";
+            this.colExpectedDur.Width = 103;
             // 
             // cbxServices
             // 
@@ -137,21 +145,6 @@ namespace Presentation.Forms.ServiceDepartment
             this.lblSkills.TabIndex = 9;
             this.lblSkills.Text = "Skills:";
             // 
-            // colID
-            // 
-            this.colID.Text = "ID";
-            this.colID.Width = 39;
-            // 
-            // colDescription
-            // 
-            this.colDescription.Text = "Description";
-            this.colDescription.Width = 166;
-            // 
-            // colExpectedDur
-            // 
-            this.colExpectedDur.Text = "Expected Duration";
-            this.colExpectedDur.Width = 103;
-            // 
             // frmAddTechnician
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,7 +180,6 @@ namespace Presentation.Forms.ServiceDepartment
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblContactNum;
         private System.Windows.Forms.Label lblSkills;
-        private System.Windows.Forms.ColumnHeader colID;
         private System.Windows.Forms.ColumnHeader colDescription;
         private System.Windows.Forms.ColumnHeader colExpectedDur;
     }

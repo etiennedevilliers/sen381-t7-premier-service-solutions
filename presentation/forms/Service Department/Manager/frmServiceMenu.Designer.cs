@@ -31,8 +31,8 @@ namespace Presentation.Forms.ServiceDepartment
         {
             this.tabServiceMenu = new System.Windows.Forms.TabControl();
             this.tpgService = new System.Windows.Forms.TabPage();
-            this.lstServices = new System.Windows.Forms.ListView();
-            this.colID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnSchedule = new System.Windows.Forms.Button();
+            this.lstRequests = new System.Windows.Forms.ListView();
             this.colDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colDateCreated = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colJobStarted = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,7 +47,6 @@ namespace Presentation.Forms.ServiceDepartment
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.lstTechnicians = new System.Windows.Forms.ListView();
-            this.colTechID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colContactNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -74,7 +73,8 @@ namespace Presentation.Forms.ServiceDepartment
             // 
             // tpgService
             // 
-            this.tpgService.Controls.Add(this.lstServices);
+            this.tpgService.Controls.Add(this.btnSchedule);
+            this.tpgService.Controls.Add(this.lstRequests);
             this.tpgService.Controls.Add(this.btnCloseRequest);
             this.tpgService.Location = new System.Drawing.Point(4, 22);
             this.tpgService.Name = "tpgService";
@@ -84,13 +84,23 @@ namespace Presentation.Forms.ServiceDepartment
             this.tpgService.Text = "Requests";
             this.tpgService.UseVisualStyleBackColor = true;
             // 
-            // lstServices
+            // btnSchedule
             // 
-            this.lstServices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSchedule.Location = new System.Drawing.Point(518, 6);
+            this.btnSchedule.Name = "btnSchedule";
+            this.btnSchedule.Size = new System.Drawing.Size(145, 28);
+            this.btnSchedule.TabIndex = 4;
+            this.btnSchedule.Text = "Schedule Technicians";
+            this.btnSchedule.UseVisualStyleBackColor = true;
+            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
+            // 
+            // lstRequests
+            // 
+            this.lstRequests.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lstServices.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colID,
+            this.lstRequests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colDescription,
             this.colDateCreated,
             this.colJobStarted,
@@ -100,17 +110,13 @@ namespace Presentation.Forms.ServiceDepartment
             this.colTechnicians,
             this.colClientName,
             this.colReqStatus});
-            this.lstServices.HideSelection = false;
-            this.lstServices.Location = new System.Drawing.Point(6, 40);
-            this.lstServices.Name = "lstServices";
-            this.lstServices.Size = new System.Drawing.Size(779, 379);
-            this.lstServices.TabIndex = 3;
-            this.lstServices.UseCompatibleStateImageBehavior = false;
-            this.lstServices.View = System.Windows.Forms.View.Details;
-            // 
-            // colID
-            // 
-            this.colID.Text = "ID";
+            this.lstRequests.HideSelection = false;
+            this.lstRequests.Location = new System.Drawing.Point(6, 40);
+            this.lstRequests.Name = "lstRequests";
+            this.lstRequests.Size = new System.Drawing.Size(779, 379);
+            this.lstRequests.TabIndex = 3;
+            this.lstRequests.UseCompatibleStateImageBehavior = false;
+            this.lstRequests.View = System.Windows.Forms.View.Details;
             // 
             // colDescription
             // 
@@ -203,7 +209,6 @@ namespace Presentation.Forms.ServiceDepartment
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstTechnicians.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colTechID,
             this.colName,
             this.colContactNum,
             this.colStatus,
@@ -216,10 +221,6 @@ namespace Presentation.Forms.ServiceDepartment
             this.lstTechnicians.TabIndex = 5;
             this.lstTechnicians.UseCompatibleStateImageBehavior = false;
             this.lstTechnicians.View = System.Windows.Forms.View.Details;
-            // 
-            // colTechID
-            // 
-            this.colTechID.Text = "ID";
             // 
             // colName
             // 
@@ -277,7 +278,7 @@ namespace Presentation.Forms.ServiceDepartment
         private System.Windows.Forms.TabPage tpgService;
         private System.Windows.Forms.TabPage tpgTechnicians;
         private System.Windows.Forms.Button btnCloseRequest;
-        private System.Windows.Forms.ListView lstServices;
+        private System.Windows.Forms.ListView lstRequests;
         private System.Windows.Forms.ColumnHeader colDescription;
         private System.Windows.Forms.ColumnHeader colDateCreated;
         private System.Windows.Forms.ColumnHeader colJobStarted;
@@ -285,18 +286,17 @@ namespace Presentation.Forms.ServiceDepartment
         private System.Windows.Forms.ColumnHeader colClientName;
         private System.Windows.Forms.ColumnHeader colCallTimeStarted;
         private System.Windows.Forms.ColumnHeader colCallTimeEnded;
-        private System.Windows.Forms.ColumnHeader colID;
         private System.Windows.Forms.ColumnHeader colTechnicians;
         private System.Windows.Forms.ListView lstTechnicians;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.ColumnHeader colTechID;
         private System.Windows.Forms.ColumnHeader colName;
         private System.Windows.Forms.ColumnHeader colContactNum;
         private System.Windows.Forms.ColumnHeader colStatus;
         private System.Windows.Forms.ColumnHeader colSkills;
         private System.Windows.Forms.ColumnHeader colAssignedID;
         private System.Windows.Forms.ColumnHeader colReqStatus;
+        private System.Windows.Forms.Button btnSchedule;
     }
 }
