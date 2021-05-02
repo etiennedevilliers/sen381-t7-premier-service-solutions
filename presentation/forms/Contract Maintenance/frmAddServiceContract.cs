@@ -22,6 +22,7 @@ namespace Presentation.Forms.Contract_Maintenance
         private  SCLogic SC_L = new SCLogic();
         private  List<Package> Place_Holer_Package_List = new List<Package>();
         private  PackageLogic P_L = new PackageLogic();
+        private string Identtifier = "";
 
         public frmAddServiceContract()
         {
@@ -104,20 +105,53 @@ namespace Presentation.Forms.Contract_Maintenance
         {
             if (txtDescription.Text.Equals(""))
             {
-                MessageBox.Show("Please enter Service Contract description details", "EMPTY FIELDS!!",
+                MessageBox.Show("Please enter Service Contract description ", "EMPTY FIELDS!!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (txtCost.Text.Equals(""))
             {
-                MessageBox.Show("Please enter Service Contract cost details", "EMPTY FIELDS!!",
+                MessageBox.Show("Please enter Service Contract cost ", "EMPTY FIELDS!!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (txtStat.Text.Equals(""))
             {
-                MessageBox.Show("Please enter Service Contract status details", "EMPTY FIELDS!!",
+                MessageBox.Show("Please enter Service Contract status", "EMPTY FIELDS!!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            if (Identtifier.Equals(""))
+            {
+                MessageBox.Show("Please generate a Identifier", "EMPTY FIELDS!!",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                //Add the packages , add the identifiers ,Create SC
 
+                ServiceContract SC = new ServiceContract
+                    (
+                        txtDescription.Text,
+                        double.Parse(txtCost.Text),
+                        dtDateFinal.Value,
+                        dtDateFinal.Value,
+                        txtStat.Text,
+                        Identtifier
+                    );
+
+                SC_L.CreateServiceContract(SC);
+
+                foreach (Package p in NewPackagesForSC)
+                {
+                    SC_L.AddPackage(p,SC);
+                }
+
+                MessageBox.Show("Service successfully Service Contract", " ADD",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //Perform Fom transition
+                Hide();
+                frmServiceContract form = new frmServiceContract();
+                form.ShowDialog();
+            }
         }
 
         private void btnGenerateID_Click(object sender, EventArgs e)
@@ -136,13 +170,10 @@ namespace Presentation.Forms.Contract_Maintenance
             }
             else
             {
-                txtIdentifier.Text = SC_L.GenerateIDentifier(dtDateFinal.Value,cmbImportance.SelectedItem.ToString());
+                Identtifier = SC_L.GenerateIDentifier(dtDateFinal.Value,cmbImportance.SelectedItem.ToString());
+                txtIdentifier.Text = Identtifier;
 
             }
-
-           
-
-
         }
     }
 }

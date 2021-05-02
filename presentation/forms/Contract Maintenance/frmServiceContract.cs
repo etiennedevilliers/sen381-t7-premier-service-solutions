@@ -429,7 +429,10 @@ namespace Presentation.Forms.Contract_Maintenance
             }
         }//Load the Service Contract
 
+        private void btnRemoveServiceContract_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 
 }
