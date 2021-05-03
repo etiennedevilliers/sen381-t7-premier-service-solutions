@@ -71,6 +71,13 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
                 lstB.Tag = client;
                 lstClientsB.Items.Add(lstB);
+
+                AgentController agentController = new AgentController();
+
+                foreach (Agent agent in agentController.Read())
+                {
+                    cbEmployeesB.Items.Add(agent);
+                }
             }
         }
 
@@ -237,8 +244,15 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void btnAssignEmployeeB_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Employee assigned to client", "EMPLOYEE ASSIGNED",
+            if (cbEmployeesB.SelectedIndex > 0)
+            {
+                //Employeee = cbEmployeesB.SelectedItem as Agent;
+            }
+            else
+            {
+                MessageBox.Show("Employee assigned to client", "EMPLOYEE ASSIGNED",
                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         
