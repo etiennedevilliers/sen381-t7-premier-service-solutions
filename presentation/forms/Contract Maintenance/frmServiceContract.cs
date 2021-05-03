@@ -348,8 +348,8 @@ namespace Presentation.Forms.Contract_Maintenance
                 ListViewItem lst = new ListViewItem(new string[]
                {
                     P.Id.ToString(),
-                    P.Service.Id.ToString(),
-                    P.Sla.Id.ToString(),
+                    P.Service.Description,
+                    P.Sla.Description,
                     P.Name,
                     P.Description,
 
@@ -432,7 +432,27 @@ namespace Presentation.Forms.Contract_Maintenance
         private void btnRemoveServiceContract_Click(object sender, EventArgs e)
         {
 
+            if (lstServiceContract.SelectedItems.Count > 0)
+            {
+
+                //Ask user for conformation
+                DialogResult deleteI = MessageBox.Show("Are you sure you want to delete this Service Contract?", "WARNING: DELETE Package",
+                                                  MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                //Get user for conformation
+
+                if (deleteI == DialogResult.Yes)
+                {
+                    ServiceContract RSC = lstServiceContract.SelectedItems[0].Tag as ServiceContract;
+                    SC_L.DeleteServiceContract(RSC);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Record was selected", "SELECTION",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
     }
 
 }

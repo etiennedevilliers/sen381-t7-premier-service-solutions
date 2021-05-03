@@ -132,7 +132,7 @@ namespace Presentation.Forms.Contract_Maintenance
                         txtDescription.Text,
                         double.Parse(txtCost.Text),
                         dtDateFinal.Value,
-                        dtDateFinal.Value,
+                        dtDateTer.Value,
                         txtStat.Text,
                         Identtifier
                     );

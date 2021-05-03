@@ -33,7 +33,9 @@ namespace Logic
         //Delete 
         public void DeleteSLA(ServiceLevelAgreement SLA)
         {
+            //Call SLA  If SLA Exiss then throw Exception before Deleting 
             SLA_Ctr.Delete(SLA);
+      
         }
 
         //Insert 
