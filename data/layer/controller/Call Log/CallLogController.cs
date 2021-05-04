@@ -14,9 +14,10 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             string query = string.Format(
-                "INSERT INTO CallLog(timeStarted, timeEnded, AgentID, incoming) VALUES ('{0}', '{1}', null, {2})",
+                "INSERT INTO CallLog(timeStarted, timeEnded, AgentID, incoming) VALUES ('{0}', '{1}', {2}, {3})",
                 obj.TimeStarted.ToString("yyyy-MM-dd HH:mm:ss.fff"),
                 obj.TimeEnded.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.Representative.Id,
                 obj.Incoming ? 1 : 0
             );
 

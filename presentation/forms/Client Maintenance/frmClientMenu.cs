@@ -11,6 +11,8 @@ using Microsoft.SqlServer.Server;
 using System.Data.SqlClient;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
+using Logic;
+using Presentation.Forms.Agents;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
@@ -32,6 +34,56 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         {
             LoadIndividualClient();
             LoadBusinessClient();
+            LoadServiceContractRequests();
+        }
+
+
+        void LoadServiceContractRequests() 
+        {
+            lvServiceContractRequests.Items.Clear();
+            NewContractRequestController newContractRequestController = new NewContractRequestController();
+
+            foreach (NewContractRequest newContractRequest in newContractRequestController.Read())
+            {
+                if (newContractRequest.Status != "Open") continue;
+                
+                
+                Client client = newContractRequest.Client;
+
+                if (client is IndividualClient)
+                {
+                    IndividualClient iClient = client as IndividualClient;
+
+                    ListViewItem listViewItem = new ListViewItem(new string[] {
+                        String.Format("{0} {1}", iClient.Name, iClient.Surname),
+                        "Individual Client",
+                        newContractRequest.ServiceContract.Description,
+                        newContractRequest.DateCreated.ToShortDateString(),
+                        newContractRequest.Status
+                    });
+
+                    listViewItem.Tag = newContractRequest;
+
+                    lvServiceContractRequests.Items.Add(listViewItem);
+                }
+                else
+                {
+                    BusinessClient bClient = client as BusinessClient;
+
+                    ListViewItem listViewItem = new ListViewItem(new string[] {
+                        bClient.Name,
+                        "Business Client",
+                        newContractRequest.ServiceContract.Description,
+                        newContractRequest.DateCreated.ToShortDateString(),
+                        newContractRequest.Status
+                    });
+
+                    listViewItem.Tag = newContractRequest;
+
+                    lvServiceContractRequests.Items.Add(listViewItem);
+                }
+                
+            }
         }
 
         void LoadIndividualClient()
@@ -255,6 +307,24 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             }
         }
 
-        
+        private void btnCallClient_Click(object sender, EventArgs e)
+        {
+
+            if (lvServiceContractRequests.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select Service Contract request first!");
+                return;
+            }
+
+            frmAddServiceContractToClient.FullfillNewContractRequest(
+                lvServiceContractRequests.SelectedItems[0].Tag as NewContractRequest
+            );
+
+            LoadServiceContractRequests();
+
+
+
+        }
     }
 }
+  

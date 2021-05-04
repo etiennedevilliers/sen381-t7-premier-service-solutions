@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace Data.Layer.Controller
 {
-    class BusinessClientController : ICreate<BusinessClient>, IRead<BusinessClient>, IUpdate<BusinessClient>, IDelete<BusinessClient>
+    class BusinessClientController : ICreate<BusinessClient>, IRead<BusinessClient>, IUpdate<BusinessClient>, IDelete<BusinessClient>, IChildren<Employee, BusinessClient>
     {
         //Basic CRUD
         public int Create(BusinessClient obj)
@@ -73,6 +73,64 @@ namespace Data.Layer.Controller
             cl.Update(obj);
 
             dh.Dispose();
+        }
+
+
+        // IChildren interface
+        public void Add(Employee child, BusinessClient parent)
+        {
+            DataHandler dh = new DataHandler();
+
+            child.Id = dh.InsertID(string.Format(
+                    "INSERT INTO Employee(name, surname, role, contactNum, BusinessClientID) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')",
+                    child.Name, child.Surname, child.Role, child.ContactNum, parent.Id));
+
+            dh.Dispose();
+        }
+
+        public void Remove(Employee child, BusinessClient parent)
+        {
+            DataHandler dh = new DataHandler();
+
+            dh.Delete("Employee", "BusinessClientID = " + parent.Id.ToString());
+
+            dh.Dispose();
+        }
+
+        public List<Employee> ReadChildren(BusinessClient parent)
+        {
+            DataHandler dh = new DataHandler();
+
+            List<Employee> empList = new List<Employee>();
+
+            String query = String.Format(
+                "SELECT EmployeeID, name, surname, role, contactNum FROM Employee WHERE BusinessClientID = {0}",
+                parent.Id
+            );
+
+            SqlDataReader read = dh.Select(query);
+            Employee newEmp;
+
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+                    newEmp = new Employee(
+                            read.GetString(1),
+                            read.GetString(2),
+                            read.GetString(3),
+                            read.GetString(4)
+                        );
+
+                    newEmp.Id = read.GetInt32(0);
+
+                    empList.Add(newEmp);
+                }
+            }
+
+            dh.Dispose();
+
+            return empList;
         }
     }
 }

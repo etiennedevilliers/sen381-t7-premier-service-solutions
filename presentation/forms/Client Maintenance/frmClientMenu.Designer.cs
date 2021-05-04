@@ -49,9 +49,18 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colNameB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colContactNumB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnEditB = new System.Windows.Forms.Button();
+            this.tpgServiceContractRequests = new System.Windows.Forms.TabPage();
+            this.btnCallClient = new System.Windows.Forms.Button();
+            this.lvServiceContractRequests = new System.Windows.Forms.ListView();
+            this.chClient = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chClientType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chServiceContract = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tpgIndividual.SuspendLayout();
             this.tpgIndividualClients.SuspendLayout();
             this.tpgBusinessClients.SuspendLayout();
+            this.tpgServiceContractRequests.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstClientsI
@@ -62,9 +71,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colContactNumI});
             this.lstClientsI.FullRowSelect = true;
             this.lstClientsI.HideSelection = false;
-            this.lstClientsI.Location = new System.Drawing.Point(0, 34);
+            this.lstClientsI.Location = new System.Drawing.Point(0, 54);
+            this.lstClientsI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstClientsI.Name = "lstClientsI";
-            this.lstClientsI.Size = new System.Drawing.Size(1032, 485);
+            this.lstClientsI.Size = new System.Drawing.Size(1546, 756);
             this.lstClientsI.TabIndex = 0;
             this.lstClientsI.UseCompatibleStateImageBehavior = false;
             this.lstClientsI.View = System.Windows.Forms.View.Details;
@@ -86,9 +96,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnEditI
             // 
-            this.btnEditI.Location = new System.Drawing.Point(831, 7);
+            this.btnEditI.Location = new System.Drawing.Point(1246, 12);
+            this.btnEditI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditI.Name = "btnEditI";
-            this.btnEditI.Size = new System.Drawing.Size(80, 23);
+            this.btnEditI.Size = new System.Drawing.Size(120, 37);
             this.btnEditI.TabIndex = 1;
             this.btnEditI.Text = "Edit";
             this.btnEditI.UseVisualStyleBackColor = true;
@@ -96,9 +107,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnDeleteI
             // 
-            this.btnDeleteI.Location = new System.Drawing.Point(519, 7);
+            this.btnDeleteI.Location = new System.Drawing.Point(778, 12);
+            this.btnDeleteI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDeleteI.Name = "btnDeleteI";
-            this.btnDeleteI.Size = new System.Drawing.Size(80, 23);
+            this.btnDeleteI.Size = new System.Drawing.Size(120, 37);
             this.btnDeleteI.TabIndex = 2;
             this.btnDeleteI.Text = "Delete";
             this.btnDeleteI.UseVisualStyleBackColor = true;
@@ -106,9 +118,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnViewContractI
             // 
-            this.btnViewContractI.Location = new System.Drawing.Point(917, 7);
+            this.btnViewContractI.Location = new System.Drawing.Point(1376, 12);
+            this.btnViewContractI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnViewContractI.Name = "btnViewContractI";
-            this.btnViewContractI.Size = new System.Drawing.Size(115, 23);
+            this.btnViewContractI.Size = new System.Drawing.Size(172, 37);
             this.btnViewContractI.TabIndex = 3;
             this.btnViewContractI.Text = "View Contract";
             this.btnViewContractI.UseVisualStyleBackColor = true;
@@ -118,10 +131,12 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             this.tpgIndividual.Controls.Add(this.tpgIndividualClients);
             this.tpgIndividual.Controls.Add(this.tpgBusinessClients);
-            this.tpgIndividual.Location = new System.Drawing.Point(3, 2);
+            this.tpgIndividual.Controls.Add(this.tpgServiceContractRequests);
+            this.tpgIndividual.Location = new System.Drawing.Point(4, 4);
+            this.tpgIndividual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tpgIndividual.Name = "tpgIndividual";
             this.tpgIndividual.SelectedIndex = 0;
-            this.tpgIndividual.Size = new System.Drawing.Size(1046, 551);
+            this.tpgIndividual.Size = new System.Drawing.Size(1568, 862);
             this.tpgIndividual.TabIndex = 4;
             // 
             // tpgIndividualClients
@@ -131,19 +146,21 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.tpgIndividualClients.Controls.Add(this.btnViewContractI);
             this.tpgIndividualClients.Controls.Add(this.lstClientsI);
             this.tpgIndividualClients.Controls.Add(this.btnEditI);
-            this.tpgIndividualClients.Location = new System.Drawing.Point(4, 25);
+            this.tpgIndividualClients.Location = new System.Drawing.Point(8, 39);
+            this.tpgIndividualClients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tpgIndividualClients.Name = "tpgIndividualClients";
-            this.tpgIndividualClients.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgIndividualClients.Size = new System.Drawing.Size(1038, 522);
+            this.tpgIndividualClients.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpgIndividualClients.Size = new System.Drawing.Size(1552, 815);
             this.tpgIndividualClients.TabIndex = 0;
             this.tpgIndividualClients.Text = "Individual Clients";
             this.tpgIndividualClients.UseVisualStyleBackColor = true;
             // 
             // btnAddI
             // 
-            this.btnAddI.Location = new System.Drawing.Point(750, 7);
+            this.btnAddI.Location = new System.Drawing.Point(1124, 12);
+            this.btnAddI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddI.Name = "btnAddI";
-            this.btnAddI.Size = new System.Drawing.Size(75, 23);
+            this.btnAddI.Size = new System.Drawing.Size(112, 37);
             this.btnAddI.TabIndex = 4;
             this.btnAddI.Text = "Add";
             this.btnAddI.UseVisualStyleBackColor = true;
@@ -158,10 +175,11 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.tpgBusinessClients.Controls.Add(this.btnViewContractB);
             this.tpgBusinessClients.Controls.Add(this.lstClientsB);
             this.tpgBusinessClients.Controls.Add(this.btnEditB);
-            this.tpgBusinessClients.Location = new System.Drawing.Point(4, 25);
+            this.tpgBusinessClients.Location = new System.Drawing.Point(8, 39);
+            this.tpgBusinessClients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tpgBusinessClients.Name = "tpgBusinessClients";
-            this.tpgBusinessClients.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgBusinessClients.Size = new System.Drawing.Size(1038, 522);
+            this.tpgBusinessClients.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpgBusinessClients.Size = new System.Drawing.Size(1552, 815);
             this.tpgBusinessClients.TabIndex = 1;
             this.tpgBusinessClients.Text = "Business Clients";
             this.tpgBusinessClients.UseVisualStyleBackColor = true;
@@ -169,16 +187,18 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // cbEmployeesB
             // 
             this.cbEmployeesB.FormattingEnabled = true;
-            this.cbEmployeesB.Location = new System.Drawing.Point(6, 4);
+            this.cbEmployeesB.Location = new System.Drawing.Point(8, 6);
+            this.cbEmployeesB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbEmployeesB.Name = "cbEmployeesB";
             this.cbEmployeesB.Size = new System.Drawing.Size(185, 24);
             this.cbEmployeesB.TabIndex = 11;
             // 
             // btnAssignEmployeeB
             // 
-            this.btnAssignEmployeeB.Location = new System.Drawing.Point(197, 5);
+            this.btnAssignEmployeeB.Location = new System.Drawing.Point(244, 8);
+            this.btnAssignEmployeeB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAssignEmployeeB.Name = "btnAssignEmployeeB";
-            this.btnAssignEmployeeB.Size = new System.Drawing.Size(128, 23);
+            this.btnAssignEmployeeB.Size = new System.Drawing.Size(192, 37);
             this.btnAssignEmployeeB.TabIndex = 10;
             this.btnAssignEmployeeB.Text = "Assign Employee";
             this.btnAssignEmployeeB.UseVisualStyleBackColor = true;
@@ -186,9 +206,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnAddB
             // 
-            this.btnAddB.Location = new System.Drawing.Point(753, 5);
+            this.btnAddB.Location = new System.Drawing.Point(1130, 8);
+            this.btnAddB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddB.Name = "btnAddB";
-            this.btnAddB.Size = new System.Drawing.Size(75, 23);
+            this.btnAddB.Size = new System.Drawing.Size(112, 37);
             this.btnAddB.TabIndex = 9;
             this.btnAddB.Text = "Add";
             this.btnAddB.UseVisualStyleBackColor = true;
@@ -196,9 +217,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnDeleteB
             // 
-            this.btnDeleteB.Location = new System.Drawing.Point(522, 5);
+            this.btnDeleteB.Location = new System.Drawing.Point(784, 8);
+            this.btnDeleteB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDeleteB.Name = "btnDeleteB";
-            this.btnDeleteB.Size = new System.Drawing.Size(80, 23);
+            this.btnDeleteB.Size = new System.Drawing.Size(120, 37);
             this.btnDeleteB.TabIndex = 7;
             this.btnDeleteB.Text = "Delete";
             this.btnDeleteB.UseVisualStyleBackColor = true;
@@ -206,9 +228,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnViewContractB
             // 
-            this.btnViewContractB.Location = new System.Drawing.Point(920, 5);
+            this.btnViewContractB.Location = new System.Drawing.Point(1380, 8);
+            this.btnViewContractB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnViewContractB.Name = "btnViewContractB";
-            this.btnViewContractB.Size = new System.Drawing.Size(115, 23);
+            this.btnViewContractB.Size = new System.Drawing.Size(172, 37);
             this.btnViewContractB.TabIndex = 8;
             this.btnViewContractB.Text = "View Contract";
             this.btnViewContractB.UseVisualStyleBackColor = true;
@@ -221,9 +244,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colContactNumB});
             this.lstClientsB.FullRowSelect = true;
             this.lstClientsB.HideSelection = false;
-            this.lstClientsB.Location = new System.Drawing.Point(3, 32);
+            this.lstClientsB.Location = new System.Drawing.Point(4, 50);
+            this.lstClientsB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstClientsB.Name = "lstClientsB";
-            this.lstClientsB.Size = new System.Drawing.Size(1032, 485);
+            this.lstClientsB.Size = new System.Drawing.Size(1546, 756);
             this.lstClientsB.TabIndex = 5;
             this.lstClientsB.UseCompatibleStateImageBehavior = false;
             this.lstClientsB.View = System.Windows.Forms.View.Details;
@@ -240,26 +264,95 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnEditB
             // 
-            this.btnEditB.Location = new System.Drawing.Point(834, 5);
+            this.btnEditB.Location = new System.Drawing.Point(1252, 8);
+            this.btnEditB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditB.Name = "btnEditB";
-            this.btnEditB.Size = new System.Drawing.Size(80, 23);
+            this.btnEditB.Size = new System.Drawing.Size(120, 37);
             this.btnEditB.TabIndex = 6;
             this.btnEditB.Text = "Edit";
             this.btnEditB.UseVisualStyleBackColor = true;
             this.btnEditB.Click += new System.EventHandler(this.btnEditB_Click);
             // 
+            // tpgServiceContractRequests
+            // 
+            this.tpgServiceContractRequests.Controls.Add(this.btnCallClient);
+            this.tpgServiceContractRequests.Controls.Add(this.lvServiceContractRequests);
+            this.tpgServiceContractRequests.Location = new System.Drawing.Point(8, 39);
+            this.tpgServiceContractRequests.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tpgServiceContractRequests.Name = "tpgServiceContractRequests";
+            this.tpgServiceContractRequests.Size = new System.Drawing.Size(1552, 815);
+            this.tpgServiceContractRequests.TabIndex = 2;
+            this.tpgServiceContractRequests.Text = "Service Contract Requests";
+            this.tpgServiceContractRequests.UseVisualStyleBackColor = true;
+            // 
+            // btnCallClient
+            // 
+            this.btnCallClient.Location = new System.Drawing.Point(860, 765);
+            this.btnCallClient.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnCallClient.Name = "btnCallClient";
+            this.btnCallClient.Size = new System.Drawing.Size(686, 44);
+            this.btnCallClient.TabIndex = 3;
+            this.btnCallClient.Text = "Call Client and finalise new Service Contract";
+            this.btnCallClient.UseVisualStyleBackColor = true;
+            this.btnCallClient.Click += new System.EventHandler(this.btnCallClient_Click);
+            // 
+            // lvServiceContractRequests
+            // 
+            this.lvServiceContractRequests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chClient,
+            this.chClientType,
+            this.chServiceContract,
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lvServiceContractRequests.FullRowSelect = true;
+            this.lvServiceContractRequests.HideSelection = false;
+            this.lvServiceContractRequests.Location = new System.Drawing.Point(12, 16);
+            this.lvServiceContractRequests.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lvServiceContractRequests.MultiSelect = false;
+            this.lvServiceContractRequests.Name = "lvServiceContractRequests";
+            this.lvServiceContractRequests.Size = new System.Drawing.Size(1548, 737);
+            this.lvServiceContractRequests.TabIndex = 0;
+            this.lvServiceContractRequests.UseCompatibleStateImageBehavior = false;
+            this.lvServiceContractRequests.View = System.Windows.Forms.View.Details;
+            // 
+            // chClient
+            // 
+            this.chClient.Text = "Client Name";
+            this.chClient.Width = 120;
+            // 
+            // chClientType
+            // 
+            this.chClientType.Text = "Client Type";
+            this.chClientType.Width = 120;
+            // 
+            // chServiceContract
+            // 
+            this.chServiceContract.Text = "Service Cotract";
+            this.chServiceContract.Width = 120;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Date Created";
+            this.columnHeader1.Width = 120;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Status";
+            // 
             // frmClientMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1061, 565);
+            this.ClientSize = new System.Drawing.Size(1592, 883);
             this.Controls.Add(this.tpgIndividual);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmClientMenu";
             this.Text = "ClientMenu";
             this.Load += new System.EventHandler(this.frmClientMenu_Load);
             this.tpgIndividual.ResumeLayout(false);
             this.tpgIndividualClients.ResumeLayout(false);
             this.tpgBusinessClients.ResumeLayout(false);
+            this.tpgServiceContractRequests.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -286,5 +379,13 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private System.Windows.Forms.Button btnAssignEmployeeB;
         private System.Windows.Forms.ColumnHeader colContactNumI;
         private System.Windows.Forms.ColumnHeader colContactNumB;
+        private System.Windows.Forms.TabPage tpgServiceContractRequests;
+        private System.Windows.Forms.ListView lvServiceContractRequests;
+        private System.Windows.Forms.ColumnHeader chClient;
+        private System.Windows.Forms.ColumnHeader chClientType;
+        private System.Windows.Forms.ColumnHeader chServiceContract;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Button btnCallClient;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
