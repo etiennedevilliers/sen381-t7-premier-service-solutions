@@ -29,31 +29,35 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void frmViewContract_Load(object sender, EventArgs e)
         {
-            //clientServiceContract servContract = new clientServiceContract();
+            ClientController clientController = new ClientController();
+
+            List<ServiceContract> servContr = new List<ServiceContract>();
+
             /*
-             * foreach (ServiceContract serviceContract in ServiceContract.Read())
-                {
-                    ListViewItem lstViewIndivI = new ListViewItem(
-                        new string[] {
-                            serviceContract.serviceContractID,
-                            serviceContract.DateStart,
-                            serviceContract.DateEnd
-                        }
-                    );
+
+            foreach(ClientServiceContract cServiceContract in ServiceContract.Read()*/)
+            {
+                ListViewItem lstViewIndivI = new ListViewItem(
+                    new string[] {
+                            
+                    }
+                );
 
                 lstViewIndiv.Items.Add(lstViewIndivI);
+            }
+
             */
         }
 
         private void btnApply_Click(object sender, EventArgs e)
 {
-this.indivClient.Name = tbIndivName.Text;
-this.indivClient.Surname = tbIndivSurname.Text;
-this.indivClient.ContactNum = tbIndivContact.Text;
+            this.indivClient.Name = tbIndivName.Text;
+            this.indivClient.Surname = tbIndivSurname.Text;
+            this.indivClient.ContactNum = tbIndivContact.Text;
 
-(new IndividualClientController()).Update(this.indivClient);
+            (new IndividualClientController()).Update(this.indivClient);
 
-Hide();
+            Hide();
 
 }
 }
