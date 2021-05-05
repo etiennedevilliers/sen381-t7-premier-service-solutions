@@ -97,6 +97,12 @@
     <Compile Include="logic\CallCentre\CallCentreLogic.cs" />
     <Compile Include="logic\GeneralLogic.cs" />
     <Compile Include="logic\NewContractRequestLogic.cs" />
+    <Compile Include="logic\ServiceContratcLogic\CustomExceptions\ServiceExistsException.cs" />
+    <Compile Include="logic\ServiceContratcLogic\CustomExceptions\SLAExistsException.cs" />
+    <Compile Include="logic\ServiceContratcLogic\PackageLogic.cs" />
+    <Compile Include="logic\ServiceContratcLogic\SCLogic.cs" />
+    <Compile Include="logic\ServiceContratcLogic\ServiceLogic.cs" />
+    <Compile Include="logic\ServiceContratcLogic\SLALogic.cs" />
     <Compile Include="logic\ServiceDepartmentLogic.cs" />
     <Compile Include="presentation\forms\Agents\frmAgentSelection.cs">
       <SubType>Form</SubType>
