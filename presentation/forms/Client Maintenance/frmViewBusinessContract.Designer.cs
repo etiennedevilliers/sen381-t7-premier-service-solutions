@@ -33,16 +33,25 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.tbBusContact = new System.Windows.Forms.TextBox();
             this.tbBusiName = new System.Windows.Forms.TextBox();
             this.btnApply = new System.Windows.Forms.Button();
+            this.colDescript = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colStartDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colEndDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstViewBusi
             // 
+            this.lstViewBusi.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colDescript,
+            this.colStartDate,
+            this.colEndDate});
             this.lstViewBusi.HideSelection = false;
             this.lstViewBusi.Location = new System.Drawing.Point(88, 98);
             this.lstViewBusi.Name = "lstViewBusi";
             this.lstViewBusi.Size = new System.Drawing.Size(625, 255);
             this.lstViewBusi.TabIndex = 1;
             this.lstViewBusi.UseCompatibleStateImageBehavior = false;
+            this.lstViewBusi.View = System.Windows.Forms.View.Details;
             // 
             // tbBusContact
             // 
@@ -68,11 +77,37 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
+            // colDescript
+            // 
+            this.colDescript.Text = "Service Description";
+            this.colDescript.Width = 170;
+            // 
+            // colStartDate
+            // 
+            this.colStartDate.Text = "Start Date";
+            this.colStartDate.Width = 89;
+            // 
+            // colEndDate
+            // 
+            this.colEndDate.Text = "End Date";
+            this.colEndDate.Width = 101;
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(638, 376);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn.TabIndex = 6;
+            this.btnReturn.Text = "Return";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
             // frmViewBusinessContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(740, 457);
+            this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.tbBusiName);
             this.Controls.Add(this.tbBusContact);
@@ -91,5 +126,9 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private System.Windows.Forms.TextBox tbBusContact;
         private System.Windows.Forms.TextBox tbBusiName;
         private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.ColumnHeader colDescript;
+        private System.Windows.Forms.ColumnHeader colStartDate;
+        private System.Windows.Forms.ColumnHeader colEndDate;
+        private System.Windows.Forms.Button btnReturn;
     }
 }

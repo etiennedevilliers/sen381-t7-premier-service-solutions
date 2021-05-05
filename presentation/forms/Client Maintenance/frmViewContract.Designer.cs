@@ -34,16 +34,25 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.tbIndivContact = new System.Windows.Forms.TextBox();
             this.tbIndivSurname = new System.Windows.Forms.TextBox();
             this.btnApply = new System.Windows.Forms.Button();
+            this.colDescript = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colStartDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colEndDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstViewIndiv
             // 
+            this.lstViewIndiv.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colDescript,
+            this.colStartDate,
+            this.colEndDate});
             this.lstViewIndiv.HideSelection = false;
             this.lstViewIndiv.Location = new System.Drawing.Point(58, 119);
             this.lstViewIndiv.Name = "lstViewIndiv";
             this.lstViewIndiv.Size = new System.Drawing.Size(625, 255);
             this.lstViewIndiv.TabIndex = 0;
             this.lstViewIndiv.UseCompatibleStateImageBehavior = false;
+            this.lstViewIndiv.View = System.Windows.Forms.View.Details;
             // 
             // tbIndivName
             // 
@@ -76,11 +85,34 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
+            // colDescript
+            // 
+            this.colDescript.Text = "Service Description";
+            // 
+            // colStartDate
+            // 
+            this.colStartDate.Text = "Start Date";
+            // 
+            // colEndDate
+            // 
+            this.colEndDate.Text = "End Date";
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(608, 380);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn.TabIndex = 7;
+            this.btnReturn.Text = "Return";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
             // frmViewContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(724, 478);
+            this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.tbIndivSurname);
             this.Controls.Add(this.tbIndivContact);
@@ -101,5 +133,9 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private System.Windows.Forms.TextBox tbIndivContact;
         private System.Windows.Forms.TextBox tbIndivSurname;
         private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.ColumnHeader colDescript;
+        private System.Windows.Forms.ColumnHeader colStartDate;
+        private System.Windows.Forms.ColumnHeader colEndDate;
+        private System.Windows.Forms.Button btnReturn;
     }
 }

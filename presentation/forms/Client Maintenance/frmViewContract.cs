@@ -33,20 +33,22 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
             List<ServiceContract> servContr = new List<ServiceContract>();
 
-            /*
+            
 
-            foreach(ClientServiceContract cServiceContract in ServiceContract.Read()*/)
+            foreach(ClientServiceContract cServiceContract in clientController.ReadChildren(this.indivClient))
             {
                 ListViewItem lstViewIndivI = new ListViewItem(
                     new string[] {
-                            
+                            cServiceContract.Description,
+                            cServiceContract.StartDate.ToString(),
+                            cServiceContract.EndDate.ToString(),
                     }
-                );
+                ) ;
 
                 lstViewIndiv.Items.Add(lstViewIndivI);
             }
 
-            */
+            
         }
 
         private void btnApply_Click(object sender, EventArgs e)
@@ -59,6 +61,11 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
             Hide();
 
-}
-}
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            Hide();
+        }
+    }
 }

@@ -28,20 +28,24 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void frmViewBusinessContract_Load(object sender, EventArgs e)
         {
-            //clientServiceContract servContract = new clientServiceContract();
-            /*
-             * foreach (ServiceContract serviceContract in ServiceContract.Read())
-                {
-                    ListViewItem lstViewBusiI = new ListViewItem(
-                        new string[] {
-                            serviceContract.serviceContractID,
-                            serviceContract.DateStart,
-                            serviceContract.DateEnd
-                        }
-                    );
+            ClientController clientController = new ClientController();
 
-                lstViewBusi.Items.Add(lstVlstViewBusiIiewIndivI);
-            */
+            List<ServiceContract> servContr = new List<ServiceContract>();
+
+
+
+            foreach (ClientServiceContract cServiceContract in clientController.ReadChildren(this.businessClient))
+            {
+                ListViewItem lstViewIndivB = new ListViewItem(
+                    new string[] {
+                            cServiceContract.Description,
+                            cServiceContract.StartDate.ToString(),
+                            cServiceContract.EndDate.ToString(),
+                    }
+                );
+
+                lstViewBusi.Items.Add(lstViewIndivB);
+            }
 
         }
 
@@ -52,6 +56,11 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
             (new BusinessClientController()).Update(this.businessClient);
 
+            Hide();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
             Hide();
         }
     }
