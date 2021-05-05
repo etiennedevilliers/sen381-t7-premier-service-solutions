@@ -76,6 +76,7 @@ namespace Data.Layer.Access
 
         internal void Delete(string table, string DeleteCondition)
         {
+
             query = new SqlCommand("DELETE FROM " + table + " WHERE " + DeleteCondition, con);
             query.ExecuteNonQuery();
         }
