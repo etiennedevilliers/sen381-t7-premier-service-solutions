@@ -97,7 +97,11 @@ namespace Presentation.Forms.Contract_Maintenance
 
                     try
                     {
-                        Sl.ServiceInPckage(RService);
+                        //Sl.ServiceInPckage(RService);
+                        if (Sl.ServiceInPackage(RService) == false)
+                        {
+                            Sl.Removeservice(RService);
+                        }
 
                     }
                     catch (ServiceExistsException ex)
@@ -110,7 +114,7 @@ namespace Presentation.Forms.Contract_Maintenance
                     }
                     if (Valid == true)
                     {
-                        Sl.Removeservice(RService);
+                       
                         MessageBox.Show("Service successfully deleted", " DELETED",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                         lstServiceView.Clear();
@@ -218,9 +222,7 @@ namespace Presentation.Forms.Contract_Maintenance
 
                     try
                     {
-                        SLAL.SLAInPackage(RSLA);
-
-
+                        SLAL.DeleteSLA(RSLA);
 
                     }
                     catch (SLAExistsException ex)
@@ -233,8 +235,6 @@ namespace Presentation.Forms.Contract_Maintenance
                     }
                     if (Valid == true)
                     {
-                        SLAL.DeleteSLA(RSLA);
-
                         MessageBox.Show("SLA successfully deleted", " DELETED",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                         lstSLA.Clear();
@@ -287,56 +287,8 @@ namespace Presentation.Forms.Contract_Maintenance
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool Valid = false;
 
-            if (listPackage.SelectedItems.Count > 0)
-            {
-
-                //Ask user for conformation
-                DialogResult deleteI = MessageBox.Show("Are you sure you want to delete this Package?", "WARNING: DELETE Package",
-                                                  MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                //Get user for conformation
-
-
-                if (deleteI == DialogResult.Yes)
-                {
-                    Package RP = listPackage.SelectedItems[0].Tag as Package;
-
-                    //Parse the object to the Service logic to perform action
-
-                    try
-                    {
-                        
-                        P_L.SLA_and_Service_In_Package(RP);
-                    }
-                    catch (PackageExictsException ex)
-                    {
-
-                        MessageBox.Show(string.Format("DELETION ANOMOLY {0}", ex));
-                        Valid = true;
-                    }
-
-                    if (Valid == false)
-                    {
-                        P_L.RemovePackage(RP);
-                        MessageBox.Show("Package successfully deleted", " DELETED",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        lstSLA.Clear();
-                    }
-
-                    frmServiceContract form = new frmServiceContract();
-                    form.ShowDialog();
-                    LoadServices();
-
-                }
-            }
-            else
-            {
-                MessageBox.Show("No Record was selected", "SELECTION",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-        }//Remove a package // (Still Not Done)
+        }//Remove a package //
 
         public void LoadPackage()
         {
@@ -352,7 +304,6 @@ namespace Presentation.Forms.Contract_Maintenance
                     P.Sla.Description,
                     P.Name,
                     P.Description,
-
                });
 
                 lst.Tag = P;

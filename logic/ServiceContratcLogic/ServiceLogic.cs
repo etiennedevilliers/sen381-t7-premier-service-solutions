@@ -26,18 +26,19 @@ namespace Logic
 
         }//Remove service 
 
-        public void ServiceInPckage(Service SER)
+        public bool ServiceInPackage(Service SER)
         {
+            bool Found = false;
             foreach (Package package in new PackageController().Read())
             {
                 if (package.Service.Equals(SER))
                 {
-                    
+                    Found = true;
                     throw new ServiceExistsException(package);
-
                 }
-              
+             
             }
+            return Found;
         }//Check if SLA is in a Package 
 
         public void UpdateService(Service UpdateService)

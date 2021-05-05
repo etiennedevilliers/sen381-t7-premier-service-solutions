@@ -95,7 +95,6 @@
     <Compile Include="logic\CallCentreLogic.cs" />
     <Compile Include="logic\Scheduler.cs" />
     <Compile Include="logic\NewContractRequestLogic.cs" />
-    <Compile Include="logic\ServiceContratcLogic\CustomExceptions\PackageExistsException.cs" />
     <Compile Include="logic\ServiceContratcLogic\CustomExceptions\ServiceExistsException.cs" />
     <Compile Include="logic\ServiceContratcLogic\CustomExceptions\SLAExistsException.cs" />
     <Compile Include="logic\ServiceContratcLogic\PackageLogic.cs" />

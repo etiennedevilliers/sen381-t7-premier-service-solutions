@@ -34,8 +34,10 @@ namespace Logic
         public void DeleteSLA(ServiceLevelAgreement SLA)
         {
             //Call SLA  If SLA Exiss then throw Exception before Deleting 
-            SLA_Ctr.Delete(SLA);
-      
+            if (SLAInPackage(SLA) ==false )
+            {
+                SLA_Ctr.Delete(SLA);
+            }
         }
 
         //Insert 
@@ -44,16 +46,18 @@ namespace Logic
             SLA_Ctr.Create(SLA);
         }
 
-        public void SLAInPackage(ServiceLevelAgreement SLA)
+        public bool  SLAInPackage(ServiceLevelAgreement SLA)
         {
+            bool Found = false;
             foreach (Package package in new PackageController().Read())
             {
                 if (package.Sla.Equals(SLA))
                 {
+                    Found = true;
                     throw new SLAExistsException(package);
-
                 } 
             }
+            return Found;
         }//Check if service is in packages
 
     }

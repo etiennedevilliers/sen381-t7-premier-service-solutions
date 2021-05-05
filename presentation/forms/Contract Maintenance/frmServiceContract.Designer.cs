@@ -36,12 +36,11 @@
             this.chDateFinilized = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDateTerm = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chCost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ChIDent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnRemoveServiceContract = new System.Windows.Forms.Button();
             this.btnEditServiceContract = new System.Windows.Forms.Button();
             this.btnAddServiceContract = new System.Windows.Forms.Button();
             this.tabPackage = new System.Windows.Forms.TabPage();
-            this.btnRemovePackage = new System.Windows.Forms.Button();
             this.btnEditPackage = new System.Windows.Forms.Button();
             this.btnAddPackage = new System.Windows.Forms.Button();
             this.listPackage = new System.Windows.Forms.ListView();
@@ -65,7 +64,6 @@
             this.chServiceID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chExpectedDuration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabServiceContract.SuspendLayout();
             this.tabPackage.SuspendLayout();
@@ -88,7 +86,6 @@
             // tabServiceContract
             // 
             this.tabServiceContract.Controls.Add(this.lstServiceContract);
-            this.tabServiceContract.Controls.Add(this.btnRemoveServiceContract);
             this.tabServiceContract.Controls.Add(this.btnEditServiceContract);
             this.tabServiceContract.Controls.Add(this.btnAddServiceContract);
             this.tabServiceContract.Location = new System.Drawing.Point(8, 39);
@@ -142,20 +139,15 @@
             this.chCost.Text = "Cost";
             this.chCost.Width = 150;
             // 
+            // chStatus
+            // 
+            this.chStatus.Text = "Status";
+            this.chStatus.Width = 179;
+            // 
             // ChIDent
             // 
             this.ChIDent.Text = "Identifier";
             this.ChIDent.Width = 275;
-            // 
-            // btnRemoveServiceContract
-            // 
-            this.btnRemoveServiceContract.Location = new System.Drawing.Point(1902, 279);
-            this.btnRemoveServiceContract.Name = "btnRemoveServiceContract";
-            this.btnRemoveServiceContract.Size = new System.Drawing.Size(208, 57);
-            this.btnRemoveServiceContract.TabIndex = 9;
-            this.btnRemoveServiceContract.Text = "Remove";
-            this.btnRemoveServiceContract.UseVisualStyleBackColor = true;
-            this.btnRemoveServiceContract.Click += new System.EventHandler(this.btnRemoveServiceContract_Click);
             // 
             // btnEditServiceContract
             // 
@@ -178,7 +170,6 @@
             // 
             // tabPackage
             // 
-            this.tabPackage.Controls.Add(this.btnRemovePackage);
             this.tabPackage.Controls.Add(this.btnEditPackage);
             this.tabPackage.Controls.Add(this.btnAddPackage);
             this.tabPackage.Controls.Add(this.listPackage);
@@ -189,16 +180,6 @@
             this.tabPackage.TabIndex = 1;
             this.tabPackage.Text = "Package";
             this.tabPackage.UseVisualStyleBackColor = true;
-            // 
-            // btnRemovePackage
-            // 
-            this.btnRemovePackage.Location = new System.Drawing.Point(1795, 279);
-            this.btnRemovePackage.Name = "btnRemovePackage";
-            this.btnRemovePackage.Size = new System.Drawing.Size(208, 57);
-            this.btnRemovePackage.TabIndex = 6;
-            this.btnRemovePackage.Text = "Remove";
-            this.btnRemovePackage.UseVisualStyleBackColor = true;
-            this.btnRemovePackage.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnEditPackage
             // 
@@ -399,11 +380,6 @@
             this.chExpectedDuration.Text = "ExpectedDuration";
             this.chExpectedDuration.Width = 199;
             // 
-            // chStatus
-            // 
-            this.chStatus.Text = "Status";
-            this.chStatus.Width = 179;
-            // 
             // frmServiceContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -442,7 +418,6 @@
         private System.Windows.Forms.ListView lstSLA;
         private System.Windows.Forms.ColumnHeader chSLAID;
         private System.Windows.Forms.ColumnHeader chSLAdescription;
-        private System.Windows.Forms.Button btnRemovePackage;
         private System.Windows.Forms.Button btnEditPackage;
         private System.Windows.Forms.Button btnAddPackage;
         private System.Windows.Forms.ListView listPackage;
@@ -457,7 +432,6 @@
         private System.Windows.Forms.ColumnHeader chDateFinilized;
         private System.Windows.Forms.ColumnHeader chDateTerm;
         private System.Windows.Forms.ColumnHeader chCost;
-        private System.Windows.Forms.Button btnRemoveServiceContract;
         private System.Windows.Forms.Button btnEditServiceContract;
         private System.Windows.Forms.Button btnAddServiceContract;
         private System.Windows.Forms.ColumnHeader ChIDent;
