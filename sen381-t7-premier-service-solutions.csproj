@@ -241,6 +241,9 @@
     <EmbeddedResource Include="presentation\forms\Service Department\Manager\frmAddTechnician.resx">
       <DependentUpon>frmAddTechnician.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Service Department\Manager\frmEditTechnician.resx">
+      <DependentUpon>frmEditTechnician.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Service Department\Manager\frmServiceMenu.resx">
       <DependentUpon>frmServiceMenu.cs</DependentUpon>
     </EmbeddedResource>

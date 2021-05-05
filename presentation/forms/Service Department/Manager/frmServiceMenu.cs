@@ -168,5 +168,21 @@ namespace Presentation.Forms.ServiceDepartment
 
             LoadTechnicians();
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            Technician tech = (Technician) lstTechnicians.SelectedItems[0].Tag;
+            List<Service> skills = new TechnicianController().ReadChildren(tech);
+
+            frmEditTechnician form = new frmEditTechnician(tech, skills);
+            DialogResult res = form.ShowDialog();
+
+            if (res == DialogResult.OK)
+            {
+                sdLogic.EditTechnician(form.tech, form.skills, skills);
+            }
+
+            LoadTechnicians();
+        }
     }
 }

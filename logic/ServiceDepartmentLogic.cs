@@ -14,6 +14,8 @@ namespace Logic
         ServiceRequestController srCtr = new ServiceRequestController();
         RequestController rqCtr = new RequestController();
 
+        GeneralLogic genLogic = new GeneralLogic();
+
         public bool Schedule(ServiceRequest sr)
         {
             TechnicianController techCtr = new TechnicianController();
@@ -91,9 +93,19 @@ namespace Logic
             }
         }
 
-        public void EditTechnician(Technician tech, List<Service> skills)
+        public void EditTechnician(Technician tech, List<Service> newSkills, List<Service> oldSkills)
         {
+            techCtr.Update(tech);
 
+            foreach (Service i in genLogic.GetAddedItems(oldSkills, newSkills))
+            {
+                techCtr.Add(i, tech);
+            }
+
+            foreach (Service i in genLogic.GetRemovedItems(oldSkills, newSkills))
+            {
+                techCtr.Remove(i, tech);
+            }
         }
 
         SortedDictionary<DateTime, ServiceRequest> GetQueue(Technician tech)

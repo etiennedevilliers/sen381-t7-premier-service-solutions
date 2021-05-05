@@ -28,7 +28,7 @@ namespace Presentation.Forms.ServiceDepartment
         {
             //To be replaced with login
             TechnicianController techCtr = new TechnicianController();
-            tech = techCtr.ReadSpecific(7);
+            tech = techCtr.ReadSpecific(8);
             //
 
             LoadData();
