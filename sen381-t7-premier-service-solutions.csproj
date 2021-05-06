@@ -80,6 +80,8 @@
     <Compile Include="data\layer\objects\Clients\BusinessClient.cs" />
     <Compile Include="data\layer\objects\Clients\Client.cs" />
     <Compile Include="data\layer\objects\Clients\Employee.cs" />
+    <Compile Include="data\layer\objects\Clients\Equipment.cs" />
+    <Compile Include="data\layer\objects\Clients\EquipmentCategory.cs" />
     <Compile Include="data\layer\objects\Clients\IndividualClient.cs" />
     <Compile Include="data\layer\objects\HR\Agent.cs" />
     <Compile Include="data\layer\objects\HR\Technician.cs" />

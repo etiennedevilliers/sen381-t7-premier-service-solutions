@@ -22,6 +22,13 @@ namespace Data.Layer.Objects
                 return adr.Read();
             }
         }
+        public List<Equipment> equipment
+        {
+            get
+            {
+                return new ClientController().equipment.ReadChildren(this);
+            }
+        }
         public string ContactNum { get => contactNum; set => contactNum = value; }
 
         //Constructor
