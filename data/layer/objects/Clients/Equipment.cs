@@ -21,9 +21,10 @@ namespace Data.Layer.Objects
         internal EquipmentCategory Category { get => category; set => category = value; }
 
         //Constructor
-        public Equipment(string serialNumber, string manufacturer, )
+        public Equipment(string serialNumber, string manufacturer)
         {
-
+            this.serialNumber = serialNumber;
+            this.manufacturer = manufacturer;
         }
     }
 }

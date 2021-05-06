@@ -27,29 +27,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             IndividualClientController individualClientController = new IndividualClientController();
             BusinessClientController businessClientController = new BusinessClientController();
 
-            Boolean isIndividual = frmClientMenu.Individual;
-            Boolean isBusiness = frmClientMenu.Business;
-
-            if (isIndividual)
-            {
-                TabPage tab = tpcNewClient.TabPages[0];
-                //tpcNewClient.SelectTab(tab);
-                tpcNewClient.SelectedTab = tab;
-
-                //tpcNewClient.SelectedIndex = 0;
-                //tpgIndividualNew.Show();
-                //tpgBusinessNew.Hide();
-            }
-            else
-            {
-                TabPage tab = tpcNewClient.TabPages[1];
-                //tpcNewClient.SelectTab(tab);
-                tpcNewClient.SelectedTab = tab;
-
-                //tpcNewClient.SelectedIndex = 1;
-                //tpgBusinessNew.Show();
-                //tpgIndividualNew.Hide();
-            }
         }
 
         public static string newcontact;
@@ -103,46 +80,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         }
 
-        public static string newbusicontact;
-        public static string newbusinessclient;
-
-        private void btnNewBusiness_Click(object sender, EventArgs e)
-        {
-            newbusicontact = txtnewbusicontact.Text;
-            newbusinessclient = txtBusinessNameNew.Text;
-
-            BusinessClientController businessClientController = new BusinessClientController();
-
-            BusinessClient businessClient = new BusinessClient(
-                newbusicontact,
-                newbusinessclient
-                );
-
-
-            if (newbusicontact.Equals(""))
-            {
-                MessageBox.Show("Please enter business contact details", "EMPTY FIELDS!!",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            if (newbusinessclient.Equals(""))
-            {
-                MessageBox.Show("Please enter a business client name", "EMPTY FIELDS!!",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                businessClientController.Create(businessClient);
-
-                MessageBox.Show("Business Client add successful, returning to Client Menu", " BUSINESS CLIENT ADDED",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                Hide();
-                frmClientMenu form = new frmClientMenu();
-                form.ShowDialog();
-                Show();
-            }
-            
-        }
-
+        
     }
 }

@@ -21,7 +21,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         {
             InitializeComponent();
 
-            MessageBox.Show(businessClient.ToString());
+            //MessageBox.Show(businessClient.ToString());
 
             this.businessClient = businessClient;
 

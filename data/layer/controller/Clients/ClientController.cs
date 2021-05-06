@@ -8,10 +8,11 @@ namespace Data.Layer.Controller
 {
     internal class ClientController : ICreate<Client>, IUpdate<Client>, IDelete<Client>
     {
-        public ServiceContractInterface serviceContract = new ServiceContractInterface();
-        public EquipmentInterface equipment = new EquipmentInterface();
+        public ServiceContractChildren serviceContract = new ServiceContractChildren();
+        public EquipmentChildren equipment = new EquipmentChildren();
+        public AddressChildren address = new AddressChildren();
 
-        public class ServiceContractInterface : IChildren<ClientServiceContract, Client>
+        public class ServiceContractChildren : IChildren<ClientServiceContract, Client>
         {
             public void Add(ClientServiceContract child, Client parent)
             {
@@ -85,7 +86,7 @@ namespace Data.Layer.Controller
             }
         }
 
-        public class EquipmentInterface : IChildren<Equipment, Client>
+        public class EquipmentChildren : IChildren<Equipment, Client>
         {
             public void Add(Equipment child, Client parent)
             {
@@ -94,12 +95,70 @@ namespace Data.Layer.Controller
 
             public List<Equipment> ReadChildren(Client parent)
             {
-                
+                return null;
             }
 
-            public void Remove(Equipment chils, Client parent)
+            public void Remove(Equipment child, Client parent)
             {
                 
+            }
+        }
+
+        public class AddressChildren : IChildren<Address, Client>
+        {
+            public void Add(Address child, Client parent)
+            {
+                DataHandler dh = new DataHandler();
+
+                child.Id = dh.InsertID(string.Format(
+                                "INSERT INTO Address(country, province, district, locality, postalCode, streetAddress, premise, ClientID)" +
+                                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', {7})",
+                                child.Country, child.Province, child.District, child.Locality, child.PostalCode, child.StreetAddress, child.Premise, parent.Id
+                            ));;
+
+                dh.Dispose();
+            }
+
+            public List<Address> ReadChildren(Client parent)
+            {
+                DataHandler dh = new DataHandler();
+
+                List<Address> addrList = new List<Address>();
+                SqlDataReader read = dh.Select("SELECT AddressID, country, province, district, locality, postalCode, streetAddress, premise FROM Address WHERE ClientID = " + parent.Id.ToString());
+                Address address;
+
+                if (read.HasRows)
+                {
+                    while (read.Read())
+                    {
+                        address = new Address(
+                                read.GetString(1),
+                                read.GetString(2),
+                                read.GetString(3),
+                                read.GetString(4),
+                                read.GetString(5),
+                                read.GetString(6),
+                                read.GetString(7)
+                            );
+
+                        address.Id = read.GetInt32(0);
+
+                        addrList.Add(address);
+                    }
+                }
+
+                dh.Dispose();
+
+                return addrList;
+            }
+
+            public void Remove(Address child, Client parent)
+            {
+                DataHandler dh = new DataHandler();
+
+                dh.Delete("Address", "AddressID = " + child.Id.ToString());
+
+                dh.Dispose();
             }
         }
 

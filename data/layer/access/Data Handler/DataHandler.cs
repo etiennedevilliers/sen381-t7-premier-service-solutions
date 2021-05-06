@@ -37,14 +37,6 @@ namespace Data.Layer.Access
             //con.Close();
         }
 
-        internal SqlDataReader SelectSimple(string table, string condition = "")
-        {
-            query = new SqlCommand("SELECT * FROM " + table + " " + condition, con);
-            read = query.ExecuteReader();
-
-            return read;
-        }
-
         internal SqlDataReader Select(string command)
         {
             query = new SqlCommand(command, con);

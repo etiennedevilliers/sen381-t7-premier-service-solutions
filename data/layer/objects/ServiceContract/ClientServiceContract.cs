@@ -17,7 +17,7 @@ namespace Data.Layer.Objects
         {
             this.StartDate = StartDate;
             this.EndDate = EndDate;
-            this.Id = serviceContract.Id;
+            Id = serviceContract.Id;
         }
 
         public override string ToString()

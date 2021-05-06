@@ -190,7 +190,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.cbEmployeesB.Location = new System.Drawing.Point(8, 6);
             this.cbEmployeesB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbEmployeesB.Name = "cbEmployeesB";
-            this.cbEmployeesB.Size = new System.Drawing.Size(224, 33);
+            this.cbEmployeesB.Size = new System.Drawing.Size(185, 24);
             this.cbEmployeesB.TabIndex = 11;
             // 
             // btnAssignEmployeeB

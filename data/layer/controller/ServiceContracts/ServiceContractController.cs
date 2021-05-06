@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Data.Layer.Controller
 {
-    class ServiceContractController : ICreate<ServiceContract>, IDelete<ServiceContract>, IUpdate<ServiceContract>,IRead<ServiceContract>, IChildren<Package, ServiceContract>
+    class ServiceContractController : ICreate<ServiceContract>, IDelete<ServiceContract>, IUpdate<ServiceContract>, IRead<ServiceContract>, IChildren<Package, ServiceContract>
     {
         //Basic CRUD
         public int Create(ServiceContract obj)

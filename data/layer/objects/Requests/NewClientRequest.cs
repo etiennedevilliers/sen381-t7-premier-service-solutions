@@ -6,10 +6,6 @@ namespace Data.Layer.Objects
     
     public class NewClientRequest : Request
     {
-        //Fields
-
-        //Properties
-
         //Constructor
         public NewClientRequest(DateTime dateCreated, DateTime? dateResolved, CallLog call) : base(dateCreated, dateResolved, call)
         {
