@@ -90,17 +90,64 @@ namespace Data.Layer.Controller
         {
             public void Add(Equipment child, Client parent)
             {
-                
+                DataHandler dh = new DataHandler();
+
+                child.Id = dh.InsertID(string.Format(
+                                "INSERT INTO Equipment(SerialNumber, Manufacturer, ClientID, EquipmentCategoryID)" +
+                                "VALUES ('{0}', '{1}', {2}, {3})",
+                                child.SerialNumber, child.Manufacturer, parent.Id, child.Category.Id
+                            ));
+
+                dh.Dispose();
             }
 
             public List<Equipment> ReadChildren(Client parent)
             {
-                return null;
+                DataHandler dh = new DataHandler();
+
+                List<Equipment> equipmentList = new List<Equipment>();
+                SqlDataReader read = dh.Select(
+                                "SELECT EquipmentID, SerialNumber, Manufacturer, E.EquipmentCategoryID, EC.CategoryName" +
+                                "FROM Equipment E INNER JOIN EquipmentCategory EC ON EC.EquipmentCategoryID = E.EquipmentCategoryID" +
+                                "WHERE ClientID = " + parent.Id.ToString());
+                Equipment equipment;
+                EquipmentCategory category;
+
+                if (read.HasRows)
+                {
+                    while (read.Read())
+                    {
+                        equipment = new Equipment(
+                                read.GetString(1),
+                                read.GetString(2)
+                            );
+
+                        equipment.Id = read.GetInt32(0);
+
+                        category = new EquipmentCategory(
+                                read.GetString(4)
+                            );
+
+                        category.Id = read.GetInt32(3);
+
+                        equipment.Category = category;
+
+                        equipmentList.Add(equipment);
+                    }
+                }
+
+                dh.Dispose();
+
+                return equipmentList;
             }
 
             public void Remove(Equipment child, Client parent)
             {
-                
+                DataHandler dh = new DataHandler();
+
+                dh.Delete("Equipment", "EquipmentID = " + child.Id.ToString());
+
+                dh.Dispose();
             }
         }
 
@@ -114,7 +161,7 @@ namespace Data.Layer.Controller
                                 "INSERT INTO Address(country, province, district, locality, postalCode, streetAddress, premise, ClientID)" +
                                 "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', {7})",
                                 child.Country, child.Province, child.District, child.Locality, child.PostalCode, child.StreetAddress, child.Premise, parent.Id
-                            ));;
+                            ));
 
                 dh.Dispose();
             }

@@ -62,6 +62,8 @@
     <Compile Include="data\layer\controller\Clients\BusinessClientController.cs" />
     <Compile Include="data\layer\controller\Clients\ClientController.cs" />
     <Compile Include="data\layer\controller\Clients\EmployeeController.cs" />
+    <Compile Include="data\layer\controller\Clients\EquipmentCategoryController.cs" />
+    <Compile Include="data\layer\controller\Clients\EquipmentController.cs" />
     <Compile Include="data\layer\controller\Clients\IndividualClientController.cs" />
     <Compile Include="data\layer\controller\HR\AgentControllers.cs" />
     <Compile Include="data\layer\controller\HR\TechnicianController.cs" />

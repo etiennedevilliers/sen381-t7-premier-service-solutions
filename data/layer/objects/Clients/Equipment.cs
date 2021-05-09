@@ -17,7 +17,7 @@ namespace Data.Layer.Objects
         //Properties
         public int Id { get => id; set => id = value; }
         public string SerialNumber { get => serialNumber; set => serialNumber = value; }
-        public string Maufacturer { get => manufacturer; set => manufacturer = value; }
+        public string Manufacturer { get => manufacturer; set => manufacturer = value; }
         internal EquipmentCategory Category { get => category; set => category = value; }
 
         //Constructor
