@@ -64,6 +64,7 @@
             this.chServiceID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chExpectedDuration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabServiceContract.SuspendLayout();
             this.tabPackage.SuspendLayout();
@@ -157,6 +158,7 @@
             this.btnEditServiceContract.TabIndex = 8;
             this.btnEditServiceContract.Text = "Edit";
             this.btnEditServiceContract.UseVisualStyleBackColor = true;
+            this.btnEditServiceContract.Click += new System.EventHandler(this.btnEditServiceContract_Click);
             // 
             // btnAddServiceContract
             // 
@@ -208,7 +210,8 @@
             this.chSID,
             this.slaId,
             this.chPName,
-            this.chPDis});
+            this.chPDis,
+            this.columnHeader1});
             this.listPackage.HideSelection = false;
             this.listPackage.Location = new System.Drawing.Point(6, 93);
             this.listPackage.Name = "listPackage";
@@ -380,6 +383,11 @@
             this.chExpectedDuration.Text = "ExpectedDuration";
             this.chExpectedDuration.Width = 199;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Equiptment";
+            this.columnHeader1.Width = 144;
+            // 
             // frmServiceContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -436,5 +444,6 @@
         private System.Windows.Forms.Button btnAddServiceContract;
         private System.Windows.Forms.ColumnHeader ChIDent;
         private System.Windows.Forms.ColumnHeader chStatus;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
