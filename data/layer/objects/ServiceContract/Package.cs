@@ -11,7 +11,7 @@ namespace Data.Layer.Objects
         private string name;
         private string description;
         private ServiceLevelAgreement sla;
-        private int equiptment;
+        private EquipmentCategory category;
 
         //Properties
         public int Id { get => id; set => id = value; }
@@ -19,16 +19,16 @@ namespace Data.Layer.Objects
         public string Name { get => name; set => name = value; }
         public string Description { get => description; set => description = value; }
         public ServiceLevelAgreement Sla { get => sla; set => sla = value; }
-        public int Equiptment { get => equiptment; set => equiptment = value; }
+        public EquipmentCategory Category { get => category; set => category = value; }
 
         //Constructor 
-        public Package(string name, string description, Service service, ServiceLevelAgreement sla, int eqt)
+        public Package(string name, string description, Service service, ServiceLevelAgreement sla, EquipmentCategory category)
         {
             this.service = service;
             this.name = name;
             this.description = description;
             this.sla = sla;
-            this.Equiptment = eqt;
+            this.category = category;
         }
 
         //Standard Methods
