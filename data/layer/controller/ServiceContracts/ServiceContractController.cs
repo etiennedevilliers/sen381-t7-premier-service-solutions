@@ -118,12 +118,13 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             List<Package> packageList = new List<Package>();
-
-            string query = string.Format("SELECT P.PackageID, P.pName, P.pDescription, P.EquipmentCategoryID, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription FROM Package AS P " +
+            //                                    0           1        2                3                     4                5               6               7                            8               9
+            string query = string.Format("SELECT P.PackageID, P.pName, P.pDescription, P.EquipmentCategoryID, EC.CategoryName, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription FROM Package AS P " +
 	                            "LEFT JOIN Service AS S ON S.ServiceID = P.ServiceID " +
 	                            "LEFT JOIN ServiceLevelAgreement AS SLA ON SLA.ServiceLevelAgreementID = P.ServiceLevelAgreementID " +
 	                            "LEFT JOIN serviceContractPackages AS SCP ON SCP.PackageID = P.PackageID " +
-                            "WHERE SCP.ServiceContractID={0}", parent.Id);
+                                "LEFT JOIN EquipmentCategory EC ON EC.EquipmentCategoryID = P.EquipmentCategoryID "+
+                                "WHERE SCP.ServiceContractID={0}", parent.Id);
 
             SqlDataReader read = dh.Select(query);
             Service service;
@@ -135,24 +136,26 @@ namespace Data.Layer.Controller
             {
                 while (read.Read())
                 {
+                    //SERVICE
                     service = new Service(
-                        read.GetString(6),
-                        read.GetInt32(5)
+                        read.GetString(7),
+                        read.GetInt32(6)
                     );
-                    service.Id = read.GetInt32(4);
+                    service.Id = read.GetInt32(5);
                     
+                    //SLA
                     serviceLevelAgreement = new ServiceLevelAgreement(
-                        read.GetString(7)
+                        read.GetString(9)
                     );
-                    serviceLevelAgreement.Id = read.GetInt32(7);
+                    serviceLevelAgreement.Id = read.GetInt32(8);
 
+                    //EQUIPTMENT 
                     ECat = new EquipmentCategory( 
-                        read.GetString(3)
+                        read.GetString(4)
                         );
                     ECat.Id = read.GetInt32(3);
                      
-
-
+                    //Package
                     package = new Package(
                         read.GetString(1),
                         read.GetString(2),

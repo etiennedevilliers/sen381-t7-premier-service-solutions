@@ -304,6 +304,7 @@ namespace Presentation.Forms.Contract_Maintenance
                     P.Sla.Description,
                     P.Name,
                     P.Description,
+                    P.Category.Name
                });
 
                 lst.Tag = P;
@@ -350,6 +351,7 @@ namespace Presentation.Forms.Contract_Maintenance
 
         /// Package ////////////////////////////////////////////////////////////////////////////////////////Package Content
 
+        /// Service Contract ////////////////////////////////////////////////////////////////////////////////////////Service Contract
         private void btnAddServiceContract_Click(object sender, EventArgs e)
         {
             frmAddServiceContract form = new frmAddServiceContract();
@@ -434,6 +436,8 @@ namespace Presentation.Forms.Contract_Maintenance
             }
 
         }
+
+        /// Service Contract ////////////////////////////////////////////////////////////////////////////////////////Service Contract
     }
 
 }
