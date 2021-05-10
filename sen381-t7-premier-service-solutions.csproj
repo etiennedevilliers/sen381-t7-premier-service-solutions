@@ -94,6 +94,7 @@
     <Compile Include="data\layer\objects\ServiceContract\ServiceContract.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ServiceLevelAgreement.cs" />
     <Compile Include="logic\CallCentre\CallCentreLogic.cs" />
+    <Compile Include="logic\ClientMaintenanceLogic.cs" />
     <Compile Include="logic\Scheduler.cs" />
     <Compile Include="logic\NewContractRequestLogic.cs" />
     <Compile Include="logic\TechnicianHandler.cs" />

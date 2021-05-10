@@ -157,7 +157,7 @@ namespace Data.Layer.Controller
 
             string qry = string.Format
                 (
-                    "SELECT R.ClientID, BC.name, IC.name, IC.surname, C.contactNum " +
+                    "SELECT R.ClientID, BC.name, IC.name, IC.surname, C.contactNum, C.ClientIdentifier " +
                     "FROM Request R " +
                     "LEFT OUTER JOIN Client C ON C.ClientID = R.ClientID " +
                     "LEFT OUTER JOIN IndividualClient IC ON IC.IndividualClientID = C.ClientID " +
@@ -177,11 +177,20 @@ namespace Data.Layer.Controller
                         Console.WriteLine(read.GetInt32(0));
                         Console.WriteLine(read.GetString(2));
                         Console.WriteLine(read.GetString(3));
-                        newClient = new IndividualClient(read.GetString(4), read.GetString(2), read.GetString(3));
+                        newClient = new IndividualClient(
+                            read.GetString(4), 
+                            read.GetString(2), 
+                            read.GetString(3),
+                            read.IsDBNull(5) ? null : read.GetString(5)
+                        );
                     }
                     else
                     {
-                        newClient = new BusinessClient(read.GetString(4), read.GetString(1));
+                        newClient = new BusinessClient(
+                            read.GetString(4), 
+                            read.GetString(1),
+                            read.IsDBNull(5) ? null : read.GetString(5)
+                        );
                     }
 
                     newClient.Id = read.GetInt32(0);

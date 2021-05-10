@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
+using Logic;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
@@ -24,28 +25,30 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         
         private void frmNewClient_Load(object sender, EventArgs e)
         {
-            IndividualClientController individualClientController = new IndividualClientController();
-            BusinessClientController businessClientController = new BusinessClientController();
+            tbClientID.Text = ClientMaintenanceLogic.GenerateUniqueClientID();
 
         }
 
         public static string newcontact;
         public static string newclientname;
         public static string newclientsurname;
+        public static string clientID;
 
         private void btnIndividualNew_Click(object sender, EventArgs e)
         {
             newcontact = txtContact.Text;
             newclientname = txtNameNewI.Text;
             newclientsurname = txtSurnameNewI.Text;
+            clientID = tbClientID.Text;
 
             IndividualClientController individualClientController = new IndividualClientController();
             
             IndividualClient individualClient = new IndividualClient(
                 newcontact,
                 newclientname,
-                newclientsurname
-                );
+                newclientsurname,
+                clientID
+            );
 
 
             if (newcontact.Equals(""))
@@ -80,6 +83,19 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tbClientID.Text = ClientMaintenanceLogic.GenerateUniqueClientID();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbClientID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

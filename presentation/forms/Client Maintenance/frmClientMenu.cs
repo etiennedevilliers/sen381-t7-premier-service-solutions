@@ -55,6 +55,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
                     IndividualClient iClient = client as IndividualClient;
 
                     ListViewItem listViewItem = new ListViewItem(new string[] {
+
                         String.Format("{0} {1}", iClient.Name, iClient.Surname),
                         "Individual Client",
                         newContractRequest.ServiceContract.Description,
@@ -90,11 +91,12 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         {
             //lstClientsI.Clear();
             IndividualClientController individualClientController = new IndividualClientController();
-
+            lstClientsI.Items.Clear();
             foreach (IndividualClient client in individualClientController.Read())
             {
                 ListViewItem lstI = new ListViewItem(
                     new string[] {
+                        client.ClientIdentifier,
                         client.Name,
                         client.Surname,
                         client.ContactNum
@@ -110,12 +112,13 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         void LoadBusinessClient()
         {
             BusinessClientController businessClientController = new BusinessClientController();
-
+            lstClientsB.Items.Clear();
             foreach (BusinessClient client in businessClientController.Read())
             {
                 ListViewItem lstB = new ListViewItem(
                     new string[]
                     {
+                        client.ClientIdentifier,
                         client.Name,
                         client.ContactNum
                     }
@@ -163,6 +166,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
                 frmEditIndividualClient editFrm = new frmEditIndividualClient(client);
                 editFrm.ShowDialog();
+                LoadIndividualClient();
             }
         }
 
@@ -189,10 +193,9 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             if (lstClientsB.SelectedItems.Count > 0)
             {
                 BusinessClient client = lstClientsB.SelectedItems[0].Tag as BusinessClient;
-                MessageBox.Show(this.ToString() + client.ToString());
-
                 frmEditBusinessClient editFrmB = new frmEditBusinessClient(client);
                 editFrmB.ShowDialog();
+                LoadBusinessClient();
             }
             else
             {

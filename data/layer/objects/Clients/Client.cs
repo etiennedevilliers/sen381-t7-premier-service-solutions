@@ -13,6 +13,7 @@ namespace Data.Layer.Objects
 
         //Properties
         public int Id { get => id; set => id = value; }
+        public string ClientIdentifier;
         public List<ServiceContract> Contracts { get => contracts; set => contracts = value; }
         public List<Address> addresses
         {
@@ -25,9 +26,10 @@ namespace Data.Layer.Objects
         public string ContactNum { get => contactNum; set => contactNum = value; }
 
         //Constructor
-        public Client(string contactNum)
+        public Client(string contactNum, string clientIdentifier)
         {
             this.contactNum = contactNum;
+            this.ClientIdentifier = clientIdentifier;
         }
 
         //Address Methods
