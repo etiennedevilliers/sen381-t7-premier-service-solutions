@@ -19,10 +19,12 @@ namespace Presentation.Forms.Contract_Maintenance
 
         private List<ServiceLevelAgreement> Placeholder_SLA_List = new List<ServiceLevelAgreement>();
         private List<Service> Placeholder_Service_List = new List<Service>();
+        private List<EquipmentCategory> Placeholder_EQC_List = new List<EquipmentCategory>();
 
         private PackageLogic P_L = new PackageLogic();
         private ServiceLogic S_L = new ServiceLogic();
         private SLALogic SLA_L = new SLALogic();
+        private EquipmentCategoryLogic EQC_L = new EquipmentCategoryLogic();
 
 
         private Package newPackage;
@@ -31,6 +33,7 @@ namespace Presentation.Forms.Contract_Maintenance
         private string Name;
         private Service service;
         private ServiceLevelAgreement sla;
+        private EquipmentCategory EQC;
 
 
         public frmAddPackage()
@@ -73,9 +76,17 @@ namespace Presentation.Forms.Contract_Maintenance
 
                 service = Placeholder_Service_List[cmbPService.SelectedIndex];
                 sla = Placeholder_SLA_List[cmbPSLA.SelectedIndex];
+                EQC = Placeholder_EQC_List[cbxEquitptmentCatagory.SelectedIndex];
 
 
-                newPackage = new Package(Name, Description, service, sla);
+                /*
+                 * ! You were here last 
+                 
+                 */
+
+
+
+                newPackage = new Package(Name, Description, service, sla,EQC);
 
                 P_L.Addpackage(newPackage);
 
@@ -119,6 +130,8 @@ namespace Presentation.Forms.Contract_Maintenance
             //Populate the comboboxes
             Placeholder_Service_List = S_L.ViewServices();
             Placeholder_SLA_List = SLA_L.ViewSLA();
+            Placeholder_EQC_List = EQC_L.viewEquiptmentCatagory();
+
 
             foreach (Service S in S_L.ViewServices())
             {
@@ -129,6 +142,13 @@ namespace Presentation.Forms.Contract_Maintenance
             {
                 cmbPSLA.Items.Add("SLA ID: " + S.Id.ToString() + " " + S.Description);
             }
+
+            foreach (EquipmentCategory EC in EQC_L.viewEquiptmentCatagory())
+            {
+                cbxEquitptmentCatagory.Items.Add("EQC Name: " + EC.Name);
+            }
+
+          
 
         }//Load the listof packages
     }

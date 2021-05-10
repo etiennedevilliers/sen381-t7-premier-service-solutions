@@ -119,7 +119,7 @@ namespace Data.Layer.Controller
 
             List<Package> packageList = new List<Package>();
 
-            string query = string.Format("SELECT P.PackageID, P.pName, P.pDescription, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription FROM Package AS P " +
+            string query = string.Format("SELECT P.PackageID, P.pName, P.pDescription, P.EquipmentCategoryID, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription FROM Package AS P " +
 	                            "LEFT JOIN Service AS S ON S.ServiceID = P.ServiceID " +
 	                            "LEFT JOIN ServiceLevelAgreement AS SLA ON SLA.ServiceLevelAgreementID = P.ServiceLevelAgreementID " +
 	                            "LEFT JOIN serviceContractPackages AS SCP ON SCP.PackageID = P.PackageID " +
@@ -129,27 +129,36 @@ namespace Data.Layer.Controller
             Service service;
             ServiceLevelAgreement serviceLevelAgreement; 
             Package package;
+            EquipmentCategory ECat;
 
             if (read.HasRows)
             {
                 while (read.Read())
                 {
                     service = new Service(
-                        read.GetString(5),
-                        read.GetInt32(4)
+                        read.GetString(6),
+                        read.GetInt32(5)
                     );
-                    service.Id = read.GetInt32(3);
+                    service.Id = read.GetInt32(4);
                     
                     serviceLevelAgreement = new ServiceLevelAgreement(
                         read.GetString(7)
                     );
-                    serviceLevelAgreement.Id = read.GetInt32(6);
+                    serviceLevelAgreement.Id = read.GetInt32(7);
+
+                    ECat = new EquipmentCategory( 
+                        read.GetString(3)
+                        );
+                    ECat.Id = read.GetInt32(3);
+                     
+
 
                     package = new Package(
                         read.GetString(1),
                         read.GetString(2),
                         service,
-                        serviceLevelAgreement
+                        serviceLevelAgreement,
+                        ECat
                     );
 
                     package.Id = read.GetInt32(0);

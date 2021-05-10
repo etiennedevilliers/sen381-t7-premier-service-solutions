@@ -52,7 +52,7 @@ namespace Data.Layer.Objects
 
         public override string ToString()
         {
-            return string.Format("Package({0}, {1}, {2}, {3}, {4})", id, name, description, service, sla, equiptment);
+            return string.Format("Package({0}, {1}, {2}, {3}, {4})", id, name, description, service, sla, category);
         }
     }
 }

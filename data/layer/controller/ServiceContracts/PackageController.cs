@@ -62,11 +62,11 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             List<Package> packageList = new List<Package>();
-
-            string query = "SELECT P.PackageID, P.pName, P.pDescription, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription, P.EquipmentCategoryID, CategoryName FROM Package P " +
+            //                     0           1         2              3             4                   5               6                            7                  8                        9     
+            string query = "SELECT P.PackageID, P.pName, P.pDescription, S.ServiceID, S.expectedDuration, S.sDescription, SLA.ServiceLevelAgreementID, SLA.slaDescription, P.EquipmentCategoryID , EC.CategoryName FROM Package P " +
 	                            "LEFT JOIN Service S ON S.ServiceID = P.ServiceID " +
-	                            "LEFT JOIN ServiceLevelAgreement SLA ON SLA.ServiceLevelAgreementID = P.ServiceLevelAgreementID" +
-                                "LEFT JOIN EquipmentCategory EC ON EC.EquipmentCategoryID = P.EquipmentCategoryID";
+	                            "LEFT JOIN ServiceLevelAgreement SLA ON SLA.ServiceLevelAgreementID = P.ServiceLevelAgreementID " +
+                                "LEFT JOIN EquipmentCategory EC ON EC.EquipmentCategoryID = P.EquipmentCategoryID ";
 
             SqlDataReader read = dh.Select(query);
             EquipmentCategory category;
@@ -89,10 +89,12 @@ namespace Data.Layer.Controller
                     );
                     serviceLevelAgreement.Id = read.GetInt32(6);
 
+                    
                     category = new EquipmentCategory(
                         read.GetString(9)
-                    );
+                    ) ;
                     category.Id = read.GetInt32(8);
+                   
 
                     package = new Package(
                         read.GetString(1),

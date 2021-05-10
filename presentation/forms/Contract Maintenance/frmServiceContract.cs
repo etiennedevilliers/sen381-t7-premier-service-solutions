@@ -406,6 +406,32 @@ namespace Presentation.Forms.Contract_Maintenance
 
         private void btnEditServiceContract_Click(object sender, EventArgs e)
         {
+          
+            if (lstServiceContract.SelectedItems.Count > 0)
+            {
+
+                //Ask user for conformation
+                DialogResult EditI = MessageBox.Show("Are you sure you want to Edit this Service Contrcat ?", "WARNING: EDIT Service Contract",
+                                                  MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (EditI == DialogResult.Yes)
+                {
+
+                    ServiceContract SC = lstServiceContract.SelectedItems[0].Tag as ServiceContract;
+
+              
+                    frmEditServiceCon form = new frmEditServiceCon(SC);
+                    
+                    DialogResult res = form.ShowDialog();
+                    LoadPackage();
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("No Record was selected", "SELECTION",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
     }
