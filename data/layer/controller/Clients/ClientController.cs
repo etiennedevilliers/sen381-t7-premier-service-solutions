@@ -213,7 +213,13 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            int ID = dh.InsertID("INSERT INTO Client(contactNum) VALUES ('" + obj.ContactNum + "')");
+            string query = String.Format(
+                "INSERT INTO Client(contactNum, ClientIdentifier) VALUES ('{0}', '{1}')",
+                obj.ContactNum,
+                obj.ClientIdentifier
+            );
+
+            int ID = dh.InsertID(query);
 
             dh.Dispose();
 
@@ -233,7 +239,7 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Update(string.Format("UPDATE dbo.Client SET contactNum = '{0}' WHERE ClientID = {1}", obj.ContactNum, obj.Id));
+            dh.Update(string.Format("UPDATE dbo.Client SET contactNum = '{0}', ClientIdentifier = '{2}' WHERE ClientID = {1}", obj.ContactNum, obj.Id, obj.ClientIdentifier));
 
             dh.Dispose();
         }

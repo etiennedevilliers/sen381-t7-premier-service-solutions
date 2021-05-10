@@ -101,6 +101,7 @@
     <Compile Include="logic\CallCentre\CallCentreLogic.cs" />
     <Compile Include="logic\EquipmentCategoryLogic.cs" />
     <Compile Include="logic\GeneralLogic.cs" />
+    <Compile Include="logic\ClientMaintenanceLogic.cs" />
     <Compile Include="logic\NewContractRequestLogic.cs" />
     <Compile Include="logic\ServiceContratcLogic\CustomExceptions\ServiceExistsException.cs" />
     <Compile Include="logic\ServiceContratcLogic\CustomExceptions\SLAExistsException.cs" />

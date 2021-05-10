@@ -20,7 +20,7 @@ namespace Data.Layer.Objects
         }
 
         //Constructor
-        public BusinessClient(string contactNum, string name) : base(contactNum)
+        public BusinessClient(string contactNum, string name, string clientIdentifier) : base(contactNum, clientIdentifier)
         {
             this.name = name;
         }
@@ -28,7 +28,7 @@ namespace Data.Layer.Objects
         //Standard Methods
         public override string ToString()
         {
-            return string.Format("BusinessClient({0}, {1}, {2})", id, name, contactNum);
+            return string.Format("BusinessClient({0}, {1}, {2})", ClientIdentifier, name, contactNum);
         }
     }
 }
