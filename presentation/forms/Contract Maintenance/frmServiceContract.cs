@@ -42,7 +42,7 @@ namespace Presentation.Forms.Contract_Maintenance
             LoadSLA();
             LoadPackage();
             LoadServiceContract();
-        }//View list of services on load 
+        }//View list of services on load  
 
         ///  Service///////////////////////////////////////////////////////////////////////////////////////Service Content     
        
@@ -304,6 +304,7 @@ namespace Presentation.Forms.Contract_Maintenance
                     P.Sla.Description,
                     P.Name,
                     P.Description,
+                    P.Category.Name
                });
 
                 lst.Tag = P;
@@ -350,6 +351,7 @@ namespace Presentation.Forms.Contract_Maintenance
 
         /// Package ////////////////////////////////////////////////////////////////////////////////////////Package Content
 
+        /// Service Contract ////////////////////////////////////////////////////////////////////////////////////////Service Contract
         private void btnAddServiceContract_Click(object sender, EventArgs e)
         {
             frmAddServiceContract form = new frmAddServiceContract();
@@ -406,8 +408,36 @@ namespace Presentation.Forms.Contract_Maintenance
 
         private void btnEditServiceContract_Click(object sender, EventArgs e)
         {
+          
+            if (lstServiceContract.SelectedItems.Count > 0)
+            {
+
+                //Ask user for conformation
+                DialogResult EditI = MessageBox.Show("Are you sure you want to Edit this Service Contrcat ?", "WARNING: EDIT Service Contract",
+                                                  MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (EditI == DialogResult.Yes)
+                {
+
+                    ServiceContract SC = lstServiceContract.SelectedItems[0].Tag as ServiceContract;
+
+              
+                    frmEditServiceCon form = new frmEditServiceCon(SC);
+                    
+                    DialogResult res = form.ShowDialog();
+                    LoadPackage();
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("No Record was selected", "SELECTION",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
+
+        /// Service Contract ////////////////////////////////////////////////////////////////////////////////////////Service Contract
     }
 
 }

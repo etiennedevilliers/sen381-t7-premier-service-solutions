@@ -25,7 +25,7 @@ namespace Logic
            
             P_ctr.Delete(P);
 
-        }//Still need to do  //Remove package
+        }//Still need to do  //Remove package //Not any more 
 
         public void EditPackage(Package P)
         {
@@ -45,6 +45,6 @@ namespace Logic
         public void SLA_and_Service_In_Package(Package p)
         {
           
-        }//Still need to do 
+        }//Still need to do  //Not any more 
     }
 }

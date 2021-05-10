@@ -32,16 +32,18 @@
             this.txtPName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPService = new System.Windows.Forms.ComboBox();
-            this.cmbPSLA = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPDiscript = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmbPSLA = new System.Windows.Forms.ComboBox();
+            this.cbxEquitptmentCatagory = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAddPackage1
             // 
-            this.btnAddPackage1.Location = new System.Drawing.Point(632, 391);
+            this.btnAddPackage1.Location = new System.Drawing.Point(632, 467);
             this.btnAddPackage1.Name = "btnAddPackage1";
             this.btnAddPackage1.Size = new System.Drawing.Size(126, 47);
             this.btnAddPackage1.TabIndex = 2;
@@ -72,14 +74,6 @@
             this.cmbPService.Name = "cmbPService";
             this.cmbPService.Size = new System.Drawing.Size(427, 33);
             this.cmbPService.TabIndex = 7;
-            // 
-            // cmbPSLA
-            // 
-            this.cmbPSLA.FormattingEnabled = true;
-            this.cmbPSLA.Location = new System.Drawing.Point(331, 332);
-            this.cmbPSLA.Name = "cmbPSLA";
-            this.cmbPSLA.Size = new System.Drawing.Size(427, 33);
-            this.cmbPSLA.TabIndex = 8;
             // 
             // label3
             // 
@@ -115,11 +109,38 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "Description";
             // 
+            // cmbPSLA
+            // 
+            this.cmbPSLA.FormattingEnabled = true;
+            this.cmbPSLA.Location = new System.Drawing.Point(331, 332);
+            this.cmbPSLA.Name = "cmbPSLA";
+            this.cmbPSLA.Size = new System.Drawing.Size(427, 33);
+            this.cmbPSLA.TabIndex = 8;
+            // 
+            // cbxEquitptmentCatagory
+            // 
+            this.cbxEquitptmentCatagory.FormattingEnabled = true;
+            this.cbxEquitptmentCatagory.Location = new System.Drawing.Point(331, 403);
+            this.cbxEquitptmentCatagory.Name = "cbxEquitptmentCatagory";
+            this.cbxEquitptmentCatagory.Size = new System.Drawing.Size(427, 33);
+            this.cbxEquitptmentCatagory.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(48, 411);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(201, 25);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Equiptemt Catagory";
+            // 
             // frmAddPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 464);
+            this.ClientSize = new System.Drawing.Size(850, 637);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cbxEquitptmentCatagory);
             this.Controls.Add(this.txtPDiscript);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
@@ -143,10 +164,12 @@
         private System.Windows.Forms.TextBox txtPName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbPService;
-        private System.Windows.Forms.ComboBox cmbPSLA;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPDiscript;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbPSLA;
+        private System.Windows.Forms.ComboBox cbxEquitptmentCatagory;
+        private System.Windows.Forms.Label label5;
     }
 }

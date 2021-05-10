@@ -99,7 +99,9 @@
     <Compile Include="data\layer\objects\ServiceContract\ServiceContract.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ServiceLevelAgreement.cs" />
     <Compile Include="logic\CallCentre\CallCentreLogic.cs" />
+    <Compile Include="logic\EquipmentCategoryLogic.cs" />
     <Compile Include="logic\GeneralLogic.cs" />
+    <Compile Include="logic\ClientMaintenanceLogic.cs" />
     <Compile Include="logic\NewContractRequestLogic.cs" />
     <Compile Include="logic\ServiceContratcLogic\CustomExceptions\ServiceExistsException.cs" />
     <Compile Include="logic\ServiceContratcLogic\CustomExceptions\SLAExistsException.cs" />
@@ -192,12 +194,6 @@
     <Compile Include="presentation\forms\Contract Maintenance\frmAddServiceContract.Designer.cs">
       <DependentUpon>frmAddServiceContract.cs</DependentUpon>
     </Compile>
-    <Compile Include="presentation\forms\Contract Maintenance\frmContractMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Contract Maintenance\frmContractMenu.Designer.cs">
-      <DependentUpon>frmContractMenu.cs</DependentUpon>
-    </Compile>
     <Compile Include="presentation\forms\Contract Maintenance\frmEditContract.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,17 +212,17 @@
     <Compile Include="presentation\forms\Contract Maintenance\frmEditService.Designer.cs">
       <DependentUpon>frmEditService.cs</DependentUpon>
     </Compile>
+    <Compile Include="presentation\forms\Contract Maintenance\frmEditServiceCon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Contract Maintenance\frmEditServiceCon.Designer.cs">
+      <DependentUpon>frmEditServiceCon.cs</DependentUpon>
+    </Compile>
     <Compile Include="presentation\forms\Contract Maintenance\frmEditSLA.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="presentation\forms\Contract Maintenance\frmEditSLA.Designer.cs">
       <DependentUpon>frmEditSLA.cs</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\forms\Contract Maintenance\frmNewContract.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Contract Maintenance\frmNewContract.Designer.cs">
-      <DependentUpon>frmNewContract.cs</DependentUpon>
     </Compile>
     <Compile Include="presentation\forms\Contract Maintenance\frmNewSLA.cs">
       <SubType>Form</SubType>
@@ -239,12 +235,6 @@
     </Compile>
     <Compile Include="presentation\forms\Contract Maintenance\frmServiceContract.Designer.cs">
       <DependentUpon>frmServiceContract.cs</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\forms\Contract Maintenance\frmViewContracts.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Contract Maintenance\frmViewContracts.Designer.cs">
-      <DependentUpon>frmViewContracts.cs</DependentUpon>
     </Compile>
     <Compile Include="presentation\forms\Service Department\Manager\frmAddTechnician.cs">
       <SubType>Form</SubType>
@@ -317,29 +307,23 @@
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmViewContract.resx">
       <DependentUpon>frmViewContract.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmContractMenu.resx">
-      <DependentUpon>frmContractMenu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmEditPackages.resx">
       <DependentUpon>frmEditPackages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmEditService.resx">
       <DependentUpon>frmEditService.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmEditServiceCon.resx">
+      <DependentUpon>frmEditServiceCon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmEditSLA.resx">
       <DependentUpon>frmEditSLA.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmNewContract.resx">
-      <DependentUpon>frmNewContract.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmNewSLA.resx">
       <DependentUpon>frmNewSLA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmServiceContract.resx">
       <DependentUpon>frmServiceContract.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmViewContracts.resx">
-      <DependentUpon>frmViewContracts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Service Department\Manager\frmAddTechnician.resx">
       <DependentUpon>frmAddTechnician.cs</DependentUpon>

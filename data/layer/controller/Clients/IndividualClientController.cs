@@ -39,7 +39,7 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             List<IndividualClient> indList = new List<IndividualClient>();
-            SqlDataReader read = dh.Select("SELECT IC.IndividualClientID, name, surname, contactNum FROM dbo.IndividualClient AS IC LEFT JOIN dbo.Client AS C ON C.ClientID = IC.IndividualClientID");
+            SqlDataReader read = dh.Select("SELECT IC.IndividualClientID, name, surname, contactNum, ClientIdentifier FROM dbo.IndividualClient AS IC LEFT JOIN dbo.Client AS C ON C.ClientID = IC.IndividualClientID");
             IndividualClient newCl;
 
             if (read.HasRows)
@@ -49,7 +49,8 @@ namespace Data.Layer.Controller
                     newCl = new IndividualClient(
                             read.GetString(3),
                             read.GetString(1),
-                            read.GetString(2)
+                            read.GetString(2),
+                            read.IsDBNull(4) ? null : read.GetString(4)
                         );
 
                     newCl.Id = read.GetInt32(0);
