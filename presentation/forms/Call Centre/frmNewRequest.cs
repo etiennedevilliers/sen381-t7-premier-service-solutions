@@ -83,7 +83,7 @@ namespace Presentation.Forms.CallCentre
 
                 Client currentClient = cbExistingClient.SelectedItem as Client;
                 cbComplaintServiceContract.Items.Clear();
-                foreach (ServiceContract serviceContract in clientController.ReadChildren(currentClient))
+                foreach (ServiceContract serviceContract in clientController.serviceContract.ReadChildren(currentClient))
                 {
                     cbComplaintServiceContract.Items.Add(serviceContract);
                     cbServiceRequestServiceContract.Items.Add(serviceContract);

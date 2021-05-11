@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
+using Logic;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
@@ -35,7 +36,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
             
 
-            foreach(ClientServiceContract cServiceContract in clientController.ReadChildren(this.indivClient))
+            foreach(ClientServiceContract cServiceContract in clientController.serviceContract.ReadChildren(this.indivClient))
             {
                 ListViewItem lstViewIndivI = new ListViewItem(
                     new string[] {
@@ -48,7 +49,8 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
                 lstViewIndiv.Items.Add(lstViewIndivI);
             }
 
-            
+
+            LoadLstvEquipment();
         }
 
         private void btnApply_Click(object sender, EventArgs e)
@@ -66,6 +68,58 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private void btnReturn_Click(object sender, EventArgs e)
         {
             Hide();
+        }
+
+
+        private void LoadLstvEquipment()
+        {
+            ClientController clientController = new ClientController();
+
+            lstvEquipment.Items.Clear();
+
+            foreach (Equipment equipment in clientController.equipment.ReadChildren(this.indivClient))
+            {
+                ListViewItem listViewItem = new ListViewItem(
+                    new string[]
+                    {
+                        equipment.SerialNumber,
+                        equipment.Manufacturer,
+                        equipment.Category.ToString(),
+                    }
+                );
+
+                listViewItem.Tag = equipment;
+
+                lstvEquipment.Items.Add(listViewItem);
+            }
+        }
+
+        private void btnAddEquipment_Click(object sender, EventArgs e)
+        {
+            Equipment equipment = frmNewEquipment.CreateNewEquipment();
+
+            if (equipment != null)
+            {
+                ClientMaintenanceLogic.AddEquipmentToClient(this.indivClient, equipment);
+                LoadLstvEquipment();
+            }
+        }
+
+        private void btnRemoveEquipment_Click(object sender, EventArgs e)
+        {
+            if (lstvEquipment.SelectedItems.Count > 0)
+            {
+                Equipment equipment = (lstvEquipment.SelectedItems[0].Tag) as Equipment;
+
+                ClientMaintenanceLogic.RemoveEquipmentFromClient(this.indivClient, equipment);
+
+                LoadLstvEquipment();
+            }
+            else
+            {
+                MessageBox.Show("Select equipment first");
+            }
+
         }
     }
 }

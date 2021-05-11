@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections.Generic;
 using Data.Layer.Controller;
 
@@ -9,7 +9,6 @@ namespace Data.Layer.Objects
     {
         //Fields
         private string description;
-        
 
         //Properties
         public ServiceContract ServiceContract
@@ -21,11 +20,12 @@ namespace Data.Layer.Objects
         }
         public string Description { get => description; set => description = value; }
         public  DateTime? JobStarted;
+
         //Constructor
         public ServiceRequest(DateTime dateCreated, DateTime? dateResolved, CallLog call, string description) : base(dateCreated, dateResolved, call)
         {
             this.description = description;
-            this.JobStarted = null;
+            JobStarted = null;
         }
 
         //Standard Methods

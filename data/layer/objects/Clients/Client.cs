@@ -8,33 +8,39 @@ namespace Data.Layer.Objects
     {
         //Fields
         protected int id;
-        protected List<ServiceContract> contracts;
         protected string contactNum;
 
         //Properties
         public int Id { get => id; set => id = value; }
-        public List<ServiceContract> Contracts { get => contracts; set => contracts = value; }
+        public string ClientIdentifier;
+        public string ContactNum { get => contactNum; set => contactNum = value; }
+        public List<ClientServiceContract> contracts
+        {
+            get
+            {
+                return new ClientController().serviceContract.ReadChildren(this);
+            }
+        }
         public List<Address> addresses
         {
             get
             {
-                AddressController adr = new AddressController(this);
-                return adr.Read();
+                return new ClientController().address.ReadChildren(this);
             }
         }
-        public string ContactNum { get => contactNum; set => contactNum = value; }
-
-        //Constructor
-        public Client(string contactNum)
+        public List<Equipment> equipment
         {
-            this.contactNum = contactNum;
+            get
+            {
+                return new ClientController().equipment.ReadChildren(this);
+            }
         }
 
-        //Address Methods
-        public void AddAddress(Address adr)
+        //Constructor
+        public Client(string contactNum, string clientIdentifier)
         {
-            AddressController adrContr = new AddressController(this);
-            adrContr.Create(adr);
+            this.contactNum = contactNum;
+            this.ClientIdentifier = clientIdentifier;
         }
 
         //Standard Methods

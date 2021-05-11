@@ -7,7 +7,6 @@ namespace Data.Layer.Objects
     
     public class NewContractRequest : Request
     {
-
         //Properties
         public ServiceContract ServiceContract { 
             get {

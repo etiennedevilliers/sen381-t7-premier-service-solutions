@@ -15,6 +15,7 @@ namespace Presentation.Forms.ServiceDepartment
 {
     public partial class frmViewServices : Form
     {
+        ServiceDepartmentLogic sdLogic = new ServiceDepartmentLogic();
         ServiceRequest currentServiceRequest;
         Technician tech;
 
@@ -27,33 +28,54 @@ namespace Presentation.Forms.ServiceDepartment
         {
             //To be replaced with login
             TechnicianController techCtr = new TechnicianController();
-            tech = techCtr.ReadSpecific(7);
+            tech = techCtr.ReadSpecific(8);
             //
 
-            TechnicianHandler handler = new TechnicianHandler();
-            currentServiceRequest = handler.GetServiceRequest(tech);
-
-            List<Package> packages = currentServiceRequest.ServiceContract.Packages;
-            List<Service> skills = tech.Skills;
-
-            foreach (Package i in packages)
-            {
-                foreach (Service j in skills)
-                {
-                    if (i.Service.Id == j.Id)
-                    {
-                        lstCurrentServices.Items.Add(i.Service.Description);
-                    }
-                }
-            }
+            LoadData();
         }
 
         private void btnComplete_Click(object sender, EventArgs e)
         {
-            //Update Request status
+            currentServiceRequest.Status = "Resolved";
+            RequestController rqCtr = new RequestController();
+            rqCtr.Update(currentServiceRequest);
 
-            Scheduler sch = new Scheduler();
-            sch.Schedule(tech);
+            if (sdLogic.GetQueueDuration(tech) == 0)
+            {
+                tech.EmploymentStatus = "Open";
+                TechnicianController techCtr = new TechnicianController();
+                techCtr.Update(tech);
+            }
+
+            LoadData();
+        }
+
+        void LoadData()
+        {
+            lstCurrentServices.Items.Clear();
+
+            currentServiceRequest = sdLogic.GetServiceRequest(tech);
+
+            if (currentServiceRequest == null)
+            {
+                List<Package> packages = currentServiceRequest.ServiceContract.Packages;
+                List<Service> skills = tech.Skills;
+
+                foreach (Package i in packages)
+                {
+                    foreach (Service j in skills)
+                    {
+                        if (i.Service.Id == j.Id)
+                        {
+                            lstCurrentServices.Items.Add(i.Service.Description);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                //No work
+            }
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Data.Layer.Controller
 
             List<BusinessClient> busList = new List<BusinessClient>();
             SqlDataReader read = dh.Select(
-                "SELECT BC.BusinessClientID, name, contactNum " +
+                "SELECT BC.BusinessClientID, BC.name, C.contactNum, C.ClientIdentifier " +
                 "FROM dbo.BusinessClient AS BC " +
                     "LEFT JOIN dbo.Client AS C ON C.ClientID = BC.BusinessClientID "
             );
@@ -52,7 +52,8 @@ namespace Data.Layer.Controller
                 {
                     newCl = new BusinessClient(
                             read.GetString(2),
-                            read.GetString(1)
+                            read.GetString(1),
+                            read.IsDBNull(3) ? null : read.GetString(3)
                         );
 
                     newCl.Id = read.GetInt32(0);
@@ -92,7 +93,7 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Delete("Employee", "BusinessClientID = " + parent.Id.ToString());
+            dh.Delete("Employee", "EmployeeID = " + child.Id.ToString());
 
             dh.Dispose();
         }
@@ -103,7 +104,7 @@ namespace Data.Layer.Controller
 
             List<Employee> empList = new List<Employee>();
 
-            String query = String.Format(
+            string query = string.Format(
                 "SELECT EmployeeID, name, surname, role, contactNum FROM Employee WHERE BusinessClientID = {0}",
                 parent.Id
             );

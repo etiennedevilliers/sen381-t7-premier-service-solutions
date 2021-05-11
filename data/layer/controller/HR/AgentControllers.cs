@@ -43,7 +43,7 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             dh.Update(string.Format(
-                "UPDATE dbo.Request SET aName='{1}', contactNum='{2}', employmentStatus='{3}', employeeType='{4}' WHERE AgentID = {0}", 
+                "UPDATE dbo.Agent SET aName='{1}', contactNum='{2}', employmentStatus='{3}', employeeType='{4}' WHERE AgentID = {0}", 
                 obj.Id,
                 obj.Name,
                 obj.ContactNum,

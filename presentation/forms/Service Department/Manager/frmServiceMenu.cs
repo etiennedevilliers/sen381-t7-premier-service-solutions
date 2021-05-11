@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Layer.Controller;
 using Data.Layer.Objects;
+using Logic;
 
 namespace Presentation.Forms.ServiceDepartment
 {
     public partial class frmServiceMenu : Form
     {
-        List<ServiceRequest> requests = new List<ServiceRequest>();
-        ServiceRequestController ctr = new ServiceRequestController();
+        ServiceDepartmentLogic sdLogic = new ServiceDepartmentLogic();
+        GeneralLogic genLogic = new GeneralLogic();
 
         public frmServiceMenu()
         {
@@ -24,78 +25,164 @@ namespace Presentation.Forms.ServiceDepartment
 
         private void frmServiceMenu_Load(object sender, EventArgs e)
         {
-            LoadData();
+            LoadRequests();
+            LoadTechnicians();
         }
 
-        private void btnCloseRequest_Click(object sender, EventArgs e)
+        void LoadRequests()
         {
-            int id = int.Parse(lstServices.SelectedItems[0].SubItems[0].Text);
+            lstRequests.Items.Clear();
+            List<ServiceRequest> requests = new ServiceRequestController().Read();
+            Client client;
+            List<RequestAgent> handlers;
+            string technicianNames;
+            IndividualClient ind;
+            BusinessClient bus;
+            ListViewItem lst;
 
             foreach (ServiceRequest i in requests)
             {
-                if (i.Id == id)
+                if (i.Status == "Open" || i.Status == "Resolved")
                 {
-                    i.Status = "Closed";
-                    ctr.Update(i);
-                }
-            }
-
-            LoadData();
-        }
-
-        void LoadData()
-        {
-            lstServices.Items.Clear();
-            requests = ctr.Read();
-
-            foreach (ServiceRequest i in requests)
-            {
-                if (i.Status == "Open")
-                {
-                    Client client = i.Client;
-                    List<Agent> handlers = i.Handlers;
-                    string technicianNames = "";
+                    client = i.Client;
+                    handlers = i.Handlers;
+                    technicianNames = "";
 
                     foreach (Agent j in handlers)
                     {
-                        if (j is Technician)
+                        if (j.EmployeeType == "Technician")
                         {
                             technicianNames += j.Name + ", ";
                         }
                     }
 
-                    if (technicianNames != "")
-                    {
-                        technicianNames = technicianNames.Substring(0, technicianNames.Length - 2);
-                    }
+                    technicianNames = genLogic.TruncList(technicianNames);
 
-                    ListViewItem lst = new ListViewItem(
+                    lst = new ListViewItem(
                         new string[]
                         {
-                            i.Id.ToString(), 
-                            i.Description, 
-                            i.DateCreated.ToShortDateString(), 
-                            i.JobStarted == null ? "Not Started" : i.JobStarted.Value.ToShortDateString(),
-                            i.DateResolved == null ? "Unresolved" : i.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"), 
-                            i.Call.TimeStarted.ToLongTimeString(), 
-                            i.Call.TimeEnded.ToLongTimeString(), 
-                            technicianNames
+                            i.Description, i.DateCreated.ToShortDateString(), i.JobStarted.ToString(),
+                            i.DateResolved.ToString(), i.Call.TimeStarted.ToLongTimeString(), i.Call.TimeEnded.ToLongTimeString(), technicianNames
                         });
 
                     if (client is IndividualClient)
                     {
-                        IndividualClient ind = (IndividualClient)client;
+                        ind = (IndividualClient) client;
                         lst.SubItems.Add(ind.Name);
                     }
                     else if (client is BusinessClient)
                     {
-                        BusinessClient bus = (BusinessClient)client;
+                        bus = (BusinessClient) client;
                         lst.SubItems.Add(bus.Name);
                     }
 
-                    lstServices.Items.Add(lst);
+                    lst.SubItems.Add(i.Status);
+
+                    lst.Tag = i;
+
+                    lstRequests.Items.Add(lst);
                 }
             }
+        }
+
+        void LoadTechnicians()
+        {
+            lstTechnicians.Items.Clear();
+            List<Technician> technicians = new TechnicianController().Read();
+            ServiceRequest currentRequest;
+            List<Service> skills;
+            string skillSet;
+            ListViewItem lst;
+
+            foreach (Technician i in technicians)
+            {
+                skills = i.Skills;
+                skillSet = "";
+
+                foreach (Service j in skills)
+                {
+                    skillSet += j.Description + ", ";
+                }
+
+                skillSet = genLogic.TruncList(skillSet);
+
+                lst = new ListViewItem(
+                        new string[]
+                        {
+                            i.Name, i.ContactNum, i.EmploymentStatus, skillSet
+                        });
+
+                if (i.EmploymentStatus == "Working")
+                {
+                    currentRequest = sdLogic.GetServiceRequest(i);
+                    lst.SubItems.Add(currentRequest.Id.ToString());
+                }
+
+                lst.Tag = i;
+
+                lstTechnicians.Items.Add(lst);
+            }
+        }
+
+        //Requests Tab
+        private void btnSchedule_Click(object sender, EventArgs e)
+        {
+            if (sdLogic.Schedule((ServiceRequest)lstRequests.SelectedItems[0].Tag))
+            {
+                MessageBox.Show("Technicians Successfully Scheduled");
+            }
+            else
+            {
+                MessageBox.Show("Technicians Not Scheduled");
+            }
+
+            LoadRequests();
+            LoadTechnicians();
+        }
+
+        private void btnCloseRequest_Click(object sender, EventArgs e)
+        {
+            sdLogic.CloseRequest((ServiceRequest)lstRequests.SelectedItems[0].Tag);
+
+            LoadRequests();
+        }
+
+        //Technicians Tab
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            sdLogic.DeleteTechnician((Technician) lstTechnicians.SelectedItems[0].Tag);
+
+            LoadTechnicians();
+            LoadRequests();
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            frmAddTechnician form = new frmAddTechnician();
+            DialogResult res = form.ShowDialog();
+
+            if (res == DialogResult.OK)
+            {
+                sdLogic.CreateTechnician(form.newTech, form.newSkills);
+            }
+
+            LoadTechnicians();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            Technician tech = (Technician) lstTechnicians.SelectedItems[0].Tag;
+            List<Service> skills = new TechnicianController().ReadChildren(tech);
+
+            frmEditTechnician form = new frmEditTechnician(tech, skills);
+            DialogResult res = form.ShowDialog();
+
+            if (res == DialogResult.OK)
+            {
+                sdLogic.EditTechnician(form.tech, form.skills, skills);
+            }
+
+            LoadTechnicians();
         }
     }
 }

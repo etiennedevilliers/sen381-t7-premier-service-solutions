@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Presentation.Forms.ServiceDepartment;
 using Presentation.Forms.CallCentre;
 using sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance;
+//using Presentation.Forms.ClientMaintenance;
+using Presentation.Forms.Contract_Maintenance;
 
 namespace Presentation.Forms.Welcome
 {
@@ -41,7 +43,6 @@ namespace Presentation.Forms.Welcome
             Hide();
             FrmNewRequest.OpenRequest();
             Show();
-          
         }
 
         private void btnClientMain_Click(object sender, EventArgs e)
@@ -50,6 +51,25 @@ namespace Presentation.Forms.Welcome
             frmClientMenu form = new frmClientMenu();
             form.ShowDialog();
             Show();
+        }
+
+        private void btnContractMain_Click(object sender, EventArgs e)
+        {
+            //Hide the current form 
+            Hide();
+            //Create  instance of the target form 
+            //frmContractMaintenance
+        
+            frmServiceContract form = new frmServiceContract();
+            //Show the target form dialog
+            form.ShowDialog();
+
+            //Show this form 
+            Show();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
 
         }
     }

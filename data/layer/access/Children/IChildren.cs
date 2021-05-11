@@ -8,7 +8,7 @@ namespace Data.Layer.Access
     {
         void Add(Child child, Parent parent);
 
-        void Remove(Child chils, Parent parent);
+        void Remove(Child child, Parent parent);
 
         List<Child> ReadChildren(Parent parent);
     }
