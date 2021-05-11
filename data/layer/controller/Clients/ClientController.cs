@@ -106,10 +106,15 @@ namespace Data.Layer.Controller
                 DataHandler dh = new DataHandler();
 
                 List<Equipment> equipmentList = new List<Equipment>();
-                SqlDataReader read = dh.Select(
-                                "SELECT EquipmentID, SerialNumber, Manufacturer, E.EquipmentCategoryID, EC.CategoryName" +
-                                "FROM Equipment E INNER JOIN EquipmentCategory EC ON EC.EquipmentCategoryID = E.EquipmentCategoryID" +
-                                "WHERE ClientID = " + parent.Id.ToString());
+
+                string query = String.Format(
+                    "SELECT EquipmentID, SerialNumber, Manufacturer, E.EquipmentCategoryID, EC.CategoryName " +
+                    "FROM Equipment E INNER JOIN EquipmentCategory EC ON EC.EquipmentCategoryID = E.EquipmentCategoryID " +
+                    "WHERE ClientID = {0}", 
+                    parent.Id
+                );
+
+                SqlDataReader read = dh.Select(query);
                 Equipment equipment;
                 EquipmentCategory category;
 

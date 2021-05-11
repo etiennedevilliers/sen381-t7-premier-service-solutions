@@ -46,5 +46,19 @@ namespace Logic
             
             return a;
         }
+    
+        public static void AddEquipmentToClient(Client client, Equipment equipment)
+        {
+            ClientController clientController = new ClientController();
+
+            clientController.equipment.Add(equipment, client);
+        }
+
+        public static void RemoveEquipmentFromClient(Client client, Equipment equipment)
+        {
+            ClientController clientController = new ClientController();
+
+            clientController.equipment.Remove(equipment, client);
+        }
     }
 }
