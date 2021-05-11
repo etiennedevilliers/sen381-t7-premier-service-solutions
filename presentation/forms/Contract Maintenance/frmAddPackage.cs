@@ -78,14 +78,6 @@ namespace Presentation.Forms.Contract_Maintenance
                 sla = Placeholder_SLA_List[cmbPSLA.SelectedIndex];
                 EQC = Placeholder_EQC_List[cbxEquitptmentCatagory.SelectedIndex];
 
-
-                /*
-                 * ! You were here last 
-                 
-                 */
-
-
-
                 newPackage = new Package(Name, Description, service, sla,EQC);
 
                 P_L.Addpackage(newPackage);

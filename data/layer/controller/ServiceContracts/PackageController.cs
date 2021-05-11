@@ -16,7 +16,7 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             int ID = dh.InsertID(string.Format(
-                "INSERT INTO Package(ServiceID, ServiceLevelAgreementID, pName, pDescription) VALUES ({0}, {1}, '{2}', '{3}', {4})",        
+                "INSERT INTO Package(ServiceID, ServiceLevelAgreementID, pName, pDescription, EquipmentCategoryID ) VALUES ({0}, {1}, '{2}', '{3}', {4})",        
                  obj.Service.Id,
                  obj.Sla.Id,
                  obj.Name,

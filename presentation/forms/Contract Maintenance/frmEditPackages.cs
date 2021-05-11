@@ -75,6 +75,9 @@ namespace Presentation.Forms.Contract_Maintenance
                 cmbPSLA.Items.Add("SLA ID: "+ S.Id.ToString() + " " + S.Description);
             }
 
+            cmbPService.Text = ParsedPckage.Service.Description;
+            cmbPSLA.Text = ParsedPckage.Sla.Description;
+
         }//Populate Combo boxes and load list of packages
 
         private void btnEditPackage_Click(object sender, EventArgs e)
@@ -90,12 +93,12 @@ namespace Presentation.Forms.Contract_Maintenance
                 MessageBox.Show("Please enter package Name", "EMPTY FIELDS!!",
                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (cmbPService.Items.Count < 0)
+            if (cmbPService.SelectedIndex < 0)
             {
                 MessageBox.Show("Please Select a Service", "EMPTY VALUE!!",
                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (cmbPSLA.Items.Count < 0)
+            if (cmbPSLA.SelectedIndex < 0)
             {
                 MessageBox.Show("Please Select a Service Level Agreemnt", "EMPTY VALUE!!",
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
