@@ -1,5 +1,5 @@
 ﻿
-namespace sen381_t7_premier_service_solutions.presentation.forms.Contract_Maintenance
+namespace Presentation.Forms.Contract_Maintenance
 {
     partial class frmEditContract
     {
@@ -29,10 +29,18 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Contract_Mainte
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // frmEditContract
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(3176, 1718);
+            this.Name = "frmEditContract";
             this.Text = "EditContract";
+            this.Load += new System.EventHandler(this.frmEditContract_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

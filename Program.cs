@@ -13,6 +13,16 @@ namespace sen381_t7_premier_service_solutions
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// 
+
+        /*
+            Remove Technician - Children
+            Mid-Schedule operations
+            Has to select
+            Technicians who have no work
+            Exception handling when deleting children
+        */
+
         [STAThread]
         static void Main()
         {

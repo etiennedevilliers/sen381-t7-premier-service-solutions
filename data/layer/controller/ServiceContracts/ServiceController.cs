@@ -69,10 +69,12 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Update(string.Format("UPDATE dbo.Service SET sDescription = '{1}', expectedDuration = '{2}' WHERE ServiceID = {0} ,",
+            dh.Update(string.Format("UPDATE dbo.Service SET sDescription = '{1}', expectedDuration = '{2}' WHERE ServiceID = {0}",
+                obj.Id,
                 obj.Description,
                 obj.ExpectedDuration
                 ));
         }
     }
 }
+

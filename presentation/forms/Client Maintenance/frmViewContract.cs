@@ -35,7 +35,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
             
 
-            foreach(ClientServiceContract cServiceContract in clientController.ReadChildren(this.indivClient))
+            foreach(ClientServiceContract cServiceContract in clientController.serviceContract.ReadChildren(this.indivClient))
             {
                 ListViewItem lstViewIndivI = new ListViewItem(
                     new string[] {

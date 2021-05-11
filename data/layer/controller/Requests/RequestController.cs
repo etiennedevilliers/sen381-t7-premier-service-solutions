@@ -7,7 +7,7 @@ using Data.Layer.Objects;
 
 namespace Data.Layer.Controller
 {
-    class RequestController : IChildren<Agent, Request>, IChild<Client,Request>
+    class RequestController : IChildren<RequestAgent, Request>, IChild<Client,Request>
     {
         internal int Create(Request obj)
         {
@@ -22,8 +22,6 @@ namespace Data.Layer.Controller
                 obj.ContactNum,
                 obj.Call.Id
             );
-
-            Console.WriteLine(query);
 
             int ID = dh.InsertID(query);
 
@@ -61,20 +59,21 @@ namespace Data.Layer.Controller
             dh.Dispose();
         }
     
-        public void Add(Agent child, Request parent) {
+        public void Add(RequestAgent child, Request parent) {
             DataHandler dh = new DataHandler();
 
             string query = string.Format(
-                "INSERT INTO agentRequestHandlers(AgentID, RequestID) VALUES({0}, {1})",
+                "INSERT INTO agentRequestHandlers(AgentID, RequestID, ServiceID) VALUES({0}, {1}, {2})",
                 child.Id,
-                parent.Id
+                parent.Id,
+                child.ser == null ? "null" : child.ser.Id.ToString()
             );
             dh.Insert(query);
 
             dh.Dispose();
         }
 
-        public void Remove(Agent child, Request parent) {
+        public void Remove(RequestAgent child, Request parent) {
             DataHandler dh = new DataHandler();
 
             dh.Delete("agentRequestHandlers", string.Format(
@@ -86,20 +85,23 @@ namespace Data.Layer.Controller
             dh.Dispose();
         }
 
-        public List<Agent> ReadChildren(Request parent) 
+        public List<RequestAgent> ReadChildren(Request parent)
         {
             DataHandler dh = new DataHandler();
 
-            List<Agent> agents = new List<Agent>();
+            List<RequestAgent> reqAgents = new List<RequestAgent>();
 
-            string query = "SELECT A.AgentID, A.aName, A.contactNum, A.employmentStatus, A.employeeType, T.TechnicianID " +
+            string query = "SELECT A.AgentID, A.aName, A.contactNum, A.employmentStatus, A.employeeType, T.TechnicianID, S.ServiceID, S.sDescription, S.expectedDuration " +
                             "FROM Agent A " +
                             "LEFT OUTER JOIN agentRequestHandlers H ON A.AgentID = H.AgentID " +
+                            "LEFT OUTER JOIN Service S ON S.ServiceID = H.ServiceID " +
                             "LEFT OUTER JOIN Technician T ON T.TechnicianID = A.AgentID " +
                             "WHERE H.RequestID = {0}";
 
             SqlDataReader read = dh.Select(string.Format(query, parent.Id));
+            RequestAgent reqAgent;
             Agent agent;
+            Service ser = null;
 
             if (read.HasRows)
             {
@@ -126,11 +128,24 @@ namespace Data.Layer.Controller
 
                     agent.Id = read.GetInt32(0);
 
-                    agents.Add(agent);
+                    if (!read.IsDBNull(6))
+                    {
+                        ser = new Service(read.GetString(7), read.GetInt32(8));
+                        ser.Id = read.GetInt32(6);
+                    }
+
+                    reqAgent = new RequestAgent(
+                        ser ?? null,
+                        agent
+                    );
+
+                    reqAgents.Add(reqAgent);
                 }
             }
+
             dh.Dispose();
-            return agents;
+
+            return reqAgents;
         }
 
 

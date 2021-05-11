@@ -93,7 +93,7 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            dh.Delete("Employee", "BusinessClientID = " + parent.Id.ToString());
+            dh.Delete("Employee", "EmployeeID = " + child.Id.ToString());
 
             dh.Dispose();
         }
@@ -104,7 +104,7 @@ namespace Data.Layer.Controller
 
             List<Employee> empList = new List<Employee>();
 
-            String query = String.Format(
+            string query = string.Format(
                 "SELECT EmployeeID, name, surname, role, contactNum FROM Employee WHERE BusinessClientID = {0}",
                 parent.Id
             );

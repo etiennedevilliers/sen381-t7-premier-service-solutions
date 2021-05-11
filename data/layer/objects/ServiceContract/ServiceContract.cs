@@ -31,13 +31,14 @@ namespace Data.Layer.Objects
         public string identifier;
 
         //Constructor
-        public ServiceContract(string description, double cost, DateTime dateFinalised, DateTime dateTerminated, string status)
+        public ServiceContract(string description, double cost, DateTime dateFinalised, DateTime dateTerminated, string status,string identifier)
         {
             this.description = description;
             this.cost = cost;
             this.dateFinalised = dateFinalised;
             this.dateTerminated = dateTerminated;
             this.status = status;
+            this.identifier = identifier;
         }
 
         //Standard Methods

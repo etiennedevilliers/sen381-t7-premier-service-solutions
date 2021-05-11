@@ -43,7 +43,7 @@ namespace Logic
             if (endDate > serviceContract.DateTerminated)
                 return new DateValidationResponse(false, String.Format("This Service Contract is only valid until {0}", serviceContract.DateTerminated));
 
-            foreach (ClientServiceContract clientSC in clientController.ReadChildren(newContractRequest.Client))
+            foreach (ClientServiceContract clientSC in clientController.serviceContract.ReadChildren(newContractRequest.Client))
             {
                 //bool overlap = a.start < b.end && b.start < a.end;
                 bool overlap = startDate < clientSC.EndDate && clientSC.StartDate < endDate;
@@ -71,7 +71,7 @@ namespace Logic
 
             ClientServiceContract clientServiceContract = new ClientServiceContract(startDate, endDate, newContractRequest.ServiceContract);
 
-            clientController.Add(
+            clientController.serviceContract.Add(
                 clientServiceContract,
                 newContractRequest.Client
             );
