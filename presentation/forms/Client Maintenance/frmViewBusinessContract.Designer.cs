@@ -52,10 +52,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colStartDate,
             this.colEndDate});
             this.lstViewBusi.HideSelection = false;
-            this.lstViewBusi.Location = new System.Drawing.Point(132, 153);
+            this.lstViewBusi.Location = new System.Drawing.Point(12, 85);
             this.lstViewBusi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lstViewBusi.Name = "lstViewBusi";
-            this.lstViewBusi.Size = new System.Drawing.Size(936, 396);
+            this.lstViewBusi.Size = new System.Drawing.Size(1106, 396);
             this.lstViewBusi.TabIndex = 1;
             this.lstViewBusi.UseCompatibleStateImageBehavior = false;
             this.lstViewBusi.View = System.Windows.Forms.View.Details;
@@ -77,26 +77,26 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // tbBusContact
             // 
-            this.tbBusContact.Location = new System.Drawing.Point(132, 89);
+            this.tbBusContact.Location = new System.Drawing.Point(12, 21);
             this.tbBusContact.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbBusContact.Name = "tbBusContact";
-            this.tbBusContact.Size = new System.Drawing.Size(229, 31);
+            this.tbBusContact.Size = new System.Drawing.Size(233, 31);
             this.tbBusContact.TabIndex = 2;
             // 
             // tbBusiName
             // 
-            this.tbBusiName.Location = new System.Drawing.Point(418, 89);
+            this.tbBusiName.Location = new System.Drawing.Point(298, 21);
             this.tbBusiName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbBusiName.Name = "tbBusiName";
-            this.tbBusiName.Size = new System.Drawing.Size(242, 31);
+            this.tbBusiName.Size = new System.Drawing.Size(246, 31);
             this.tbBusiName.TabIndex = 3;
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(932, 69);
+            this.btnApply.Location = new System.Drawing.Point(985, 0);
             this.btnApply.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(129, 75);
+            this.btnApply.Size = new System.Drawing.Size(133, 75);
             this.btnApply.TabIndex = 5;
             this.btnApply.Text = "Apply Changes";
             this.btnApply.UseVisualStyleBackColor = true;
@@ -104,7 +104,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(957, 588);
+            this.btnReturn.Location = new System.Drawing.Point(1006, 922);
             this.btnReturn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(112, 36);
@@ -120,7 +120,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colManufact,
             this.colCat});
             this.lstvEquipment.HideSelection = false;
-            this.lstvEquipment.Location = new System.Drawing.Point(12, 722);
+            this.lstvEquipment.Location = new System.Drawing.Point(12, 550);
             this.lstvEquipment.Name = "lstvEquipment";
             this.lstvEquipment.Size = new System.Drawing.Size(1106, 364);
             this.lstvEquipment.TabIndex = 7;
@@ -141,7 +141,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnAddEquipment
             // 
-            this.btnAddEquipment.Location = new System.Drawing.Point(888, 668);
+            this.btnAddEquipment.Location = new System.Drawing.Point(888, 496);
             this.btnAddEquipment.Name = "btnAddEquipment";
             this.btnAddEquipment.Size = new System.Drawing.Size(230, 48);
             this.btnAddEquipment.TabIndex = 8;
@@ -151,7 +151,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnRemoveEquipment
             // 
-            this.btnRemoveEquipment.Location = new System.Drawing.Point(652, 668);
+            this.btnRemoveEquipment.Location = new System.Drawing.Point(652, 496);
             this.btnRemoveEquipment.Name = "btnRemoveEquipment";
             this.btnRemoveEquipment.Size = new System.Drawing.Size(230, 48);
             this.btnRemoveEquipment.TabIndex = 9;
@@ -163,7 +163,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1130, 1098);
+            this.ClientSize = new System.Drawing.Size(1134, 975);
             this.Controls.Add(this.btnRemoveEquipment);
             this.Controls.Add(this.btnAddEquipment);
             this.Controls.Add(this.lstvEquipment);
