@@ -29,9 +29,9 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private void frmViewBusinessContract_Load(object sender, EventArgs e)
         {
             ClientController clientController = new ClientController();
+           
 
             List<ServiceContract> servContr = new List<ServiceContract>();
-
 
 
             foreach (ClientServiceContract cServiceContract in clientController.ReadChildren(this.businessClient))

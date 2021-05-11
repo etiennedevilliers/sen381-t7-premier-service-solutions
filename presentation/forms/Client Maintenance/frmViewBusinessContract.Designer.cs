@@ -30,13 +30,16 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private void InitializeComponent()
         {
             this.lstViewBusi = new System.Windows.Forms.ListView();
-            this.tbBusContact = new System.Windows.Forms.TextBox();
-            this.tbBusiName = new System.Windows.Forms.TextBox();
-            this.btnApply = new System.Windows.Forms.Button();
             this.colDescript = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colStartDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colEndDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tbBusContact = new System.Windows.Forms.TextBox();
+            this.tbBusiName = new System.Windows.Forms.TextBox();
+            this.btnApply = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.btnAddEquipment = new System.Windows.Forms.Button();
+            this.btnRemoveEquipment = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstViewBusi
@@ -46,36 +49,13 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colStartDate,
             this.colEndDate});
             this.lstViewBusi.HideSelection = false;
-            this.lstViewBusi.Location = new System.Drawing.Point(88, 98);
+            this.lstViewBusi.Location = new System.Drawing.Point(132, 153);
+            this.lstViewBusi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lstViewBusi.Name = "lstViewBusi";
-            this.lstViewBusi.Size = new System.Drawing.Size(625, 255);
+            this.lstViewBusi.Size = new System.Drawing.Size(936, 396);
             this.lstViewBusi.TabIndex = 1;
             this.lstViewBusi.UseCompatibleStateImageBehavior = false;
             this.lstViewBusi.View = System.Windows.Forms.View.Details;
-            // 
-            // tbBusContact
-            // 
-            this.tbBusContact.Location = new System.Drawing.Point(88, 57);
-            this.tbBusContact.Name = "tbBusContact";
-            this.tbBusContact.Size = new System.Drawing.Size(154, 22);
-            this.tbBusContact.TabIndex = 2;
-            // 
-            // tbBusiName
-            // 
-            this.tbBusiName.Location = new System.Drawing.Point(279, 57);
-            this.tbBusiName.Name = "tbBusiName";
-            this.tbBusiName.Size = new System.Drawing.Size(163, 22);
-            this.tbBusiName.TabIndex = 3;
-            // 
-            // btnApply
-            // 
-            this.btnApply.Location = new System.Drawing.Point(621, 44);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(86, 48);
-            this.btnApply.TabIndex = 5;
-            this.btnApply.Text = "Apply Changes";
-            this.btnApply.UseVisualStyleBackColor = true;
-            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // colDescript
             // 
@@ -92,26 +72,85 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colEndDate.Text = "End Date";
             this.colEndDate.Width = 101;
             // 
+            // tbBusContact
+            // 
+            this.tbBusContact.Location = new System.Drawing.Point(132, 89);
+            this.tbBusContact.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbBusContact.Name = "tbBusContact";
+            this.tbBusContact.Size = new System.Drawing.Size(229, 31);
+            this.tbBusContact.TabIndex = 2;
+            // 
+            // tbBusiName
+            // 
+            this.tbBusiName.Location = new System.Drawing.Point(418, 89);
+            this.tbBusiName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbBusiName.Name = "tbBusiName";
+            this.tbBusiName.Size = new System.Drawing.Size(242, 31);
+            this.tbBusiName.TabIndex = 3;
+            // 
+            // btnApply
+            // 
+            this.btnApply.Location = new System.Drawing.Point(932, 69);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(129, 75);
+            this.btnApply.TabIndex = 5;
+            this.btnApply.Text = "Apply Changes";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(638, 376);
+            this.btnReturn.Location = new System.Drawing.Point(957, 588);
+            this.btnReturn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn.Size = new System.Drawing.Size(112, 36);
             this.btnReturn.TabIndex = 6;
             this.btnReturn.Text = "Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(12, 722);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(1106, 364);
+            this.listView1.TabIndex = 7;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // btnAddEquipment
+            // 
+            this.btnAddEquipment.Location = new System.Drawing.Point(888, 668);
+            this.btnAddEquipment.Name = "btnAddEquipment";
+            this.btnAddEquipment.Size = new System.Drawing.Size(230, 48);
+            this.btnAddEquipment.TabIndex = 8;
+            this.btnAddEquipment.Text = "Add Equipment";
+            this.btnAddEquipment.UseVisualStyleBackColor = true;
+            // 
+            // btnRemoveEquipment
+            // 
+            this.btnRemoveEquipment.Location = new System.Drawing.Point(652, 668);
+            this.btnRemoveEquipment.Name = "btnRemoveEquipment";
+            this.btnRemoveEquipment.Size = new System.Drawing.Size(230, 48);
+            this.btnRemoveEquipment.TabIndex = 9;
+            this.btnRemoveEquipment.Text = "Remove Equipment";
+            this.btnRemoveEquipment.UseVisualStyleBackColor = true;
+            // 
             // frmViewBusinessContract
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 457);
+            this.ClientSize = new System.Drawing.Size(1130, 1098);
+            this.Controls.Add(this.btnRemoveEquipment);
+            this.Controls.Add(this.btnAddEquipment);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.tbBusiName);
             this.Controls.Add(this.tbBusContact);
             this.Controls.Add(this.lstViewBusi);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmViewBusinessContract";
             this.Text = "frmViewBusinessContract";
             this.Load += new System.EventHandler(this.frmViewBusinessContract_Load);
@@ -130,5 +169,8 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private System.Windows.Forms.ColumnHeader colStartDate;
         private System.Windows.Forms.ColumnHeader colEndDate;
         private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button btnAddEquipment;
+        private System.Windows.Forms.Button btnRemoveEquipment;
     }
 }
