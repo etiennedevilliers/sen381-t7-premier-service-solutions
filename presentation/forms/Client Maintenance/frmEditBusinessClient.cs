@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
+using Logic;
 
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
@@ -27,6 +28,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
             tbNameBusiness.Text = businessClient.Name;
             tbContactBusiness.Text = businessClient.ContactNum;
+            tbClientID.Text = businessClient.ClientIdentifier;
 
         }
 
@@ -34,6 +36,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         {
             this.businessClient.Name = tbNameBusiness.Text;
             this.businessClient.ContactNum = tbContactBusiness.Text;
+            this.businessClient.ClientIdentifier = tbClientID.Text;
 
             (new BusinessClientController()).Update(this.businessClient);
 
@@ -41,6 +44,9 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tbClientID.Text = ClientMaintenanceLogic.GenerateUniqueClientID();
+        }
     }
 }
