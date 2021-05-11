@@ -75,7 +75,6 @@ namespace Presentation.Forms.ServiceDepartment
                         bus = (BusinessClient) client;
                         lst.SubItems.Add(bus.Name);
                     }
-
                     lst.SubItems.Add(i.Status);
 
                     lst.Tag = i;

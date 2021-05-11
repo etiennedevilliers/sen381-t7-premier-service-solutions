@@ -197,6 +197,7 @@
             this.btnRemovePackage.TabIndex = 25;
             this.btnRemovePackage.Text = "Remove package";
             this.btnRemovePackage.UseVisualStyleBackColor = true;
+            this.btnRemovePackage.Click += new System.EventHandler(this.btnRemovePackage_Click);
             // 
             // btnAddPackage
             // 
@@ -206,6 +207,7 @@
             this.btnAddPackage.TabIndex = 24;
             this.btnAddPackage.Text = "Add Package";
             this.btnAddPackage.UseVisualStyleBackColor = true;
+            this.btnAddPackage.Click += new System.EventHandler(this.btnAddPackage_Click);
             // 
             // btnSCOk
             // 
@@ -215,6 +217,7 @@
             this.btnSCOk.TabIndex = 23;
             this.btnSCOk.Text = "OK";
             this.btnSCOk.UseVisualStyleBackColor = true;
+            this.btnSCOk.Click += new System.EventHandler(this.btnSCOk_Click);
             // 
             // frmEditServiceCon
             // 
