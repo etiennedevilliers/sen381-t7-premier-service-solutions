@@ -37,7 +37,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.tbBusiName = new System.Windows.Forms.TextBox();
             this.btnApply = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstvEquipment = new System.Windows.Forms.ListView();
+            this.colSerial = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colManufact = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colCat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAddEquipment = new System.Windows.Forms.Button();
             this.btnRemoveEquipment = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -110,14 +113,31 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
-            // listView1
+            // lstvEquipment
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 722);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1106, 364);
-            this.listView1.TabIndex = 7;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lstvEquipment.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colSerial,
+            this.colManufact,
+            this.colCat});
+            this.lstvEquipment.HideSelection = false;
+            this.lstvEquipment.Location = new System.Drawing.Point(12, 722);
+            this.lstvEquipment.Name = "lstvEquipment";
+            this.lstvEquipment.Size = new System.Drawing.Size(1106, 364);
+            this.lstvEquipment.TabIndex = 7;
+            this.lstvEquipment.UseCompatibleStateImageBehavior = false;
+            this.lstvEquipment.View = System.Windows.Forms.View.Details;
+            // 
+            // colSerial
+            // 
+            this.colSerial.Text = "Serial Number";
+            // 
+            // colManufact
+            // 
+            this.colManufact.Text = "Manufacturer";
+            // 
+            // colCat
+            // 
+            this.colCat.Text = "Category";
             // 
             // btnAddEquipment
             // 
@@ -127,6 +147,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.btnAddEquipment.TabIndex = 8;
             this.btnAddEquipment.Text = "Add Equipment";
             this.btnAddEquipment.UseVisualStyleBackColor = true;
+            this.btnAddEquipment.Click += new System.EventHandler(this.btnAddEquipment_Click);
             // 
             // btnRemoveEquipment
             // 
@@ -136,6 +157,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.btnRemoveEquipment.TabIndex = 9;
             this.btnRemoveEquipment.Text = "Remove Equipment";
             this.btnRemoveEquipment.UseVisualStyleBackColor = true;
+            this.btnRemoveEquipment.Click += new System.EventHandler(this.btnRemoveEquipment_Click);
             // 
             // frmViewBusinessContract
             // 
@@ -144,7 +166,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.ClientSize = new System.Drawing.Size(1130, 1098);
             this.Controls.Add(this.btnRemoveEquipment);
             this.Controls.Add(this.btnAddEquipment);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lstvEquipment);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.tbBusiName);
@@ -169,8 +191,11 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private System.Windows.Forms.ColumnHeader colStartDate;
         private System.Windows.Forms.ColumnHeader colEndDate;
         private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstvEquipment;
         private System.Windows.Forms.Button btnAddEquipment;
         private System.Windows.Forms.Button btnRemoveEquipment;
+        private System.Windows.Forms.ColumnHeader colSerial;
+        private System.Windows.Forms.ColumnHeader colManufact;
+        private System.Windows.Forms.ColumnHeader colCat;
     }
 }
