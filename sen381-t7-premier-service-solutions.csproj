@@ -133,17 +133,17 @@
     <Compile Include="presentation\forms\Client Maintenance\frmNewBusinessClient.Designer.cs">
       <DependentUpon>frmNewBusinessClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmViewBusinessContract.cs">
+    <Compile Include="presentation\forms\Client Maintenance\frmViewBusiness.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmViewBusinessContract.Designer.cs">
-      <DependentUpon>frmViewBusinessContract.cs</DependentUpon>
+    <Compile Include="presentation\forms\Client Maintenance\frmViewBusiness.Designer.cs">
+      <DependentUpon>frmViewBusiness.cs</DependentUpon>
     </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmViewContract.cs">
+    <Compile Include="presentation\forms\Client Maintenance\frmViewIndividual.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmViewContract.Designer.cs">
-      <DependentUpon>frmViewContract.cs</DependentUpon>
+    <Compile Include="presentation\forms\Client Maintenance\frmViewIndividual.Designer.cs">
+      <DependentUpon>frmViewIndividual.cs</DependentUpon>
     </Compile>
     <Compile Include="presentation\forms\Client Maintenance\frmClientMenu.cs">
       <SubType>Form</SubType>
@@ -231,11 +231,11 @@
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewClient.resx">
       <DependentUpon>frmNewClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmViewBusinessContract.resx">
-      <DependentUpon>frmViewBusinessContract.cs</DependentUpon>
+    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmViewBusiness.resx">
+      <DependentUpon>frmViewBusiness.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmViewContract.resx">
-      <DependentUpon>frmViewContract.cs</DependentUpon>
+    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmViewIndividual.resx">
+      <DependentUpon>frmViewIndividual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmContractMenu.resx">
       <DependentUpon>frmContractMenu.cs</DependentUpon>

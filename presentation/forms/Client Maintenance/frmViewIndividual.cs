@@ -12,51 +12,55 @@ using Data.Layer.Controller;
 
 namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
 {
-    public partial class frmViewBusinessContract : Form
+    public partial class frmViewIndividual : Form
     {
-        private BusinessClient businessClient;
+        private IndividualClient indivClient; 
 
-        public frmViewBusinessContract(BusinessClient businessClient)
+        public frmViewIndividual(IndividualClient indivClient)
         {
             InitializeComponent();
 
-            this.businessClient = businessClient;
+            this.indivClient = indivClient;
 
-            tbBusiName.Text = businessClient.Name;
-            tbBusContact.Text = businessClient.ContactNum;
+            tbIndivName.Text = indivClient.Name;
+            tbIndivSurname.Text = indivClient.Surname;
+            tbIndivContact.Text = indivClient.ContactNum;
         }
 
-        private void frmViewBusinessContract_Load(object sender, EventArgs e)
+        private void frmViewContract_Load(object sender, EventArgs e)
         {
             ClientController clientController = new ClientController();
 
             List<ServiceContract> servContr = new List<ServiceContract>();
 
+            
 
-
-            foreach (ClientServiceContract cServiceContract in clientController.ReadChildren(this.businessClient))
+            foreach(ClientServiceContract cServiceContract in clientController.ReadChildren(this.indivClient))
             {
-                ListViewItem lstViewIndivB = new ListViewItem(
+                ListViewItem lstViewIndivI = new ListViewItem(
                     new string[] {
                             cServiceContract.Description,
                             cServiceContract.StartDate.ToString(),
                             cServiceContract.EndDate.ToString(),
                     }
-                );
+                ) ;
 
-                lstViewBusi.Items.Add(lstViewIndivB);
+                lstViewIndiv.Items.Add(lstViewIndivI);
             }
 
+            
         }
 
         private void btnApply_Click(object sender, EventArgs e)
-        {
-            this.businessClient.Name = tbBusiName.Text;
-            this.businessClient.ContactNum = tbBusContact.Text;
+{
+            this.indivClient.Name = tbIndivName.Text;
+            this.indivClient.Surname = tbIndivSurname.Text;
+            this.indivClient.ContactNum = tbIndivContact.Text;
 
-            (new BusinessClientController()).Update(this.businessClient);
+            (new IndividualClientController()).Update(this.indivClient);
 
             Hide();
+
         }
 
         private void btnReturn_Click(object sender, EventArgs e)

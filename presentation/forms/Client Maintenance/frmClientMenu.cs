@@ -257,14 +257,14 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         }
 
-        private void btnViewContractI_Click(object sender, EventArgs e)
+        private void btnViewI_Click(object sender, EventArgs e)
         {
             if (lstClientsI.SelectedItems.Count > 0)
             {
                 IndividualClient client = lstClientsI.SelectedItems[0].Tag as IndividualClient;
                 //MessageBox.Show(this.ToString() + client.ToString());
 
-                frmViewContract viewContrFrm = new frmViewContract(client);
+                frmViewIndividual viewContrFrm = new frmViewIndividual(client);
                 viewContrFrm.ShowDialog();
             }
             else
@@ -276,14 +276,14 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             
         }
 
-        private void btnViewContractB_Click(object sender, EventArgs e)
+        private void btnViewB_Click(object sender, EventArgs e)
         {
             if (lstClientsB.SelectedItems.Count > 0)
             {
                 BusinessClient client = lstClientsB.SelectedItems[0].Tag as BusinessClient;
                 //MessageBox.Show(this.ToString() + client.ToString());
 
-                frmViewBusinessContract viewBusinessContrFrm = new frmViewBusinessContract(client);
+                frmViewBusiness viewBusinessContrFrm = new frmViewBusiness(client);
                 viewBusinessContrFrm.ShowDialog();
             }
             else
