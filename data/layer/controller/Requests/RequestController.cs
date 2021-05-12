@@ -43,20 +43,42 @@ namespace Data.Layer.Controller
 
         internal void Update(Request obj)
         {
+            Client client = obj.Client;
+
             DataHandler dh = new DataHandler();
 
-            dh.Update(string.Format(
-                "UPDATE dbo.Request SET ClientID={1}, CallID={2}, dateCreated='{3}', dateResolved='{4}', status='{5}', contactNum='{6}' WHERE RequestID = {0}", 
-                obj.Id,
-                obj.Client.Id,
-                obj.Call.Id,
-                obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
-                obj.DateResolved == null ? "null" : obj.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"),
-                obj.Status,
-                obj.ContactNum
-             ));
+            
+
+            if (client == null) 
+            {
+                dh.Update(string.Format(
+                    "UPDATE dbo.Request SET ClientID={1}, CallID={2}, dateCreated='{3}', dateResolved='{4}', status='{5}', contactNum='{6}' WHERE RequestID = {0}",
+                    obj.Id,
+                    "NULL",
+                    obj.Call.Id,
+                    obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                    obj.DateResolved == null ? "null" : obj.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                    obj.Status,
+                    obj.ContactNum
+                 ));
+            }
+            else
+            {
+                dh.Update(string.Format(
+                    "UPDATE dbo.Request SET ClientID={1}, CallID={2}, dateCreated='{3}', dateResolved='{4}', status='{5}', contactNum='{6}' WHERE RequestID = {0}",
+                    obj.Id,
+                    client.Id,
+                    obj.Call.Id,
+                    obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                    obj.DateResolved == null ? "null" : obj.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                    obj.Status,
+                    obj.ContactNum
+                 ));
+            }
 
             dh.Dispose();
+
+
         }
     
         public void Add(RequestAgent child, Request parent) {
@@ -187,6 +209,13 @@ namespace Data.Layer.Controller
             {
                 while (read.Read()) 
                 {
+                    if (read.IsDBNull(0)) 
+                    {
+                        dh.Dispose();
+                        return null;
+                    }
+                        
+
                     if (read.IsDBNull(1))
                     {
                         Console.WriteLine(read.GetInt32(0));
