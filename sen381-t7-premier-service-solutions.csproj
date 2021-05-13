@@ -140,6 +140,12 @@
     <Compile Include="presentation\forms\Client Maintenance\frmEditIndividualClient.Designer.cs">
       <DependentUpon>frmEditIndividualClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmNewAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmNewAddress.Designer.cs">
+      <DependentUpon>frmNewAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="presentation\forms\Client Maintenance\frmNewBusinessClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmEditIndividualClient.resx">
       <DependentUpon>frmEditIndividualClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewAddress.resx">
+      <DependentUpon>frmNewAddress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewBusinessClient.resx">
       <DependentUpon>frmNewBusinessClient.cs</DependentUpon>

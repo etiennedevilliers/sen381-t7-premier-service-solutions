@@ -51,6 +51,8 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
 
             LoadLstvEquipment();
+
+            LoadLstvAddress();
         }
 
         private void btnApply_Click(object sender, EventArgs e)
@@ -94,6 +96,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             }
         }
 
+
         private void btnAddEquipment_Click(object sender, EventArgs e)
         {
             Equipment equipment = frmNewEquipment.CreateNewEquipment();
@@ -119,6 +122,51 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             {
                 MessageBox.Show("Select equipment first");
             }
+
+        }
+
+        private void LoadLstvAddress()
+        {
+            ClientController clientController = new ClientController();
+
+            lstAddressI.Items.Clear();
+
+            foreach (Address address in clientController.address.ReadChildren(this.indivClient))
+            {
+                ListViewItem listViewItem = new ListViewItem(
+                    new string[]
+                    {
+                        address.StreetAddress,
+                        address.Province,
+                        address.Country,
+                        address.District,
+                        address.Locality,
+                        address.Premise,
+                        address.PostalCode
+                    }
+                );
+
+                listViewItem.Tag = address;
+
+                lstAddressI.Items.Add(listViewItem);
+            }
+        }
+
+        private void btnAddAddressAI_Click(object sender, EventArgs e)
+        {
+            //Address address = frmNewAddress.CreateNewAddress();
+
+            //if (address != null)
+            {
+                //(this.businessClient, address);
+                LoadLstvAddress();
+            }
+            
+        }
+
+        private void btnRemoveAddressAI_Click(object sender, EventArgs e)
+        {
+            LoadLstvAddress();
 
         }
     }

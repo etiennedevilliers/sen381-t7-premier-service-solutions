@@ -41,8 +41,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.tpgIndividualClients = new System.Windows.Forms.TabPage();
             this.btnAddI = new System.Windows.Forms.Button();
             this.tpgBusinessClients = new System.Windows.Forms.TabPage();
-            this.cbEmployeesB = new System.Windows.Forms.ComboBox();
-            this.btnAssignEmployeeB = new System.Windows.Forms.Button();
             this.btnAddB = new System.Windows.Forms.Button();
             this.btnDeleteB = new System.Windows.Forms.Button();
             this.btnViewB = new System.Windows.Forms.Button();
@@ -179,8 +177,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // tpgBusinessClients
             // 
             this.tpgBusinessClients.Controls.Add(this.btnViewBu);
-            this.tpgBusinessClients.Controls.Add(this.cbEmployeesB);
-            this.tpgBusinessClients.Controls.Add(this.btnAssignEmployeeB);
             this.tpgBusinessClients.Controls.Add(this.btnAddB);
             this.tpgBusinessClients.Controls.Add(this.btnDeleteB);
             this.tpgBusinessClients.Controls.Add(this.btnViewB);
@@ -194,26 +190,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.tpgBusinessClients.TabIndex = 1;
             this.tpgBusinessClients.Text = "Business Clients";
             this.tpgBusinessClients.UseVisualStyleBackColor = true;
-            // 
-            // cbEmployeesB
-            // 
-            this.cbEmployeesB.FormattingEnabled = true;
-            this.cbEmployeesB.Location = new System.Drawing.Point(5, 4);
-            this.cbEmployeesB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbEmployeesB.Name = "cbEmployeesB";
-            this.cbEmployeesB.Size = new System.Drawing.Size(124, 24);
-            this.cbEmployeesB.TabIndex = 11;
-            // 
-            // btnAssignEmployeeB
-            // 
-            this.btnAssignEmployeeB.Location = new System.Drawing.Point(163, 5);
-            this.btnAssignEmployeeB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAssignEmployeeB.Name = "btnAssignEmployeeB";
-            this.btnAssignEmployeeB.Size = new System.Drawing.Size(128, 23);
-            this.btnAssignEmployeeB.TabIndex = 10;
-            this.btnAssignEmployeeB.Text = "Assign Employee";
-            this.btnAssignEmployeeB.UseVisualStyleBackColor = true;
-            this.btnAssignEmployeeB.Click += new System.EventHandler(this.btnAssignEmployeeB_Click);
             // 
             // btnAddB
             // 
@@ -413,8 +389,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private System.Windows.Forms.ListView lstClientsB;
         private System.Windows.Forms.ColumnHeader colNameB;
         private System.Windows.Forms.Button btnEditB;
-        private System.Windows.Forms.ComboBox cbEmployeesB;
-        private System.Windows.Forms.Button btnAssignEmployeeB;
         private System.Windows.Forms.ColumnHeader colContactNumI;
         private System.Windows.Forms.ColumnHeader colContactNumB;
         private System.Windows.Forms.TabPage tpgServiceContractRequests;

@@ -43,6 +43,28 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colCat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAddEquipment = new System.Windows.Forms.Button();
             this.btnRemoveEquipment = new System.Windows.Forms.Button();
+            this.btnRemoveAddressAB = new System.Windows.Forms.Button();
+            this.btnAddAddressAB = new System.Windows.Forms.Button();
+            this.lstAddressB = new System.Windows.Forms.ListView();
+            this.colCountryAB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colProvinceAB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDistrictAB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colLocalityAB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colPostalCodeAB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colStreetAddressAB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colPremiseAB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tbcViewBusiness = new System.Windows.Forms.TabControl();
+            this.tbpAddress = new System.Windows.Forms.TabPage();
+            this.tpgEquipment = new System.Windows.Forms.TabPage();
+            this.tpgServices = new System.Windows.Forms.TabPage();
+            this.tpgEmployee = new System.Windows.Forms.TabPage();
+            this.cbEmployeesB = new System.Windows.Forms.ComboBox();
+            this.btnAssignEmployeeB = new System.Windows.Forms.Button();
+            this.tbcViewBusiness.SuspendLayout();
+            this.tbpAddress.SuspendLayout();
+            this.tpgEquipment.SuspendLayout();
+            this.tpgServices.SuspendLayout();
+            this.tpgEmployee.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstViewBusi
@@ -52,10 +74,9 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colStartDate,
             this.colEndDate});
             this.lstViewBusi.HideSelection = false;
-            this.lstViewBusi.Location = new System.Drawing.Point(12, 85);
-            this.lstViewBusi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lstViewBusi.Location = new System.Drawing.Point(13, 35);
             this.lstViewBusi.Name = "lstViewBusi";
-            this.lstViewBusi.Size = new System.Drawing.Size(1106, 396);
+            this.lstViewBusi.Size = new System.Drawing.Size(952, 234);
             this.lstViewBusi.TabIndex = 1;
             this.lstViewBusi.UseCompatibleStateImageBehavior = false;
             this.lstViewBusi.View = System.Windows.Forms.View.Details;
@@ -63,40 +84,37 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // colDescript
             // 
             this.colDescript.Text = "Service Description";
-            this.colDescript.Width = 170;
+            this.colDescript.Width = 294;
             // 
             // colStartDate
             // 
             this.colStartDate.Text = "Start Date";
-            this.colStartDate.Width = 89;
+            this.colStartDate.Width = 229;
             // 
             // colEndDate
             // 
             this.colEndDate.Text = "End Date";
-            this.colEndDate.Width = 101;
+            this.colEndDate.Width = 231;
             // 
             // tbBusContact
             // 
-            this.tbBusContact.Location = new System.Drawing.Point(12, 21);
-            this.tbBusContact.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbBusContact.Location = new System.Drawing.Point(28, 23);
             this.tbBusContact.Name = "tbBusContact";
-            this.tbBusContact.Size = new System.Drawing.Size(233, 31);
+            this.tbBusContact.Size = new System.Drawing.Size(165, 22);
             this.tbBusContact.TabIndex = 2;
             // 
             // tbBusiName
             // 
-            this.tbBusiName.Location = new System.Drawing.Point(298, 21);
-            this.tbBusiName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbBusiName.Location = new System.Drawing.Point(199, 23);
             this.tbBusiName.Name = "tbBusiName";
-            this.tbBusiName.Size = new System.Drawing.Size(246, 31);
+            this.tbBusiName.Size = new System.Drawing.Size(165, 22);
             this.tbBusiName.TabIndex = 3;
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(985, 0);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnApply.Location = new System.Drawing.Point(389, 12);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(133, 75);
+            this.btnApply.Size = new System.Drawing.Size(89, 48);
             this.btnApply.TabIndex = 5;
             this.btnApply.Text = "Apply Changes";
             this.btnApply.UseVisualStyleBackColor = true;
@@ -104,10 +122,9 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(1006, 922);
-            this.btnReturn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnReturn.Location = new System.Drawing.Point(1051, 417);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(112, 36);
+            this.btnReturn.Size = new System.Drawing.Size(100, 48);
             this.btnReturn.TabIndex = 6;
             this.btnReturn.Text = "Return";
             this.btnReturn.UseVisualStyleBackColor = true;
@@ -120,9 +137,10 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colManufact,
             this.colCat});
             this.lstvEquipment.HideSelection = false;
-            this.lstvEquipment.Location = new System.Drawing.Point(12, 550);
+            this.lstvEquipment.Location = new System.Drawing.Point(17, 56);
+            this.lstvEquipment.Margin = new System.Windows.Forms.Padding(2);
             this.lstvEquipment.Name = "lstvEquipment";
-            this.lstvEquipment.Size = new System.Drawing.Size(1106, 364);
+            this.lstvEquipment.Size = new System.Drawing.Size(1079, 194);
             this.lstvEquipment.TabIndex = 7;
             this.lstvEquipment.UseCompatibleStateImageBehavior = false;
             this.lstvEquipment.View = System.Windows.Forms.View.Details;
@@ -130,20 +148,24 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // colSerial
             // 
             this.colSerial.Text = "Serial Number";
+            this.colSerial.Width = 264;
             // 
             // colManufact
             // 
             this.colManufact.Text = "Manufacturer";
+            this.colManufact.Width = 249;
             // 
             // colCat
             // 
             this.colCat.Text = "Category";
+            this.colCat.Width = 246;
             // 
             // btnAddEquipment
             // 
-            this.btnAddEquipment.Location = new System.Drawing.Point(888, 496);
+            this.btnAddEquipment.Location = new System.Drawing.Point(941, 21);
+            this.btnAddEquipment.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddEquipment.Name = "btnAddEquipment";
-            this.btnAddEquipment.Size = new System.Drawing.Size(230, 48);
+            this.btnAddEquipment.Size = new System.Drawing.Size(153, 31);
             this.btnAddEquipment.TabIndex = 8;
             this.btnAddEquipment.Text = "Add Equipment";
             this.btnAddEquipment.UseVisualStyleBackColor = true;
@@ -151,31 +173,188 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnRemoveEquipment
             // 
-            this.btnRemoveEquipment.Location = new System.Drawing.Point(652, 496);
+            this.btnRemoveEquipment.Location = new System.Drawing.Point(766, 21);
+            this.btnRemoveEquipment.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoveEquipment.Name = "btnRemoveEquipment";
-            this.btnRemoveEquipment.Size = new System.Drawing.Size(230, 48);
+            this.btnRemoveEquipment.Size = new System.Drawing.Size(153, 31);
             this.btnRemoveEquipment.TabIndex = 9;
             this.btnRemoveEquipment.Text = "Remove Equipment";
             this.btnRemoveEquipment.UseVisualStyleBackColor = true;
             this.btnRemoveEquipment.Click += new System.EventHandler(this.btnRemoveEquipment_Click);
             // 
-            // frmViewBusinessContract
+            // btnRemoveAddressAB
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.btnRemoveAddressAB.Location = new System.Drawing.Point(725, 15);
+            this.btnRemoveAddressAB.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoveAddressAB.Name = "btnRemoveAddressAB";
+            this.btnRemoveAddressAB.Size = new System.Drawing.Size(153, 30);
+            this.btnRemoveAddressAB.TabIndex = 17;
+            this.btnRemoveAddressAB.Text = "Remove Address";
+            this.btnRemoveAddressAB.UseVisualStyleBackColor = true;
+            this.btnRemoveAddressAB.Click += new System.EventHandler(this.btnRemoveAddressAB_Click);
+            // 
+            // btnAddAddressAB
+            // 
+            this.btnAddAddressAB.Location = new System.Drawing.Point(937, 15);
+            this.btnAddAddressAB.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddAddressAB.Name = "btnAddAddressAB";
+            this.btnAddAddressAB.Size = new System.Drawing.Size(153, 30);
+            this.btnAddAddressAB.TabIndex = 16;
+            this.btnAddAddressAB.Text = "Add Address";
+            this.btnAddAddressAB.UseVisualStyleBackColor = true;
+            this.btnAddAddressAB.Click += new System.EventHandler(this.btnAddAddressAB_Click);
+            // 
+            // lstAddressB
+            // 
+            this.lstAddressB.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colCountryAB,
+            this.colProvinceAB,
+            this.colDistrictAB,
+            this.colLocalityAB,
+            this.colPostalCodeAB,
+            this.colStreetAddressAB,
+            this.colPremiseAB});
+            this.lstAddressB.HideSelection = false;
+            this.lstAddressB.Location = new System.Drawing.Point(14, 49);
+            this.lstAddressB.Margin = new System.Windows.Forms.Padding(2);
+            this.lstAddressB.Name = "lstAddressB";
+            this.lstAddressB.Size = new System.Drawing.Size(1077, 201);
+            this.lstAddressB.TabIndex = 15;
+            this.lstAddressB.UseCompatibleStateImageBehavior = false;
+            this.lstAddressB.View = System.Windows.Forms.View.Details;
+            // 
+            // colCountryAB
+            // 
+            this.colCountryAB.Text = "Country";
+            this.colCountryAB.Width = 108;
+            // 
+            // colProvinceAB
+            // 
+            this.colProvinceAB.Text = "Province";
+            this.colProvinceAB.Width = 107;
+            // 
+            // colDistrictAB
+            // 
+            this.colDistrictAB.Text = "District";
+            this.colDistrictAB.Width = 108;
+            // 
+            // colLocalityAB
+            // 
+            this.colLocalityAB.Text = "Locality";
+            this.colLocalityAB.Width = 101;
+            // 
+            // colPostalCodeAB
+            // 
+            this.colPostalCodeAB.Text = "Postal Code";
+            this.colPostalCodeAB.Width = 88;
+            // 
+            // colStreetAddressAB
+            // 
+            this.colStreetAddressAB.Text = "Street Address";
+            this.colStreetAddressAB.Width = 150;
+            // 
+            // colPremiseAB
+            // 
+            this.colPremiseAB.Text = "Premise";
+            this.colPremiseAB.Width = 101;
+            // 
+            // tbcViewBusiness
+            // 
+            this.tbcViewBusiness.Controls.Add(this.tbpAddress);
+            this.tbcViewBusiness.Controls.Add(this.tpgEquipment);
+            this.tbcViewBusiness.Controls.Add(this.tpgServices);
+            this.tbcViewBusiness.Controls.Add(this.tpgEmployee);
+            this.tbcViewBusiness.Location = new System.Drawing.Point(29, 86);
+            this.tbcViewBusiness.Name = "tbcViewBusiness";
+            this.tbcViewBusiness.SelectedIndex = 0;
+            this.tbcViewBusiness.Size = new System.Drawing.Size(1126, 301);
+            this.tbcViewBusiness.TabIndex = 18;
+            // 
+            // tbpAddress
+            // 
+            this.tbpAddress.Controls.Add(this.btnRemoveAddressAB);
+            this.tbpAddress.Controls.Add(this.lstAddressB);
+            this.tbpAddress.Controls.Add(this.btnAddAddressAB);
+            this.tbpAddress.Location = new System.Drawing.Point(4, 25);
+            this.tbpAddress.Name = "tbpAddress";
+            this.tbpAddress.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpAddress.Size = new System.Drawing.Size(1118, 272);
+            this.tbpAddress.TabIndex = 0;
+            this.tbpAddress.Text = "Address";
+            this.tbpAddress.UseVisualStyleBackColor = true;
+            // 
+            // tpgEquipment
+            // 
+            this.tpgEquipment.Controls.Add(this.lstvEquipment);
+            this.tpgEquipment.Controls.Add(this.btnRemoveEquipment);
+            this.tpgEquipment.Controls.Add(this.btnAddEquipment);
+            this.tpgEquipment.Location = new System.Drawing.Point(4, 25);
+            this.tpgEquipment.Name = "tpgEquipment";
+            this.tpgEquipment.Padding = new System.Windows.Forms.Padding(3);
+            this.tpgEquipment.Size = new System.Drawing.Size(1118, 272);
+            this.tpgEquipment.TabIndex = 1;
+            this.tpgEquipment.Text = "Equipment";
+            this.tpgEquipment.UseVisualStyleBackColor = true;
+            // 
+            // tpgServices
+            // 
+            this.tpgServices.Controls.Add(this.lstViewBusi);
+            this.tpgServices.Location = new System.Drawing.Point(4, 25);
+            this.tpgServices.Name = "tpgServices";
+            this.tpgServices.Size = new System.Drawing.Size(1118, 272);
+            this.tpgServices.TabIndex = 2;
+            this.tpgServices.Text = "Services";
+            this.tpgServices.UseVisualStyleBackColor = true;
+            // 
+            // tpgEmployee
+            // 
+            this.tpgEmployee.Controls.Add(this.cbEmployeesB);
+            this.tpgEmployee.Controls.Add(this.btnAssignEmployeeB);
+            this.tpgEmployee.Location = new System.Drawing.Point(4, 25);
+            this.tpgEmployee.Name = "tpgEmployee";
+            this.tpgEmployee.Size = new System.Drawing.Size(1118, 272);
+            this.tpgEmployee.TabIndex = 3;
+            this.tpgEmployee.Text = "Employee";
+            this.tpgEmployee.UseVisualStyleBackColor = true;
+            // 
+            // cbEmployeesB
+            // 
+            this.cbEmployeesB.FormattingEnabled = true;
+            this.cbEmployeesB.Location = new System.Drawing.Point(22, 26);
+            this.cbEmployeesB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbEmployeesB.Name = "cbEmployeesB";
+            this.cbEmployeesB.Size = new System.Drawing.Size(289, 24);
+            this.cbEmployeesB.TabIndex = 13;
+            // 
+            // btnAssignEmployeeB
+            // 
+            this.btnAssignEmployeeB.Location = new System.Drawing.Point(317, 22);
+            this.btnAssignEmployeeB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAssignEmployeeB.Name = "btnAssignEmployeeB";
+            this.btnAssignEmployeeB.Size = new System.Drawing.Size(128, 31);
+            this.btnAssignEmployeeB.TabIndex = 12;
+            this.btnAssignEmployeeB.Text = "Assign Employee";
+            this.btnAssignEmployeeB.UseVisualStyleBackColor = true;
+            this.btnAssignEmployeeB.Click += new System.EventHandler(this.btnAssignEmployeeB_Click_1);
+            // 
+            // frmViewBusiness
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1134, 975);
-            this.Controls.Add(this.btnRemoveEquipment);
-            this.Controls.Add(this.btnAddEquipment);
-            this.Controls.Add(this.lstvEquipment);
+            this.ClientSize = new System.Drawing.Size(1189, 496);
+            this.Controls.Add(this.tbcViewBusiness);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.tbBusiName);
             this.Controls.Add(this.tbBusContact);
-            this.Controls.Add(this.lstViewBusi);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "frmViewBusinessContract";
+            this.Name = "frmViewBusiness";
             this.Text = "frmViewBusinessContract";
             this.Load += new System.EventHandler(this.frmViewBusinessContract_Load);
+            this.tbcViewBusiness.ResumeLayout(false);
+            this.tbpAddress.ResumeLayout(false);
+            this.tpgEquipment.ResumeLayout(false);
+            this.tpgServices.ResumeLayout(false);
+            this.tpgEmployee.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,5 +376,22 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private System.Windows.Forms.ColumnHeader colSerial;
         private System.Windows.Forms.ColumnHeader colManufact;
         private System.Windows.Forms.ColumnHeader colCat;
+        private System.Windows.Forms.Button btnRemoveAddressAB;
+        private System.Windows.Forms.Button btnAddAddressAB;
+        private System.Windows.Forms.ListView lstAddressB;
+        private System.Windows.Forms.ColumnHeader colStreetAddressAB;
+        private System.Windows.Forms.ColumnHeader colProvinceAB;
+        private System.Windows.Forms.ColumnHeader colCountryAB;
+        private System.Windows.Forms.ColumnHeader colDistrictAB;
+        private System.Windows.Forms.ColumnHeader colLocalityAB;
+        private System.Windows.Forms.ColumnHeader colPremiseAB;
+        private System.Windows.Forms.ColumnHeader colPostalCodeAB;
+        private System.Windows.Forms.TabControl tbcViewBusiness;
+        private System.Windows.Forms.TabPage tbpAddress;
+        private System.Windows.Forms.TabPage tpgEquipment;
+        private System.Windows.Forms.TabPage tpgServices;
+        private System.Windows.Forms.TabPage tpgEmployee;
+        private System.Windows.Forms.ComboBox cbEmployeesB;
+        private System.Windows.Forms.Button btnAssignEmployeeB;
     }
 }
