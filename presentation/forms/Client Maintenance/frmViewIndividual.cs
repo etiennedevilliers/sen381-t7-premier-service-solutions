@@ -112,11 +112,23 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         {
             if (lstvEquipment.SelectedItems.Count > 0)
             {
-                Equipment equipment = (lstvEquipment.SelectedItems[0].Tag) as Equipment;
+                DialogResult deleteE = MessageBox.Show("Are you sure you want to delete this equipment?", "WARNING: DELETE EQUIPMENT",
+                                                   MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                ClientMaintenanceLogic.RemoveEquipmentFromClient(this.indivClient, equipment);
+                if (deleteE == DialogResult.Yes)
+                {
+                    Equipment equipment = (lstvEquipment.SelectedItems[0].Tag) as Equipment;
 
-                LoadLstvEquipment();
+                    ClientMaintenanceLogic.RemoveEquipmentFromClient(this.indivClient, equipment);
+
+                    LoadLstvEquipment();
+                }
+                else
+                {
+                    MessageBox.Show("Unsaved Changes - Equipment not deleted", "EQUIPMENT NOT DELETED ",
+                                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                }
             }
             else
             {
@@ -154,19 +166,44 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void btnAddAddressAI_Click(object sender, EventArgs e)
         {
-            //Address address = frmNewAddress.CreateNewAddress();
+            Address adr = frmNewAddress.GetAddress();
 
-            //if (address != null)
+            if (adr != null)
             {
-                //(this.businessClient, address);
+                new ClientController().address.Add(adr, this.indivClient);
+
                 LoadLstvAddress();
             }
-            
+
         }
 
         private void btnRemoveAddressAI_Click(object sender, EventArgs e)
         {
-            LoadLstvAddress();
+            ClientController clientController = new ClientController();
+
+            if (lstAddressI.SelectedItems.Count > 0)
+            {
+                DialogResult deleteA = MessageBox.Show("Are you sure you want to delete this Address?", "WARNING: DELETE Address",
+                                                   MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (deleteA == DialogResult.Yes)
+                {
+
+                    Address address = (lstAddressI.SelectedItems[0].Tag) as Address;
+                    clientController.address.Remove(address, this.indivClient);
+
+                    LoadLstvAddress();
+                }
+                else
+                {
+                    MessageBox.Show("Unsaved Changes - Address not deleted", "ADDRESS NOT DELETED ",
+                                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select address first");
+            }
 
         }
     }

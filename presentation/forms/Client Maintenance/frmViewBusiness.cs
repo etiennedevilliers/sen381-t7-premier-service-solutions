@@ -28,10 +28,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
             AgentController agentController = new AgentController();
 
-            foreach (Agent agent in agentController.Read())
-            {
-                cbEmployeesB.Items.Add(agent);
-            }
 
         }
 
@@ -56,6 +52,8 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             LoadLstvEquipment();
 
             LoadLstvAddress();
+
+            LoadLstvEmployee();
         }
 
         private void LoadLstvEquipment()
@@ -89,12 +87,14 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
             (new BusinessClientController()).Update(this.businessClient);
 
-            Hide();
+            Close();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            Hide();
+            Close();
+            frmClientMenu frm = new frmClientMenu();
+            frm.ShowDialog();
         }
 
         private void btnAddEquipment_Click(object sender, EventArgs e)
@@ -112,11 +112,22 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         {
             if (lstvEquipment.SelectedItems.Count > 0)
             {
-                Equipment equipment = (lstvEquipment.SelectedItems[0].Tag) as Equipment;
+                DialogResult deleteE = MessageBox.Show("Are you sure you want to delete this equipment?", "WARNING: DELETE EQUIPMENT",
+                                                   MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                ClientMaintenanceLogic.RemoveEquipmentFromClient(this.businessClient, equipment);
+                if (deleteE == DialogResult.Yes)
+                {
+                    Equipment equipment = (lstvEquipment.SelectedItems[0].Tag) as Equipment;
 
-                LoadLstvEquipment();
+                    ClientMaintenanceLogic.RemoveEquipmentFromClient(this.businessClient, equipment);
+
+                    LoadLstvEquipment();
+                }
+                else
+                {
+                    MessageBox.Show("Unsaved Changes - Equipment not deleted", "EQUIPMENT NOT DELETED ",
+                                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
@@ -154,9 +165,11 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void btnAddAddressAB_Click(object sender, EventArgs e)
         {
-            {
-                frmNewAddress newAdd = new frmNewAddress();
+            Address adr = frmNewAddress.GetAddress();
 
+            if (adr != null)
+            {
+                new ClientController().address.Add(adr, this.businessClient);
                 LoadLstvAddress();
             }
         }
@@ -164,35 +177,98 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
         private void btnRemoveAddressAB_Click(object sender, EventArgs e)
         {
+            ClientController clientController = new ClientController();
+
             if (lstAddressB.SelectedItems.Count > 0)
             {
-                Address address = (lstAddressB.SelectedItems[0].Tag) as Address;
-                ClientController.AddressChildren.Remove(address, this.businessClient);
+                DialogResult deleteA = MessageBox.Show("Are you sure you want to delete this Address?", "WARNING: DELETE Address",
+                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                LoadLstvEquipment();
+                if (deleteA == DialogResult.Yes)
+                {
+
+                    Address address = (lstAddressB.SelectedItems[0].Tag) as Address;
+                    clientController.address.Remove(address, this.businessClient);
+
+                    LoadLstvAddress();
+                }
+                else
+                {
+                    MessageBox.Show("Unsaved Changes - Address not deleted", "ADDRESS NOT DELETED ",
+                                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
-                MessageBox.Show("Select equipment first");
+                MessageBox.Show("Select address first");
             }
         }
 
-        private void btnAssignEmployeeB_Click_1(object sender, EventArgs e)
+        private void LoadLstvEmployee()
         {
+            BusinessClientController businessclientController = new BusinessClientController();
 
-            if (cbEmployeesB.SelectedIndex > 0)
+            lstEmployee.Items.Clear();
+
+            foreach (Employee employee in businessclientController.ReadChildren(this.businessClient))
             {
-                Agent agent = cbEmployeesB.SelectedItem as Agent;
-                MessageBox.Show("Employee assigned to client", "EMPLOYEE ASSIGNED",
-                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Please select employee to assign to client", "EMPLOYEE NOT ASSIGNED",
-                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ListViewItem listViewItem = new ListViewItem(
+                    new string[]
+                    {
+                        employee.Name,
+                        employee.Surname,
+                        employee.Role,
+                        employee.ContactNum
+                    }
+                );
+
+                listViewItem.Tag = employee;
+
+                lstEmployee.Items.Add(listViewItem);
             }
         }
 
-        
+        private void btnAddEmpl_Click(object sender, EventArgs e)
+        {
+            Employee empl = frmNewEmployee.AddEmployee();
+
+            if (empl != null)
+            {
+                new BusinessClientController().Add(empl,this.businessClient);
+                LoadLstvEmployee();
+            }
+
+        }
+
+        private void btnRemoveEmpl_Click(object sender, EventArgs e)
+        {
+            
+
+            if (lstEmployee.SelectedItems.Count > 0)
+            {
+                DialogResult deleteA = MessageBox.Show("Are you sure you want to delete this Employee?", "WARNING: DELETE EMPLOYEE",
+                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (deleteA == DialogResult.Yes)
+                {
+
+                    BusinessClientController busicont = new BusinessClientController();
+                    Employee employee = (lstEmployee.SelectedItems[0].Tag) as Employee;
+                    busicont.Remove(employee, this.businessClient);
+
+                    LoadLstvAddress();
+                }
+                else
+                {
+                    MessageBox.Show("Unsaved Changes - Employee not deleted", "EMPLOYEE NOT DELETED ",
+                                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select employee first");
+            }
+
+        }
     }
 }

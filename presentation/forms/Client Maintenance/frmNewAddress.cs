@@ -16,7 +16,15 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
     {
         public Address addRes = null;
 
-        public frmNewAddress()
+        public static Address GetAddress()
+        {
+            frmNewAddress frm = new frmNewAddress();
+            frm.ShowDialog();
+            return frm.addRes;
+           
+        }
+
+        private frmNewAddress()
         {
             InitializeComponent();
         }
@@ -40,51 +48,41 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             newstreet = tbStreet.Text;
             newpremise = tbPremise.Text;
 
-            ClientController clientcontrol = new ClientController();
 
-            Address address = new Address(
-                newcountry,
-                newprovince,
-                newdistrict,
-                newlocality,
-                newpostal,
-                newstreet,
-                newpremise
-              );
 
             if (newcountry.Equals(""))
             {
                 MessageBox.Show("Please enter country", "EMPTY FIELDS!!",
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (newprovince.Equals("")) 
+            else  if (newprovince.Equals("")) 
             { 
                 MessageBox.Show("Please enter a province", "EMPTY FIELDS!!",
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //return; 
             }
-            if (newdistrict.Equals(""))
+            else if (newdistrict.Equals(""))
             {
                 MessageBox.Show("Please enter a district", "EMPTY FIELDS!!",
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (newlocality.Equals(""))
+            else if (newlocality.Equals(""))
             {
                 MessageBox.Show("Please enter a locality", "EMPTY FIELDS!!",
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (newpostal.Equals(""))
+            else if (newpostal.Equals(""))
             {
                 MessageBox.Show("Please enter postal code", "EMPTY FIELDS!!",
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (newstreet.Equals(""))
+            else if (newstreet.Equals(""))
             {
                 MessageBox.Show("Please enter a street address", "EMPTY FIELDS!!",
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //return; 
             }
-            if (newpremise.Equals(""))
+            else if (newpremise.Equals(""))
             {
                 MessageBox.Show("Please enter premise", "EMPTY FIELDS!!",
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -94,20 +92,20 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
                 //clientcontrol.address();
 
-                MessageBox.Show("Address add successful, returning to View", "ADDRESS ADDED",
-                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.addRes = new Address(
+                       newcountry,
+                       newprovince,
+                       newdistrict,
+                       newlocality,
+                       newpostal,
+                       newstreet,
+                       newpremise
+                     );
 
-                Hide();
-                frmNewAddress form = new frmNewAddress();
-                form.ShowDialog();
+
+                Close();
   
             }
-
-
-
-
-
-            Close();
         }
     }
 }

@@ -58,8 +58,13 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.tpgEquipment = new System.Windows.Forms.TabPage();
             this.tpgServices = new System.Windows.Forms.TabPage();
             this.tpgEmployee = new System.Windows.Forms.TabPage();
-            this.cbEmployeesB = new System.Windows.Forms.ComboBox();
-            this.btnAssignEmployeeB = new System.Windows.Forms.Button();
+            this.btnRemoveEmpl = new System.Windows.Forms.Button();
+            this.lstEmployee = new System.Windows.Forms.ListView();
+            this.btnAddEmpl = new System.Windows.Forms.Button();
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colRole = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colContactNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbcViewBusiness.SuspendLayout();
             this.tbpAddress.SuspendLayout();
             this.tpgEquipment.SuspendLayout();
@@ -214,6 +219,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colPostalCodeAB,
             this.colStreetAddressAB,
             this.colPremiseAB});
+            this.lstAddressB.FullRowSelect = true;
             this.lstAddressB.HideSelection = false;
             this.lstAddressB.Location = new System.Drawing.Point(14, 49);
             this.lstAddressB.Margin = new System.Windows.Forms.Padding(2);
@@ -308,8 +314,9 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // tpgEmployee
             // 
-            this.tpgEmployee.Controls.Add(this.cbEmployeesB);
-            this.tpgEmployee.Controls.Add(this.btnAssignEmployeeB);
+            this.tpgEmployee.Controls.Add(this.btnRemoveEmpl);
+            this.tpgEmployee.Controls.Add(this.lstEmployee);
+            this.tpgEmployee.Controls.Add(this.btnAddEmpl);
             this.tpgEmployee.Location = new System.Drawing.Point(4, 25);
             this.tpgEmployee.Name = "tpgEmployee";
             this.tpgEmployee.Size = new System.Drawing.Size(1118, 272);
@@ -317,25 +324,64 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.tpgEmployee.Text = "Employee";
             this.tpgEmployee.UseVisualStyleBackColor = true;
             // 
-            // cbEmployeesB
+            // btnRemoveEmpl
             // 
-            this.cbEmployeesB.FormattingEnabled = true;
-            this.cbEmployeesB.Location = new System.Drawing.Point(22, 26);
-            this.cbEmployeesB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbEmployeesB.Name = "cbEmployeesB";
-            this.cbEmployeesB.Size = new System.Drawing.Size(289, 24);
-            this.cbEmployeesB.TabIndex = 13;
+            this.btnRemoveEmpl.Location = new System.Drawing.Point(732, 19);
+            this.btnRemoveEmpl.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoveEmpl.Name = "btnRemoveEmpl";
+            this.btnRemoveEmpl.Size = new System.Drawing.Size(153, 30);
+            this.btnRemoveEmpl.TabIndex = 20;
+            this.btnRemoveEmpl.Text = "Remove Employee";
+            this.btnRemoveEmpl.UseVisualStyleBackColor = true;
+            this.btnRemoveEmpl.Click += new System.EventHandler(this.btnRemoveEmpl_Click);
             // 
-            // btnAssignEmployeeB
+            // lstEmployee
             // 
-            this.btnAssignEmployeeB.Location = new System.Drawing.Point(317, 22);
-            this.btnAssignEmployeeB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAssignEmployeeB.Name = "btnAssignEmployeeB";
-            this.btnAssignEmployeeB.Size = new System.Drawing.Size(128, 31);
-            this.btnAssignEmployeeB.TabIndex = 12;
-            this.btnAssignEmployeeB.Text = "Assign Employee";
-            this.btnAssignEmployeeB.UseVisualStyleBackColor = true;
-            this.btnAssignEmployeeB.Click += new System.EventHandler(this.btnAssignEmployeeB_Click_1);
+            this.lstEmployee.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colName,
+            this.colSurname,
+            this.colRole,
+            this.colContactNum});
+            this.lstEmployee.FullRowSelect = true;
+            this.lstEmployee.HideSelection = false;
+            this.lstEmployee.Location = new System.Drawing.Point(21, 53);
+            this.lstEmployee.Margin = new System.Windows.Forms.Padding(2);
+            this.lstEmployee.Name = "lstEmployee";
+            this.lstEmployee.Size = new System.Drawing.Size(1077, 201);
+            this.lstEmployee.TabIndex = 18;
+            this.lstEmployee.UseCompatibleStateImageBehavior = false;
+            this.lstEmployee.View = System.Windows.Forms.View.Details;
+            // 
+            // btnAddEmpl
+            // 
+            this.btnAddEmpl.Location = new System.Drawing.Point(944, 19);
+            this.btnAddEmpl.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddEmpl.Name = "btnAddEmpl";
+            this.btnAddEmpl.Size = new System.Drawing.Size(153, 30);
+            this.btnAddEmpl.TabIndex = 19;
+            this.btnAddEmpl.Text = "Add Employee";
+            this.btnAddEmpl.UseVisualStyleBackColor = true;
+            this.btnAddEmpl.Click += new System.EventHandler(this.btnAddEmpl_Click);
+            // 
+            // colName
+            // 
+            this.colName.Text = "Name";
+            this.colName.Width = 132;
+            // 
+            // colSurname
+            // 
+            this.colSurname.Text = "Surname";
+            this.colSurname.Width = 151;
+            // 
+            // colRole
+            // 
+            this.colRole.Text = "Role";
+            this.colRole.Width = 161;
+            // 
+            // colContactNum
+            // 
+            this.colContactNum.Text = "Contact Number";
+            this.colContactNum.Width = 186;
             // 
             // frmViewBusiness
             // 
@@ -391,7 +437,12 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private System.Windows.Forms.TabPage tpgEquipment;
         private System.Windows.Forms.TabPage tpgServices;
         private System.Windows.Forms.TabPage tpgEmployee;
-        private System.Windows.Forms.ComboBox cbEmployeesB;
-        private System.Windows.Forms.Button btnAssignEmployeeB;
+        private System.Windows.Forms.Button btnRemoveEmpl;
+        private System.Windows.Forms.ListView lstEmployee;
+        private System.Windows.Forms.Button btnAddEmpl;
+        private System.Windows.Forms.ColumnHeader colName;
+        private System.Windows.Forms.ColumnHeader colSurname;
+        private System.Windows.Forms.ColumnHeader colRole;
+        private System.Windows.Forms.ColumnHeader colContactNum;
     }
 }

@@ -70,6 +70,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colDescript,
             this.colStartDate,
             this.colEndDate});
+            this.lstViewIndiv.FullRowSelect = true;
             this.lstViewIndiv.HideSelection = false;
             this.lstViewIndiv.Location = new System.Drawing.Point(3, 35);
             this.lstViewIndiv.Name = "lstViewIndiv";
@@ -144,6 +145,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colLocalityAI,
             this.colPremiseAI,
             this.colPostalCodeAI});
+            this.lstAddressI.FullRowSelect = true;
             this.lstAddressI.HideSelection = false;
             this.lstAddressI.Location = new System.Drawing.Point(18, 49);
             this.lstAddressI.Margin = new System.Windows.Forms.Padding(2);
@@ -190,7 +192,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnRemoveEquipment
             // 
-            this.btnRemoveEquipment.Location = new System.Drawing.Point(652, 19);
+            this.btnRemoveEquipment.Location = new System.Drawing.Point(659, 15);
             this.btnRemoveEquipment.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoveEquipment.Name = "btnRemoveEquipment";
             this.btnRemoveEquipment.Size = new System.Drawing.Size(166, 30);
@@ -201,7 +203,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             // btnAddEquipment
             // 
-            this.btnAddEquipment.Location = new System.Drawing.Point(827, 19);
+            this.btnAddEquipment.Location = new System.Drawing.Point(834, 15);
             this.btnAddEquipment.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddEquipment.Name = "btnAddEquipment";
             this.btnAddEquipment.Size = new System.Drawing.Size(166, 30);
@@ -217,7 +219,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.colManufact,
             this.colCat});
             this.lstvEquipment.HideSelection = false;
-            this.lstvEquipment.Location = new System.Drawing.Point(12, 53);
+            this.lstvEquipment.Location = new System.Drawing.Point(19, 49);
             this.lstvEquipment.Margin = new System.Windows.Forms.Padding(2);
             this.lstvEquipment.Name = "lstvEquipment";
             this.lstvEquipment.Size = new System.Drawing.Size(981, 244);
