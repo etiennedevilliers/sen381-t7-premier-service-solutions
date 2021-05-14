@@ -75,8 +75,8 @@ namespace Presentation.Forms.ContractMaintenance
                 cmbPSLA.Items.Add("SLA ID: "+ S.Id.ToString() + " " + S.Description);
             }
 
-            cmbPService.Text = ParsedPckage.Service.Description;
-            cmbPSLA.Text = ParsedPckage.Sla.Description;
+            cmbPService.Text = ParsedPackage.Service.Description;
+            cmbPSLA.Text = ParsedPackage.Sla.Description;
 
         }//Populate Combo boxes and load list of packages
 

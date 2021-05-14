@@ -9,20 +9,16 @@ using Logic.CustomExceptions;
 
 namespace Logic
 {
-   
     class SLALogic
     {
         //Global controller object
         ServiceLevelAgreementController SLA_Ctr = new ServiceLevelAgreementController();
-        private string Name;
         //View 
         public List<ServiceLevelAgreement> ViewSLA()
         {
-
             List<ServiceLevelAgreement> returnlist = SLA_Ctr.Read();
 
             return returnlist;
-
         }//View Service //Return a list of services
 
         //Update 
