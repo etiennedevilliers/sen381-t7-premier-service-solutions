@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
 using Logic.CustomExceptions;
+using Logic;
 
 namespace Logic
 {
     class SCLogic 
     {
+        GeneralLogic G_L = new GeneralLogic();
+
         private ServiceContractController SC_Ctr = new ServiceContractController();
 
         public List<ServiceContract> ViewServiceContrac()
@@ -55,11 +58,19 @@ namespace Logic
         public void AddPackage(Package P , ServiceContract SC)
         {
             SC_Ctr.Add(P,SC);
+
         }//Add Package to SC 
 
         public void RemovePackage(Package P, ServiceContract SC)
         {
-            SC_Ctr.Remove(P, SC);
+            SC_Ctr.Remove(P,SC);
+
         }//Add Package to SC 
+        //Read children 
+
+        public List<Package> ReadChildren(ServiceContract scs)
+        {
+            return SC_Ctr.ReadChildren(scs);
+        }
     }
 }

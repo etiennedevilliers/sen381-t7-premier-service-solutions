@@ -47,8 +47,9 @@ namespace Presentation.Forms.ContractMaintenance
         private void btnServiceAdd_Click(object sender, EventArgs e)
         {
             //Call the add service form 
+            Hide();
             frmAddService form = new frmAddService();
-            DialogResult res = form.ShowDialog();
+            form.ShowDialog();
             LoadServices();
 
         }//Show the add service form 
@@ -151,9 +152,9 @@ namespace Presentation.Forms.ContractMaintenance
                     //Hide this form and dispay the Dialog for the Service Contract Manu
 
                     Service serv = lstServiceView.SelectedItems[0].Tag as Service;
-
+                    Hide();
                     frmEditService form = new frmEditService(serv);
-                    DialogResult res = form.ShowDialog();
+                    form.ShowDialog();
                     LoadServices();
                 }
             }
@@ -171,8 +172,9 @@ namespace Presentation.Forms.ContractMaintenance
        
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            Hide();
             frmNewSLA form = new frmNewSLA();
-            DialogResult res = form.ShowDialog();
+            form.ShowDialog();
             LoadServices();
         
 
@@ -237,9 +239,9 @@ namespace Presentation.Forms.ContractMaintenance
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                         lstSLA.Clear();
                     }
-
+                    Hide();
                     frmServiceContract form = new frmServiceContract();
-                    DialogResult res = form.ShowDialog();
+                    form.ShowDialog();
                     LoadServices();
 
                 }
@@ -267,8 +269,9 @@ namespace Presentation.Forms.ContractMaintenance
                     //Hide this form and dispay the Dialog for the Service Contract Manu
 
                     ServiceLevelAgreement sla = lstSLA.SelectedItems[0].Tag as ServiceLevelAgreement;
+                    Hide();
                     frmEditSLA form = new frmEditSLA(sla);
-                    DialogResult res = form.ShowDialog();
+                    form.ShowDialog();
                     LoadServices();
                 }
             }
@@ -312,8 +315,9 @@ namespace Presentation.Forms.ContractMaintenance
 
         private void btnAddPackage_Click(object sender, EventArgs e)
         {
+            Hide();
             frmAddPackage form = new frmAddPackage();
-            DialogResult res = form.ShowDialog();
+            form.ShowDialog();
             LoadPackage();
 
         } //Add a Package 
@@ -330,6 +334,7 @@ namespace Presentation.Forms.ContractMaintenance
                 {
                     Package Pack = listPackage.SelectedItems[0].Tag as Package;
 
+                    Hide();
                     frmEditPackages form = new frmEditPackages(Pack);
                     DialogResult res = form.ShowDialog();
                     LoadPackage();
@@ -352,8 +357,10 @@ namespace Presentation.Forms.ContractMaintenance
         /// Service Contract ////////////////////////////////////////////////////////////////////////////////////////Service Contract
         private void btnAddServiceContract_Click(object sender, EventArgs e)
         {
+            Hide();
             frmAddServiceContract form = new frmAddServiceContract();
-            DialogResult res = form.ShowDialog();
+            form.ShowDialog();
+
             LoadServiceContract();
 
         }//Add Service Contract
@@ -420,7 +427,8 @@ namespace Presentation.Forms.ContractMaintenance
 
               
                     frmEditServiceCon form = new frmEditServiceCon(SC);
-                    
+
+                    Hide();
                     DialogResult res = form.ShowDialog();
                     LoadPackage();
 
