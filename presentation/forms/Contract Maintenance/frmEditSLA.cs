@@ -11,13 +11,12 @@ using Data.Layer.Objects;
 using Data.Layer.Controller;
 using Logic;
 
-
-namespace Presentation.Forms.Contract_Maintenance
+namespace Presentation.Forms.ContractMaintenance
 {
     public partial class frmEditSLA : Form
     {
 
-        private ServiceLevelAgreement Sla;
+        private ServiceLevelAgreement sla;
         
 
         List<ServiceLevelAgreement> List_Of_SLA_Ob = new List<ServiceLevelAgreement>();
@@ -28,9 +27,7 @@ namespace Presentation.Forms.Contract_Maintenance
         {
             InitializeComponent();
 
-            this.Sla = sla;
-            
-
+            this.sla = sla;
             txtSLaDescription.Text = sla.Description;
         }//Construct the SLA FROm and arse a cliet from frmservice Contract 
 
@@ -45,8 +42,8 @@ namespace Presentation.Forms.Contract_Maintenance
             {
 
 
-                this.Sla.Description = txtSLaDescription.Text;
-                SLA_L.UpdateSla(this.Sla);
+                this.sla.Description = txtSLaDescription.Text;
+                SLA_L.UpdateSla(this.sla);
                 MessageBox.Show("SLA successfully Updated", " Edit",
                                       MessageBoxButtons.OK, MessageBoxIcon.Information);
 

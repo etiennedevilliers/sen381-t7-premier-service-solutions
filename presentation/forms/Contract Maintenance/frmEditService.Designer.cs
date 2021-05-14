@@ -1,4 +1,4 @@
-﻿namespace Presentation.Forms.Contract_Maintenance
+﻿namespace Presentation.Forms.ContractMaintenance
 {
     partial class frmEditService
     {

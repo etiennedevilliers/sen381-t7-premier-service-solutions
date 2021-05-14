@@ -12,15 +12,13 @@ using Data.Layer.Controller;
 using Logic;
 using Logic.CustomExceptions;
 
-
-namespace Presentation.Forms.Contract_Maintenance
+namespace Presentation.Forms.ContractMaintenance
 {
     public partial class frmServiceContract : Form
     {
         //Create gobal Service logic and service list  objects
         List<Service> List_Of_Services_Ob = new List<Service>();
         ServiceLogic Sl = new ServiceLogic();
-
         
         List<ServiceLevelAgreement> List_Of_Sla_Ob = new List<ServiceLevelAgreement>();
         SLALogic SLAL = new SLALogic();

@@ -12,7 +12,7 @@ using Data.Layer.Objects;
 using Data.Layer.Controller;
 using Logic;
 
-namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
+namespace Presentation.Forms.ClientMaintenance
 {
     public partial class frmNewClient : Form
     {
@@ -21,12 +21,9 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             InitializeComponent();
         }
 
-
-        
         private void frmNewClient_Load(object sender, EventArgs e)
         {
             tbClientID.Text = ClientMaintenanceLogic.GenerateUniqueClientID();
-
         }
 
         public static string newcontact;

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
+namespace Presentation.Forms.ClientMaintenance
 {
     public partial class frmNewClientCreation : Form
     {

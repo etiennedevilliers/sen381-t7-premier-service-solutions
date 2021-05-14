@@ -13,7 +13,7 @@ using Logic;
 using Logic.CustomExceptions;
 
 
-namespace Presentation.Forms.Contract_Maintenance
+namespace Presentation.Forms.ContractMaintenance
 {
     public partial class frmAddServiceContract : Form
     {
@@ -27,7 +27,6 @@ namespace Presentation.Forms.Contract_Maintenance
         public frmAddServiceContract()
         {
             InitializeComponent();
-
         }
 
         private void frmAddServiceContract_Load(object sender, EventArgs e)

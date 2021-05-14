@@ -11,20 +11,16 @@ using Data.Layer.Objects;
 using Data.Layer.Controller;
 using Logic;
 
-
-namespace Presentation.Forms.Contract_Maintenance
+namespace Presentation.Forms.ContractMaintenance
 {
     public partial class frmNewSLA : Form
     {
-
         //Create gobal Service logic and service list  objects
         List<ServiceLevelAgreement> List_Of_SLA_Ob = new List<ServiceLevelAgreement>();
         private SLALogic Sl = new SLALogic();
 
         private  ServiceLevelAgreement NewSla;
         private  string SlaDescription;  
-
-
 
         public frmNewSLA()
         {
@@ -35,7 +31,6 @@ namespace Presentation.Forms.Contract_Maintenance
         {
             loadList();
         }
-
 
         void loadList()
         {

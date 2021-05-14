@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Presentation.Forms.ServiceDepartment;
 using Presentation.Forms.CallCentre;
-using sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance;
-//using Presentation.Forms.ClientMaintenance;
-using Presentation.Forms.Contract_Maintenance;
+using Presentation.Forms.ClientMaintenance;
+using Presentation.Forms.ContractMaintenance;
 
 namespace Presentation.Forms.Welcome
 {
@@ -55,16 +54,9 @@ namespace Presentation.Forms.Welcome
 
         private void btnContractMain_Click(object sender, EventArgs e)
         {
-            //Hide the current form 
             Hide();
-            //Create  instance of the target form 
-            //frmContractMaintenance
-        
             frmServiceContract form = new frmServiceContract();
-            //Show the target form dialog
             form.ShowDialog();
-
-            //Show this form 
             Show();
         }
 

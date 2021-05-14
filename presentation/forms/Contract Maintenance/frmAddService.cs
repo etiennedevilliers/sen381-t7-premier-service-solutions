@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Data.Layer.Objects;
 using Logic;
 
-namespace Presentation.Forms.Contract_Maintenance
+namespace Presentation.Forms.ContractMaintenance
 {
     public partial class frmAddService : Form
     {

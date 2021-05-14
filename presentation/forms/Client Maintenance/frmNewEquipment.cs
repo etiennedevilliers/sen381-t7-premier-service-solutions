@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
 
-namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
+namespace Presentation.Forms.ClientMaintenance
 {
     public partial class frmNewEquipment : Form
     {

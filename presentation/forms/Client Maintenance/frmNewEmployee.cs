@@ -9,17 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
-namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
-{
-    
 
+namespace Presentation.Forms.ClientMaintenance
+{
     public partial class frmNewEmployee : Form
     {
         public Employee empl = null;
 
         public frmNewEmployee()
         {
-            BusinessClientController businessClientController = new BusinessClientController();
             InitializeComponent();
         }
 

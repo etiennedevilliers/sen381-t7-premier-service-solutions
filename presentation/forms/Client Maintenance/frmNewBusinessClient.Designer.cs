@@ -1,5 +1,5 @@
 ﻿
-namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
+namespace Presentation.Forms.ClientMaintenance
 {
     partial class frmNewBusinessClient
     {

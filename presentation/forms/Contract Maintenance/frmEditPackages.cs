@@ -11,7 +11,7 @@ using Data.Layer.Objects;
 using Logic;
 
 
-namespace Presentation.Forms.Contract_Maintenance
+namespace Presentation.Forms.ContractMaintenance
 {
     public partial class frmEditPackages : Form
     {
@@ -20,7 +20,7 @@ namespace Presentation.Forms.Contract_Maintenance
         private List<ServiceLevelAgreement> Placeholder_SLA_List = new List<ServiceLevelAgreement>();
         private List<Service> Placeholder_Service_List = new List<Service>();
 
-        private Package ParsedPckage ;
+        private Package ParsedPackage ;
         private PackageLogic P_L = new PackageLogic();
         private ServiceLogic S_L = new ServiceLogic();
         private SLALogic SLA_L = new SLALogic();
@@ -28,10 +28,10 @@ namespace Presentation.Forms.Contract_Maintenance
         public frmEditPackages(Package Pack)
         {
             InitializeComponent();
-            this.ParsedPckage = Pack;
+
+            ParsedPackage = Pack;
             txtPDiscript.Text = Pack.Description;
             txtPName.Text = Pack.Name;
-          
         }
 
 
@@ -103,13 +103,13 @@ namespace Presentation.Forms.Contract_Maintenance
             else
             {
 
-                this.ParsedPckage.Description = txtPDiscript.Text;
-                this.ParsedPckage.Name = txtPName.Text;
+                this.ParsedPackage.Description = txtPDiscript.Text;
+                this.ParsedPackage.Name = txtPName.Text;
 
-                this.ParsedPckage.Service = Placeholder_Service_List[cmbPService.SelectedIndex];
-                this.ParsedPckage.Sla = Placeholder_SLA_List[cmbPSLA.SelectedIndex];        
+                this.ParsedPackage.Service = Placeholder_Service_List[cmbPService.SelectedIndex];
+                this.ParsedPackage.Sla = Placeholder_SLA_List[cmbPSLA.SelectedIndex];        
 
-                P_L.EditPackage(this.ParsedPckage);
+                P_L.EditPackage(this.ParsedPackage);
 
                 MessageBox.Show("Service successfully Updated", " ADD",
                                  MessageBoxButtons.OK, MessageBoxIcon.Information);

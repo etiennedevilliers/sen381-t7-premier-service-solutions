@@ -11,7 +11,7 @@ using Data.Layer.Objects;
 using Data.Layer.Controller;
 using Logic;
 
-namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintenance
+namespace Presentation.Forms.ClientMaintenance
 {
     public partial class frmViewBusiness : Form
     {
@@ -93,8 +93,6 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private void btnReturn_Click(object sender, EventArgs e)
         {
             Close();
-            frmClientMenu frm = new frmClientMenu();
-            frm.ShowDialog();
         }
 
         private void btnAddEquipment_Click(object sender, EventArgs e)
