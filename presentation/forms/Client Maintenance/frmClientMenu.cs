@@ -35,8 +35,32 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             LoadIndividualClient();
             LoadBusinessClient();
             LoadServiceContractRequests();
+            LoadNewClientRequests();
         }
 
+        void LoadNewClientRequests()
+        {
+            NewClientRequestController newClientRequestController = new NewClientRequestController();
+            lvNewClientRequests.Items.Clear();
+            foreach (NewClientRequest newClientRequest in newClientRequestController.Read())
+            {
+                if (newClientRequest.Status == "Open")
+                {
+                    ListViewItem lstI = new ListViewItem(
+                        new string[] {
+                            newClientRequest.ContactNum
+                        }
+                    );
+
+                    lstI.Tag = newClientRequest;
+
+                    lvNewClientRequests.Items.Add(lstI);
+                }
+                
+
+                
+            }
+        }
 
         void LoadServiceContractRequests() 
         {
@@ -314,6 +338,32 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
 
 
 
+        }
+
+        private void btnResolveNewClientRequest_Click(object sender, EventArgs e)
+        {
+            if (lvNewClientRequests.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Select number first!");
+                return;
+            }
+
+            NewClientRequest newClientRequest = lvNewClientRequests.SelectedItems[0].Tag as NewClientRequest;
+            frmNewClientCreation frm = new frmNewClientCreation();
+            Agent agent = frmSelectAgent.GetAgent();
+
+            if (agent == null) return;
+
+            CallLog callLog = new CallLog(DateTime.Now, false);
+            callLog.Representative = agent;
+
+            frm.ShowDialog();
+            newClientRequest.Status = "Resolve";
+            new NewClientRequestController().Update(newClientRequest);
+            callLog.TimeEnded = DateTime.Now;
+            new CallLogController().Create(callLog);
+
+            LoadNewClientRequests();
         }
     }
 }

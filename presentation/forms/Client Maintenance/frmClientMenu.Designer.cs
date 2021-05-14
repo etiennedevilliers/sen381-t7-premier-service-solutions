@@ -57,12 +57,16 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.chServiceContract = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnResolveNewClientRequest = new System.Windows.Forms.Button();
+            this.lvNewClientRequests = new System.Windows.Forms.ListView();
             this.btnViewIn = new System.Windows.Forms.Button();
             this.btnViewBu = new System.Windows.Forms.Button();
             this.tpgIndividual.SuspendLayout();
             this.tpgIndividualClients.SuspendLayout();
             this.tpgBusinessClients.SuspendLayout();
             this.tpgServiceContractRequests.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstClientsI
@@ -139,8 +143,9 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.tpgIndividual.Controls.Add(this.tpgIndividualClients);
             this.tpgIndividual.Controls.Add(this.tpgBusinessClients);
             this.tpgIndividual.Controls.Add(this.tpgServiceContractRequests);
-            this.tpgIndividual.Location = new System.Drawing.Point(3, 2);
-            this.tpgIndividual.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tpgIndividual.Controls.Add(this.tabPage1);
+            this.tpgIndividual.Location = new System.Drawing.Point(2, 2);
+            this.tpgIndividual.Margin = new System.Windows.Forms.Padding(2);
             this.tpgIndividual.Name = "tpgIndividual";
             this.tpgIndividual.SelectedIndex = 0;
             this.tpgIndividual.Size = new System.Drawing.Size(1045, 551);
@@ -331,8 +336,28 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             // 
             this.columnHeader2.Text = "Status";
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.btnResolveNewClientRequest);
+            this.tabPage1.Controls.Add(this.lvNewClientRequests);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(776, 422);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "New Client Request";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnResolveNewClientRequest
             // btnViewIn
             // 
+            this.btnResolveNewClientRequest.Location = new System.Drawing.Point(473, 393);
+            this.btnResolveNewClientRequest.Name = "btnResolveNewClientRequest";
+            this.btnResolveNewClientRequest.Size = new System.Drawing.Size(297, 23);
+            this.btnResolveNewClientRequest.TabIndex = 1;
+            this.btnResolveNewClientRequest.Text = "Call Client and finalise Details";
+            this.btnResolveNewClientRequest.UseVisualStyleBackColor = true;
+            this.btnResolveNewClientRequest.Click += new System.EventHandler(this.btnResolveNewClientRequest_Click);
             this.btnViewIn.Location = new System.Drawing.Point(917, 7);
             this.btnViewIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewIn.Name = "btnViewIn";
@@ -342,8 +367,16 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.btnViewIn.UseVisualStyleBackColor = true;
             this.btnViewIn.Click += new System.EventHandler(this.btnViewI_Click);
             // 
+            // lvNewClientRequests
             // btnViewBu
             // 
+            this.lvNewClientRequests.HideSelection = false;
+            this.lvNewClientRequests.Location = new System.Drawing.Point(7, 7);
+            this.lvNewClientRequests.Name = "lvNewClientRequests";
+            this.lvNewClientRequests.Size = new System.Drawing.Size(763, 376);
+            this.lvNewClientRequests.TabIndex = 0;
+            this.lvNewClientRequests.UseCompatibleStateImageBehavior = false;
+            this.lvNewClientRequests.View = System.Windows.Forms.View.List;
             this.btnViewBu.Location = new System.Drawing.Point(921, 5);
             this.btnViewBu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewBu.Name = "btnViewBu";
@@ -367,6 +400,7 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
             this.tpgIndividualClients.ResumeLayout(false);
             this.tpgBusinessClients.ResumeLayout(false);
             this.tpgServiceContractRequests.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -403,5 +437,8 @@ namespace sen381_t7_premier_service_solutions.presentation.forms.Client_Maintena
         private System.Windows.Forms.ColumnHeader colID;
         private System.Windows.Forms.Button btnViewIn;
         private System.Windows.Forms.Button btnViewBu;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button btnResolveNewClientRequest;
+        private System.Windows.Forms.ListView lvNewClientRequests;
     }
 }

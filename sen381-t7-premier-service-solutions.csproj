@@ -158,6 +158,12 @@
     <Compile Include="presentation\forms\Client Maintenance\frmNewEmployee.Designer.cs">
       <DependentUpon>frmNewEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmNewClientCreation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmNewClientCreation.Designer.cs">
+      <DependentUpon>frmNewClientCreation.cs</DependentUpon>
+    </Compile>
     <Compile Include="presentation\forms\Client Maintenance\frmNewEquipment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewEmployee.resx">
       <DependentUpon>frmNewEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewClientCreation.resx">
+      <DependentUpon>frmNewClientCreation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewEquipment.resx">
       <DependentUpon>frmNewEquipment.cs</DependentUpon>
