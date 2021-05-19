@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Data.Layer.Controller;
 
 namespace Data.Layer.Objects
-{      
-    
+{
     public class ServiceRequest : Request
     {
         //Fields

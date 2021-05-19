@@ -47,9 +47,9 @@ namespace Data.Layer.Controller
                 while (read.Read())
                 {
                     newCl = new IndividualClient(
-                            read.GetString(3),
                             read.GetString(1),
                             read.GetString(2),
+                            read.GetString(3),
                             read.IsDBNull(4) ? null : read.GetString(4)
                         );
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
-using Logic;
+using Logic.ContractMaintenance;
 
 namespace Presentation.Forms.ContractMaintenance
 {
@@ -66,9 +66,8 @@ namespace Presentation.Forms.ContractMaintenance
                 Sl.AddSLA(NewSla);
                 MessageBox.Show("Service successfully Added", " ADD",
                                      MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Hide();
-                frmServiceContract form = new frmServiceContract();
-                form.ShowDialog();
+
+                Close();
             }//Add the SLA
         }//Validate inputs and add SLA
     }

@@ -11,7 +11,6 @@ namespace Logic
     class EquipmentCategoryLogic
     {
         private EquipmentCategoryController EQC = new EquipmentCategoryController();
-
       
         public void addEquiptmentCatagory(EquipmentCategory EC)
         {
@@ -32,10 +31,6 @@ namespace Logic
         {
             List<EquipmentCategory> ReturnList = EQC.Read();
             return ReturnList;
-        }//View Catagoties 
-
-
-
-
+        }//View Catagoties
     }
 }

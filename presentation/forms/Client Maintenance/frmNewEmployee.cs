@@ -14,59 +14,42 @@ namespace Presentation.Forms.ClientMaintenance
 {
     public partial class frmNewEmployee : Form
     {
-        public Employee empl = null;
+        public Employee newEmployee;
 
         public frmNewEmployee()
         {
             InitializeComponent();
         }
 
-        public static Employee AddEmployee()
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmNewEmployee form = new frmNewEmployee();
-            form.ShowDialog();
-            return form.empl;
-        }
-
-        private void btnAddEmp_Click(object sender, EventArgs e)
-        {
-            if (tbEmpName.Equals("")) 
+            if (txtName.Text.Equals("")) 
             {
-                MessageBox.Show("Please enter employee name", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                return; 
+                MessageBox.Show("Please enter employee name");
             }
-            else if (tbEmpSurname.Equals(""))
+            else if (txtSurname.Text.Equals(""))
             {
-                MessageBox.Show("Please enter employee surname", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Please enter employee surname");
             }
-            else if (tbEmpRole.Equals(""))
+            else if (txtRole.Text.Equals(""))
             {
-                MessageBox.Show("Please enter employee role", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Please enter employee role");
             }
-            else if (tbEmpContact.Equals(""))
+            else if (txtContactNum.Text.Equals(""))
             {
-                MessageBox.Show("Please enter employee contact number", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Please enter employee contact number");
             }
             else
             {
-                this.empl = new Employee(
-                    tbEmpName.Text,
-                    tbEmpSurname.Text,
-                    tbEmpRole.Text,
-                    tbEmpContact.Text
-            );
-                Close();
+                newEmployee = new Employee(
+                        txtName.Text,
+                        txtSurname.Text,
+                        txtRole.Text,
+                        txtContactNum.Text
+                    );
+
+                DialogResult = DialogResult.OK;
             }
-
-
-            
         }
     }
 }

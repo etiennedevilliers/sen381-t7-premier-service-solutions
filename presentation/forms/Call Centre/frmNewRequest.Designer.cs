@@ -56,6 +56,7 @@ namespace Presentation.Forms.CallCentre
             this.label7 = new System.Windows.Forms.Label();
             this.cbServiceRequestServiceContract = new System.Windows.Forms.ComboBox();
             this.btnServiceRequest = new System.Windows.Forms.Button();
+            this.cbxClientType = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -103,13 +104,14 @@ namespace Presentation.Forms.CallCentre
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cbxClientType);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.tbContactNumber);
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.btnNewClientRequest);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(440, 378);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "New Client Request";
@@ -155,7 +157,7 @@ namespace Presentation.Forms.CallCentre
             this.tabPage2.Controls.Add(this.btnComplaintRequest);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(440, 378);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Complaint Request";
@@ -337,6 +339,17 @@ namespace Presentation.Forms.CallCentre
             this.btnServiceRequest.UseVisualStyleBackColor = true;
             this.btnServiceRequest.Click += new System.EventHandler(this.btnServiceRequest_Click);
             // 
+            // cbxClientType
+            // 
+            this.cbxClientType.FormattingEnabled = true;
+            this.cbxClientType.Items.AddRange(new object[] {
+            "Individual",
+            "Business"});
+            this.cbxClientType.Location = new System.Drawing.Point(8, 62);
+            this.cbxClientType.Name = "cbxClientType";
+            this.cbxClientType.Size = new System.Drawing.Size(121, 21);
+            this.cbxClientType.TabIndex = 5;
+            // 
             // FrmNewRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,7 +360,7 @@ namespace Presentation.Forms.CallCentre
             this.Controls.Add(this.cbExistingClient);
             this.Name = "FrmNewRequest";
             this.Text = "NewRequest";
-            this.Load += new System.EventHandler(this.frmNewRequest_Load);
+            this.Load += new System.EventHandler(this.FrmNewRequest_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -390,5 +403,6 @@ namespace Presentation.Forms.CallCentre
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbxClientType;
     }
 }

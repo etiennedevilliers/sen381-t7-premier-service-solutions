@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Layer.Objects;
-using Logic;
+using Logic.ContractMaintenance;
 
 namespace Presentation.Forms.ContractMaintenance
 {
@@ -62,10 +62,7 @@ namespace Presentation.Forms.ContractMaintenance
                 MessageBox.Show("Service successfully Updated", " Edit",
                                       MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                Hide();
-                frmServiceContract form = new frmServiceContract();
-                form.ShowDialog();
-
+                Close();
             }//End of Else
 
         }//Update service
@@ -73,7 +70,7 @@ namespace Presentation.Forms.ContractMaintenance
      void loadList()
         {
             // Display the services
-            List_Of_Services_Ob = Sl.ViewServices();
+            List_Of_Services_Ob = Sl.GetServices();
 
             foreach (Service S in List_Of_Services_Ob)
             {

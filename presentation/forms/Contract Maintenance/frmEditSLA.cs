@@ -9,19 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
-using Logic;
+using Logic.ContractMaintenance;
 
 namespace Presentation.Forms.ContractMaintenance
 {
     public partial class frmEditSLA : Form
     {
-
         private ServiceLevelAgreement sla;
-        
 
         List<ServiceLevelAgreement> List_Of_SLA_Ob = new List<ServiceLevelAgreement>();
         SLALogic SLA_L = new SLALogic();
-
 
         public frmEditSLA(ServiceLevelAgreement sla)
         {
@@ -47,10 +44,7 @@ namespace Presentation.Forms.ContractMaintenance
                 MessageBox.Show("SLA successfully Updated", " Edit",
                                       MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                Hide();
-                frmServiceContract form = new frmServiceContract();
-                form.ShowDialog();
-
+                Close();
             }//End of Else
         }//UPdate and validate the SLa
 

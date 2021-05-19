@@ -10,7 +10,7 @@ namespace Data.Layer.Objects
     {
         public Service ser;
 
-        public RequestAgent(Service ser, Agent agent) : base(agent.Name, agent.ContactNum, agent.EmploymentStatus, agent.EmployeeType)
+        public RequestAgent(Service ser, Agent agent) : base(agent.Name, agent.Surname, agent.ContactNum, agent.EmploymentStatus, agent.EmployeeType, agent.Username, agent.Password)
         {
             this.ser = ser;
 

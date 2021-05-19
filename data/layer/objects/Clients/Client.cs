@@ -8,32 +8,66 @@ namespace Data.Layer.Objects
     {
         //Fields
         protected int id;
+        protected string clientIdentifier;
         protected string contactNum;
+        protected List<ClientServiceContract> contracts = null;
+        protected List<Address> addresses = null;
+        protected List<Equipment> equipment = null;
 
         //Properties
         public int Id { get => id; set => id = value; }
-        public string ClientIdentifier;
+        public string ClientIdentifier { get => clientIdentifier; set => clientIdentifier = value; }
         public string ContactNum { get => contactNum; set => contactNum = value; }
-        public List<ClientServiceContract> contracts
+        public List<ClientServiceContract> Contracts
         {
             get
             {
-                return new ClientController().serviceContract.ReadChildren(this);
+                if (contracts == null)
+                {
+                    contracts = new ClientController().serviceContract.ReadChildren(this);
+                    return contracts;
+                }
+                else
+                {
+                    return contracts;
+                }
             }
+
+            set => contracts = value;
         }
-        public List<Address> addresses
+        public List<Address> Addresses
         {
             get
             {
-                return new ClientController().address.ReadChildren(this);
+                if (addresses == null)
+                {
+                    addresses = new ClientController().address.ReadChildren(this);
+                    return addresses;
+                }
+                else
+                {
+                    return addresses;
+                }
             }
+
+            set => addresses = value;
         }
-        public List<Equipment> equipment
+        public List<Equipment> Equipment
         {
             get
             {
-                return new ClientController().equipment.ReadChildren(this);
+                if (equipment == null)
+                {
+                    equipment = new ClientController().equipment.ReadChildren(this);
+                    return equipment;
+                }
+                else
+                {
+                    return equipment;
+                }
             }
+
+            set => equipment = value;
         }
 
         //Constructor

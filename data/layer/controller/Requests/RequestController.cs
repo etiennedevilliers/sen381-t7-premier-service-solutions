@@ -47,8 +47,6 @@ namespace Data.Layer.Controller
 
             DataHandler dh = new DataHandler();
 
-            
-
             if (client == null) 
             {
                 dh.Update(string.Format(
@@ -113,7 +111,7 @@ namespace Data.Layer.Controller
 
             List<RequestAgent> reqAgents = new List<RequestAgent>();
 
-            string query = "SELECT A.AgentID, A.aName, A.contactNum, A.employmentStatus, A.employeeType, T.TechnicianID, S.ServiceID, S.sDescription, S.expectedDuration " +
+            string query = "SELECT A.AgentID, A.aName, A.surname, A.contactNum, A.employmentStatus, A.employeeType, A.username, A.password, T.TechnicianID, S.ServiceID, S.sDescription, S.expectedDuration " +
                             "FROM Agent A " +
                             "LEFT OUTER JOIN agentRequestHandlers H ON A.AgentID = H.AgentID " +
                             "LEFT OUTER JOIN Service S ON S.ServiceID = H.ServiceID " +
@@ -129,13 +127,16 @@ namespace Data.Layer.Controller
             {
                 while (read.Read())
                 {
-                    if (!read.IsDBNull(5))
+                    if (!read.IsDBNull(8))
                     {
                         agent = new Technician(
                             read.GetString(1),
                             read.GetString(2),
                             read.GetString(3),
-                            read.GetString(4)
+                            read.GetString(4),
+                            read.GetString(5),
+                            read.GetString(6),
+                            read.GetString(7)
                         );
                     }
                     else
@@ -144,16 +145,19 @@ namespace Data.Layer.Controller
                             read.GetString(1),
                             read.GetString(2),
                             read.GetString(3),
-                            read.GetString(4)
+                            read.GetString(4),
+                            read.GetString(5),
+                            read.GetString(6),
+                            read.GetString(7)
                         );
                     }
 
                     agent.Id = read.GetInt32(0);
 
-                    if (!read.IsDBNull(6))
+                    if (!read.IsDBNull(9))
                     {
-                        ser = new Service(read.GetString(7), read.GetInt32(8));
-                        ser.Id = read.GetInt32(6);
+                        ser = new Service(read.GetString(10), read.GetInt32(11));
+                        ser.Id = read.GetInt32(9);
                     }
 
                     reqAgent = new RequestAgent(
@@ -218,21 +222,18 @@ namespace Data.Layer.Controller
 
                     if (read.IsDBNull(1))
                     {
-                        Console.WriteLine(read.GetInt32(0));
-                        Console.WriteLine(read.GetString(2));
-                        Console.WriteLine(read.GetString(3));
                         newClient = new IndividualClient(
-                            read.GetString(4), 
                             read.GetString(2), 
-                            read.GetString(3),
+                            read.GetString(3), 
+                            read.GetString(4),
                             read.IsDBNull(5) ? null : read.GetString(5)
                         );
                     }
                     else
                     {
                         newClient = new BusinessClient(
-                            read.GetString(4), 
-                            read.GetString(1),
+                            read.GetString(1), 
+                            read.GetString(4),
                             read.IsDBNull(5) ? null : read.GetString(5)
                         );
                     }

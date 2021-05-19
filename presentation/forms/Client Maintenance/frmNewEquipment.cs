@@ -14,39 +14,46 @@ namespace Presentation.Forms.ClientMaintenance
 {
     public partial class frmNewEquipment : Form
     {
-        public Equipment eResult = null;
-        private frmNewEquipment()
+        public Equipment newEquipment;
+
+        public frmNewEquipment()
         {
             InitializeComponent();
+        }
 
+        private void frmNewEquipment_Load(object sender, EventArgs e)
+        {
             EquipmentCategoryController equipmentCategoryController = new EquipmentCategoryController();
 
             foreach (EquipmentCategory equipmentCategory in equipmentCategoryController.Read())
             {
-                cbEquipmentCat.Items.Add(equipmentCategory);
+                cbxCategory.Items.Add(equipmentCategory);
             }
+
+            cbxCategory.SelectedIndex = 0;
         }
 
-        public static Equipment CreateNewEquipment()
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmNewEquipment form = new frmNewEquipment();
-            form.ShowDialog();
-            return form.eResult;
-        }
+            if (txtSerialNum.Text.Equals(""))
+            {
+                MessageBox.Show("Please enter serial number");
+            }
+            else if (txtManufacturer.Text.Equals(""))
+            {
+                MessageBox.Show("Please enter manufacturer");
+            }
+            else
+            {
+                newEquipment = new Equipment(
+                        txtSerialNum.Text,
+                        txtManufacturer.Text
+                    );
 
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            if (cbEquipmentCat.SelectedItem == null) { MessageBox.Show("Select category first"); return; }
-            if (tbSerialNumber.Text.Length == 0) { MessageBox.Show("Enter Serial number first"); return; }
-            if (tbManufacturer.Text.Length == 0) { MessageBox.Show("Enter manufacturer first"); return; }
+                newEquipment.Category = cbxCategory.SelectedItem as EquipmentCategory;
 
-            this.eResult = new Equipment(
-                tbSerialNumber.Text,
-                tbManufacturer.Text
-            );
-            this.eResult.Category = cbEquipmentCat.SelectedItem as EquipmentCategory;
-
-            Close();
+                DialogResult = DialogResult.OK;
+            }
         }
     }
 }

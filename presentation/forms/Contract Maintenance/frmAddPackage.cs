@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Layer.Objects;
+using Logic.ContractMaintenance;
 using Logic;
 
 namespace Presentation.Forms.ContractMaintenance
@@ -26,24 +27,11 @@ namespace Presentation.Forms.ContractMaintenance
         private SLALogic SLA_L = new SLALogic();
         private EquipmentCategoryLogic EQC_L = new EquipmentCategoryLogic();
 
-
         private Package newPackage;
-
-        private string Description;
-        private string Name;
-        private Service service;
-        private ServiceLevelAgreement sla;
-        private EquipmentCategory EQC;
-
 
         public frmAddPackage()
         {
             InitializeComponent();
-        }
-
-        private void txtPDiscript_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnAddPackage1_Click(object sender, EventArgs e)
@@ -71,24 +59,14 @@ namespace Presentation.Forms.ContractMaintenance
             }
             else
             {
-                Description = txtPDiscript.Text;
-                Name = txtPName.Text;
-
-                service = Placeholder_Service_List[cmbPService.SelectedIndex];
-                sla = Placeholder_SLA_List[cmbPSLA.SelectedIndex];
-                EQC = Placeholder_EQC_List[cbxEquitptmentCatagory.SelectedIndex];
-
-                newPackage = new Package(Name, Description, service, sla,EQC);
+                newPackage = new Package(txtPName.Text, txtPDiscript.Text, Placeholder_Service_List[cmbPService.SelectedIndex], Placeholder_SLA_List[cmbPSLA.SelectedIndex], Placeholder_EQC_List[cbxEquitptmentCatagory.SelectedIndex]);
 
                 P_L.Addpackage(newPackage);
 
                 MessageBox.Show("Service successfully Added", " ADD",
                                      MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //Perform Fom transition
-                Hide();
-                frmServiceContract form = new frmServiceContract();
-                form.ShowDialog();
+                Close();
             }
 
         }//Add a Package
@@ -120,12 +98,11 @@ namespace Presentation.Forms.ContractMaintenance
             loadList();
 
             //Populate the comboboxes
-            Placeholder_Service_List = S_L.ViewServices();
+            Placeholder_Service_List = S_L.GetServices();
             Placeholder_SLA_List = SLA_L.ViewSLA();
             Placeholder_EQC_List = EQC_L.viewEquiptmentCatagory();
 
-
-            foreach (Service S in S_L.ViewServices())
+            foreach (Service S in S_L.GetServices())
             {
                 cmbPService.Items.Add("Service ID: " + S.Id.ToString() + "  " + S.Description);
             }
@@ -138,9 +115,7 @@ namespace Presentation.Forms.ContractMaintenance
             foreach (EquipmentCategory EC in EQC_L.viewEquiptmentCatagory())
             {
                 cbxEquitptmentCatagory.Items.Add("EQC Name: " + EC.Name);
-            }
-
-          
+            }          
 
         }//Load the listof packages
     }

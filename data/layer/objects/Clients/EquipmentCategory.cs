@@ -23,7 +23,6 @@ namespace Data.Layer.Objects
         }
 
         //Standard Methods
-
         public override string ToString()
         {
             return Name;

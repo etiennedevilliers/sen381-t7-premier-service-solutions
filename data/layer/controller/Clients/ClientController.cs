@@ -22,8 +22,8 @@ namespace Data.Layer.Controller
                     "INSERT INTO clientServiceContracts(ServiceContractID, ClientID, DateStart, DateEnd) VALUES({0}, {1}, '{2}', '{3}')",
                     child.Id,
                     parent.Id,
-                    child.StartDate,
-                    child.EndDate
+                    child.StartDate.Value == null ? null : child.StartDate.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                    child.EndDate.Value == null ? null : child.EndDate.Value.ToString("yyyy-MM-dd HH:mm:ss.fff")
                 );
                 dh.Insert(query);
 
@@ -36,7 +36,7 @@ namespace Data.Layer.Controller
 
                 List<ClientServiceContract> clientServiceContracts = new List<ClientServiceContract>();
 
-                string query = String.Format("SELECT SC.ServiceContractID, SC.description, SC.dateFinalised, SC.dateTerminated, SC.cost, SC.status, CSC.DateStart, CSC.DateEnd " +
+                string query = String.Format("SELECT SC.ServiceContractID, SC.description, SC.dateFinalised, SC.dateTerminated, SC.cost, SC.status, SC.identifier, CSC.DateStart, CSC.DateEnd " +
                                              "FROM clientServiceContracts as CSC " +
                                                 "LEFT JOIN ServiceContract AS SC ON CSC.ServiceContractID = SC.ServiceContractID " +
                                              "WHERE CSC.ClientID = {0}", parent.Id);
@@ -58,8 +58,8 @@ namespace Data.Layer.Controller
                         newSc.Id = read.GetInt32(0);
 
                         ClientServiceContract clientServiceContract = new ClientServiceContract(
-                            read.IsDBNull(6) ? null : new DateTime?(read.GetDateTime(6)),
                             read.IsDBNull(7) ? null : new DateTime?(read.GetDateTime(7)),
+                            read.IsDBNull(8) ? null : new DateTime?(read.GetDateTime(8)),
                             newSc
                         );
 
@@ -218,7 +218,7 @@ namespace Data.Layer.Controller
         {
             DataHandler dh = new DataHandler();
 
-            string query = String.Format(
+            string query = string.Format(
                 "INSERT INTO Client(contactNum, ClientIdentifier) VALUES ('{0}', '{1}')",
                 obj.ContactNum,
                 obj.ClientIdentifier

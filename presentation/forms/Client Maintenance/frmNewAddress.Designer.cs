@@ -30,140 +30,155 @@ namespace Presentation.Forms.ClientMaintenance
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNewAddress));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbStreet = new System.Windows.Forms.TextBox();
-            this.tbPremise = new System.Windows.Forms.TextBox();
-            this.tbLocality = new System.Windows.Forms.TextBox();
-            this.tbDistrict = new System.Windows.Forms.TextBox();
-            this.tbCountry = new System.Windows.Forms.TextBox();
-            this.tbProvince = new System.Windows.Forms.TextBox();
-            this.tbPostal = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblStreetAddress = new System.Windows.Forms.Label();
+            this.lblProvince = new System.Windows.Forms.Label();
+            this.lblDistrict = new System.Windows.Forms.Label();
+            this.lblCountry = new System.Windows.Forms.Label();
+            this.lblPremise = new System.Windows.Forms.Label();
+            this.lblLocality = new System.Windows.Forms.Label();
+            this.txtStreetAddress = new System.Windows.Forms.TextBox();
+            this.txtPremise = new System.Windows.Forms.TextBox();
+            this.txtLocality = new System.Windows.Forms.TextBox();
+            this.txtDistrict = new System.Windows.Forms.TextBox();
+            this.txtCountry = new System.Windows.Forms.TextBox();
+            this.txtProvince = new System.Windows.Forms.TextBox();
+            this.txtPostal = new System.Windows.Forms.TextBox();
+            this.lblPostalCode = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // lblStreetAddress
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Street Address";
+            this.lblStreetAddress.AutoSize = true;
+            this.lblStreetAddress.Location = new System.Drawing.Point(9, 134);
+            this.lblStreetAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblStreetAddress.Name = "lblStreetAddress";
+            this.lblStreetAddress.Size = new System.Drawing.Size(79, 13);
+            this.lblStreetAddress.TabIndex = 0;
+            this.lblStreetAddress.Text = "Street Address:";
             // 
-            // label2
+            // lblProvince
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Province";
+            this.lblProvince.AutoSize = true;
+            this.lblProvince.Location = new System.Drawing.Point(9, 38);
+            this.lblProvince.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblProvince.Name = "lblProvince";
+            this.lblProvince.Size = new System.Drawing.Size(52, 13);
+            this.lblProvince.TabIndex = 1;
+            this.lblProvince.Text = "Province:";
             // 
-            // label3
+            // lblDistrict
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 113);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 17);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "District";
+            this.lblDistrict.AutoSize = true;
+            this.lblDistrict.Location = new System.Drawing.Point(9, 62);
+            this.lblDistrict.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDistrict.Name = "lblDistrict";
+            this.lblDistrict.Size = new System.Drawing.Size(42, 13);
+            this.lblDistrict.TabIndex = 3;
+            this.lblDistrict.Text = "District:";
             // 
-            // label4
+            // lblCountry
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 84);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 17);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Country";
+            this.lblCountry.AutoSize = true;
+            this.lblCountry.Location = new System.Drawing.Point(9, 13);
+            this.lblCountry.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCountry.Name = "lblCountry";
+            this.lblCountry.Size = new System.Drawing.Size(46, 13);
+            this.lblCountry.TabIndex = 2;
+            this.lblCountry.Text = "Country:";
             // 
-            // label5
+            // lblPremise
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 169);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 17);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Premise";
+            this.lblPremise.AutoSize = true;
+            this.lblPremise.Location = new System.Drawing.Point(9, 157);
+            this.lblPremise.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPremise.Name = "lblPremise";
+            this.lblPremise.Size = new System.Drawing.Size(47, 13);
+            this.lblPremise.TabIndex = 5;
+            this.lblPremise.Text = "Premise:";
             // 
-            // label6
+            // lblLocality
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 141);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 17);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Locality";
+            this.lblLocality.AutoSize = true;
+            this.lblLocality.Location = new System.Drawing.Point(9, 86);
+            this.lblLocality.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLocality.Name = "lblLocality";
+            this.lblLocality.Size = new System.Drawing.Size(46, 13);
+            this.lblLocality.TabIndex = 4;
+            this.lblLocality.Text = "Locality:";
             // 
-            // tbStreet
+            // txtStreetAddress
             // 
-            this.tbStreet.Location = new System.Drawing.Point(127, 27);
-            this.tbStreet.Name = "tbStreet";
-            this.tbStreet.Size = new System.Drawing.Size(156, 22);
-            this.tbStreet.TabIndex = 6;
+            this.txtStreetAddress.Location = new System.Drawing.Point(95, 131);
+            this.txtStreetAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.txtStreetAddress.Name = "txtStreetAddress";
+            this.txtStreetAddress.Size = new System.Drawing.Size(118, 20);
+            this.txtStreetAddress.TabIndex = 6;
             // 
-            // tbPremise
+            // txtPremise
             // 
-            this.tbPremise.Location = new System.Drawing.Point(127, 166);
-            this.tbPremise.Name = "tbPremise";
-            this.tbPremise.Size = new System.Drawing.Size(156, 22);
-            this.tbPremise.TabIndex = 9;
+            this.txtPremise.Location = new System.Drawing.Point(95, 155);
+            this.txtPremise.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPremise.Name = "txtPremise";
+            this.txtPremise.Size = new System.Drawing.Size(118, 20);
+            this.txtPremise.TabIndex = 9;
             // 
-            // tbLocality
+            // txtLocality
             // 
-            this.tbLocality.Location = new System.Drawing.Point(127, 138);
-            this.tbLocality.Name = "tbLocality";
-            this.tbLocality.Size = new System.Drawing.Size(156, 22);
-            this.tbLocality.TabIndex = 10;
+            this.txtLocality.Location = new System.Drawing.Point(95, 83);
+            this.txtLocality.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLocality.Name = "txtLocality";
+            this.txtLocality.Size = new System.Drawing.Size(118, 20);
+            this.txtLocality.TabIndex = 10;
             // 
-            // tbDistrict
+            // txtDistrict
             // 
-            this.tbDistrict.Location = new System.Drawing.Point(127, 110);
-            this.tbDistrict.Name = "tbDistrict";
-            this.tbDistrict.Size = new System.Drawing.Size(156, 22);
-            this.tbDistrict.TabIndex = 11;
+            this.txtDistrict.Location = new System.Drawing.Point(95, 59);
+            this.txtDistrict.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDistrict.Name = "txtDistrict";
+            this.txtDistrict.Size = new System.Drawing.Size(118, 20);
+            this.txtDistrict.TabIndex = 11;
             // 
-            // tbCountry
+            // txtCountry
             // 
-            this.tbCountry.Location = new System.Drawing.Point(127, 81);
-            this.tbCountry.Name = "tbCountry";
-            this.tbCountry.Size = new System.Drawing.Size(156, 22);
-            this.tbCountry.TabIndex = 12;
+            this.txtCountry.Location = new System.Drawing.Point(95, 11);
+            this.txtCountry.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCountry.Name = "txtCountry";
+            this.txtCountry.Size = new System.Drawing.Size(118, 20);
+            this.txtCountry.TabIndex = 12;
             // 
-            // tbProvince
+            // txtProvince
             // 
-            this.tbProvince.Location = new System.Drawing.Point(127, 53);
-            this.tbProvince.Name = "tbProvince";
-            this.tbProvince.Size = new System.Drawing.Size(156, 22);
-            this.tbProvince.TabIndex = 13;
+            this.txtProvince.Location = new System.Drawing.Point(95, 35);
+            this.txtProvince.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProvince.Name = "txtProvince";
+            this.txtProvince.Size = new System.Drawing.Size(118, 20);
+            this.txtProvince.TabIndex = 13;
             // 
-            // tbPostal
+            // txtPostal
             // 
-            this.tbPostal.Location = new System.Drawing.Point(127, 194);
-            this.tbPostal.Name = "tbPostal";
-            this.tbPostal.Size = new System.Drawing.Size(156, 22);
-            this.tbPostal.TabIndex = 15;
+            this.txtPostal.Location = new System.Drawing.Point(95, 107);
+            this.txtPostal.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPostal.Name = "txtPostal";
+            this.txtPostal.Size = new System.Drawing.Size(118, 20);
+            this.txtPostal.TabIndex = 15;
             // 
-            // label7
+            // lblPostalCode
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 197);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 17);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Postal Code";
+            this.lblPostalCode.AutoSize = true;
+            this.lblPostalCode.Location = new System.Drawing.Point(9, 109);
+            this.lblPostalCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPostalCode.Name = "lblPostalCode";
+            this.lblPostalCode.Size = new System.Drawing.Size(67, 13);
+            this.lblPostalCode.TabIndex = 14;
+            this.lblPostalCode.Text = "Postal Code:";
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(216, 244);
+            this.btnAdd.Location = new System.Drawing.Point(149, 182);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(64, 38);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -171,24 +186,25 @@ namespace Presentation.Forms.ClientMaintenance
             // 
             // frmNewAddress
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(320, 284);
+            this.ClientSize = new System.Drawing.Size(221, 227);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.tbPostal);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.tbProvince);
-            this.Controls.Add(this.tbCountry);
-            this.Controls.Add(this.tbDistrict);
-            this.Controls.Add(this.tbLocality);
-            this.Controls.Add(this.tbPremise);
-            this.Controls.Add(this.tbStreet);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtPostal);
+            this.Controls.Add(this.lblPostalCode);
+            this.Controls.Add(this.txtProvince);
+            this.Controls.Add(this.txtCountry);
+            this.Controls.Add(this.txtDistrict);
+            this.Controls.Add(this.txtLocality);
+            this.Controls.Add(this.txtPremise);
+            this.Controls.Add(this.txtStreetAddress);
+            this.Controls.Add(this.lblPremise);
+            this.Controls.Add(this.lblLocality);
+            this.Controls.Add(this.lblDistrict);
+            this.Controls.Add(this.lblCountry);
+            this.Controls.Add(this.lblProvince);
+            this.Controls.Add(this.lblStreetAddress);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmNewAddress";
             this.Text = resources.GetString("$this.Text");
             this.ResumeLayout(false);
@@ -198,20 +214,20 @@ namespace Presentation.Forms.ClientMaintenance
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tbStreet;
-        private System.Windows.Forms.TextBox tbPremise;
-        private System.Windows.Forms.TextBox tbLocality;
-        private System.Windows.Forms.TextBox tbDistrict;
-        private System.Windows.Forms.TextBox tbCountry;
-        private System.Windows.Forms.TextBox tbProvince;
-        private System.Windows.Forms.TextBox tbPostal;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblStreetAddress;
+        private System.Windows.Forms.Label lblProvince;
+        private System.Windows.Forms.Label lblDistrict;
+        private System.Windows.Forms.Label lblCountry;
+        private System.Windows.Forms.Label lblPremise;
+        private System.Windows.Forms.Label lblLocality;
+        private System.Windows.Forms.TextBox txtStreetAddress;
+        private System.Windows.Forms.TextBox txtPremise;
+        private System.Windows.Forms.TextBox txtLocality;
+        private System.Windows.Forms.TextBox txtDistrict;
+        private System.Windows.Forms.TextBox txtCountry;
+        private System.Windows.Forms.TextBox txtProvince;
+        private System.Windows.Forms.TextBox txtPostal;
+        private System.Windows.Forms.Label lblPostalCode;
         private System.Windows.Forms.Button btnAdd;
     }
 }

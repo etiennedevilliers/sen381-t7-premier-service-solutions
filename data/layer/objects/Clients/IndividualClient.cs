@@ -14,7 +14,7 @@ namespace Data.Layer.Objects
         public string Surname { get => surname; set => surname = value; }
 
         //Constructor
-        public IndividualClient(string contactNum, string name, string surname, string clientIdentifier) : base(contactNum, clientIdentifier)
+        public IndividualClient(string name, string surname, string contactNum, string clientIdentifier) : base(contactNum, clientIdentifier)
         {
             this.name = name;
             this.surname = surname;

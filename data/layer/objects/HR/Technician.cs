@@ -19,7 +19,7 @@ namespace Data.Layer.Objects
         }
 
         //Constructor
-        public Technician( string name, string primaryContact, string empStatus, string empType) : base(name, primaryContact, empStatus, empType)
+        public Technician( string name, string surname, string primaryContact, string empStatus, string empType, string username, string password) : base(name, surname, primaryContact, empStatus, empType, username, password)
         {
             
         }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
-using Logic;
+using Logic.ContractMaintenance;
 using Logic.CustomExceptions;
 
 
@@ -146,10 +146,7 @@ namespace Presentation.Forms.ContractMaintenance
                 MessageBox.Show("Service successfully Service Contract", " ADD",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //Perform Fom transition
-                Hide();
-                frmServiceContract form = new frmServiceContract();
-                form.ShowDialog();
+                Close();
             }
         }
 

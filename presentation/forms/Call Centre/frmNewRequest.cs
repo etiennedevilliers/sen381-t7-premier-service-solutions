@@ -10,31 +10,25 @@ using System.Windows.Forms;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
 using Logic;
-using Presentation.Forms.Agents;
+using Logic.CallCentre;
 
 namespace Presentation.Forms.CallCentre
 {
     public partial class FrmNewRequest : Form
     {
-        private CallCentreLogic callCentreLogic;
+        CallCentreLogic callLogic = new CallCentreLogic();
+        CallLog call;
 
-        public static void OpenRequest()
-        {
-            Agent agent = frmSelectAgent.GetAgent();
-
-            if (agent != null) 
-            {
-                CallCentreLogic callCentreLogic = new CallCentreLogic(agent, true);
-                FrmNewRequest frmNewRequest = new FrmNewRequest(callCentreLogic);
-                frmNewRequest.ShowDialog();
-            }
-              
-        }
-        private FrmNewRequest(CallCentreLogic callCentreLogic)
+        public FrmNewRequest(Agent agentLoggedIn)
         {
             InitializeComponent();
-            this.callCentreLogic = callCentreLogic;
 
+            call = new CallLog(DateTime.Now, true);
+            call.Representative = agentLoggedIn;
+        }
+
+        private void FrmNewRequest_Load(object sender, EventArgs e)
+        {
             IndividualClientController individualClientController = new IndividualClientController();
             BusinessClientController businessClientController = new BusinessClientController();
             ServiceContractController serviceContractController = new ServiceContractController();
@@ -53,11 +47,8 @@ namespace Presentation.Forms.CallCentre
             {
                 cbNewContractRequestServiceContract.Items.Add(serviceContract);
             }
-        }
 
-        private void frmNewRequest_Load(object sender, EventArgs e)
-        {
-            
+            cbxClientType.SelectedIndex = 0;
         }
 
         private void btnNewClientRequest_Click(object sender, EventArgs e)
@@ -68,13 +59,14 @@ namespace Presentation.Forms.CallCentre
                 return;
             }
 
-            callCentreLogic.CreateNewClientRequest(
-                tbContactNumber.Text
+            callLogic.CreateNewClientRequest(
+                tbContactNumber.Text,
+                call,
+                cbxClientType.SelectedIndex == 0
             );
 
             Close();
         }
-
 
         private void cbExistingClient_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -111,14 +103,14 @@ namespace Presentation.Forms.CallCentre
                 return;
             }
 
-            callCentreLogic.CreateNewComplaintRequest(
+            callLogic.CreateNewComplaintRequest(
                 tbComplaintDescription.Text,
                 cbExistingClient.SelectedItem as Client,
-                cbComplaintServiceContract.SelectedItem as ServiceContract
+                cbComplaintServiceContract.SelectedItem as ServiceContract,
+                call
             );
 
             Close();
-            
         }
 
         private void btnNewContractRequest_Click(object sender, EventArgs e)
@@ -135,9 +127,10 @@ namespace Presentation.Forms.CallCentre
                 return;
             }
 
-            callCentreLogic.CreateNewNewContractRequest(
+            callLogic.CreateNewNewContractRequest(
                 cbNewContractRequestServiceContract.SelectedItem as ServiceContract,
-                cbExistingClient.SelectedItem as Client
+                cbExistingClient.SelectedItem as Client,
+                call
             );
 
             Close();
@@ -163,10 +156,11 @@ namespace Presentation.Forms.CallCentre
                 return;
             }
 
-            callCentreLogic.CreateNewServiceRequest(
+            callLogic.CreateNewServiceRequest(
                 cbServiceRequestServiceContract.SelectedItem as ServiceContract,
                 cbExistingClient.SelectedItem as Client,
-                tbServiceRequestDescription.Text
+                tbServiceRequestDescription.Text,
+                call
             );
 
             Close();

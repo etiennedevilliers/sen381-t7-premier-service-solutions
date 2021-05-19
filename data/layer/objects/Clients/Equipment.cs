@@ -26,5 +26,30 @@ namespace Data.Layer.Objects
             this.serialNumber = serialNumber;
             this.manufacturer = manufacturer;
         }
+
+        //Standard Methods
+        public override bool Equals(object obj)
+        {
+            //Check for null and compare run-time types.
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                Equipment p = (Equipment) obj;
+                return p.Id.Equals(id);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return Id;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

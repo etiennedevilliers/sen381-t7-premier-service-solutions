@@ -5,13 +5,28 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8B97DA6E-DD8E-4186-9CC9-24260189F809}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>sen381_t7_premier_service_solutions</RootNamespace>
     <AssemblyName>sen381-t7-premier-service-solutions</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -99,28 +114,30 @@
     <Compile Include="data\layer\objects\ServiceContract\ServiceContract.cs" />
     <Compile Include="data\layer\objects\ServiceContract\ServiceLevelAgreement.cs" />
     <Compile Include="logic\CallCentre\CallCentreLogic.cs" />
+    <Compile Include="logic\Client Maintenance\ClientLogic.cs" />
     <Compile Include="logic\EquipmentCategoryLogic.cs" />
-    <Compile Include="logic\GeneralLogic.cs" />
-    <Compile Include="logic\ClientMaintenanceLogic.cs" />
-    <Compile Include="logic\NewContractRequestLogic.cs" />
-    <Compile Include="logic\ServiceContratcLogic\CustomExceptions\ServiceExistsException.cs" />
-    <Compile Include="logic\ServiceContratcLogic\CustomExceptions\SLAExistsException.cs" />
-    <Compile Include="logic\ServiceContratcLogic\PackageLogic.cs" />
-    <Compile Include="logic\ServiceContratcLogic\SCLogic.cs" />
-    <Compile Include="logic\ServiceContratcLogic\ServiceLogic.cs" />
-    <Compile Include="logic\ServiceContratcLogic\SLALogic.cs" />
-    <Compile Include="logic\ServiceDepartmentLogic.cs" />
-    <Compile Include="presentation\forms\Agents\frmAgentSelection.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Agents\frmAgentSelection.Designer.cs">
-      <DependentUpon>frmAgentSelection.cs</DependentUpon>
-    </Compile>
+    <Compile Include="logic\General\GeneralLogic.cs" />
+    <Compile Include="logic\Client Maintenance\ClientMaintenanceLogic.cs" />
+    <Compile Include="logic\Client Maintenance\NewContractRequestLogic.cs" />
+    <Compile Include="logic\Contract Maintenance Logic\CustomExceptions\ServiceExistsException.cs" />
+    <Compile Include="logic\Contract Maintenance Logic\CustomExceptions\SLAExistsException.cs" />
+    <Compile Include="logic\Contract Maintenance Logic\PackageLogic.cs" />
+    <Compile Include="logic\Contract Maintenance Logic\SCLogic.cs" />
+    <Compile Include="logic\Contract Maintenance Logic\ServiceLogic.cs" />
+    <Compile Include="logic\Contract Maintenance Logic\SLALogic.cs" />
+    <Compile Include="logic\Service Department Logic\ServiceRequestLogic.cs" />
+    <Compile Include="logic\Service Department Logic\TechnicianLogic.cs" />
     <Compile Include="presentation\forms\Call Centre\frmNewRequest.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="presentation\forms\Call Centre\frmNewRequest.Designer.cs">
       <DependentUpon>frmNewRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Call Centre\frmCallCentre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Call Centre\frmCallCentre.Designer.cs">
+      <DependentUpon>frmCallCentre.cs</DependentUpon>
     </Compile>
     <Compile Include="presentation\forms\Client Maintenance\frmAddServiceContractToClient.cs">
       <SubType>Form</SubType>
@@ -128,65 +145,11 @@
     <Compile Include="presentation\forms\Client Maintenance\frmAddServiceContractToClient.Designer.cs">
       <DependentUpon>frmAddServiceContractToClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmEditBusinessClient.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmEditBusinessClient.Designer.cs">
-      <DependentUpon>frmEditBusinessClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmEditIndividualClient.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmEditIndividualClient.Designer.cs">
-      <DependentUpon>frmEditIndividualClient.cs</DependentUpon>
-    </Compile>
     <Compile Include="presentation\forms\Client Maintenance\frmNewAddress.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="presentation\forms\Client Maintenance\frmNewAddress.Designer.cs">
       <DependentUpon>frmNewAddress.cs</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmNewBusinessClient.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmNewBusinessClient.Designer.cs">
-      <DependentUpon>frmNewBusinessClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmNewEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmNewEmployee.Designer.cs">
-      <DependentUpon>frmNewEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmNewClientCreation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmNewClientCreation.Designer.cs">
-      <DependentUpon>frmNewClientCreation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmNewEquipment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmNewEquipment.Designer.cs">
-      <DependentUpon>frmNewEquipment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmViewBusiness.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmViewBusiness.Designer.cs">
-      <DependentUpon>frmViewBusiness.cs</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmViewIndividual.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmViewIndividual.Designer.cs">
-      <DependentUpon>frmViewIndividual.cs</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmClientMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="presentation\forms\Client Maintenance\frmClientMenu.Designer.cs">
-      <DependentUpon>frmClientMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="presentation\forms\Client Maintenance\frmNewClient.cs">
       <SubType>Form</SubType>
@@ -194,11 +157,29 @@
     <Compile Include="presentation\forms\Client Maintenance\frmNewClient.Designer.cs">
       <DependentUpon>frmNewClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="presentation\forms\Client Satisfaction\frmViewComplaints.cs">
+    <Compile Include="presentation\forms\Client Maintenance\frmNewEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="presentation\forms\Client Satisfaction\frmViewComplaints.Designer.cs">
-      <DependentUpon>frmViewComplaints.cs</DependentUpon>
+    <Compile Include="presentation\forms\Client Maintenance\frmNewEmployee.Designer.cs">
+      <DependentUpon>frmNewEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmNewEquipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmNewEquipment.Designer.cs">
+      <DependentUpon>frmNewEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmViewClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmViewClient.Designer.cs">
+      <DependentUpon>frmViewClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmClientMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentation\forms\Client Maintenance\frmClientMaintenance.Designer.cs">
+      <DependentUpon>frmClientMaintenance.cs</DependentUpon>
     </Compile>
     <Compile Include="presentation\forms\Contract Maintenance\frmAddPackage.cs">
       <SubType>Form</SubType>
@@ -248,11 +229,11 @@
     <Compile Include="presentation\forms\Contract Maintenance\frmNewSLA.Designer.cs">
       <DependentUpon>frmNewSLA.cs</DependentUpon>
     </Compile>
-    <Compile Include="presentation\forms\Contract Maintenance\frmServiceContract.cs">
+    <Compile Include="presentation\forms\Contract Maintenance\frmContractMaintenance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="presentation\forms\Contract Maintenance\frmServiceContract.Designer.cs">
-      <DependentUpon>frmServiceContract.cs</DependentUpon>
+    <Compile Include="presentation\forms\Contract Maintenance\frmContractMaintenance.Designer.cs">
+      <DependentUpon>frmContractMaintenance.cs</DependentUpon>
     </Compile>
     <Compile Include="presentation\forms\Service Department\Manager\frmAddTechnician.cs">
       <SubType>Form</SubType>
@@ -266,17 +247,17 @@
     <Compile Include="presentation\forms\Service Department\Manager\frmEditTechnician.Designer.cs">
       <DependentUpon>frmEditTechnician.cs</DependentUpon>
     </Compile>
-    <Compile Include="presentation\forms\Service Department\Manager\frmServiceMenu.cs">
+    <Compile Include="presentation\forms\Service Department\Manager\frmServiceManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="presentation\forms\Service Department\Manager\frmServiceMenu.Designer.cs">
-      <DependentUpon>frmServiceMenu.cs</DependentUpon>
+    <Compile Include="presentation\forms\Service Department\Manager\frmServiceManager.Designer.cs">
+      <DependentUpon>frmServiceManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="presentation\forms\Service Department\Technician\frmViewServices.cs">
+    <Compile Include="presentation\forms\Service Department\Technician\frmTechnician.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="presentation\forms\Service Department\Technician\frmViewServices.Designer.cs">
-      <DependentUpon>frmViewServices.cs</DependentUpon>
+    <Compile Include="presentation\forms\Service Department\Technician\frmTechnician.Designer.cs">
+      <DependentUpon>frmTechnician.cs</DependentUpon>
     </Compile>
     <Compile Include="presentation\forms\Welcome\frmLogin.cs">
       <SubType>Form</SubType>
@@ -286,29 +267,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="presentation\forms\Agents\frmAgentSelection.resx">
-      <DependentUpon>frmAgentSelection.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Call Centre\frmNewRequest.resx">
       <DependentUpon>frmNewRequest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmAddServiceContractToClient.resx">
       <DependentUpon>frmAddServiceContractToClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmClientMenu.resx">
-      <DependentUpon>frmClientMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmEditBusinessClient.resx">
-      <DependentUpon>frmEditBusinessClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmEditIndividualClient.resx">
-      <DependentUpon>frmEditIndividualClient.cs</DependentUpon>
+    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmClientMaintenance.resx">
+      <DependentUpon>frmClientMaintenance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewAddress.resx">
       <DependentUpon>frmNewAddress.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewBusinessClient.resx">
-      <DependentUpon>frmNewBusinessClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewClient.resx">
       <DependentUpon>frmNewClient.cs</DependentUpon>
@@ -316,11 +285,11 @@
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewEmployee.resx">
       <DependentUpon>frmNewEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewClientCreation.resx">
-      <DependentUpon>frmNewClientCreation.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Client Maintenance\frmNewEquipment.resx">
       <DependentUpon>frmNewEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmViewClient.resx">
+      <DependentUpon>frmViewClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmAddPackage.resx">
       <DependentUpon>frmAddPackage.cs</DependentUpon>
@@ -330,12 +299,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmAddServiceContract.resx">
       <DependentUpon>frmAddServiceContract.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmViewBusiness.resx">
-      <DependentUpon>frmViewBusiness.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Client Maintenance\frmViewIndividual.resx">
-      <DependentUpon>frmViewIndividual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmEditPackages.resx">
       <DependentUpon>frmEditPackages.cs</DependentUpon>
@@ -352,8 +315,8 @@
     <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmNewSLA.resx">
       <DependentUpon>frmNewSLA.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmServiceContract.resx">
-      <DependentUpon>frmServiceContract.cs</DependentUpon>
+    <EmbeddedResource Include="presentation\forms\Contract Maintenance\frmContractMaintenance.resx">
+      <DependentUpon>frmContractMaintenance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Service Department\Manager\frmAddTechnician.resx">
       <DependentUpon>frmAddTechnician.cs</DependentUpon>
@@ -361,11 +324,11 @@
     <EmbeddedResource Include="presentation\forms\Service Department\Manager\frmEditTechnician.resx">
       <DependentUpon>frmEditTechnician.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Service Department\Manager\frmServiceMenu.resx">
-      <DependentUpon>frmServiceMenu.cs</DependentUpon>
+    <EmbeddedResource Include="presentation\forms\Service Department\Manager\frmServiceManager.resx">
+      <DependentUpon>frmServiceManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="presentation\forms\Service Department\Technician\frmViewServices.resx">
-      <DependentUpon>frmViewServices.cs</DependentUpon>
+    <EmbeddedResource Include="presentation\forms\Service Department\Technician\frmTechnician.resx">
+      <DependentUpon>frmTechnician.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Welcome\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -381,6 +344,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
+    <None Include="Objects.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -399,6 +363,18 @@
     <Content Include="presentation\assets\phone-x.png" />
     <None Include="Resources\phone-x.png" />
     <None Include="Resources\phone-outgoing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

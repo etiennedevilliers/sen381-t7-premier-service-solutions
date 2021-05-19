@@ -51,8 +51,8 @@ namespace Data.Layer.Controller
                 while (read.Read())
                 {
                     newCl = new BusinessClient(
-                            read.GetString(2),
                             read.GetString(1),
+                            read.GetString(2),
                             read.IsDBNull(3) ? null : read.GetString(3)
                         );
 

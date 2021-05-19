@@ -4,7 +4,6 @@ using Data.Layer.Controller;
 
 namespace Data.Layer.Objects
 {
-    
     public abstract class Request
     {
         //Fields

@@ -14,97 +14,57 @@ namespace Presentation.Forms.ClientMaintenance
 {
     public partial class frmNewAddress : Form
     {
-        public Address addRes = null;
+        public Address newAddress;
 
-        public static Address GetAddress()
-        {
-            frmNewAddress frm = new frmNewAddress();
-            frm.ShowDialog();
-            return frm.addRes;
-           
-        }
-
-        private frmNewAddress()
+        public frmNewAddress()
         {
             InitializeComponent();
         }
 
-
-        public static string newcountry;
-        public static string newprovince;
-        public static string newdistrict;
-        public static string newlocality;
-        public static string newpostal;
-        public static string newstreet;
-        public static string newpremise;
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            newcountry = tbCountry.Text;
-            newprovince = tbProvince.Text;
-            newdistrict = tbDistrict.Text;
-            newlocality = tbLocality.Text;
-            newpostal = tbPostal.Text;
-            newstreet = tbStreet.Text;
-            newpremise = tbPremise.Text;
-
-
-
-            if (newcountry.Equals(""))
+            if (txtCountry.Text.Equals(""))
             {
                 MessageBox.Show("Please enter country", "EMPTY FIELDS!!",
                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else  if (newprovince.Equals("")) 
+            else  if (txtProvince.Text.Equals(""))
             { 
-                MessageBox.Show("Please enter a province", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //return; 
+                MessageBox.Show("Please enter a province");
             }
-            else if (newdistrict.Equals(""))
+            else if (txtDistrict.Text.Equals(""))
             {
-                MessageBox.Show("Please enter a district", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter a district");
             }
-            else if (newlocality.Equals(""))
+            else if (txtLocality.Text.Equals(""))
             {
-                MessageBox.Show("Please enter a locality", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter a locality");
             }
-            else if (newpostal.Equals(""))
+            else if (txtPostal.Text.Equals(""))
             {
-                MessageBox.Show("Please enter postal code", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter postal code");
             }
-            else if (newstreet.Equals(""))
+            else if (txtStreetAddress.Text.Equals(""))
             {
-                MessageBox.Show("Please enter a street address", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //return; 
+                MessageBox.Show("Please enter a street address");
             }
-            else if (newpremise.Equals(""))
+            else if (txtPremise.Text.Equals(""))
             {
-                MessageBox.Show("Please enter premise", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter premise");
             }
             else
             {
-
-                //clientcontrol.address();
-
-                this.addRes = new Address(
-                       newcountry,
-                       newprovince,
-                       newdistrict,
-                       newlocality,
-                       newpostal,
-                       newstreet,
-                       newpremise
+                newAddress = new Address(
+                       txtCountry.Text,
+                       txtProvince.Text,
+                       txtDistrict.Text,
+                       txtLocality.Text,
+                       txtPostal.Text,
+                       txtStreetAddress.Text,
+                       txtPremise.Text
                      );
 
-
-                Close();
-  
+                DialogResult = DialogResult.OK;
             }
         }
     }

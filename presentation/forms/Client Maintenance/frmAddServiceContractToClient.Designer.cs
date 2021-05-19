@@ -58,7 +58,6 @@
             this.label1.Size = new System.Drawing.Size(61, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "From";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -69,7 +68,6 @@
             this.label2.Size = new System.Drawing.Size(37, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "To";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dtpEnd
             // 

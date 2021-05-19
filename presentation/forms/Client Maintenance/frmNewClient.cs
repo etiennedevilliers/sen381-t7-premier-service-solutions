@@ -7,92 +7,133 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
-using Logic;
+using Logic.ClientMaintenance;
 
 namespace Presentation.Forms.ClientMaintenance
 {
     public partial class frmNewClient : Form
     {
-        public frmNewClient()
+        bool Ind;
+        ClientLogic clientLogic = new ClientLogic();
+        public Client newClient;
+
+        public frmNewClient(bool Ind)
         {
             InitializeComponent();
+
+            this.Ind = Ind;
         }
 
-        private void frmNewClient_Load(object sender, EventArgs e)
+        private void frmNewBusinessClient_Load(object sender, EventArgs e)
         {
-            tbClientID.Text = ClientMaintenanceLogic.GenerateUniqueClientID();
+            txtID.Text = clientLogic.GenerateUniqueClientID();
+
+            if (Ind)
+            {
+                lblName.Text = "Name:";
+                lblSurname.Visible = true;
+                txtSurname.Visible = true;
+
+                tabNewClient.TabPages.Remove(tpgEmployee);
+            }
         }
 
-        public static string newcontact;
-        public static string newclientname;
-        public static string newclientsurname;
-        public static string clientID;
-
-        private void btnIndividualNew_Click(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
-            newcontact = txtContact.Text;
-            newclientname = txtNameNewI.Text;
-            newclientsurname = txtSurnameNewI.Text;
-            clientID = tbClientID.Text;
-
-            IndividualClientController individualClientController = new IndividualClientController();
-            
-            IndividualClient individualClient = new IndividualClient(
-                newcontact,
-                newclientname,
-                newclientsurname,
-                clientID
-            );
-
-
-            if (newcontact.Equals(""))
+            if (Ind)
             {
-                MessageBox.Show("Please enter client contact details", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            if (newclientname.Equals(""))
-            {
-                MessageBox.Show("Please enter a client name", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            if (newclientsurname.Equals(""))
-            {
-                MessageBox.Show("Please enter a client name", "EMPTY FIELDS!!",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                newClient = new IndividualClient(txtName.Text, txtSurname.Text, txtContactNum.Text, txtID.Text);
             }
             else
             {
-                
-                individualClientController.Create(individualClient);
+                BusinessClient bus = new BusinessClient(txtName.Text, txtContactNum.Text, txtID.Text);
 
-                MessageBox.Show("Individual Client add successful, returning to Client Menu", "INDIVIDUAL CLIENT ADDED",
-                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+                foreach (ListViewItem i in lstEmployee.Items)
+                {
+                    bus.Employees.Add((Employee) i.Tag);
+                }
 
-                Hide();
-                frmClientMenu form = new frmClientMenu();
-                form.ShowDialog();
-                Show();
+                newClient = bus;
             }
 
+            foreach (ListViewItem i in lstAddress.Items)
+            {
+                newClient.Addresses.Add((Address) i.Tag);
+            }
 
+            foreach (ListViewItem i in lstEquipment.Items)
+            {
+                newClient.Equipment.Add((Equipment) i.Tag);
+            }
+
+            DialogResult = DialogResult.OK;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnRegenerate_Click(object sender, EventArgs e)
         {
-            tbClientID.Text = ClientMaintenanceLogic.GenerateUniqueClientID();
+            txtID.Text = clientLogic.GenerateUniqueClientID();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnAddAddress_Click(object sender, EventArgs e)
         {
+            frmNewAddress form = new frmNewAddress();
+            DialogResult res = form.ShowDialog();
 
+            if (res == DialogResult.OK)
+            {
+                Address address = form.newAddress;
+
+                ListViewItem lst = new ListViewItem(new string[] { address.Country, address.Province, address.District, address.Locality, address.PostalCode, address.StreetAddress, address.Premise });
+                lst.Tag = address;
+                lstAddress.Items.Add(lst);
+            }
         }
 
-        private void tbClientID_TextChanged(object sender, EventArgs e)
+        private void btnRemoveAddress_Click(object sender, EventArgs e)
         {
+            lstAddress.Items.RemoveAt(lstAddress.SelectedIndices[0]);
+        }
 
+        private void btnAddEquipment_Click(object sender, EventArgs e)
+        {
+            frmNewEquipment form = new frmNewEquipment();
+            DialogResult res = form.ShowDialog();
+
+            if (res == DialogResult.OK)
+            {
+                Equipment equipment = form.newEquipment;
+
+                ListViewItem lst = new ListViewItem(new string[] { equipment.SerialNumber, equipment.Manufacturer, equipment.Category.Name });
+                lst.Tag = equipment;
+                lstEquipment.Items.Add(lst);
+            }
+        }
+
+        private void btnRemoveEquipment_Click(object sender, EventArgs e)
+        {
+            lstEquipment.Items.RemoveAt(lstEquipment.SelectedIndices[0]);
+        }
+
+        private void btnAddEmployee_Click(object sender, EventArgs e)
+        {
+            frmNewEmployee form = new frmNewEmployee();
+            DialogResult res = form.ShowDialog();
+
+            if (res == DialogResult.OK)
+            {
+                Employee employee = form.newEmployee;
+
+                ListViewItem lst = new ListViewItem(new string[] { employee.Name, employee.Surname, employee.Role, employee.ContactNum });
+                lst.Tag = employee;
+                lstEmployee.Items.Add(lst);
+            }
+        }
+
+        private void btnRemoveEmployee_Click(object sender, EventArgs e)
+        {
+            lstEmployee.Items.RemoveAt(lstEmployee.SelectedIndices[0]);
         }
     }
 }

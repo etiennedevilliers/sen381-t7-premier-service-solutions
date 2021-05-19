@@ -43,7 +43,7 @@ namespace Data.Layer.Controller
 
             List<Technician> technicians = new List<Technician>();
 
-            string query = "SELECT A.AgentID, A.aName, A.ContactNum, A.employmentStatus, A.employeeType " + 
+            string query = "SELECT A.AgentID, A.aName, A.surname, A.contactNum, A.employmentStatus, A.employeeType, A.username, A.password " + 
                            "FROM Technician AS T " + 
                            "LEFT JOIN Agent AS A " + 
                            "ON A.AgentID = T.TechnicianID";
@@ -59,7 +59,10 @@ namespace Data.Layer.Controller
                         read.GetString(1),
                         read.GetString(2),
                         read.GetString(3),
-                        read.GetString(4)
+                        read.GetString(4),
+                        read.GetString(5),
+                        read.GetString(6),
+                        read.GetString(7)
                     );
 
                     technician.Id = read.GetInt32(0);
@@ -77,7 +80,7 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             SqlDataReader read = dh.Select(string.Format(
-                "SELECT A.aName, A.ContactNum, A.employmentStatus, A.employeeType " +
+                "SELECT A.aName, A.surname, A.contactNum, A.employmentStatus, A.employeeType, A.username, A.password " +
                 "FROM Technician AS T " +
                 "LEFT JOIN Agent AS A ON A.AgentID = T.TechnicianID " +
                 "WHERE TechnicianID = {0}", ID
@@ -92,7 +95,10 @@ namespace Data.Layer.Controller
                         read.GetString(0),
                         read.GetString(1),
                         read.GetString(2),
-                        read.GetString(3)
+                        read.GetString(3),
+                        read.GetString(4),
+                        read.GetString(5),
+                        read.GetString(6)
                     );
 
                     tech.Id = ID;

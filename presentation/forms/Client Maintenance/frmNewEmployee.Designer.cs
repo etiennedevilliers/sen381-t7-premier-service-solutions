@@ -29,105 +29,115 @@ namespace Presentation.Forms.ClientMaintenance
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbEmpName = new System.Windows.Forms.TextBox();
-            this.tbEmpContact = new System.Windows.Forms.TextBox();
-            this.tbEmpRole = new System.Windows.Forms.TextBox();
-            this.tbEmpSurname = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnAddEmp = new System.Windows.Forms.Button();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtContactNum = new System.Windows.Forms.TextBox();
+            this.txtRole = new System.Windows.Forms.TextBox();
+            this.txtSurname = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblSurname = new System.Windows.Forms.Label();
+            this.lblRole = new System.Windows.Forms.Label();
+            this.lblContactNum = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // tbEmpName
+            // txtName
             // 
-            this.tbEmpName.Location = new System.Drawing.Point(163, 39);
-            this.tbEmpName.Name = "tbEmpName";
-            this.tbEmpName.Size = new System.Drawing.Size(159, 22);
-            this.tbEmpName.TabIndex = 0;
+            this.txtName.Location = new System.Drawing.Point(108, 13);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(120, 20);
+            this.txtName.TabIndex = 0;
             // 
-            // tbEmpContact
+            // txtContactNum
             // 
-            this.tbEmpContact.Location = new System.Drawing.Point(163, 123);
-            this.tbEmpContact.Name = "tbEmpContact";
-            this.tbEmpContact.Size = new System.Drawing.Size(159, 22);
-            this.tbEmpContact.TabIndex = 1;
+            this.txtContactNum.Location = new System.Drawing.Point(108, 81);
+            this.txtContactNum.Margin = new System.Windows.Forms.Padding(2);
+            this.txtContactNum.Name = "txtContactNum";
+            this.txtContactNum.Size = new System.Drawing.Size(120, 20);
+            this.txtContactNum.TabIndex = 1;
             // 
-            // tbEmpRole
+            // txtRole
             // 
-            this.tbEmpRole.Location = new System.Drawing.Point(163, 95);
-            this.tbEmpRole.Name = "tbEmpRole";
-            this.tbEmpRole.Size = new System.Drawing.Size(159, 22);
-            this.tbEmpRole.TabIndex = 2;
+            this.txtRole.Location = new System.Drawing.Point(108, 58);
+            this.txtRole.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRole.Name = "txtRole";
+            this.txtRole.Size = new System.Drawing.Size(120, 20);
+            this.txtRole.TabIndex = 2;
             // 
-            // tbEmpSurname
+            // txtSurname
             // 
-            this.tbEmpSurname.Location = new System.Drawing.Point(163, 67);
-            this.tbEmpSurname.Name = "tbEmpSurname";
-            this.tbEmpSurname.Size = new System.Drawing.Size(159, 22);
-            this.tbEmpSurname.TabIndex = 3;
+            this.txtSurname.Location = new System.Drawing.Point(108, 35);
+            this.txtSurname.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(120, 20);
+            this.txtSurname.TabIndex = 3;
             // 
-            // label1
+            // lblName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 17);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Name";
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(12, 15);
+            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(38, 13);
+            this.lblName.TabIndex = 4;
+            this.lblName.Text = "Name:";
             // 
-            // label2
+            // lblSurname
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Surname";
+            this.lblSurname.AutoSize = true;
+            this.lblSurname.Location = new System.Drawing.Point(12, 38);
+            this.lblSurname.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSurname.Name = "lblSurname";
+            this.lblSurname.Size = new System.Drawing.Size(52, 13);
+            this.lblSurname.TabIndex = 5;
+            this.lblSurname.Text = "Surname:";
             // 
-            // label3
+            // lblRole
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 98);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 17);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Role";
+            this.lblRole.AutoSize = true;
+            this.lblRole.Location = new System.Drawing.Point(12, 61);
+            this.lblRole.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(32, 13);
+            this.lblRole.TabIndex = 6;
+            this.lblRole.Text = "Role:";
             // 
-            // label4
+            // lblContactNum
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 126);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Contact Number";
+            this.lblContactNum.AutoSize = true;
+            this.lblContactNum.Location = new System.Drawing.Point(12, 83);
+            this.lblContactNum.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblContactNum.Name = "lblContactNum";
+            this.lblContactNum.Size = new System.Drawing.Size(87, 13);
+            this.lblContactNum.TabIndex = 7;
+            this.lblContactNum.Text = "Contact Number:";
             // 
-            // btnAddEmp
+            // btnAdd
             // 
-            this.btnAddEmp.Location = new System.Drawing.Point(237, 173);
-            this.btnAddEmp.Name = "btnAddEmp";
-            this.btnAddEmp.Size = new System.Drawing.Size(85, 28);
-            this.btnAddEmp.TabIndex = 8;
-            this.btnAddEmp.Text = "Add Employee";
-            this.btnAddEmp.UseVisualStyleBackColor = true;
-            this.btnAddEmp.Click += new System.EventHandler(this.btnAddEmp_Click);
+            this.btnAdd.Location = new System.Drawing.Point(164, 105);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(64, 38);
+            this.btnAdd.TabIndex = 8;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // frmNewEmployee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(342, 240);
-            this.Controls.Add(this.btnAddEmp);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbEmpSurname);
-            this.Controls.Add(this.tbEmpRole);
-            this.Controls.Add(this.tbEmpContact);
-            this.Controls.Add(this.tbEmpName);
+            this.ClientSize = new System.Drawing.Size(237, 152);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.lblContactNum);
+            this.Controls.Add(this.lblRole);
+            this.Controls.Add(this.lblSurname);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.txtSurname);
+            this.Controls.Add(this.txtRole);
+            this.Controls.Add(this.txtContactNum);
+            this.Controls.Add(this.txtName);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmNewEmployee";
             this.Text = "frmNewEmployee";
             this.ResumeLayout(false);
@@ -137,14 +147,14 @@ namespace Presentation.Forms.ClientMaintenance
 
         #endregion
 
-        private System.Windows.Forms.TextBox tbEmpName;
-        private System.Windows.Forms.TextBox tbEmpContact;
-        private System.Windows.Forms.TextBox tbEmpRole;
-        private System.Windows.Forms.TextBox tbEmpSurname;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnAddEmp;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtContactNum;
+        private System.Windows.Forms.TextBox txtRole;
+        private System.Windows.Forms.TextBox txtSurname;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblSurname;
+        private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.Label lblContactNum;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

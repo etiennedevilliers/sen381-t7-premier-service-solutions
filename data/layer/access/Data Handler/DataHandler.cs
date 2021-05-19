@@ -6,7 +6,7 @@ namespace Data.Layer.Access
 {
     class DataHandler : IDisposable
     {
-        string conStr = @"    Data Source=102.141.186.56,25565;
+        string conStr = @"    Data Source=luderehome.hopto.org,25565;
                               Database=pss;
                               Integrated Security=false;
                               User ID=app;Password=HAA4h5X$v^CHW5UeNucQf7;";

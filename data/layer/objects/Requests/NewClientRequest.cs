@@ -6,10 +6,14 @@ namespace Data.Layer.Objects
     
     public class NewClientRequest : Request
     {
-        //Constructor
-        public NewClientRequest(DateTime dateCreated, DateTime? dateResolved, CallLog call) : base(dateCreated, dateResolved, call)
-        {
+        private bool individual;
 
+        public bool Individual { get => individual; set => individual = value; }
+
+        //Constructor
+        public NewClientRequest(bool individual, DateTime dateCreated, DateTime? dateResolved, CallLog call) : base(dateCreated, dateResolved, call)
+        {
+            this.individual = individual;
         }
 
         //Standard Methods

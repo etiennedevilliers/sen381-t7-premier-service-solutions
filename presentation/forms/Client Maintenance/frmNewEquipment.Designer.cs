@@ -29,88 +29,97 @@ namespace Presentation.Forms.ClientMaintenance
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbl2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.tbSerialNumber = new System.Windows.Forms.TextBox();
-            this.tbManufacturer = new System.Windows.Forms.TextBox();
-            this.cbEquipmentCat = new System.Windows.Forms.ComboBox();
+            this.lblSerialNum = new System.Windows.Forms.Label();
+            this.lblManufacturer = new System.Windows.Forms.Label();
+            this.lblCategory = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.txtSerialNum = new System.Windows.Forms.TextBox();
+            this.txtManufacturer = new System.Windows.Forms.TextBox();
+            this.cbxCategory = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // label1
+            // lblSerialNum
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Serial Number";
+            this.lblSerialNum.AutoSize = true;
+            this.lblSerialNum.Location = new System.Drawing.Point(6, 19);
+            this.lblSerialNum.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSerialNum.Name = "lblSerialNum";
+            this.lblSerialNum.Size = new System.Drawing.Size(76, 13);
+            this.lblSerialNum.TabIndex = 0;
+            this.lblSerialNum.Text = "Serial Number:";
             // 
-            // lbl2
+            // lblManufacturer
             // 
-            this.lbl2.AutoSize = true;
-            this.lbl2.Location = new System.Drawing.Point(12, 84);
-            this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(139, 25);
-            this.lbl2.TabIndex = 1;
-            this.lbl2.Text = "Manufacturer";
+            this.lblManufacturer.AutoSize = true;
+            this.lblManufacturer.Location = new System.Drawing.Point(6, 44);
+            this.lblManufacturer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblManufacturer.Name = "lblManufacturer";
+            this.lblManufacturer.Size = new System.Drawing.Size(73, 13);
+            this.lblManufacturer.TabIndex = 1;
+            this.lblManufacturer.Text = "Manufacturer:";
             // 
-            // label3
+            // lblCategory
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 134);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(207, 25);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Equipment Category";
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Location = new System.Drawing.Point(6, 68);
+            this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(52, 13);
+            this.lblCategory.TabIndex = 2;
+            this.lblCategory.Text = "Category:";
             // 
-            // btnCreate
+            // btnAdd
             // 
-            this.btnCreate.Location = new System.Drawing.Point(545, 745);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(153, 39);
-            this.btnCreate.TabIndex = 3;
-            this.btnCreate.Text = "Create";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnAdd.Location = new System.Drawing.Point(285, 90);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(65, 43);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // tbSerialNumber
+            // txtSerialNum
             // 
-            this.tbSerialNumber.Location = new System.Drawing.Point(225, 30);
-            this.tbSerialNumber.Name = "tbSerialNumber";
-            this.tbSerialNumber.Size = new System.Drawing.Size(473, 31);
-            this.tbSerialNumber.TabIndex = 4;
+            this.txtSerialNum.Location = new System.Drawing.Point(112, 16);
+            this.txtSerialNum.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSerialNum.Name = "txtSerialNum";
+            this.txtSerialNum.Size = new System.Drawing.Size(238, 20);
+            this.txtSerialNum.TabIndex = 4;
             // 
-            // tbManufacturer
+            // txtManufacturer
             // 
-            this.tbManufacturer.Location = new System.Drawing.Point(225, 78);
-            this.tbManufacturer.Name = "tbManufacturer";
-            this.tbManufacturer.Size = new System.Drawing.Size(473, 31);
-            this.tbManufacturer.TabIndex = 5;
+            this.txtManufacturer.Location = new System.Drawing.Point(112, 41);
+            this.txtManufacturer.Margin = new System.Windows.Forms.Padding(2);
+            this.txtManufacturer.Name = "txtManufacturer";
+            this.txtManufacturer.Size = new System.Drawing.Size(238, 20);
+            this.txtManufacturer.TabIndex = 5;
             // 
-            // cbEquipmentCat
+            // cbxCategory
             // 
-            this.cbEquipmentCat.FormattingEnabled = true;
-            this.cbEquipmentCat.Location = new System.Drawing.Point(225, 134);
-            this.cbEquipmentCat.Name = "cbEquipmentCat";
-            this.cbEquipmentCat.Size = new System.Drawing.Size(473, 33);
-            this.cbEquipmentCat.TabIndex = 6;
+            this.cbxCategory.FormattingEnabled = true;
+            this.cbxCategory.Location = new System.Drawing.Point(112, 65);
+            this.cbxCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxCategory.Name = "cbxCategory";
+            this.cbxCategory.Size = new System.Drawing.Size(238, 21);
+            this.cbxCategory.TabIndex = 6;
             // 
             // frmNewEquipment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 796);
-            this.Controls.Add(this.cbEquipmentCat);
-            this.Controls.Add(this.tbManufacturer);
-            this.Controls.Add(this.tbSerialNumber);
-            this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.lbl2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(359, 145);
+            this.Controls.Add(this.cbxCategory);
+            this.Controls.Add(this.txtManufacturer);
+            this.Controls.Add(this.txtSerialNum);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.lblCategory);
+            this.Controls.Add(this.lblManufacturer);
+            this.Controls.Add(this.lblSerialNum);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmNewEquipment";
             this.Text = "frmNewEquipment";
+            this.Load += new System.EventHandler(this.frmNewEquipment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,12 +127,12 @@ namespace Presentation.Forms.ClientMaintenance
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbl2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.TextBox tbSerialNumber;
-        private System.Windows.Forms.TextBox tbManufacturer;
-        private System.Windows.Forms.ComboBox cbEquipmentCat;
+        private System.Windows.Forms.Label lblSerialNum;
+        private System.Windows.Forms.Label lblManufacturer;
+        private System.Windows.Forms.Label lblCategory;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox txtSerialNum;
+        private System.Windows.Forms.TextBox txtManufacturer;
+        private System.Windows.Forms.ComboBox cbxCategory;
     }
 }

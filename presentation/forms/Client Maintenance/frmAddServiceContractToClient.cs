@@ -7,47 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Logic;
+using Logic.ClientMaintenance;
 using Data.Layer.Controller;
 using Data.Layer.Objects;
-using Presentation.Forms.Agents;
 
 namespace Presentation.Forms.ClientMaintenance
 {
     public partial class frmAddServiceContractToClient : Form
     {
-        public static void FullfillNewContractRequest(NewContractRequest newContractRequest)
-        {
-            Agent agent = frmSelectAgent.GetAgent();
+        NewContractRequestLogic newContractRequestLogic = new NewContractRequestLogic();
+        NewContractRequest newContractRequest;
+        public DateTime startDate;
+        public DateTime endDate;
 
-            if (agent != null)
-            {
-                NewContractRequestLogic newContractRequestLogic = new NewContractRequestLogic(
-                    agent,
-                    false,
-                    newContractRequest
-                );
-
-                frmAddServiceContractToClient form = new frmAddServiceContractToClient(newContractRequestLogic);
-                form.ShowDialog();
-            }
-        }
-
-        private NewContractRequestLogic newContractRequestLogic;
-
-        private frmAddServiceContractToClient(NewContractRequestLogic newContractRequestLogic)
+        public frmAddServiceContractToClient(NewContractRequest newContractRequest)
         {
             InitializeComponent();
 
-            this.newContractRequestLogic = newContractRequestLogic;
+            this.newContractRequest = newContractRequest;
 
-            Client client = newContractRequestLogic.newContractRequest.Client;
+            Client client = newContractRequest.Client;
 
             if (client is IndividualClient)
             {
                 IndividualClient iClient = client as IndividualClient;
                 lblClient.Text = iClient.ToString();
-
             }
             else
             {
@@ -55,14 +39,9 @@ namespace Presentation.Forms.ClientMaintenance
                 lblClient.Text = bClient.ToString();
             }
             
-            lblServiceContract.Text = newContractRequestLogic.newContractRequest.ServiceContract.ToString();
+            lblServiceContract.Text = newContractRequest.ServiceContract.ToString();
 
             updateErrorLabel();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
@@ -75,31 +54,26 @@ namespace Presentation.Forms.ClientMaintenance
             updateErrorLabel();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void updateErrorLabel()
         {
             errorLabel.Text = newContractRequestLogic.checkDateTime(
+                newContractRequest,
                 dtpStart.Value,
                 dtpEnd.Value
-            ).NotValidReason;
+            ).reason;
         }
 
         private void btnEndCall_Click(object sender, EventArgs e)
         {
-            DateTime startDate = dtpStart.Value;
-            DateTime endDate = dtpEnd.Value;
-
-            if (!newContractRequestLogic.checkDateTime(startDate, endDate).Valid) {
+            if (!newContractRequestLogic.checkDateTime(newContractRequest, dtpStart.Value, dtpEnd.Value).valid) {
                 MessageBox.Show("Pick Valid dates first!");
                 return;
             }
 
-            newContractRequestLogic.addServiceContract(startDate, endDate);
-            Close();
+            startDate = dtpStart.Value;
+            endDate = dtpEnd.Value;
+
+            DialogResult = DialogResult.OK;
         }
     }
 }

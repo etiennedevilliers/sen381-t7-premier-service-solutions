@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Layer.Objects;
-using Logic;
+using Logic.ContractMaintenance;
 
 
 namespace Presentation.Forms.ContractMaintenance
@@ -61,11 +61,11 @@ namespace Presentation.Forms.ContractMaintenance
             loadPackages();
 
             //populate the comboboxes
-            Placeholder_Service_List = S_L.ViewServices();
+            Placeholder_Service_List = S_L.GetServices();
             Placeholder_SLA_List = SLA_L.ViewSLA();
 
 
-            foreach (Service S in S_L.ViewServices())
+            foreach (Service S in S_L.GetServices())
             {
                 cmbPService.Items.Add("Service ID: "+ S.Id.ToString() +"  "+S.Description);
             }
@@ -117,10 +117,7 @@ namespace Presentation.Forms.ContractMaintenance
                 MessageBox.Show("Service successfully Updated", " ADD",
                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //Perform Fom transition
-                Hide();
-                frmServiceContract form = new frmServiceContract();
-                form.ShowDialog();
+                Close();
             }
         }//Edit the Package
     }

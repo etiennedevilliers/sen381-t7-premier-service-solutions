@@ -41,13 +41,19 @@ namespace Presentation.Forms.ServiceDepartment
             this.lblName = new System.Windows.Forms.Label();
             this.lblContactNum = new System.Windows.Forms.Label();
             this.lblSkills = new System.Windows.Forms.Label();
+            this.lblSurname = new System.Windows.Forms.Label();
+            this.txtSurname = new System.Windows.Forms.TextBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(249, 276);
+            this.btnOk.Location = new System.Drawing.Point(368, 354);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(190, 62);
+            this.btnOk.Size = new System.Drawing.Size(71, 41);
             this.btnOk.TabIndex = 0;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -57,14 +63,14 @@ namespace Presentation.Forms.ServiceDepartment
             // 
             this.txtName.Location = new System.Drawing.Point(122, 6);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(170, 20);
+            this.txtName.Size = new System.Drawing.Size(134, 20);
             this.txtName.TabIndex = 1;
             // 
             // txtContactNum
             // 
-            this.txtContactNum.Location = new System.Drawing.Point(122, 32);
+            this.txtContactNum.Location = new System.Drawing.Point(122, 110);
             this.txtContactNum.Name = "txtContactNum";
-            this.txtContactNum.Size = new System.Drawing.Size(170, 20);
+            this.txtContactNum.Size = new System.Drawing.Size(134, 20);
             this.txtContactNum.TabIndex = 2;
             // 
             // lstSkills
@@ -73,7 +79,7 @@ namespace Presentation.Forms.ServiceDepartment
             this.colDescription,
             this.colExpectedDur});
             this.lstSkills.HideSelection = false;
-            this.lstSkills.Location = new System.Drawing.Point(122, 85);
+            this.lstSkills.Location = new System.Drawing.Point(122, 163);
             this.lstSkills.Name = "lstSkills";
             this.lstSkills.Size = new System.Drawing.Size(317, 185);
             this.lstSkills.TabIndex = 3;
@@ -93,14 +99,14 @@ namespace Presentation.Forms.ServiceDepartment
             // cbxServices
             // 
             this.cbxServices.FormattingEnabled = true;
-            this.cbxServices.Location = new System.Drawing.Point(122, 58);
+            this.cbxServices.Location = new System.Drawing.Point(122, 136);
             this.cbxServices.Name = "cbxServices";
             this.cbxServices.Size = new System.Drawing.Size(312, 21);
             this.cbxServices.TabIndex = 4;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(26, 85);
+            this.btnAdd.Location = new System.Drawing.Point(26, 163);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(84, 21);
             this.btnAdd.TabIndex = 5;
@@ -110,7 +116,7 @@ namespace Presentation.Forms.ServiceDepartment
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(26, 112);
+            this.btnRemove.Location = new System.Drawing.Point(26, 190);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(84, 21);
             this.btnRemove.TabIndex = 6;
@@ -130,7 +136,7 @@ namespace Presentation.Forms.ServiceDepartment
             // lblContactNum
             // 
             this.lblContactNum.AutoSize = true;
-            this.lblContactNum.Location = new System.Drawing.Point(23, 35);
+            this.lblContactNum.Location = new System.Drawing.Point(23, 113);
             this.lblContactNum.Name = "lblContactNum";
             this.lblContactNum.Size = new System.Drawing.Size(87, 13);
             this.lblContactNum.TabIndex = 8;
@@ -139,17 +145,72 @@ namespace Presentation.Forms.ServiceDepartment
             // lblSkills
             // 
             this.lblSkills.AutoSize = true;
-            this.lblSkills.Location = new System.Drawing.Point(23, 62);
+            this.lblSkills.Location = new System.Drawing.Point(23, 140);
             this.lblSkills.Name = "lblSkills";
             this.lblSkills.Size = new System.Drawing.Size(34, 13);
             this.lblSkills.TabIndex = 9;
             this.lblSkills.Text = "Skills:";
             // 
+            // lblSurname
+            // 
+            this.lblSurname.AutoSize = true;
+            this.lblSurname.Location = new System.Drawing.Point(23, 35);
+            this.lblSurname.Name = "lblSurname";
+            this.lblSurname.Size = new System.Drawing.Size(52, 13);
+            this.lblSurname.TabIndex = 11;
+            this.lblSurname.Text = "Surname:";
+            // 
+            // txtSurname
+            // 
+            this.txtSurname.Location = new System.Drawing.Point(122, 32);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(134, 20);
+            this.txtSurname.TabIndex = 10;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(23, 61);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(58, 13);
+            this.lblUsername.TabIndex = 13;
+            this.lblUsername.Text = "Username:";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(122, 58);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(134, 20);
+            this.txtUsername.TabIndex = 12;
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(23, 87);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(56, 13);
+            this.lblPassword.TabIndex = 15;
+            this.lblPassword.Text = "Password:";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(122, 84);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(134, 20);
+            this.txtPassword.TabIndex = 14;
+            // 
             // frmAddTechnician
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 345);
+            this.ClientSize = new System.Drawing.Size(447, 401);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.lblUsername);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.lblSurname);
+            this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.lblSkills);
             this.Controls.Add(this.lblContactNum);
             this.Controls.Add(this.lblName);
@@ -182,5 +243,11 @@ namespace Presentation.Forms.ServiceDepartment
         private System.Windows.Forms.Label lblSkills;
         private System.Windows.Forms.ColumnHeader colDescription;
         private System.Windows.Forms.ColumnHeader colExpectedDur;
+        private System.Windows.Forms.Label lblSurname;
+        private System.Windows.Forms.TextBox txtSurname;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.TextBox txtPassword;
     }
 }

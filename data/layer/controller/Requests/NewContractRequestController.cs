@@ -44,14 +44,13 @@ namespace Data.Layer.Controller
 
             List<NewContractRequest> contractRequests = new List<NewContractRequest>();
 
-            String query = "SELECT N.NewContractRequestID, R.ClientID, R.contactNum, R.dateCreated, R.dateResolved, R.status, CL.CallID, CL.timeStarted, CL.timeEnded, CL.AgentID, CL.incoming " + 
+            string query = "SELECT N.NewContractRequestID, R.ClientID, R.contactNum, R.dateCreated, R.dateResolved, R.status, CL.CallID, CL.timeStarted, CL.timeEnded, CL.AgentID, CL.incoming " + 
                             "FROM dbo.NewContractRequest AS N " +
 	                            "LEFT JOIN dbo.Request AS R ON R.RequestID = N.NewContractRequestID " +
                                 "LEFT JOIN dbo.CallLog AS CL ON CL.CallID = R.CallID";
 
             SqlDataReader read = dh.Select(query);
             NewContractRequest newContractRequest;
-            CallLogController callLogController = new CallLogController();
 
             if (read.HasRows)
             {
@@ -72,9 +71,7 @@ namespace Data.Layer.Controller
                         callLog
                     );
 
-
                     newContractRequest.Id = read.GetInt32(0);
-                    // newContractRequest.client = ClientController.ReadSpecific(read.GetInt32(1));
                     newContractRequest.ContactNum = read.GetString(2);
                     newContractRequest.Status = read.GetString(5);
 

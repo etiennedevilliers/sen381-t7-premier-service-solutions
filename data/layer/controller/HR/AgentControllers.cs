@@ -15,11 +15,14 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             int ID = dh.InsertID(string.Format(
-                "INSERT INTO Agent(aName, contactNum, employmentStatus, employeeType) VALUES ('{0}','{1}','{2}','{3}')",
+                "INSERT INTO Agent(aName, surname, contactNum, employmentStatus, employeeType, username, password) VALUES ('{0}','{1}','{2}','{3}', '{4}', '{5}', '{6}')",
                 obj.Name,
+                obj.Surname,
                 obj.ContactNum,
                 obj.EmploymentStatus,
-                obj.EmployeeType
+                obj.EmployeeType,
+                obj.Username,
+                obj.Password
             ));
 
             obj.Id = ID;
@@ -43,12 +46,15 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             dh.Update(string.Format(
-                "UPDATE dbo.Agent SET aName='{1}', contactNum='{2}', employmentStatus='{3}', employeeType='{4}' WHERE AgentID = {0}", 
+                "UPDATE dbo.Agent SET aName='{1}', surname='{2}' contactNum='{3}', employmentStatus='{4}', employeeType='{5}', username='{6}', password='{7}' WHERE AgentID = {0}", 
                 obj.Id,
                 obj.Name,
+                obj.Surname,
                 obj.ContactNum,
                 obj.EmploymentStatus,
-                obj.EmployeeType
+                obj.EmployeeType,
+                obj.Username,
+                obj.Password
              ));
 
             dh.Dispose();
@@ -59,7 +65,7 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             List<Agent> agents = new List<Agent>();
-            SqlDataReader read = dh.Select("SELECT AgentID, aName, contactNum, employmentStatus, employeeType FROM Agent");
+            SqlDataReader read = dh.Select("SELECT AgentID, aName, surname, contactNum, employmentStatus, employeeType, username, password FROM Agent");
             Agent agent;
 
             if (read.HasRows)
@@ -70,7 +76,10 @@ namespace Data.Layer.Controller
                         read.GetString(1),
                         read.GetString(2),
                         read.GetString(3),
-                        read.GetString(4)
+                        read.GetString(4),
+                        read.GetString(5),
+                        read.GetString(6),
+                        read.GetString(7)
                     );
 
                     agent.Id = read.GetInt32(0);

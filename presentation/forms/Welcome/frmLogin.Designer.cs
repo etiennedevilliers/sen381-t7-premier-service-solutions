@@ -1,4 +1,5 @@
-﻿namespace Presentation.Forms.Welcome
+﻿
+namespace Presentation.Forms.Welcome
 {
     partial class frmLogin
     {
@@ -28,106 +29,82 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnServiceDep = new System.Windows.Forms.Button();
-            this.btnContractMain = new System.Windows.Forms.Button();
-            this.btnCallCentre = new System.Windows.Forms.Button();
-            this.btnClientSatis = new System.Windows.Forms.Button();
-            this.btnClientMain = new System.Windows.Forms.Button();
-            this.btnTechnician = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // btnServiceDep
+            // btnLogin
             // 
-            this.btnServiceDep.Location = new System.Drawing.Point(584, 23);
-            this.btnServiceDep.Margin = new System.Windows.Forms.Padding(6);
-            this.btnServiceDep.Name = "btnServiceDep";
-            this.btnServiceDep.Size = new System.Drawing.Size(388, 127);
-            this.btnServiceDep.TabIndex = 0;
-            this.btnServiceDep.Text = "Service Department";
-            this.btnServiceDep.UseVisualStyleBackColor = true;
-            this.btnServiceDep.Click += new System.EventHandler(this.btnServiceDep_Click);
+            this.btnLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogin.Location = new System.Drawing.Point(191, 60);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(82, 34);
+            this.btnLogin.TabIndex = 1;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // btnContractMain
+            // txtUsername
             // 
-            this.btnContractMain.Location = new System.Drawing.Point(584, 162);
-            this.btnContractMain.Margin = new System.Windows.Forms.Padding(6);
-            this.btnContractMain.Name = "btnContractMain";
-            this.btnContractMain.Size = new System.Drawing.Size(388, 127);
-            this.btnContractMain.TabIndex = 1;
-            this.btnContractMain.Text = "Contract Maintenance";
-            this.btnContractMain.UseVisualStyleBackColor = true;
-            this.btnContractMain.Click += new System.EventHandler(this.btnContractMain_Click);
+            this.txtUsername.Location = new System.Drawing.Point(72, 11);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(201, 20);
+            this.txtUsername.TabIndex = 5;
             // 
-            // btnCallCentre
+            // lblUsername
             // 
-            this.btnCallCentre.Location = new System.Drawing.Point(584, 300);
-            this.btnCallCentre.Margin = new System.Windows.Forms.Padding(6);
-            this.btnCallCentre.Name = "btnCallCentre";
-            this.btnCallCentre.Size = new System.Drawing.Size(388, 127);
-            this.btnCallCentre.TabIndex = 2;
-            this.btnCallCentre.Text = "Call Centre";
-            this.btnCallCentre.UseVisualStyleBackColor = true;
-            this.btnCallCentre.Click += new System.EventHandler(this.btnCallCentre_Click);
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(9, 14);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(58, 13);
+            this.lblUsername.TabIndex = 6;
+            this.lblUsername.Text = "Username:";
             // 
-            // btnClientSatis
+            // lblPassword
             // 
-            this.btnClientSatis.Location = new System.Drawing.Point(584, 438);
-            this.btnClientSatis.Margin = new System.Windows.Forms.Padding(6);
-            this.btnClientSatis.Name = "btnClientSatis";
-            this.btnClientSatis.Size = new System.Drawing.Size(388, 127);
-            this.btnClientSatis.TabIndex = 3;
-            this.btnClientSatis.Text = "Client Satisfaction";
-            this.btnClientSatis.UseVisualStyleBackColor = true;
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(9, 38);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(56, 13);
+            this.lblPassword.TabIndex = 8;
+            this.lblPassword.Text = "Password:";
             // 
-            // btnClientMain
+            // txtPassword
             // 
-            this.btnClientMain.Location = new System.Drawing.Point(584, 577);
-            this.btnClientMain.Margin = new System.Windows.Forms.Padding(6);
-            this.btnClientMain.Name = "btnClientMain";
-            this.btnClientMain.Size = new System.Drawing.Size(388, 127);
-            this.btnClientMain.TabIndex = 4;
-            this.btnClientMain.Text = "Client Maintenance";
-            this.btnClientMain.UseVisualStyleBackColor = true;
-            this.btnClientMain.Click += new System.EventHandler(this.btnClientMain_Click);
-            // 
-            // btnTechnician
-            // 
-            this.btnTechnician.Location = new System.Drawing.Point(584, 715);
-            this.btnTechnician.Margin = new System.Windows.Forms.Padding(6);
-            this.btnTechnician.Name = "btnTechnician";
-            this.btnTechnician.Size = new System.Drawing.Size(388, 127);
-            this.btnTechnician.TabIndex = 5;
-            this.btnTechnician.Text = "Technician";
-            this.btnTechnician.UseVisualStyleBackColor = true;
-            this.btnTechnician.Click += new System.EventHandler(this.btnTechnician_Click);
+            this.txtPassword.Location = new System.Drawing.Point(72, 35);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(201, 20);
+            this.txtPassword.TabIndex = 7;
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1600, 865);
-            this.Controls.Add(this.btnTechnician);
-            this.Controls.Add(this.btnClientMain);
-            this.Controls.Add(this.btnClientSatis);
-            this.Controls.Add(this.btnCallCentre);
-            this.Controls.Add(this.btnContractMain);
-            this.Controls.Add(this.btnServiceDep);
-            this.Margin = new System.Windows.Forms.Padding(6);
+            this.ClientSize = new System.Drawing.Size(281, 100);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.lblUsername);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.btnLogin);
             this.Name = "frmLogin";
-            this.Text = "Login";
-            this.Load += new System.EventHandler(this.frmLogin_Load);
+            this.Text = "Select Agent";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnServiceDep;
-        private System.Windows.Forms.Button btnContractMain;
-        private System.Windows.Forms.Button btnCallCentre;
-        private System.Windows.Forms.Button btnClientSatis;
-        private System.Windows.Forms.Button btnClientMain;
-        private System.Windows.Forms.Button btnTechnician;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.TextBox txtPassword;
     }
 }
-

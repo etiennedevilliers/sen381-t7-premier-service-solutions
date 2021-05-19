@@ -1,5 +1,5 @@
-﻿using Data.Layer.Controller;
-using Data.Layer.Objects;
+﻿using Data.Layer.Objects;
+using Data.Layer.Controller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,9 +25,9 @@ namespace Presentation.Forms.ServiceDepartment
         private void frmAddTechnician_Load(object sender, EventArgs e)
         {
             ServiceController serCtr = new ServiceController();
-            List<Service> skills = serCtr.Read();
+            List<Service> skillsAll = serCtr.Read();
 
-            foreach (Service i in skills)
+            foreach (Service i in skillsAll)
             {
                 cbxServices.Items.Add(i);
             }
@@ -37,7 +37,7 @@ namespace Presentation.Forms.ServiceDepartment
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            newTech = new Technician(txtName.Text, txtContactNum.Text, "Open", "Technician");
+            newTech = new Technician(txtName.Text, txtSurname.Text, txtContactNum.Text, "Open", "Technician", txtUsername.Text, txtPassword.Text);
 
             foreach (ListViewItem i in lstSkills.Items)
             {

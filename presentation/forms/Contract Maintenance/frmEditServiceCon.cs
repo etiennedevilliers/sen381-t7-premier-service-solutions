@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Data.Layer.Objects;
-using Logic;
+using Logic.ContractMaintenance;
 
 namespace Presentation.Forms.ContractMaintenance
 {
@@ -121,10 +121,7 @@ namespace Presentation.Forms.ContractMaintenance
 
             SC_L.EditServiceContract(sc);
 
-            Hide();
-            frmServiceContract form = new frmServiceContract();
-            form.ShowDialog();
-       
+            Close();
         }//Submit changes
     }
 }

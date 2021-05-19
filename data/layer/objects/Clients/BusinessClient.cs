@@ -8,6 +8,7 @@ namespace Data.Layer.Objects
     {
         //Fields
         private string name;
+        private List<Employee> employees;
 
         //Properties
         public string Name { get => name; set => name = value; }
@@ -15,12 +16,22 @@ namespace Data.Layer.Objects
         {
             get
             {
-                return new BusinessClientController().ReadChildren(this);
+                if (employees == null)
+                {
+                    employees = new BusinessClientController().ReadChildren(this);
+                    return employees;
+                }
+                else
+                {
+                    return employees;
+                }
             }
+
+            set => employees = value;
         }
 
         //Constructor
-        public BusinessClient(string contactNum, string name, string clientIdentifier) : base(contactNum, clientIdentifier)
+        public BusinessClient(string name, string contactNum, string clientIdentifier) : base(contactNum, clientIdentifier)
         {
             this.name = name;
         }

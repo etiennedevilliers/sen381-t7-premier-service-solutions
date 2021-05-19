@@ -6,47 +6,25 @@ using System.Threading.Tasks;
 using Data.Layer.Objects;
 using Data.Layer.Controller;
 
-namespace Logic
+namespace Logic.CallCentre
 {
     public class CallCentreLogic
     {
-        private CallLog callLog;
-
-        public CallCentreLogic(Agent agent, Boolean incoming)
+        public void CreateNewClientRequest(string contactNumber, CallLog callLog, bool ind)
         {
-            callLog = new CallLog(DateTime.Now, incoming);
-            callLog.Representative = agent;
-        }
-
-        public static List<Agent> GetCallCentreEmployees()
-        {
-            List<Agent> callCentreAgents = new List<Agent>();
-            AgentController agentController = new AgentController();
-
-            foreach (Agent agent in agentController.Read())
-            {
-                if (agent.EmployeeType == "CallCentre")
-                    callCentreAgents.Add(agent);
-            }
-
-            return callCentreAgents;
-        }
-
-        public void CreateNewClientRequest(String contactNumber)
-        {
-            endCall();
+            EndCall(callLog);
 
             NewClientRequestController newClientRequestController = new NewClientRequestController();
 
-            NewClientRequest newClientRequest = new NewClientRequest(DateTime.Now, null, callLog);
+            NewClientRequest newClientRequest = new NewClientRequest(ind, DateTime.Now, null, callLog);
             newClientRequest.ContactNum = contactNumber;
 
             newClientRequestController.Create(newClientRequest);
         }
 
-        public void CreateNewComplaintRequest(String complaintDescription, Client client, ServiceContract serviceContract)
+        public void CreateNewComplaintRequest(string complaintDescription, Client client, ServiceContract serviceContract, CallLog callLog)
         {
-            endCall();
+            EndCall(callLog);
 
             ComplaintRequestController complaintRequestController = new ComplaintRequestController();
             RequestController requestController = new RequestController();
@@ -58,17 +36,15 @@ namespace Logic
                 complaintDescription
             );
 
-
             complaintRequestController.Create(complaintRequst);
-
 
             requestController.Set(client, complaintRequst);
             complaintRequestController.Set(serviceContract, complaintRequst);
         }
 
-        public void CreateNewNewContractRequest(ServiceContract serviceContract, Client client)
+        public void CreateNewNewContractRequest(ServiceContract serviceContract, Client client, CallLog callLog)
         {
-            endCall();
+            EndCall(callLog);
             NewContractRequestController newContractRequestController = new NewContractRequestController();
             RequestController requestController = new RequestController();
 
@@ -83,9 +59,9 @@ namespace Logic
             requestController.Set(client, newContractRequest);
         }
 
-        public void CreateNewServiceRequest(ServiceContract serviceContract, Client client, string desc)
+        public void CreateNewServiceRequest(ServiceContract serviceContract, Client client, string desc, CallLog callLog)
         {
-            endCall();
+            EndCall(callLog);
 
             ServiceRequestController serviceRequestController = new ServiceRequestController();
             RequestController requestController = new RequestController();
@@ -100,15 +76,13 @@ namespace Logic
             serviceRequestController.Create(serviceRequest);
             serviceRequestController.Set(serviceContract, serviceRequest);
             requestController.Set(client, serviceRequest);
-
         }
-        private void endCall()
+
+        public void EndCall(CallLog call)
         {
             CallLogController callLogController = new CallLogController();
-            callLog.TimeEnded = DateTime.Now;
-            callLogController.Create(callLog);
+            call.TimeEnded = DateTime.Now;
+            callLogController.Create(call);
         }
-
-
     }
 }

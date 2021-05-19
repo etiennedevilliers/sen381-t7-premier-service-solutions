@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Data.Layer.Controller;
+using Data.Layer.Objects;
 using Presentation.Forms.ServiceDepartment;
 using Presentation.Forms.CallCentre;
 using Presentation.Forms.ClientMaintenance;
@@ -21,48 +23,66 @@ namespace Presentation.Forms.Welcome
             InitializeComponent();
         }
 
-        private void btnServiceDep_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-            Hide();
-            frmServiceMenu form = new frmServiceMenu();
-            form.ShowDialog();
-            Show();
-        }
+            bool LoggedIn = false;
 
-        private void btnTechnician_Click(object sender, EventArgs e)
-        {
-            Hide();
-            frmViewServices form = new frmViewServices();
-            form.ShowDialog();
-            Show();
-        }
+            if (txtUsername.Text == "")
+            {
+                MessageBox.Show("Please Enter Username");
+            } else if(txtPassword.Text == "") {
+                MessageBox.Show("Please Enter Password");
+            }
+            else
+            {
+                AgentController agentCtr = new AgentController();
 
-        private void btnCallCentre_Click(object sender, EventArgs e)
-        {
-            Hide();
-            FrmNewRequest.OpenRequest();
-            Show();
-        }
+                foreach (Agent i in agentCtr.Read())
+                {
+                    if (txtUsername.Text == i.Username && txtPassword.Text == i.Password)
+                    {
+                        LoggedIn = true;
 
-        private void btnClientMain_Click(object sender, EventArgs e)
-        {
-            Hide();
-            frmClientMenu form = new frmClientMenu();
-            form.ShowDialog();
-            Show();
-        }
+                        txtUsername.Clear();
+                        txtPassword.Clear();
 
-        private void btnContractMain_Click(object sender, EventArgs e)
-        {
-            Hide();
-            frmServiceContract form = new frmServiceContract();
-            form.ShowDialog();
-            Show();
-        }
+                        switch (i.EmployeeType)
+                        {
+                            case "Call Operator":
+                                frmCallCentre call = new frmCallCentre(i);
+                                call.ShowDialog();
+                                break;
 
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
+                            case "Technician":
+                                frmTechnician tech = new frmTechnician(i);
+                                tech.ShowDialog();
+                                break;
 
+                            case "Service Manager":
+                                frmServiceManager ser = new frmServiceManager(i);
+                                ser.ShowDialog();
+                                break;
+
+                            case "Contract Manager":
+                                frmContractMaintenance con = new frmContractMaintenance(i);
+                                con.ShowDialog();
+                                break;
+
+                            case "Client Manager":
+                                frmClientMaintenance client = new frmClientMaintenance(i);
+                                client.ShowDialog();
+                                break;
+                        }
+
+                        break;
+                    }
+                }
+
+                if (!LoggedIn)
+                {
+                    MessageBox.Show("Username or Password Incorrect");
+                }
+            }
         }
     }
 }
