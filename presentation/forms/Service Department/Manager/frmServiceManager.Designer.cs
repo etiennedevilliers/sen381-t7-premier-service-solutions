@@ -52,7 +52,6 @@ namespace Presentation.Forms.ServiceDepartment
             this.colStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSkills = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colAssignedID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnRemove = new System.Windows.Forms.Button();
             this.tabServiceMenu.SuspendLayout();
             this.tpgService.SuspendLayout();
             this.tpgTechnicians.SuspendLayout();
@@ -110,8 +109,10 @@ namespace Presentation.Forms.ServiceDepartment
             this.colTechnicians,
             this.colClientName,
             this.colReqStatus});
+            this.lstRequests.FullRowSelect = true;
             this.lstRequests.HideSelection = false;
             this.lstRequests.Location = new System.Drawing.Point(6, 40);
+            this.lstRequests.MultiSelect = false;
             this.lstRequests.Name = "lstRequests";
             this.lstRequests.Size = new System.Drawing.Size(779, 379);
             this.lstRequests.TabIndex = 3;
@@ -173,7 +174,6 @@ namespace Presentation.Forms.ServiceDepartment
             this.tpgTechnicians.Controls.Add(this.btnCreate);
             this.tpgTechnicians.Controls.Add(this.btnEdit);
             this.tpgTechnicians.Controls.Add(this.lstTechnicians);
-            this.tpgTechnicians.Controls.Add(this.btnRemove);
             this.tpgTechnicians.Location = new System.Drawing.Point(4, 22);
             this.tpgTechnicians.Name = "tpgTechnicians";
             this.tpgTechnicians.Padding = new System.Windows.Forms.Padding(3);
@@ -185,7 +185,7 @@ namespace Presentation.Forms.ServiceDepartment
             // btnCreate
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.Location = new System.Drawing.Point(427, 6);
+            this.btnCreate.Location = new System.Drawing.Point(549, 6);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(115, 28);
             this.btnCreate.TabIndex = 7;
@@ -196,7 +196,7 @@ namespace Presentation.Forms.ServiceDepartment
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(548, 6);
+            this.btnEdit.Location = new System.Drawing.Point(670, 6);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(115, 28);
             this.btnEdit.TabIndex = 6;
@@ -215,8 +215,10 @@ namespace Presentation.Forms.ServiceDepartment
             this.colStatus,
             this.colSkills,
             this.colAssignedID});
+            this.lstTechnicians.FullRowSelect = true;
             this.lstTechnicians.HideSelection = false;
             this.lstTechnicians.Location = new System.Drawing.Point(6, 40);
+            this.lstTechnicians.MultiSelect = false;
             this.lstTechnicians.Name = "lstTechnicians";
             this.lstTechnicians.Size = new System.Drawing.Size(779, 379);
             this.lstTechnicians.TabIndex = 5;
@@ -246,24 +248,13 @@ namespace Presentation.Forms.ServiceDepartment
             this.colAssignedID.Text = "Assigned Request ID";
             this.colAssignedID.Width = 114;
             // 
-            // btnRemove
-            // 
-            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove.Location = new System.Drawing.Point(669, 6);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(115, 28);
-            this.btnRemove.TabIndex = 4;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // frmServiceMenu
+            // frmServiceManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabServiceMenu);
-            this.Name = "frmServiceMenu";
+            this.Name = "frmServiceManager";
             this.Text = "ServiceMenu";
             this.Load += new System.EventHandler(this.frmServiceMenu_Load);
             this.tabServiceMenu.ResumeLayout(false);
@@ -289,7 +280,6 @@ namespace Presentation.Forms.ServiceDepartment
         private System.Windows.Forms.ColumnHeader colCallTimeEnded;
         private System.Windows.Forms.ColumnHeader colTechnicians;
         private System.Windows.Forms.ListView lstTechnicians;
-        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.ColumnHeader colName;

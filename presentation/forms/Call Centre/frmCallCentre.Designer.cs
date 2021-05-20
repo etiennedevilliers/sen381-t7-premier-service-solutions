@@ -29,12 +29,34 @@ namespace Presentation.Forms.CallCentre
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnCall = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // btnCall
+            // 
+            this.btnCall.BackgroundImage = global::sen381_t7_premier_service_solutions.Properties.Resources.phone_outgoing;
+            this.btnCall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCall.Location = new System.Drawing.Point(12, 12);
+            this.btnCall.Name = "btnCall";
+            this.btnCall.Size = new System.Drawing.Size(99, 99);
+            this.btnCall.TabIndex = 0;
+            this.btnCall.UseVisualStyleBackColor = true;
+            this.btnCall.Click += new System.EventHandler(this.btnCall_Click);
+            // 
+            // frmCallCentre
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(120, 125);
+            this.Controls.Add(this.btnCall);
+            this.Name = "frmCallCentre";
             this.Text = "StartCall";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnCall;
     }
 }

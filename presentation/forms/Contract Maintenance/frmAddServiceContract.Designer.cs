@@ -34,10 +34,8 @@
             this.lblCost = new System.Windows.Forms.Label();
             this.lblSCDateTer = new System.Windows.Forms.Label();
             this.lblIDent = new System.Windows.Forms.Label();
-            this.lblscStatus = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtCost = new System.Windows.Forms.TextBox();
-            this.txtStat = new System.Windows.Forms.TextBox();
             this.txtIdentifier = new System.Windows.Forms.TextBox();
             this.dtDateFinal = new System.Windows.Forms.DateTimePicker();
             this.dtDateTer = new System.Windows.Forms.DateTimePicker();
@@ -59,9 +57,10 @@
             // 
             // btnSCOk
             // 
-            this.btnSCOk.Location = new System.Drawing.Point(1314, 1145);
+            this.btnSCOk.Location = new System.Drawing.Point(657, 595);
+            this.btnSCOk.Margin = new System.Windows.Forms.Padding(2);
             this.btnSCOk.Name = "btnSCOk";
-            this.btnSCOk.Size = new System.Drawing.Size(172, 53);
+            this.btnSCOk.Size = new System.Drawing.Size(86, 28);
             this.btnSCOk.TabIndex = 0;
             this.btnSCOk.Text = "OK";
             this.btnSCOk.UseVisualStyleBackColor = true;
@@ -70,104 +69,99 @@
             // lblSCDescript
             // 
             this.lblSCDescript.AutoSize = true;
-            this.lblSCDescript.Location = new System.Drawing.Point(51, 42);
+            this.lblSCDescript.Location = new System.Drawing.Point(26, 22);
+            this.lblSCDescript.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSCDescript.Name = "lblSCDescript";
-            this.lblSCDescript.Size = new System.Drawing.Size(120, 25);
+            this.lblSCDescript.Size = new System.Drawing.Size(60, 13);
             this.lblSCDescript.TabIndex = 1;
             this.lblSCDescript.Text = "Description";
             // 
             // lblDateFinalized
             // 
             this.lblDateFinalized.AutoSize = true;
-            this.lblDateFinalized.Location = new System.Drawing.Point(51, 101);
+            this.lblDateFinalized.Location = new System.Drawing.Point(26, 53);
+            this.lblDateFinalized.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDateFinalized.Name = "lblDateFinalized";
-            this.lblDateFinalized.Size = new System.Drawing.Size(150, 25);
+            this.lblDateFinalized.Size = new System.Drawing.Size(74, 13);
             this.lblDateFinalized.TabIndex = 2;
             this.lblDateFinalized.Text = "Date Finalized";
             // 
             // lblCost
             // 
             this.lblCost.AutoSize = true;
-            this.lblCost.Location = new System.Drawing.Point(875, 42);
+            this.lblCost.Location = new System.Drawing.Point(438, 22);
+            this.lblCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(56, 25);
+            this.lblCost.Size = new System.Drawing.Size(28, 13);
             this.lblCost.TabIndex = 4;
             this.lblCost.Text = "Cost";
             // 
             // lblSCDateTer
             // 
             this.lblSCDateTer.AutoSize = true;
-            this.lblSCDateTer.Location = new System.Drawing.Point(51, 161);
+            this.lblSCDateTer.Location = new System.Drawing.Point(26, 84);
+            this.lblSCDateTer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSCDateTer.Name = "lblSCDateTer";
-            this.lblSCDateTer.Size = new System.Drawing.Size(171, 25);
+            this.lblSCDateTer.Size = new System.Drawing.Size(86, 13);
             this.lblSCDateTer.TabIndex = 3;
             this.lblSCDateTer.Text = "Date Terminated";
             // 
             // lblIDent
             // 
             this.lblIDent.AutoSize = true;
-            this.lblIDent.Location = new System.Drawing.Point(135, 277);
+            this.lblIDent.Location = new System.Drawing.Point(68, 144);
+            this.lblIDent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIDent.Name = "lblIDent";
-            this.lblIDent.Size = new System.Drawing.Size(94, 25);
+            this.lblIDent.Size = new System.Drawing.Size(47, 13);
             this.lblIDent.TabIndex = 6;
             this.lblIDent.Text = "Identifier";
             // 
-            // lblscStatus
-            // 
-            this.lblscStatus.AutoSize = true;
-            this.lblscStatus.Location = new System.Drawing.Point(875, 101);
-            this.lblscStatus.Name = "lblscStatus";
-            this.lblscStatus.Size = new System.Drawing.Size(73, 25);
-            this.lblscStatus.TabIndex = 5;
-            this.lblscStatus.Text = "Status";
-            // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(273, 36);
+            this.txtDescription.Location = new System.Drawing.Point(136, 19);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(397, 31);
+            this.txtDescription.Size = new System.Drawing.Size(200, 20);
             this.txtDescription.TabIndex = 7;
             // 
             // txtCost
             // 
-            this.txtCost.Location = new System.Drawing.Point(1089, 36);
+            this.txtCost.Location = new System.Drawing.Point(544, 19);
+            this.txtCost.Margin = new System.Windows.Forms.Padding(2);
             this.txtCost.Name = "txtCost";
-            this.txtCost.Size = new System.Drawing.Size(397, 31);
+            this.txtCost.Size = new System.Drawing.Size(200, 20);
             this.txtCost.TabIndex = 8;
-            // 
-            // txtStat
-            // 
-            this.txtStat.Location = new System.Drawing.Point(1089, 95);
-            this.txtStat.Name = "txtStat";
-            this.txtStat.Size = new System.Drawing.Size(397, 31);
-            this.txtStat.TabIndex = 9;
             // 
             // txtIdentifier
             // 
-            this.txtIdentifier.Location = new System.Drawing.Point(273, 271);
+            this.txtIdentifier.Location = new System.Drawing.Point(136, 141);
+            this.txtIdentifier.Margin = new System.Windows.Forms.Padding(2);
             this.txtIdentifier.Name = "txtIdentifier";
-            this.txtIdentifier.Size = new System.Drawing.Size(397, 31);
+            this.txtIdentifier.Size = new System.Drawing.Size(200, 20);
             this.txtIdentifier.TabIndex = 10;
             // 
             // dtDateFinal
             // 
-            this.dtDateFinal.Location = new System.Drawing.Point(273, 95);
+            this.dtDateFinal.Location = new System.Drawing.Point(136, 49);
+            this.dtDateFinal.Margin = new System.Windows.Forms.Padding(2);
             this.dtDateFinal.Name = "dtDateFinal";
-            this.dtDateFinal.Size = new System.Drawing.Size(397, 31);
+            this.dtDateFinal.Size = new System.Drawing.Size(200, 20);
             this.dtDateFinal.TabIndex = 11;
             // 
             // dtDateTer
             // 
-            this.dtDateTer.Location = new System.Drawing.Point(273, 155);
+            this.dtDateTer.Location = new System.Drawing.Point(136, 81);
+            this.dtDateTer.Margin = new System.Windows.Forms.Padding(2);
             this.dtDateTer.Name = "dtDateTer";
-            this.dtDateTer.Size = new System.Drawing.Size(397, 31);
+            this.dtDateTer.Size = new System.Drawing.Size(200, 20);
             this.dtDateTer.TabIndex = 12;
             // 
             // btnAddPackage
             // 
-            this.btnAddPackage.Location = new System.Drawing.Point(1492, 400);
+            this.btnAddPackage.Location = new System.Drawing.Point(746, 208);
+            this.btnAddPackage.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddPackage.Name = "btnAddPackage";
-            this.btnAddPackage.Size = new System.Drawing.Size(187, 53);
+            this.btnAddPackage.Size = new System.Drawing.Size(94, 28);
             this.btnAddPackage.TabIndex = 13;
             this.btnAddPackage.Text = "Add Package";
             this.btnAddPackage.UseVisualStyleBackColor = true;
@@ -175,9 +169,10 @@
             // 
             // btnRemovePackage
             // 
-            this.btnRemovePackage.Location = new System.Drawing.Point(1492, 459);
+            this.btnRemovePackage.Location = new System.Drawing.Point(746, 239);
+            this.btnRemovePackage.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemovePackage.Name = "btnRemovePackage";
-            this.btnRemovePackage.Size = new System.Drawing.Size(187, 53);
+            this.btnRemovePackage.Size = new System.Drawing.Size(94, 28);
             this.btnRemovePackage.TabIndex = 14;
             this.btnRemovePackage.Text = "Remove package";
             this.btnRemovePackage.UseVisualStyleBackColor = true;
@@ -186,18 +181,20 @@
             // lblPackage
             // 
             this.lblPackage.AutoSize = true;
-            this.lblPackage.Location = new System.Drawing.Point(133, 354);
+            this.lblPackage.Location = new System.Drawing.Point(66, 184);
+            this.lblPackage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPackage.Name = "lblPackage";
-            this.lblPackage.Size = new System.Drawing.Size(96, 25);
+            this.lblPackage.Size = new System.Drawing.Size(50, 13);
             this.lblPackage.TabIndex = 16;
             this.lblPackage.Text = "Package";
             // 
             // cmbPackage
             // 
             this.cmbPackage.FormattingEnabled = true;
-            this.cmbPackage.Location = new System.Drawing.Point(273, 351);
+            this.cmbPackage.Location = new System.Drawing.Point(136, 183);
+            this.cmbPackage.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPackage.Name = "cmbPackage";
-            this.cmbPackage.Size = new System.Drawing.Size(1213, 33);
+            this.cmbPackage.Size = new System.Drawing.Size(608, 21);
             this.cmbPackage.TabIndex = 17;
             // 
             // listPackage
@@ -208,10 +205,13 @@
             this.slaId,
             this.chPName,
             this.chPDis});
+            this.listPackage.FullRowSelect = true;
             this.listPackage.HideSelection = false;
-            this.listPackage.Location = new System.Drawing.Point(273, 402);
+            this.listPackage.Location = new System.Drawing.Point(136, 209);
+            this.listPackage.Margin = new System.Windows.Forms.Padding(2);
+            this.listPackage.MultiSelect = false;
             this.listPackage.Name = "listPackage";
-            this.listPackage.Size = new System.Drawing.Size(1213, 726);
+            this.listPackage.Size = new System.Drawing.Size(608, 379);
             this.listPackage.TabIndex = 18;
             this.listPackage.UseCompatibleStateImageBehavior = false;
             this.listPackage.View = System.Windows.Forms.View.Details;
@@ -243,9 +243,10 @@
             // 
             // btnGenerateID
             // 
-            this.btnGenerateID.Location = new System.Drawing.Point(732, 257);
+            this.btnGenerateID.Location = new System.Drawing.Point(366, 134);
+            this.btnGenerateID.Margin = new System.Windows.Forms.Padding(2);
             this.btnGenerateID.Name = "btnGenerateID";
-            this.btnGenerateID.Size = new System.Drawing.Size(157, 45);
+            this.btnGenerateID.Size = new System.Drawing.Size(78, 23);
             this.btnGenerateID.TabIndex = 19;
             this.btnGenerateID.Text = "Generate ID";
             this.btnGenerateID.UseVisualStyleBackColor = true;
@@ -259,25 +260,27 @@
             "B",
             "C",
             "D"});
-            this.cmbImportance.Location = new System.Drawing.Point(1089, 165);
+            this.cmbImportance.Location = new System.Drawing.Point(543, 46);
+            this.cmbImportance.Margin = new System.Windows.Forms.Padding(2);
             this.cmbImportance.Name = "cmbImportance";
-            this.cmbImportance.Size = new System.Drawing.Size(397, 33);
+            this.cmbImportance.Size = new System.Drawing.Size(200, 21);
             this.cmbImportance.TabIndex = 20;
             // 
             // lblImportance
             // 
             this.lblImportance.AutoSize = true;
-            this.lblImportance.Location = new System.Drawing.Point(872, 173);
+            this.lblImportance.Location = new System.Drawing.Point(438, 49);
+            this.lblImportance.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblImportance.Name = "lblImportance";
-            this.lblImportance.Size = new System.Drawing.Size(204, 25);
+            this.lblImportance.Size = new System.Drawing.Size(103, 13);
             this.lblImportance.TabIndex = 21;
             this.lblImportance.Text = "Level Of Importance";
             // 
             // frmAddServiceContract
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2469, 1616);
+            this.ClientSize = new System.Drawing.Size(850, 642);
             this.Controls.Add(this.lblImportance);
             this.Controls.Add(this.cmbImportance);
             this.Controls.Add(this.btnGenerateID);
@@ -289,16 +292,15 @@
             this.Controls.Add(this.dtDateTer);
             this.Controls.Add(this.dtDateFinal);
             this.Controls.Add(this.txtIdentifier);
-            this.Controls.Add(this.txtStat);
             this.Controls.Add(this.txtCost);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.lblIDent);
-            this.Controls.Add(this.lblscStatus);
             this.Controls.Add(this.lblCost);
             this.Controls.Add(this.lblSCDateTer);
             this.Controls.Add(this.lblDateFinalized);
             this.Controls.Add(this.lblSCDescript);
             this.Controls.Add(this.btnSCOk);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmAddServiceContract";
             this.Text = "frmAddServiceContract";
             this.Load += new System.EventHandler(this.frmAddServiceContract_Load);
@@ -315,10 +317,8 @@
         private System.Windows.Forms.Label lblCost;
         private System.Windows.Forms.Label lblSCDateTer;
         private System.Windows.Forms.Label lblIDent;
-        private System.Windows.Forms.Label lblscStatus;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TextBox txtCost;
-        private System.Windows.Forms.TextBox txtStat;
         private System.Windows.Forms.TextBox txtIdentifier;
         private System.Windows.Forms.DateTimePicker dtDateFinal;
         private System.Windows.Forms.DateTimePicker dtDateTer;

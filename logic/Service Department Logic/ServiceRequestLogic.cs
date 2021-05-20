@@ -18,7 +18,7 @@ namespace Logic.ServiceDepartment
         public bool Schedule(ServiceRequest sr)
         {
             List<Package> packages = sr.ServiceContract.Packages;
-            List<Technician> techs = techLogic.ReadTechnicians();
+            List<Technician> techs = new TechnicianController().Read();
 
             Technician techMin = null;
             Service serMin = null;

@@ -34,6 +34,7 @@ namespace Presentation.Forms.CallCentre
             this.cbExistingClient = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cbxClientType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnNewClientRequest = new System.Windows.Forms.Button();
@@ -56,7 +57,6 @@ namespace Presentation.Forms.CallCentre
             this.label7 = new System.Windows.Forms.Label();
             this.cbServiceRequestServiceContract = new System.Windows.Forms.ComboBox();
             this.btnServiceRequest = new System.Windows.Forms.Button();
-            this.cbxClientType = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -116,6 +116,17 @@ namespace Presentation.Forms.CallCentre
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "New Client Request";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // cbxClientType
+            // 
+            this.cbxClientType.FormattingEnabled = true;
+            this.cbxClientType.Items.AddRange(new object[] {
+            "Individual",
+            "Business"});
+            this.cbxClientType.Location = new System.Drawing.Point(8, 62);
+            this.cbxClientType.Name = "cbxClientType";
+            this.cbxClientType.Size = new System.Drawing.Size(121, 21);
+            this.cbxClientType.TabIndex = 5;
             // 
             // label2
             // 
@@ -338,17 +349,6 @@ namespace Presentation.Forms.CallCentre
             this.btnServiceRequest.TabIndex = 0;
             this.btnServiceRequest.UseVisualStyleBackColor = true;
             this.btnServiceRequest.Click += new System.EventHandler(this.btnServiceRequest_Click);
-            // 
-            // cbxClientType
-            // 
-            this.cbxClientType.FormattingEnabled = true;
-            this.cbxClientType.Items.AddRange(new object[] {
-            "Individual",
-            "Business"});
-            this.cbxClientType.Location = new System.Drawing.Point(8, 62);
-            this.cbxClientType.Name = "cbxClientType";
-            this.cbxClientType.Size = new System.Drawing.Size(121, 21);
-            this.cbxClientType.TabIndex = 5;
             // 
             // FrmNewRequest
             // 

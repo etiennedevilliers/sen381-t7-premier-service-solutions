@@ -112,11 +112,6 @@ namespace Presentation.Forms.ContractMaintenance
                 MessageBox.Show("Please enter Service Contract cost ", "EMPTY FIELDS!!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (txtStat.Text.Equals(""))
-            {
-                MessageBox.Show("Please enter Service Contract status", "EMPTY FIELDS!!",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             if (Identtifier.Equals(""))
             {
                 MessageBox.Show("Please generate a Identifier", "EMPTY FIELDS!!",
@@ -132,7 +127,7 @@ namespace Presentation.Forms.ContractMaintenance
                         double.Parse(txtCost.Text),
                         dtDateFinal.Value,
                         dtDateTer.Value,
-                        txtStat.Text,
+                        "Active",
                         Identtifier
                     );
 
@@ -168,7 +163,6 @@ namespace Presentation.Forms.ContractMaintenance
             {
                 Identtifier = SC_L.GenerateIDentifier(dtDateFinal.Value,cmbImportance.SelectedItem.ToString());
                 txtIdentifier.Text = Identtifier;
-
             }
         }
     }

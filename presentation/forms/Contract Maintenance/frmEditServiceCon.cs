@@ -113,7 +113,6 @@ namespace Presentation.Forms.ContractMaintenance
 
         private void btnSCOk_Click(object sender, EventArgs e)
         {
-
             sc.Cost = double.Parse(txtCost.Text);
             sc.DateFinalised = dtDateFinal.Value;
             sc.DateFinalised = dtDateTer.Value;

@@ -30,14 +30,16 @@ namespace Presentation.Forms.ServiceDepartment
         private void InitializeComponent()
         {
             this.btnComplete = new System.Windows.Forms.Button();
-            this.lblCurrentServices = new System.Windows.Forms.Label();
+            this.lblServiceContract = new System.Windows.Forms.Label();
             this.lstCurrentServices = new System.Windows.Forms.ListView();
             this.colServiceName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDuration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lstEquipment = new System.Windows.Forms.ListView();
             this.colSerialNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colManufacturer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colDuration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblEquipment = new System.Windows.Forms.Label();
+            this.lblServices = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnComplete
@@ -50,25 +52,27 @@ namespace Presentation.Forms.ServiceDepartment
             this.btnComplete.UseVisualStyleBackColor = true;
             this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
             // 
-            // lblCurrentServices
+            // lblServiceContract
             // 
-            this.lblCurrentServices.AutoSize = true;
-            this.lblCurrentServices.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentServices.Location = new System.Drawing.Point(23, 22);
-            this.lblCurrentServices.Name = "lblCurrentServices";
-            this.lblCurrentServices.Size = new System.Drawing.Size(158, 25);
-            this.lblCurrentServices.TabIndex = 1;
-            this.lblCurrentServices.Text = "Current Services";
+            this.lblServiceContract.AutoSize = true;
+            this.lblServiceContract.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServiceContract.Location = new System.Drawing.Point(7, 22);
+            this.lblServiceContract.Name = "lblServiceContract";
+            this.lblServiceContract.Size = new System.Drawing.Size(225, 25);
+            this.lblServiceContract.TabIndex = 1;
+            this.lblServiceContract.Text = "Current Service Request";
             // 
             // lstCurrentServices
             // 
             this.lstCurrentServices.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colServiceName,
             this.colDuration});
+            this.lstCurrentServices.FullRowSelect = true;
             this.lstCurrentServices.HideSelection = false;
-            this.lstCurrentServices.Location = new System.Drawing.Point(12, 69);
+            this.lstCurrentServices.Location = new System.Drawing.Point(12, 96);
+            this.lstCurrentServices.MultiSelect = false;
             this.lstCurrentServices.Name = "lstCurrentServices";
-            this.lstCurrentServices.Size = new System.Drawing.Size(357, 369);
+            this.lstCurrentServices.Size = new System.Drawing.Size(357, 342);
             this.lstCurrentServices.TabIndex = 2;
             this.lstCurrentServices.UseCompatibleStateImageBehavior = false;
             this.lstCurrentServices.View = System.Windows.Forms.View.Details;
@@ -78,16 +82,23 @@ namespace Presentation.Forms.ServiceDepartment
             this.colServiceName.Text = "Service Name";
             this.colServiceName.Width = 112;
             // 
+            // colDuration
+            // 
+            this.colDuration.Text = "Expected Duration";
+            this.colDuration.Width = 133;
+            // 
             // lstEquipment
             // 
             this.lstEquipment.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colSerialNum,
             this.colManufacturer,
             this.colCategory});
+            this.lstEquipment.FullRowSelect = true;
             this.lstEquipment.HideSelection = false;
-            this.lstEquipment.Location = new System.Drawing.Point(431, 69);
+            this.lstEquipment.Location = new System.Drawing.Point(431, 96);
+            this.lstEquipment.MultiSelect = false;
             this.lstEquipment.Name = "lstEquipment";
-            this.lstEquipment.Size = new System.Drawing.Size(357, 369);
+            this.lstEquipment.Size = new System.Drawing.Size(357, 342);
             this.lstEquipment.TabIndex = 3;
             this.lstEquipment.UseCompatibleStateImageBehavior = false;
             this.lstEquipment.View = System.Windows.Forms.View.Details;
@@ -107,19 +118,36 @@ namespace Presentation.Forms.ServiceDepartment
             this.colCategory.Text = "Category";
             this.colCategory.Width = 115;
             // 
-            // colDuration
+            // lblEquipment
             // 
-            this.colDuration.Text = "Expected Duration";
-            this.colDuration.Width = 133;
+            this.lblEquipment.AutoSize = true;
+            this.lblEquipment.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEquipment.Location = new System.Drawing.Point(426, 68);
+            this.lblEquipment.Name = "lblEquipment";
+            this.lblEquipment.Size = new System.Drawing.Size(111, 25);
+            this.lblEquipment.TabIndex = 4;
+            this.lblEquipment.Text = "Equipment:";
+            // 
+            // lblServices
+            // 
+            this.lblServices.AutoSize = true;
+            this.lblServices.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServices.Location = new System.Drawing.Point(7, 68);
+            this.lblServices.Name = "lblServices";
+            this.lblServices.Size = new System.Drawing.Size(94, 25);
+            this.lblServices.TabIndex = 5;
+            this.lblServices.Text = "Services:";
             // 
             // frmTechnician
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblServices);
+            this.Controls.Add(this.lblEquipment);
             this.Controls.Add(this.lstEquipment);
             this.Controls.Add(this.lstCurrentServices);
-            this.Controls.Add(this.lblCurrentServices);
+            this.Controls.Add(this.lblServiceContract);
             this.Controls.Add(this.btnComplete);
             this.Name = "frmTechnician";
             this.Text = "View Services Assigned";
@@ -132,7 +160,7 @@ namespace Presentation.Forms.ServiceDepartment
         #endregion
 
         private System.Windows.Forms.Button btnComplete;
-        private System.Windows.Forms.Label lblCurrentServices;
+        private System.Windows.Forms.Label lblServiceContract;
         private System.Windows.Forms.ListView lstCurrentServices;
         private System.Windows.Forms.ColumnHeader colServiceName;
         private System.Windows.Forms.ListView lstEquipment;
@@ -140,5 +168,7 @@ namespace Presentation.Forms.ServiceDepartment
         private System.Windows.Forms.ColumnHeader colDuration;
         private System.Windows.Forms.ColumnHeader colManufacturer;
         private System.Windows.Forms.ColumnHeader colCategory;
+        private System.Windows.Forms.Label lblEquipment;
+        private System.Windows.Forms.Label lblServices;
     }
 }

@@ -39,6 +39,7 @@ namespace Presentation.Forms.ServiceDepartment
 
             txtName.Text = tech.Name;
             txtContactNum.Text = tech.ContactNum;
+            txtSurname.Text = tech.Surname;
 
             foreach (Service i in skills)
             {
@@ -53,6 +54,7 @@ namespace Presentation.Forms.ServiceDepartment
             skills.Clear();
             tech.Name = txtName.Text;
             tech.ContactNum = txtContactNum.Text;
+            tech.Surname = txtSurname.Text;
 
             foreach (ListViewItem i in lstSkills.Items)
             {

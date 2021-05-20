@@ -57,27 +57,24 @@ namespace Presentation.Forms.ContractMaintenance
 
         private void frmEditPackages_Load(object sender, EventArgs e)
         {
-
             loadPackages();
 
             //populate the comboboxes
             Placeholder_Service_List = S_L.GetServices();
             Placeholder_SLA_List = SLA_L.ViewSLA();
 
-
             foreach (Service S in S_L.GetServices())
             {
-                cmbPService.Items.Add("Service ID: "+ S.Id.ToString() +"  "+S.Description);
+                cmbPService.Items.Add(S_L);
             }
 
             foreach (ServiceLevelAgreement S in SLA_L.ViewSLA())
             {
-                cmbPSLA.Items.Add("SLA ID: "+ S.Id.ToString() + " " + S.Description);
+                cmbPSLA.Items.Add(S);
             }
 
-            cmbPService.Text = ParsedPackage.Service.Description;
-            cmbPSLA.Text = ParsedPackage.Sla.Description;
-
+            cmbPService.SelectedIndex = cmbPService.Items.IndexOf(ParsedPackage.Service);
+            cmbPSLA.SelectedIndex = cmbPSLA.Items.IndexOf(ParsedPackage.Sla);
         }//Populate Combo boxes and load list of packages
 
         private void btnEditPackage_Click(object sender, EventArgs e)

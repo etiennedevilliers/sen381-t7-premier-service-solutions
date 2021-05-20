@@ -34,14 +34,12 @@ namespace Presentation.Forms.ClientMaintenance
             this.colClientNameI = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colClientSurnameI = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colContactNumI = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnDeleteI = new System.Windows.Forms.Button();
             this.btnViewI = new System.Windows.Forms.Button();
             this.tpgIndividual = new System.Windows.Forms.TabControl();
             this.tpgIndividualClients = new System.Windows.Forms.TabPage();
             this.btnViewIn = new System.Windows.Forms.Button();
             this.tpgBusinessClients = new System.Windows.Forms.TabPage();
             this.btnViewBu = new System.Windows.Forms.Button();
-            this.btnDeleteB = new System.Windows.Forms.Button();
             this.btnViewB = new System.Windows.Forms.Button();
             this.lstClientsB = new System.Windows.Forms.ListView();
             this.colID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -78,6 +76,7 @@ namespace Presentation.Forms.ClientMaintenance
             this.lstClientsI.HideSelection = false;
             this.lstClientsI.Location = new System.Drawing.Point(5, 29);
             this.lstClientsI.Margin = new System.Windows.Forms.Padding(2);
+            this.lstClientsI.MultiSelect = false;
             this.lstClientsI.Name = "lstClientsI";
             this.lstClientsI.Size = new System.Drawing.Size(767, 389);
             this.lstClientsI.TabIndex = 0;
@@ -102,17 +101,6 @@ namespace Presentation.Forms.ClientMaintenance
             // 
             this.colContactNumI.Text = "Contact Number";
             this.colContactNumI.Width = 136;
-            // 
-            // btnDeleteI
-            // 
-            this.btnDeleteI.Location = new System.Drawing.Point(712, 2);
-            this.btnDeleteI.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeleteI.Name = "btnDeleteI";
-            this.btnDeleteI.Size = new System.Drawing.Size(60, 23);
-            this.btnDeleteI.TabIndex = 2;
-            this.btnDeleteI.Text = "Delete";
-            this.btnDeleteI.UseVisualStyleBackColor = true;
-            this.btnDeleteI.Click += new System.EventHandler(this.btnDeleteI_Click);
             // 
             // btnViewI
             // 
@@ -140,7 +128,6 @@ namespace Presentation.Forms.ClientMaintenance
             // tpgIndividualClients
             // 
             this.tpgIndividualClients.Controls.Add(this.btnViewIn);
-            this.tpgIndividualClients.Controls.Add(this.btnDeleteI);
             this.tpgIndividualClients.Controls.Add(this.btnViewI);
             this.tpgIndividualClients.Controls.Add(this.lstClientsI);
             this.tpgIndividualClients.Location = new System.Drawing.Point(4, 22);
@@ -154,7 +141,7 @@ namespace Presentation.Forms.ClientMaintenance
             // 
             // btnViewIn
             // 
-            this.btnViewIn.Location = new System.Drawing.Point(648, 2);
+            this.btnViewIn.Location = new System.Drawing.Point(712, 2);
             this.btnViewIn.Margin = new System.Windows.Forms.Padding(2);
             this.btnViewIn.Name = "btnViewIn";
             this.btnViewIn.Size = new System.Drawing.Size(60, 23);
@@ -166,7 +153,6 @@ namespace Presentation.Forms.ClientMaintenance
             // tpgBusinessClients
             // 
             this.tpgBusinessClients.Controls.Add(this.btnViewBu);
-            this.tpgBusinessClients.Controls.Add(this.btnDeleteB);
             this.tpgBusinessClients.Controls.Add(this.btnViewB);
             this.tpgBusinessClients.Controls.Add(this.lstClientsB);
             this.tpgBusinessClients.Location = new System.Drawing.Point(4, 22);
@@ -180,7 +166,7 @@ namespace Presentation.Forms.ClientMaintenance
             // 
             // btnViewBu
             // 
-            this.btnViewBu.Location = new System.Drawing.Point(648, 2);
+            this.btnViewBu.Location = new System.Drawing.Point(712, 2);
             this.btnViewBu.Margin = new System.Windows.Forms.Padding(2);
             this.btnViewBu.Name = "btnViewBu";
             this.btnViewBu.Size = new System.Drawing.Size(60, 23);
@@ -188,17 +174,6 @@ namespace Presentation.Forms.ClientMaintenance
             this.btnViewBu.Text = "View";
             this.btnViewBu.UseVisualStyleBackColor = true;
             this.btnViewBu.Click += new System.EventHandler(this.btnViewB_Click);
-            // 
-            // btnDeleteB
-            // 
-            this.btnDeleteB.Location = new System.Drawing.Point(712, 2);
-            this.btnDeleteB.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeleteB.Name = "btnDeleteB";
-            this.btnDeleteB.Size = new System.Drawing.Size(60, 23);
-            this.btnDeleteB.TabIndex = 7;
-            this.btnDeleteB.Text = "Delete";
-            this.btnDeleteB.UseVisualStyleBackColor = true;
-            this.btnDeleteB.Click += new System.EventHandler(this.btnDeleteB_Click);
             // 
             // btnViewB
             // 
@@ -220,6 +195,7 @@ namespace Presentation.Forms.ClientMaintenance
             this.lstClientsB.HideSelection = false;
             this.lstClientsB.Location = new System.Drawing.Point(5, 29);
             this.lstClientsB.Margin = new System.Windows.Forms.Padding(2);
+            this.lstClientsB.MultiSelect = false;
             this.lstClientsB.Name = "lstClientsB";
             this.lstClientsB.Size = new System.Drawing.Size(767, 389);
             this.lstClientsB.TabIndex = 5;
@@ -253,11 +229,12 @@ namespace Presentation.Forms.ClientMaintenance
             // 
             // btnCallClient
             // 
-            this.btnCallClient.Location = new System.Drawing.Point(430, 398);
+            this.btnCallClient.BackgroundImage = global::sen381_t7_premier_service_solutions.Properties.Resources.phone_outgoing;
+            this.btnCallClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCallClient.Location = new System.Drawing.Point(703, 349);
             this.btnCallClient.Name = "btnCallClient";
-            this.btnCallClient.Size = new System.Drawing.Size(343, 23);
+            this.btnCallClient.Size = new System.Drawing.Size(70, 70);
             this.btnCallClient.TabIndex = 3;
-            this.btnCallClient.Text = "Call Client and finalise new Service Contract";
             this.btnCallClient.UseVisualStyleBackColor = true;
             this.btnCallClient.Click += new System.EventHandler(this.btnCallClient_Click);
             // 
@@ -274,7 +251,7 @@ namespace Presentation.Forms.ClientMaintenance
             this.lvServiceContractRequests.Location = new System.Drawing.Point(6, 8);
             this.lvServiceContractRequests.MultiSelect = false;
             this.lvServiceContractRequests.Name = "lvServiceContractRequests";
-            this.lvServiceContractRequests.Size = new System.Drawing.Size(776, 385);
+            this.lvServiceContractRequests.Size = new System.Drawing.Size(776, 337);
             this.lvServiceContractRequests.TabIndex = 0;
             this.lvServiceContractRequests.UseCompatibleStateImageBehavior = false;
             this.lvServiceContractRequests.View = System.Windows.Forms.View.Details;
@@ -318,12 +295,13 @@ namespace Presentation.Forms.ClientMaintenance
             // 
             // btnResolveNewClientRequest
             // 
-            this.btnResolveNewClientRequest.Location = new System.Drawing.Point(549, 399);
+            this.btnResolveNewClientRequest.BackgroundImage = global::sen381_t7_premier_service_solutions.Properties.Resources.phone_outgoing;
+            this.btnResolveNewClientRequest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnResolveNewClientRequest.Location = new System.Drawing.Point(705, 351);
             this.btnResolveNewClientRequest.Margin = new System.Windows.Forms.Padding(2);
             this.btnResolveNewClientRequest.Name = "btnResolveNewClientRequest";
-            this.btnResolveNewClientRequest.Size = new System.Drawing.Size(223, 19);
+            this.btnResolveNewClientRequest.Size = new System.Drawing.Size(67, 67);
             this.btnResolveNewClientRequest.TabIndex = 1;
-            this.btnResolveNewClientRequest.Text = "Call Client and finalise Details";
             this.btnResolveNewClientRequest.UseVisualStyleBackColor = true;
             this.btnResolveNewClientRequest.Click += new System.EventHandler(this.btnResolveNewClientRequest_Click);
             // 
@@ -332,11 +310,13 @@ namespace Presentation.Forms.ClientMaintenance
             this.lvNewClientRequests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colContactNum,
             this.colClientType});
+            this.lvNewClientRequests.FullRowSelect = true;
             this.lvNewClientRequests.HideSelection = false;
             this.lvNewClientRequests.Location = new System.Drawing.Point(5, 6);
             this.lvNewClientRequests.Margin = new System.Windows.Forms.Padding(2);
+            this.lvNewClientRequests.MultiSelect = false;
             this.lvNewClientRequests.Name = "lvNewClientRequests";
-            this.lvNewClientRequests.Size = new System.Drawing.Size(767, 389);
+            this.lvNewClientRequests.Size = new System.Drawing.Size(767, 341);
             this.lvNewClientRequests.TabIndex = 0;
             this.lvNewClientRequests.UseCompatibleStateImageBehavior = false;
             this.lvNewClientRequests.View = System.Windows.Forms.View.Details;
@@ -373,12 +353,10 @@ namespace Presentation.Forms.ClientMaintenance
         private System.Windows.Forms.ListView lstClientsI;
         private System.Windows.Forms.ColumnHeader colClientNameI;
         private System.Windows.Forms.ColumnHeader colClientSurnameI;
-        private System.Windows.Forms.Button btnDeleteI;
         private System.Windows.Forms.Button btnViewI;
         private System.Windows.Forms.TabControl tpgIndividual;
         private System.Windows.Forms.TabPage tpgIndividualClients;
         private System.Windows.Forms.TabPage tpgBusinessClients;
-        private System.Windows.Forms.Button btnDeleteB;
         private System.Windows.Forms.Button btnViewB;
         private System.Windows.Forms.ListView lstClientsB;
         private System.Windows.Forms.ColumnHeader colNameB;

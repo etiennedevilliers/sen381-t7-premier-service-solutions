@@ -16,8 +16,8 @@ namespace Data.Layer.Controller
 
             obj.Id = dh.InsertID(string.Format("INSERT INTO ServiceContract (description, dateFinalised, dateTerminated, cost, status, identifier) VALUES ('{0}', '{1}','{2}', '{3}','{4}', '{5}')",        
                 obj.Description, 
-                obj.DateFinalised,
-                obj.DateTerminated,
+                obj.DateFinalised.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.DateTerminated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
                 obj.Cost, 
                 obj.Status,
                 obj.identifier
@@ -42,7 +42,7 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             dh.Update(string.Format("UPDATE dbo.ServiceContract SET description = '{0}', dateFinalised = '{1}', dateTerminated = '{2}', cost = '{3}', status = '{4}', identifier='{6}' WHERE  ServiceContractID = {5}",
-                obj.Description, obj.DateFinalised, obj.DateTerminated, obj.Cost, obj.Status, obj.Id, obj.identifier ));
+                obj.Description, obj.DateFinalised.ToString("yyyy-MM-dd HH:mm:ss.fff"), obj.DateTerminated.ToString("yyyy-MM-dd HH:mm:ss.fff"), obj.Cost, obj.Status, obj.Id, obj.identifier ));
 
             dh.Dispose();
         }

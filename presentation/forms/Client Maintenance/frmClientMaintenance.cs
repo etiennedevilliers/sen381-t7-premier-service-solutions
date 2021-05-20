@@ -147,54 +147,6 @@ namespace Presentation.Forms.ClientMaintenance
             }
         }
 
-        private void btnDeleteI_Click(object sender, EventArgs e)
-        {
-            DialogResult deleteI = MessageBox.Show("Are you sure you want to delete this Client?", "WARNING: DELETE CLIENT",
-                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (deleteI == DialogResult.Yes)
-            {
-                if (lstClientsI.SelectedItems.Count > 0) {
-                    IndividualClientController individualClientController = new IndividualClientController();
-                    IndividualClient client = lstClientsI.SelectedItems[0].Tag as IndividualClient;
-                        individualClientController.Delete(client);
-                    lstClientsI.Items.Clear();
-                    LoadIndividualClient();
-                    MessageBox.Show("Client successfully deleted", "INDIVIDUAL CLIENT DELETED",
-                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Client NOT deleted", "CLIENT UNCHANGED",
-                                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void btnDeleteB_Click(object sender, EventArgs e)
-        {
-            DialogResult deleteB = MessageBox.Show("Are you sure you want to delete this Client?", "WARNING: DELETE CLIENT",
-                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (deleteB == DialogResult.Yes)
-            {
-                if (lstClientsB.SelectedItems.Count > 0)
-                {
-                    BusinessClientController businessClientController = new BusinessClientController();
-                    BusinessClient client = lstClientsB.SelectedItems[0].Tag as BusinessClient;
-                    businessClientController.Delete(client);
-                    lstClientsB.Items.Clear();
-                    LoadBusinessClient();
-                    MessageBox.Show("Client successfully deleted", "BUSINESS CLIENT DELETED",
-                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Client NOT deleted", "CLIENT UNCHANGED",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void btnViewI_Click(object sender, EventArgs e)
         {
             if (lstClientsI.SelectedItems.Count > 0)

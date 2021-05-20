@@ -46,7 +46,7 @@ namespace Data.Layer.Controller
             DataHandler dh = new DataHandler();
 
             dh.Update(string.Format(
-                "UPDATE dbo.Agent SET aName='{1}', surname='{2}' contactNum='{3}', employmentStatus='{4}', employeeType='{5}', username='{6}', password='{7}' WHERE AgentID = {0}", 
+                "UPDATE dbo.Agent SET aName='{1}', surname='{2}', contactNum='{3}', employmentStatus='{4}', employeeType='{5}', username='{6}', password='{7}' WHERE AgentID = {0}", 
                 obj.Id,
                 obj.Name,
                 obj.Surname,

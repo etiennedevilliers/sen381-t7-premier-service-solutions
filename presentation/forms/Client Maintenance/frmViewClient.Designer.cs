@@ -59,6 +59,11 @@ namespace Presentation.Forms.ClientMaintenance
             this.colRole = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colContactNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAddEmployee = new System.Windows.Forms.Button();
+            this.tpgContracts = new System.Windows.Forms.TabPage();
+            this.lstContracts = new System.Windows.Forms.ListView();
+            this.colDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colStartDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colEndDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblName = new System.Windows.Forms.Label();
             this.lblContactNum = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
@@ -66,11 +71,6 @@ namespace Presentation.Forms.ClientMaintenance
             this.lblSurname = new System.Windows.Forms.Label();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.tpgContracts = new System.Windows.Forms.TabPage();
-            this.lstContracts = new System.Windows.Forms.ListView();
-            this.colDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colStartDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colEndDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabViewClient.SuspendLayout();
             this.tpgAddresses.SuspendLayout();
             this.tpgEquipment.SuspendLayout();
@@ -113,9 +113,11 @@ namespace Presentation.Forms.ClientMaintenance
             this.colSerial,
             this.colManufact,
             this.colCat});
+            this.lstEquipment.FullRowSelect = true;
             this.lstEquipment.HideSelection = false;
             this.lstEquipment.Location = new System.Drawing.Point(10, 40);
             this.lstEquipment.Margin = new System.Windows.Forms.Padding(2);
+            this.lstEquipment.MultiSelect = false;
             this.lstEquipment.Name = "lstEquipment";
             this.lstEquipment.Size = new System.Drawing.Size(809, 164);
             this.lstEquipment.TabIndex = 7;
@@ -199,6 +201,7 @@ namespace Presentation.Forms.ClientMaintenance
             this.lstAddress.HideSelection = false;
             this.lstAddress.Location = new System.Drawing.Point(10, 40);
             this.lstAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.lstAddress.MultiSelect = false;
             this.lstAddress.Name = "lstAddress";
             this.lstAddress.Size = new System.Drawing.Size(809, 164);
             this.lstAddress.TabIndex = 15;
@@ -317,6 +320,7 @@ namespace Presentation.Forms.ClientMaintenance
             this.lstEmployee.HideSelection = false;
             this.lstEmployee.Location = new System.Drawing.Point(10, 40);
             this.lstEmployee.Margin = new System.Windows.Forms.Padding(2);
+            this.lstEmployee.MultiSelect = false;
             this.lstEmployee.Name = "lstEmployee";
             this.lstEmployee.Size = new System.Drawing.Size(809, 164);
             this.lstEmployee.TabIndex = 18;
@@ -354,6 +358,49 @@ namespace Presentation.Forms.ClientMaintenance
             this.btnAddEmployee.UseVisualStyleBackColor = true;
             this.btnAddEmployee.Visible = false;
             this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
+            // 
+            // tpgContracts
+            // 
+            this.tpgContracts.Controls.Add(this.lstContracts);
+            this.tpgContracts.Location = new System.Drawing.Point(4, 22);
+            this.tpgContracts.Name = "tpgContracts";
+            this.tpgContracts.Padding = new System.Windows.Forms.Padding(3);
+            this.tpgContracts.Size = new System.Drawing.Size(836, 219);
+            this.tpgContracts.TabIndex = 4;
+            this.tpgContracts.Text = "Contracts";
+            this.tpgContracts.UseVisualStyleBackColor = true;
+            // 
+            // lstContracts
+            // 
+            this.lstContracts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colDescription,
+            this.colStartDate,
+            this.colEndDate});
+            this.lstContracts.FullRowSelect = true;
+            this.lstContracts.HideSelection = false;
+            this.lstContracts.Location = new System.Drawing.Point(10, 40);
+            this.lstContracts.Margin = new System.Windows.Forms.Padding(2);
+            this.lstContracts.MultiSelect = false;
+            this.lstContracts.Name = "lstContracts";
+            this.lstContracts.Size = new System.Drawing.Size(809, 164);
+            this.lstContracts.TabIndex = 16;
+            this.lstContracts.UseCompatibleStateImageBehavior = false;
+            this.lstContracts.View = System.Windows.Forms.View.Details;
+            // 
+            // colDescription
+            // 
+            this.colDescription.Text = "Description";
+            this.colDescription.Width = 108;
+            // 
+            // colStartDate
+            // 
+            this.colStartDate.Text = "Start Date";
+            this.colStartDate.Width = 107;
+            // 
+            // colEndDate
+            // 
+            this.colEndDate.Text = "End Date";
+            this.colEndDate.Width = 108;
             // 
             // lblName
             // 
@@ -421,48 +468,6 @@ namespace Presentation.Forms.ClientMaintenance
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // tpgContracts
-            // 
-            this.tpgContracts.Controls.Add(this.lstContracts);
-            this.tpgContracts.Location = new System.Drawing.Point(4, 22);
-            this.tpgContracts.Name = "tpgContracts";
-            this.tpgContracts.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgContracts.Size = new System.Drawing.Size(836, 219);
-            this.tpgContracts.TabIndex = 4;
-            this.tpgContracts.Text = "Contracts";
-            this.tpgContracts.UseVisualStyleBackColor = true;
-            // 
-            // lstContracts
-            // 
-            this.lstContracts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colDescription,
-            this.colStartDate,
-            this.colEndDate});
-            this.lstContracts.FullRowSelect = true;
-            this.lstContracts.HideSelection = false;
-            this.lstContracts.Location = new System.Drawing.Point(10, 40);
-            this.lstContracts.Margin = new System.Windows.Forms.Padding(2);
-            this.lstContracts.Name = "lstContracts";
-            this.lstContracts.Size = new System.Drawing.Size(809, 164);
-            this.lstContracts.TabIndex = 16;
-            this.lstContracts.UseCompatibleStateImageBehavior = false;
-            this.lstContracts.View = System.Windows.Forms.View.Details;
-            // 
-            // colDescription
-            // 
-            this.colDescription.Text = "Description";
-            this.colDescription.Width = 108;
-            // 
-            // colStartDate
-            // 
-            this.colStartDate.Text = "Start Date";
-            this.colStartDate.Width = 107;
-            // 
-            // colEndDate
-            // 
-            this.colEndDate.Text = "End Date";
-            this.colEndDate.Width = 108;
             // 
             // frmViewClient
             // 

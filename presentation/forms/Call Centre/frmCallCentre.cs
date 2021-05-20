@@ -21,5 +21,11 @@ namespace Presentation.Forms.CallCentre
 
             InitializeComponent();
         }
+
+        private void btnCall_Click(object sender, EventArgs e)
+        {
+            FrmNewRequest form = new FrmNewRequest(agentLoggedIn);
+            form.ShowDialog();
+        }
     }
 }

@@ -40,18 +40,18 @@ namespace Logic.ContractMaintenance
 
         public string GenerateIDentifier(DateTime CreationDate , string LevelOfImportance)
         {
-            string Result = "";
             Random RND = new Random(26);
             string Character = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
 
             string Year = CreationDate.Year.ToString();
 
             string Random_String = Character[RND.Next(0,26)].ToString();
 
-            Result = Year + Random_String + LevelOfImportance;
+            string number = RND.Next(0, 999999).ToString();
 
-            return Result.PadLeft(12,'0');
+            string Result = Year + Random_String + LevelOfImportance + number.PadLeft(6, '0');
+
+            return Result;
 
         }//Generate identifier
 

@@ -18,7 +18,7 @@ namespace Data.Layer.Controller
             obj.Id = requestController.Create(obj);
 
             dh.Insert(string.Format(
-                "INSERT INTO NewClientRequest(NewClientRequestID, ClientType) VALUES ({0}, {1})",
+                "INSERT INTO NewClientRequest(NewClientRequestID, ClientType) VALUES ({0}, '{1}')",
                 obj.Id,
                 obj.Individual ? "Individual" : "Business"
             ));
@@ -63,12 +63,12 @@ namespace Data.Layer.Controller
                     newClientRequest = new NewClientRequest(
                         read.GetString(2) == "Individual",
                         read.GetDateTime(4),
-                        read.GetDateTime(5),
+                        read.IsDBNull(5) ? null : (DateTime?)read.GetDateTime(5),
                         callLog
                     );
 
                     newClientRequest.Id = read.GetInt32(0);
-                    newClientRequest.ContactNum = read.GetString(3);
+                    newClientRequest.ContactNum = read.IsDBNull(3) ? null : read.GetString(3);
                     newClientRequest.Status = read.GetString(6);
 
                     clientRequests.Add(newClientRequest);

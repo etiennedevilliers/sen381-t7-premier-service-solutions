@@ -22,7 +22,7 @@ namespace Data.Layer.Controller
                 "INSERT INTO ServiceRequest(ServiceRequestID, description, jobStarted) VALUES ({0}, '{1}', '{2}')",
                 obj.Id,
                 obj.Description,
-                obj.JobStarted == null ? null : obj.JobStarted.Value.ToString("yyyy-MM-dd HH:mm:ss.fff")
+                obj.JobStarted == null ? "NULL" : obj.JobStarted.Value.ToString("yyyy-MM-dd HH:mm:ss.fff")
             );
 
             dh.Insert(query);
@@ -74,16 +74,16 @@ namespace Data.Layer.Controller
 
                     serviceRequest = new ServiceRequest(
                         read.GetDateTime(5),
-                        read.GetDateTime(6),
+                        read.IsDBNull(6) ? null : (DateTime?) read.GetDateTime(6),
                         callLog,
                         read.GetString(1)
                     );
 
-                    serviceRequest.JobStarted = read.GetDateTime(2);
+                    serviceRequest.JobStarted = read.IsDBNull(2) ? null : (DateTime?) read.GetDateTime(2);
 
 
                     serviceRequest.Id = read.GetInt32(0);
-                    serviceRequest.ContactNum = read.GetString(4);
+                    serviceRequest.ContactNum = read.IsDBNull(4) ? null : read.GetString(4);
                     serviceRequest.Status = read.GetString(7);
 
                     serviceRequests.Add(serviceRequest);

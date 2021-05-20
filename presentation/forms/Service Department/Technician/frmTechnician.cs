@@ -53,6 +53,8 @@ namespace Presentation.Forms.ServiceDepartment
 
             if (currentServiceRequest != null)
             {
+                lblServiceContract.Text = "Current Service Request: " + currentServiceRequest.Description;
+
                 List<Package> packages = currentServiceRequest.ServiceContract.Packages;
                 List<Service> skills = tech.Skills;
 
@@ -82,16 +84,30 @@ namespace Presentation.Forms.ServiceDepartment
 
                     foreach (Package j in packages)
                     {
-                        if (j.)
+                        if (j.Service.Equals(i.ser))
                         {
+                            foreach (Equipment k in equipment)
+                            {
+                                if (k.Category.Equals(j.Category))
+                                {
+                                    ListViewItem lst = new ListViewItem(new string[]
+                                    {
+                                        k.SerialNumber,
+                                        k.Manufacturer,
+                                        k.Category.Name
+                                    });
 
+                                    lstEquipment.Items.Add(lst);
+                                }
+                            }
                         }
                     }
                 }
             }
             else
             {
-                //No work
+                lblServiceContract.Text = "Current Service Request: None";
+                btnComplete.Enabled = false;
             }
         }
     }

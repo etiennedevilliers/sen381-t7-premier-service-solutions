@@ -41,12 +41,14 @@ namespace Presentation.Forms.ServiceDepartment
             this.txtContactNum = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnOk = new System.Windows.Forms.Button();
+            this.lblSurname = new System.Windows.Forms.Label();
+            this.txtSurname = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblSkills
             // 
             this.lblSkills.AutoSize = true;
-            this.lblSkills.Location = new System.Drawing.Point(10, 68);
+            this.lblSkills.Location = new System.Drawing.Point(10, 94);
             this.lblSkills.Name = "lblSkills";
             this.lblSkills.Size = new System.Drawing.Size(34, 13);
             this.lblSkills.TabIndex = 19;
@@ -72,7 +74,7 @@ namespace Presentation.Forms.ServiceDepartment
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(13, 118);
+            this.btnRemove.Location = new System.Drawing.Point(13, 144);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(84, 21);
             this.btnRemove.TabIndex = 16;
@@ -82,7 +84,7 @@ namespace Presentation.Forms.ServiceDepartment
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(13, 91);
+            this.btnAdd.Location = new System.Drawing.Point(13, 117);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(84, 21);
             this.btnAdd.TabIndex = 15;
@@ -93,7 +95,7 @@ namespace Presentation.Forms.ServiceDepartment
             // cbxServices
             // 
             this.cbxServices.FormattingEnabled = true;
-            this.cbxServices.Location = new System.Drawing.Point(109, 64);
+            this.cbxServices.Location = new System.Drawing.Point(109, 90);
             this.cbxServices.Name = "cbxServices";
             this.cbxServices.Size = new System.Drawing.Size(312, 21);
             this.cbxServices.TabIndex = 14;
@@ -103,8 +105,10 @@ namespace Presentation.Forms.ServiceDepartment
             this.lstSkills.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colDescription,
             this.colExpectedDur});
+            this.lstSkills.FullRowSelect = true;
             this.lstSkills.HideSelection = false;
-            this.lstSkills.Location = new System.Drawing.Point(109, 91);
+            this.lstSkills.Location = new System.Drawing.Point(109, 117);
+            this.lstSkills.MultiSelect = false;
             this.lstSkills.Name = "lstSkills";
             this.lstSkills.Size = new System.Drawing.Size(317, 185);
             this.lstSkills.TabIndex = 13;
@@ -137,7 +141,7 @@ namespace Presentation.Forms.ServiceDepartment
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(236, 282);
+            this.btnOk.Location = new System.Drawing.Point(236, 308);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(190, 62);
             this.btnOk.TabIndex = 10;
@@ -145,11 +149,29 @@ namespace Presentation.Forms.ServiceDepartment
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // lblSurname
+            // 
+            this.lblSurname.AutoSize = true;
+            this.lblSurname.Location = new System.Drawing.Point(10, 67);
+            this.lblSurname.Name = "lblSurname";
+            this.lblSurname.Size = new System.Drawing.Size(52, 13);
+            this.lblSurname.TabIndex = 21;
+            this.lblSurname.Text = "Surname:";
+            // 
+            // txtSurname
+            // 
+            this.txtSurname.Location = new System.Drawing.Point(109, 64);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(170, 20);
+            this.txtSurname.TabIndex = 20;
+            // 
             // frmEditTechnician
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 352);
+            this.ClientSize = new System.Drawing.Size(433, 377);
+            this.Controls.Add(this.lblSurname);
+            this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.lblSkills);
             this.Controls.Add(this.lblContactNum);
             this.Controls.Add(this.lblName);
@@ -182,5 +204,7 @@ namespace Presentation.Forms.ServiceDepartment
         private System.Windows.Forms.TextBox txtContactNum;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.Label lblSurname;
+        private System.Windows.Forms.TextBox txtSurname;
     }
 }

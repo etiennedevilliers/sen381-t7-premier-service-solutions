@@ -17,7 +17,7 @@ namespace Data.Layer.Controller
                 "INSERT INTO Request(ClientID, dateCreated, dateResolved, status, contactNum, CallID) VALUES ({0},'{1}','{2}','{3}','{4}', {5})",
                 (obj.Client != null) ? obj.Client.Id.ToString() : "null",
                 obj.DateCreated.ToString("yyyy-MM-dd HH:mm:ss.fff"),
-                obj.DateResolved == null ? null : obj.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                obj.DateResolved == null ? "NULL" : obj.DateResolved.Value.ToString("yyyy-MM-dd HH:mm:ss.fff"),
                 obj.Status,
                 obj.ContactNum,
                 obj.Call.Id

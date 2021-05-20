@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Data.Layer.Objects;
 using Logic.ServiceDepartment;
 using Logic.General;
+using Data.Layer.Controller;
 
 namespace Presentation.Forms.ServiceDepartment
 {
@@ -91,7 +92,7 @@ namespace Presentation.Forms.ServiceDepartment
         void LoadTechnicians()
         {
             lstTechnicians.Items.Clear();
-            List<Technician> technicians = techLogic.ReadTechnicians();
+            List<Technician> technicians = new TechnicianController().Read();
             ServiceRequest currentRequest;
             List<Service> skills;
             string skillSet;
@@ -151,14 +152,6 @@ namespace Presentation.Forms.ServiceDepartment
         }
 
         //Technicians Tab
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
-            techLogic.DeleteTechnician((Technician) lstTechnicians.SelectedItems[0].Tag);
-
-            LoadTechnicians();
-            LoadRequests();
-        }
-
         private void btnCreate_Click(object sender, EventArgs e)
         {
             frmAddTechnician form = new frmAddTechnician();
@@ -175,7 +168,7 @@ namespace Presentation.Forms.ServiceDepartment
         private void btnEdit_Click(object sender, EventArgs e)
         {
             Technician tech = (Technician) lstTechnicians.SelectedItems[0].Tag;
-            List<Service> skills = techLogic.GetSkills(tech);
+            List<Service> skills = tech.Skills;
 
             frmEditTechnician form = new frmEditTechnician(tech, skills);
             DialogResult res = form.ShowDialog();

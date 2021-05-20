@@ -105,9 +105,11 @@ namespace Presentation.Forms.ClientMaintenance
             this.colSerial,
             this.colManufact,
             this.colCat});
+            this.lstEquipment.FullRowSelect = true;
             this.lstEquipment.HideSelection = false;
             this.lstEquipment.Location = new System.Drawing.Point(10, 40);
             this.lstEquipment.Margin = new System.Windows.Forms.Padding(2);
+            this.lstEquipment.MultiSelect = false;
             this.lstEquipment.Name = "lstEquipment";
             this.lstEquipment.Size = new System.Drawing.Size(809, 164);
             this.lstEquipment.TabIndex = 7;
@@ -187,6 +189,7 @@ namespace Presentation.Forms.ClientMaintenance
             this.lstAddress.HideSelection = false;
             this.lstAddress.Location = new System.Drawing.Point(10, 40);
             this.lstAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.lstAddress.MultiSelect = false;
             this.lstAddress.Name = "lstAddress";
             this.lstAddress.Size = new System.Drawing.Size(809, 164);
             this.lstAddress.TabIndex = 15;
@@ -303,6 +306,7 @@ namespace Presentation.Forms.ClientMaintenance
             this.lstEmployee.HideSelection = false;
             this.lstEmployee.Location = new System.Drawing.Point(10, 40);
             this.lstEmployee.Margin = new System.Windows.Forms.Padding(2);
+            this.lstEmployee.MultiSelect = false;
             this.lstEmployee.Name = "lstEmployee";
             this.lstEmployee.Size = new System.Drawing.Size(809, 164);
             this.lstEmployee.TabIndex = 18;
@@ -406,7 +410,7 @@ namespace Presentation.Forms.ClientMaintenance
             this.txtSurname.TabIndex = 24;
             this.txtSurname.Visible = false;
             // 
-            // frmNewBusinessClient
+            // frmNewClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -423,7 +427,7 @@ namespace Presentation.Forms.ClientMaintenance
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtContactNum);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "frmNewBusinessClient";
+            this.Name = "frmNewClient";
             this.Text = "frmViewBusinessContract";
             this.Load += new System.EventHandler(this.frmNewBusinessClient_Load);
             this.tabNewClient.ResumeLayout(false);

@@ -78,8 +78,10 @@ namespace Presentation.Forms.ServiceDepartment
             this.lstSkills.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colDescription,
             this.colExpectedDur});
+            this.lstSkills.FullRowSelect = true;
             this.lstSkills.HideSelection = false;
             this.lstSkills.Location = new System.Drawing.Point(122, 163);
+            this.lstSkills.MultiSelect = false;
             this.lstSkills.Name = "lstSkills";
             this.lstSkills.Size = new System.Drawing.Size(317, 185);
             this.lstSkills.TabIndex = 3;

@@ -117,7 +117,6 @@
     <Compile Include="logic\Client Maintenance\ClientLogic.cs" />
     <Compile Include="logic\EquipmentCategoryLogic.cs" />
     <Compile Include="logic\General\GeneralLogic.cs" />
-    <Compile Include="logic\Client Maintenance\ClientMaintenanceLogic.cs" />
     <Compile Include="logic\Client Maintenance\NewContractRequestLogic.cs" />
     <Compile Include="logic\Contract Maintenance Logic\CustomExceptions\ServiceExistsException.cs" />
     <Compile Include="logic\Contract Maintenance Logic\CustomExceptions\SLAExistsException.cs" />
@@ -267,6 +266,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="presentation\forms\Call Centre\frmCallCentre.resx">
+      <DependentUpon>frmCallCentre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="presentation\forms\Call Centre\frmNewRequest.resx">
       <DependentUpon>frmNewRequest.cs</DependentUpon>
     </EmbeddedResource>

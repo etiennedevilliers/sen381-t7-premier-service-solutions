@@ -67,12 +67,12 @@ namespace Data.Layer.Controller
 
                     newContractRequest = new NewContractRequest(
                         read.GetDateTime(3),
-                        read.GetDateTime(4),
+                        read.IsDBNull(4) ? null : (DateTime?)read.GetDateTime(4),
                         callLog
                     );
 
                     newContractRequest.Id = read.GetInt32(0);
-                    newContractRequest.ContactNum = read.GetString(2);
+                    newContractRequest.ContactNum = read.IsDBNull(2) ? null : read.GetString(2);
                     newContractRequest.Status = read.GetString(5);
 
                     contractRequests.Add(newContractRequest);

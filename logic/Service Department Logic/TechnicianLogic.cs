@@ -110,7 +110,7 @@ namespace Logic.ServiceDepartment
             SortedDictionary<DateTime, ServiceRequest> queue = GetQueue(tech);
             if (queue.Count > 0)
             {
-                return (ServiceRequest)queue.Values.ToArray().GetValue(0);
+                return (ServiceRequest) queue.Values.ToArray().GetValue(0);
             }
             else
             {
